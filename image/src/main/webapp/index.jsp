@@ -17,7 +17,6 @@
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://www.kuaikanwang.com/js/bootstrap.min.js"></script>
-
   
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
