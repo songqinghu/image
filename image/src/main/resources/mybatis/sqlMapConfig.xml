@@ -32,11 +32,11 @@
 		 <package name="com.kuaikanwang.image.domain"/>
 	</typeAliases>
 	
-	<plugins>
+<!-- 	<plugins>
 		<plugin interceptor="com.github.pagehelper.PageHelper">
 			<property name="dialect" value="mysql"/>
 		</plugin>
-	</plugins>
+	</plugins> -->
 	
 
 
