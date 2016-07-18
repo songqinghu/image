@@ -20,6 +20,9 @@
     <link href="http://www.kuaikanwang.com//css/style.css" rel="stylesheet" type="text/css" />
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com/xinggan/" >
     <meta name="mobile-agent" content="format=html5;url=http://m.kuaikanwang.com/xinggan/"/>
+    
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    
     <script src="/css/uaredirect.js" type="text/javascript"></script>
     <script type="text/javascript">uaredirect("http://m.kuaikanwang.com/xinggan/");</script>
   </head>
