@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li ><a href="http://www.kuaikanwang.com/page/meitu">美女图片<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/xinggan">美女图片<span class="sr-only">(current)</span></a></li>
         <li ><a href="http://www.kuaikanwang.com/page/demo">Demo<span class="sr-only">(current)</span></a></li>
         <li ><a href="http://www.kuaikanwang.com/page/detail">detail<span class="sr-only">(current)</span></a></li>
         <li ><a href="http://www.kuaikanwang.com/page/search">search<span class="sr-only">(current)</span></a></li>

@@ -19,7 +19,7 @@
     <link href="http://www.kuaikanwang.com/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="http://www.kuaikanwang.com/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
     
-  	<link rel="shortcut icon" href="http://www.kuaikanwang.com/image/favicon.ico" type="image/x-icon">
+  	<link rel="shortcut icon" href="http://www.kuaikanwang.com/image/logo.gif" type="image/x-icon">
   	
     <link href="http://www.kuaikanwang.com/css/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
     <link rel="stylesheet" href="http://www.kuaikanwang.com/css/search.css" type="text/css" id="cssfile" />
@@ -35,16 +35,17 @@
    <div class="header_top w960">
       <div class="toplinks"><span>【<a href="http://www.kuaikanwang.com" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.kuaikanwang.com');return false;">设为首页</a>】【<a href="javascript:window.external.AddFavorite('http://www.kuaikanwang.com','快看网-美女图片 - 高清美女图片欣赏')" title="将本站加入到你的收藏夹">加入收藏</a>】</span></div>
    </div>
-   
+   	
    <div class="top w960 center">
       <div class="title">
       <h1>
         <a href="http://www.kuaikanwang.com">
-        	<img src="http://www.kuaikanwang.com/image/search_btn.png" height="54" width="216" alt="MM131美女图片"/>
+        	<img src="http://www.kuaikanwang.com/image/logo.gif" height="54" width="216" alt="美女图片"/>
         </a>
         </h1>
        </div>
    </div>
+   
    <div class="module blue mT10 wrapper w963">
       <div class="top">
          <div class="t_l"></div>

@@ -18,7 +18,7 @@
     <link href="http://www.kuaikanwang.com/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="http://www.kuaikanwang.com/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
     
-  	<link rel="shortcut icon" href="http://www.kuaikanwang.com/image/favicon.ico" type="image/x-icon">
+  	<link rel="shortcut icon" href="http://www.kuaikanwang.com/image/logo.gif" type="image/x-icon">
     <link href="http://www.kuaikanwang.com/css/content.css" rel="stylesheet" type="text/css" />
     <!-- 跳转到m站 -->
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com/xinggan/2569.html" >
@@ -32,13 +32,17 @@
   </head>
 
 <body>
-<div class="toper"><p class="toper_r"><a href="http://www.kuaikanwang.com" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.kuaikanwang.com');return false;"><strong>设为首页</strong></a> |
- <a href="javascript:window.external.AddFavorite('http://www.kuaikanwang.com','快看网-美女图片 - 高清美女图片欣赏')" title="将本站加入到你的收藏夹">加入收藏</a></p></div>
+<div class="toper">
+ </div>
 <div class="header">
-    <a href="http://www.kuaikanwang.com">美女图片</a>
-   	<img width="216" height="54" alt="MM131美女图片" src="http://img1.mm131.com/image/search_logo.gif">
-   </h1>
-   <div class="share"><script language="javascript" src="http://www.kuaikanwang.com/js/bdshare.js"></script></div>
+   <a href="http://www.kuaikanwang.com">
+   <img height="50%" width="15%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
+   </a>
+   <div class="share">
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+   </div>
    <div class="search">
    			<form id="form1" name="form1" method="post" action="http://www.kuaikanwang.com/search/">
    			<input type="text" name="keyword" id="textfield" class="search_text"/>
