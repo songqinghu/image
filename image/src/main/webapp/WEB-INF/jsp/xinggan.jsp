@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="zh-CN">
@@ -40,7 +41,6 @@
    <a href="http://www.kuaikanwang.com">
    <img height="50%" width="15%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
    </a>
-   
    <div class="share">
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -74,7 +74,7 @@
 <div class="main">
    <dl class="list-left public-box">
    	  <!-- 这里应该也是动态的 -->
-      <dt class="public-title">您的位置:<a href='http://www.mm131.com/'>美女图片</a> > <a href='http://www.mm131.com/xinggan/'>性感美女</a> > 图集列表</dt>
+      <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/page/xinggan/'>性感美女</a> > 图集列表</dt>
       <!-- 这里应该也是动态的获取数据 -->
       <dd><a target="_blank" href="http://www.mm131.com/xinggan/2565.html"><img src="http://img1.mm131.com/pic/2565/0.jpg" alt="巨波女神韩恩熙翘美臀为奥利奥代言" width="120" height="160" />巨波女神韩恩熙翘美臀为</a></dd>
       <dd><a target="_blank" href="http://www.mm131.com/xinggan/2564.html"><img src="http://img1.mm131.com/pic/2564/3.jpg" alt="小清新关思阳酒店湿身胴体一览无遗" width="120" height="160" />小清新关思阳酒店湿身胴</a></dd>
