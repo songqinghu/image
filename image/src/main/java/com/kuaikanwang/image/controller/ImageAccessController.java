@@ -1,10 +1,17 @@
 package com.kuaikanwang.image.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kuaikanwang.image.domain.enums.ImageType;
+import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.IImageAccessService;
 import com.kuaikanwang.image.service.impl.ImageAccessServiceImpl;
 
@@ -22,6 +29,7 @@ import com.kuaikanwang.image.service.impl.ImageAccessServiceImpl;
 @RequestMapping("/image")
 public class ImageAccessController {
 
+	@Autowired
 	private IImageAccessService imageAccessServiceImpl;
 	
 	/**
@@ -39,9 +47,23 @@ public class ImageAccessController {
 		
 		//从数据库中取出性感分类下的名称,从详细表中选出一个图片,按照时间排序.
 		
+		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(ImageType.XING_GAN_MEI_NV);
+		
+		if(pageNum<=0 || pageNum >totalPage){
+			pageNum=1;
+		}
+		//查询该页内容--从solr中获取
+		
+		List<ImageList> imageList = imageAccessServiceImpl.findImageList(pageNum, ImageType.getTypeName(ImageType.XING_GAN_MEI_NV));
 		
 		
-		return new ModelAndView("/xinggan", "test", "测试成功!");
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		model.put("list", imageList);
+		model.put("maxPage", totalPage);
+		model.put("nowPage", pageNum);
+		
+		return new ModelAndView("/xinggan",model);
 	}
 	
 	

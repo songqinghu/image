@@ -76,30 +76,14 @@
    	  <!-- 这里应该也是动态的 -->
       <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/page/xinggan/'>性感美女</a> > 图集列表</dt>
       <!-- 这里应该也是动态的获取数据 -->
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2565.html"><img src="http://img1.mm131.com/pic/2565/0.jpg" alt="巨波女神韩恩熙翘美臀为奥利奥代言" width="120" height="160" />巨波女神韩恩熙翘美臀为</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2564.html"><img src="http://img1.mm131.com/pic/2564/3.jpg" alt="小清新关思阳酒店湿身胴体一览无遗" width="120" height="160" />小清新关思阳酒店湿身胴</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2563.html"><img src="http://img1.mm131.com/pic/2563/0.jpg" alt="情趣女王蔡文钰绝美身材赚足你眼球" width="120" height="160" />情趣女王蔡文钰绝美身材</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2562.html"><img src="http://img1.mm131.com/pic/2562/0.jpg" alt="性感美女艾莉整形归来女神范依旧" width="120"   height="160" />性感美女艾莉整形归来女</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2561.html"><img src="http://img1.mm131.com/pic/2561/0.jpg" alt="极品尤物程程酒店大胆私房照看点足" width="120" height="160" />极品尤物程程酒店大胆私</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2560.html"><img src="http://img1.mm131.com/pic/2560/0.jpg" alt="性感宝贝春娇双手遮胸风情无限好" width="120" height="160" />性感宝贝春娇双手遮胸风</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2559.html"><img src="http://img1.mm131.com/pic/2559/0.jpg" alt="绝美秀女郎Moa巨乳外露诱惑难挡" width="120" height="160" />绝美秀女郎Moa巨乳外露</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2558.html"><img src="http://img1.mm131.com/pic/2558/0.jpg" alt="气质嫩模宋梓诺酒店穿丁字裤秀玉臀" width="120" height="160" />气质嫩模宋梓诺酒店穿丁</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2557.html"><img src="http://img1.mm131.com/pic/2557/0.jpg" alt="性感少妇沐若昕白衣湿身写真乳沟深" width="120" height="160" />性感少妇沐若昕白衣湿身</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2556.html"><img src="http://img1.mm131.com/pic/2556/0.jpg" alt="美女杨漫妮透明装性感巨乳呼之欲出" width="120"height="160" />美女杨漫妮透明装性感巨</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2554.html"><img src="http://img1.mm131.com/pic/2554/0.jpg" alt="翘臀女神王雨纯豪车内各种扭好诱人" width="120" height="160" />翘臀女神王雨纯豪车内各</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2553.html"><img src="http://img1.mm131.com/pic/2553/0.jpg" alt="翻版李丽莎余冰妹妹空姐制服私房照" width="120" height="160" />翻版李丽莎余冰妹妹空姐</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2552.html"><img src="http://img1.mm131.com/pic/2552/0.jpg" alt="性感mm谢芷馨前凸后翘大胆风情写真" width="120" height="160" />性感mm谢芷馨前凸后翘大</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2551.html"><img src="http://img1.mm131.com/pic/2551/0.jpg" alt="绝色尤物秦露捧巨胸一丝不挂艺术照" width="120" height="160" />绝色尤物秦露捧巨胸一丝</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2550.html"><img src="http://img1.mm131.com/pic/2550/0.jpg" alt="秀女郎萱萱性感蕾丝内衣美臀翘高高" width="120" height="160" />秀女郎萱萱性感蕾丝内衣</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2549.html"><img src="http://img1.mm131.com/pic/2549/0.jpg" alt="性感妹子灿兮情趣内衣大胆秀翘臀" width="120" height="160" />性感妹子灿兮情趣内衣大</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2548.html"><img src="http://img1.mm131.com/pic/2548/0.jpg" alt="丁裤美眉可乐薄纱遮胸诱惑不可挡" width="120" height="160" />丁裤美眉可乐薄纱遮胸诱</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2547.html"><img src="http://img1.mm131.com/pic/2547/0.jpg" alt="内涵小护士兜豆靓爱吃香蕉表情销魂" width="120" height="160" />内涵小护士兜豆靓爱吃香</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2546.html"><img src="http://img1.mm131.com/pic/2546/0.jpg" alt="翘臀美女战姝羽泡泡遮胸诱惑十足" width="120" height="160" />翘臀美女战姝羽泡泡遮胸</a></dd>
-      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2544.html"><img src="http://img1.mm131.com/pic/2544/0.jpg" alt="格衣小厨娘沐子熙袒胸露乳姿势诱人" width="120" height="160" />格衣小厨娘沐子熙袒胸露</a></dd>
+      <c:forEach var="image"  items="${list}">
+  		<dd><a target="_blank" href="http://www.kuaikanwang.com/image/detail?pid=${image.pid}"><img src="${image.picUrl}" alt="${image.picName}" width="120" height="160" />${image.picName}</a></dd>	 
+	  </c:forEach>
       <!-- ajax进行局部数据刷新 -->
       <dd class="page">
-      		<span class="page_now">1</span>
-      		<a href='list.html?pageNum=2' class="page-en">2</a>
+      		
+      		<span class="page_now">${nowPage}</span>
+      		<a href='?pageNum=2' class="page-en">2</a>
       		<a href='list_6_3.html' class="page-en">3</a>
       		<a href='list_6_4.html' class="page-en">4</a>
       		<a href='list_6_5.html' class="page-en">5</a>
