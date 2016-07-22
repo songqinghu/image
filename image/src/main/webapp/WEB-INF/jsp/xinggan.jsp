@@ -63,38 +63,44 @@
 <div class="nav">
    <ul>
       <li><a href='http://www.kuaikanwang.com/'>首页</a></li>
-      <li><a href='http://www.kuaikanwang.com/xinggan/'>性感美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/qingchun/'>清纯美眉</a></li>    
-      <li><a href='http://www.kuaikanwang.com/xiaohua/'>美女校花</a></li>
-      <li><a href='http://www.kuaikanwang.com/chemo/'>性感车模</a></li>
-      <li><a href='http://www.kuaikanwang.com/qipao/'>旗袍美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/mingxing/'>明星写真</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/xinggan/list'>性感美女</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/qingchun/list'>清纯美眉</a></li>    
+      <li><a href='http://www.kuaikanwang.com/images/xiaohua/list'>美女校花</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/chemo/list'>性感车模</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/qipao/list'>旗袍美女</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/mingxing/list'>明星写真</a></li>
    </ul>
 </div>
 <div class="main">
    <dl class="list-left public-box">
    	  <!-- 这里应该也是动态的 -->
-      <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/page/xinggan/'>性感美女</a> > 图集列表</dt>
+      <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/images/xinggan/list'>性感美女</a> > 图集列表</dt>
       <!-- 这里应该也是动态的获取数据 -->
       <c:forEach var="image"  items="${list}">
-  		<dd><a target="_blank" href="http://www.kuaikanwang.com/image/detail?pid=${image.pid}"><img src="${image.picUrl}" alt="${image.picName}" width="120" height="160" />${image.picName}</a></dd>	 
+  		<dd><a target="_blank" href="http://www.kuaikanwang.com/images/detail?pid=${image.pid}"><img src="${image.picUrl}" alt="${image.picName}" width="120" height="160" />${image.picName}</a></dd>	 
 	  </c:forEach>
       <!-- ajax进行局部数据刷新 -->
+      <!-- 如果当前页小于5那就显示1到10页 -->
       <dd class="page">
-      		
-      		<span class="page_now">${nowPage}</span>
-      		<a href='?pageNum=2' class="page-en">2</a>
-      		<a href='list_6_3.html' class="page-en">3</a>
-      		<a href='list_6_4.html' class="page-en">4</a>
-      		<a href='list_6_5.html' class="page-en">5</a>
-      		<a href='list_6_6.html' class="page-en">6</a>
-      		<a href='list_6_7.html' class="page-en">7</a>
-      		<a href='list_6_8.html' class="page-en">8</a>
-      		<a href='list_6_9.html' class="page-en">9</a>
-      		<a href='list_6_10.html' class="page-en">10</a>
-      		<a href='list_6_11.html' class="page-en">11</a>
-      		<a href='list_6_2.html' class="page-en">下一页</a>
-      		<a href='list_6_73.html' class="page-en">末页</a>
+           <a href='?pageNum=1' class="page-en">首页</a>
+            <c:if test="${nowPage > 1}">
+  				 <a href='?pageNum=${nowPage - 1}' class="page-en">上一页</a>
+			</c:if>
+             <c:forEach var="page"  items="${pageList}">
+             <c:choose>
+    			<c:when test="${nowPage == page}">
+     				 <span class="page_now">${nowPage}</span>
+    			</c:when>
+
+   				 <c:otherwise>
+        			<a href='?pageNum=${page}' class="page-en">${page}</a>
+   			 	</c:otherwise>
+			</c:choose>
+	 		 </c:forEach>
+      	    <c:if test="${nowPage < maxPage}">
+  				 <a href='?pageNum=${nowPage + 1}' class="page-en">下一页</a>
+			</c:if>
+      		<a href='?pageNum=${maxPage}' class="page-en">末页</a>
      </dd>
    </dl>
    <div class="main-right">
@@ -106,7 +112,7 @@
          <!-- 动态生成 -->
           <dd><a target="_blank" href="http://www.mm131.com/xinggan/2155.html">mm王语纯诱惑黑丝透明情趣大PK</a></dd>
 	      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2283.html">推女郎易阳丰臀巨乳让人垂涎三尺</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2250.html">妹子艾莉Evelyn紧身内内刺激男人眼</a></dd>
+		  <dd><a target="_blank" href="http ://www.mm131.com/xinggan/2250.html">妹子艾莉Evelyn紧身内内刺激男人眼</a></dd>
 		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/1419.html">蕾丝兔宝宝海边性感露臀写真</a></dd>
 		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/513.html">日本媚娘新图精选无水印</a></dd>
 		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2148.html">尤果网齐贝贝浴室内湿身诱惑写真</a></dd>

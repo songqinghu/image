@@ -12,7 +12,8 @@
   </resultMap>
 
   <select id="getTotalPage" parameterType="java.lang.String" resultType="java.lang.Integer" >
-    select count(url) from ctoprepic where pictype=#{pictype};
+  	select count(b.url) from (SELECT p.url as url FROM ctoprepic p, ctomainpic m 
+  	WHERE p.pre_id = m.pre_id AND p.pictype=#{pictype} GROUP BY p.url) b ; 
   </select>
   <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
     SELECT

@@ -29,6 +29,7 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	 */
 	public Integer findTotalPageNum(Integer type){
 		
+		 //这里加个缓存--1小时定时清理一次
 		
 		 int totalCount = imageAccess.getTotalPage(ImageType.getTypeName(type));
 		 
