@@ -1,8 +1,10 @@
 package com.kuaikanwang.image.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kuaikanwang.image.domain.query.ImageQuery;
+import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 
 /**
@@ -23,6 +25,9 @@ public interface ImageAccessMapper {
 	public List<ImageList> getImageList(ImageQuery query);
 	
 	
+	public Integer findDetailTotalCount(Integer pid);
 	
+	
+	public DetailImage getDetailImage(Map<String, Integer> map);
 	
 }

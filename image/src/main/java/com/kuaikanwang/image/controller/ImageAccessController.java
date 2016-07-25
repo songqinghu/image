@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kuaikanwang.image.domain.enums.ImageType;
+import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.IImageAccessService;
 import com.kuaikanwang.image.service.impl.ImageAccessServiceImpl;
@@ -52,8 +53,10 @@ public class ImageAccessController {
 		
 		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(ImageType.XING_GAN_MEI_NV);
 		
-		if(pageNum<=0 || pageNum >totalPage){
+		if(pageNum<=0 ){
 			pageNum=1;
+		}else if ( pageNum >totalPage) {
+			pageNum = totalPage;
 		}
 		//查询该页内容--从solr中获取
 		
@@ -73,6 +76,73 @@ public class ImageAccessController {
 		
 		return new ModelAndView("/xinggan",model);
 	}
+	
+	/**
+	 * 获取图片详情
+	 * <p>Title: getDetail</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/detail")
+	public ModelAndView getDetail(@RequestParam(defaultValue="1") int pid ,@RequestParam(defaultValue="1") int pageNum){
+		
+		
+		Integer totalCount = imageAccessServiceImpl.findTotalCount(pid);//大于等于0
+		
+		//确定要获取的详情图片
+		if(totalCount==0){//指定的pid下没有图片--推荐浏览量最高的--先做成默认的
+			pid = 1;
+			pageNum =1;
+		}else if(pageNum <1){
+			pageNum =1;
+		}else if(pageNum > totalCount){
+			pageNum = totalCount;
+		}
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		//获取详情图片,按照浏览量排序--增加详情图片浏览量,增加列表页浏览量
+		
+		DetailImage image = imageAccessServiceImpl.getDetailImage(pid, pageNum);
+		
+		//设置分类及分类链接--待加
+		
+		
+		 model.put("image", image);
+	     model.put("maxPage", totalCount);
+	     model.put("nowPage", pageNum);
+		 model.put("pid", pid);	
+	     //要暂时的列表页
+	     List<Integer> pageList = PageNumberListUtils.getPageNumList(pageNum, totalCount);
+			
+	     model.put("pageList", pageList);
+			
+		
+		 return new ModelAndView("/detail",model);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

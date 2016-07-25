@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
   <head>
@@ -69,16 +70,37 @@
 </div>
 <div class="place">您的位置:<a href='http://www.kuaikanwang.com/'>美女图片</a> > <a href='http://www.kuaikanwang.com/xinggan/'>性感美女</a> > 可人王梓童秒变尤物拍私房尺度喜人</div>
 <div class="content">
-   <h5>可人王梓童秒变尤物拍私房尺度喜人</h5>
-   <div class="content-msg">更新时间：2016-07-18 22:12:04 <a href='http://www.kuaikanwang.com/'>快看网-美女图片</a></div>
+   <h5>${image.picName}</h5>
+   <div class="content-msg">更新时间：${image.createDate} <a href='http://www.kuaikanwang.com/'>快看网-美女图片</a></div>
    
    <div class="content-pic">
-   			<a href='2569_2.html'>
-   				<img alt="可人王梓童秒变尤物拍私房尺度喜人(图1)" src="http://img1.mm131.com/pic/2569/1.jpg" />
+   			<a href='2569_2.html'><!-- 下一张图片或者 下一个列表页 -->
+   				<img alt="${image.picName}" src="${image.picUrl}" />
    			</a>
    </div>
    <div class="content-page">
-   		<span class="page-ch">共50页</span>
+            <span class="page-ch">共${maxPage}页</span>
+            <c:if test="${nowPage > 1}">
+  				 <a href='?pid=${pid}&pageNum=${nowPage - 1}' class="page-en">上一页</a>
+			</c:if>
+             <c:forEach var="page"  items="${pageList}">
+             <c:choose>
+    			<c:when test="${nowPage == page}">
+     				 <span class="page_now">${nowPage}</span>
+    			</c:when>
+
+   				 <c:otherwise>
+        			<a href='?pid=${pid}&pageNum=${page}' class="page-en">${page}</a>
+   			 	</c:otherwise>
+			</c:choose>
+	 		 </c:forEach>
+      	    <c:if test="${nowPage < maxPage}">
+  				 <a href='?pid=${pid}&pageNum=${nowPage + 1}' class="page-en">下一页</a>
+			</c:if>
+      		<a href='?pid=${pid}&pageNum=${maxPage}' class="page-en">末页</a>
+   		
+   		
+<!--    		<span class="page-ch">共50页</span>
    		<span class="page-ch">上一页</span>
    		<span class="page_now">1</span>
    		<a href='2569_2.html' class="page-en">2</a>
@@ -103,7 +125,8 @@
    		<a href='2569_21.html' class="page-en">21</a>
    		<a href='2569_22.html' class="page-en">22</a>
    		<a href='2569_23.html' class="page-en">23</a>
-   		<a href='2569_2.html' class="page-ch">下一页</a></div>
+   		<a href='2569_2.html' class="page-ch">下一页</a>-->
+   		</div> 
    <div class="updown">
 	   	<a href='http://www.mm131.com/xinggan/2568.html' class="updown_l">学生妹赵小米秀完制服诱惑秀情趣</a> 
 	   	<a href='#' class="updown_r">没有了</a>

@@ -17,7 +17,7 @@ public class ImageList {
 	private Integer mid;
 	
 	
-	private Integer pid;
+	private Integer pid;//分类id 用于从表获取图片
 	
 	
 	private String picName;

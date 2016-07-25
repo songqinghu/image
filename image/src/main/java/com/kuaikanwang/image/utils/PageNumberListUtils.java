@@ -27,7 +27,7 @@ public class PageNumberListUtils {
 	public static List<Integer> getPageNumList(Integer nowPage,Integer maxPage){
 		List<Integer> pageNum = new ArrayList<Integer>();
 		
-		if(nowPage<5){
+		if(nowPage<=5){
 			if(maxPage>=9){
 				for (int i = 1; i <=9; i++) {
 					pageNum.add(i);
