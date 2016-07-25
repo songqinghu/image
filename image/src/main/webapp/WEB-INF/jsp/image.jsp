@@ -63,18 +63,21 @@
 <div class="nav">
    <ul>
       <li><a href='http://www.kuaikanwang.com/'>首页</a></li>
-      <li><a href='http://www.kuaikanwang.com/images/xinggan/list'>性感美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/images/qingchun/list'>清纯美眉</a></li>    
-      <li><a href='http://www.kuaikanwang.com/images/xiaohua/list'>美女校花</a></li>
-      <li><a href='http://www.kuaikanwang.com/images/chemo/list'>性感车模</a></li>
-      <li><a href='http://www.kuaikanwang.com/images/qipao/list'>旗袍美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/images/mingxing/list'>明星写真</a></li>
+      <!-- 这里是动态从数据库中获取图片分类 -->
+      <li><a href='http://www.kuaikanwang.com/images/1/list'>性感美女</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/2/list'>清纯美眉</a></li>    
+      <li><a href='http://www.kuaikanwang.com/images/3/list'>美女校花</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/4/list'>性感车模</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/5/list'>旗袍美女</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/6/list'>明星写真</a></li>
+      <li><a href='http://www.kuaikanwang.com/images/7/list'>诱惑美女</a></li>
+      <li><a href='#'>更多美女</a></li>
    </ul>
 </div>
 <div class="main">
    <dl class="list-left public-box">
    	  <!-- 这里应该也是动态的 -->
-      <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/images/xinggan/list'>性感美女</a> > 图集列表</dt>
+      <dt class="public-title">您的位置:<a href='http://www.kuaikanwang.com/'>快看网</a> > <a href='http://www.kuaikanwang.com/images/1/list'>性感美女</a> > 图集列表</dt>
       <!-- 这里应该也是动态的获取数据 -->
       <c:forEach var="image"  items="${list}">
   		<dd><a target="_blank" href="http://www.kuaikanwang.com/images/detail?pid=${image.pid}"><img src="${image.picUrl}" alt="${image.picName}" width="120" height="160" />${image.picName}</a></dd>	 

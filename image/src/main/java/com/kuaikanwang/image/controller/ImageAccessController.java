@@ -42,8 +42,8 @@ public class ImageAccessController {
 	 * <p>Description: </p>
 	 * @return
 	 */
-	@RequestMapping("/{pathName}/list")
-	public ModelAndView toXingGan(@RequestParam(defaultValue="1") int pageNum,@PathVariable String pathName){
+	@RequestMapping("/{imageType}/list")
+	public ModelAndView toXingGan(@RequestParam(defaultValue="1") int pageNum,@PathVariable int imageType){
 		//查询总的数据量,返回可分页的次数.
 		
 		//对分页进行校验,不满足条件进行默认查询
@@ -51,7 +51,7 @@ public class ImageAccessController {
 		//从数据库中取出性感分类下的名称,从详细表中选出一个图片,按照时间排序.
 		
 		
-		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(ImageType.XING_GAN_MEI_NV);
+		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(imageType);
 		
 		if(pageNum<=0 ){
 			pageNum=1;
@@ -74,7 +74,7 @@ public class ImageAccessController {
 		
 		model.put("pageList", pageList);
 		
-		return new ModelAndView("/xinggan",model);
+		return new ModelAndView("/image",model);
 	}
 	
 	/**
