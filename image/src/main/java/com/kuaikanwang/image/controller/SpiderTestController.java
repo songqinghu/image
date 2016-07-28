@@ -29,7 +29,7 @@ public class SpiderTestController {
 	@ResponseBody
 	public String spiderStartTest(){
 		ctoPreSpiderStartImpl.preSpiderStart(1l);
-		return "true";
+		return "抓取结束!";
 	}
 	
 	

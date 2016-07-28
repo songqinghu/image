@@ -1,5 +1,6 @@
 package com.kuaikanwang.image.dao;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Map;
 public interface SpiderInfoMapper {
 	
 	
-	public Map<String, Long> findWebSpiderPreUrl(long webId);
+	public List<Map<String, Object>> findWebSpiderPreUrl(long webId);
 	
 	
 	

@@ -17,68 +17,58 @@ public class CTOPreMysqlPipeline implements Pipeline {
 	public void process(ResultItems resultItems, Task task) {
 
 		Map<String, Object> all = resultItems.getAll();
-		
-				List<String> urls = (List<String>) all.get("urls");
-
+		//下次抓取的列表地址
+		List<String> urls = (List<String>) all.get("urls");
+		//图片名称
 		List<String> names = (List<String>) all.get("names");
+		//列表图片地址
+		List<String> murls = (List<String>) all.get("murls");
 		//保证链接数
-		if(urls.size()<=names.size()){
-			for (int i = 0; i < urls.size(); i++) {
-				insertDB(urls.get(i), names.get(i));
-			}
-		}else if(urls.size() > names.size()){
-			//补空
-			for (int i = 0; i < urls.size(); i++) {
-				if(i>names.size()-1){
-					String name = "1"; //补充标示位
-					insertDB(urls.get(i), name);
-				}else{
-					insertDB(urls.get(i), names.get(i));
-				}
-				
-			}
-		}
+
 		
 		
 		
 	}
 
 	
-	private boolean insertDB(String url,String name){
-		Connection connection;
-		try {
-			connection =null; 
-					//ConnectionUtils.getConnection();
-			if(url !=null && url.trim().length()>0){
-				String selectsql = "select url from ctoprepic where url=?";
-				
-				PreparedStatement ps = connection.prepareStatement(selectsql);
-				
-				ps.setString(1, url);
-				
-				ResultSet rs = ps.executeQuery();
-				
-				int row = rs.getRow();
-				if(row==0){
-					String insertsql = "insert ctoprepic(name,url,pictype) values(?,?,?)";
+	private boolean  insertDB(String url,String name){
+		synchronized (this) {
+			
+			Connection connection;
+			try {
+				connection =null; 
+				//ConnectionUtils.getConnection();
+				if(url !=null && url.trim().length()>0){
+					String selectsql = "select url from ctoprepic where url=?";
 					
-					PreparedStatement pps = connection.prepareStatement(insertsql);
+					PreparedStatement ps = connection.prepareStatement(selectsql);
 					
-					pps.setString(1, name);
-					pps.setString(2, url);
-				//	pps.setString(3, CTOMeunListUtils.getPictype());
+					ps.setString(1, url);
 					
-					pps.executeUpdate();
+					ResultSet rs = ps.executeQuery();
 					
-					pps.close();
-					
+					int row = rs.getRow();
+					if(row==0){
+						String insertsql = "insert ctoprepic(name,url,pictype) values(?,?,?)";
+						
+						PreparedStatement pps = connection.prepareStatement(insertsql);
+						
+						pps.setString(1, name);
+						pps.setString(2, url);
+						//	pps.setString(3, CTOMeunListUtils.getPictype());
+						
+						pps.executeUpdate();
+						
+						pps.close();
+						
+					}
+					rs.close();
+					ps.close();
+					return true;
 				}
-				rs.close();
-				ps.close();
-				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return false;
 	}

@@ -27,21 +27,26 @@ public class CTOPageProcessorTest implements PageProcessor {
 
 		
 		//抓取到的图片url
+		List<String> murls = page.getHtml().
+				xpath("//div[@class='pic-list mb20 list']/ul/li/div[@class='picbox']/img").
+				regex("http://www\\.2cto\\.com/meinv/uploads/.*235x350").all();
 		
+		//列表地址
 		List<String> urls = page.getHtml().xpath("//div[@class='pic-list mb20 list']/ul/li/div[@class='name']").links().all();
 		
-//		for (String url : urls) {
-//			System.out.println(url);
-//		}
-//		
+		//for (String url : urls) {
+		//	System.out.println(url);
+		//}
+		
 		List<String> names = page.getHtml().xpath("//div[@class='pic-list mb20 list']/ul/li/div[@class='name']/a/text()").all();
 		
-//		for (String name : names) {
-//			System.out.println(name);
-//		}
+		//for (String name : names) {
+		//	System.out.println(name);
+		//}
 		
 		page.putField("urls", urls);
 		page.putField("names", names);
+		page.putField("murls", murls);
 		
 		if(urls==null ||urls.size()==0){
 			System.err.println("跳过!");
@@ -51,15 +56,15 @@ public class CTOPageProcessorTest implements PageProcessor {
 		//System.out.println(urls.size() + " : " + names.size());
 		//抓取循环 list_1_2.html
 		List<String> requests = page.getHtml().css("div.pages").links().regex("list\\_\\d+\\_\\d+\\.html").all();
-		ArrayList<String> newUrls = new ArrayList<String>();
+		//ArrayList<String> newUrls = new ArrayList<String>();
 		
 		
 		//for (String target : requests) {
 		
-			//target =  CTOMeunListUtils.getUrls()+ target;
+		//	target =  CTOMeunListUtils.getUrls()+ target;
 			
 		//	System.out.println("下次列表: "+ target);
-	//}
+	  // }
 		//添加下次抓取的链接列表
 		page.addTargetRequests(requests);
 		
@@ -72,24 +77,5 @@ public class CTOPageProcessorTest implements PageProcessor {
 		return site;
 	}
 
-	
-	public static void main(String[] args) {
-		
-//		Map<String, String> map = CTOMeunListUtils.test();
-//		
-//		Set<String> keys = map.keySet();
-//		for (String key : keys) {
-//			System.err.println("start :" + key);
-//			CTOMeunListUtils.setUrls(key);
-//			CTOMeunListUtils.setPictype(map.get(key));
-//			
-//			String urls = CTOMeunListUtils.getUrls();
-//			Spider.create(new CTOPageProcessorTest()).addUrl(urls).
-//			addPipeline(new CTOPreMysqlPipeline()).thread(7).run();
-//			
-//			
-//		}
-		
-	}
 	
 }
