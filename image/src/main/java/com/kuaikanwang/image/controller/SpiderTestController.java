@@ -24,8 +24,13 @@ public class SpiderTestController {
 	@Autowired
 	private CTOPreSpiderStart ctoPreSpiderStartImpl;
 	
-	
-	@RequestMapping("/start")
+	/**
+	 * 图片预抓取
+	 * <p>Title: spiderStartTest</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/pre")
 	@ResponseBody
 	public String spiderStartTest(){
 		ctoPreSpiderStartImpl.preSpiderStart(1l);
