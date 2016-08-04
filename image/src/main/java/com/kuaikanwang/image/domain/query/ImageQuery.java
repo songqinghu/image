@@ -7,7 +7,7 @@ public class ImageQuery {
 	
 	private Integer rows  =20;
 	
-	private String pictype;
+	private Integer pictype;
 
 	public Integer getStart() {
 		return start;
@@ -25,11 +25,13 @@ public class ImageQuery {
 		this.rows = rows;
 	}
 
-	public String getPictype() {
+	public Integer getPictype() {
 		return pictype;
 	}
 
-	public void setPictype(String pictype) {
+	public void setPictype(Integer pictype) {
 		this.pictype = pictype;
 	}
+
+
 }

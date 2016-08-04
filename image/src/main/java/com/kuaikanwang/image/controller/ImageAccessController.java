@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kuaikanwang.image.domain.enums.ImageType;
 import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.IImageAccessService;
-import com.kuaikanwang.image.service.impl.ImageAccessServiceImpl;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 /**
  * 图片访问跳转及数据填充接口
@@ -43,12 +42,15 @@ public class ImageAccessController {
 	 * @return
 	 */
 	@RequestMapping("/{imageType}/list")
-	public ModelAndView toXingGan(@RequestParam(defaultValue="1") int pageNum,@PathVariable int imageType){
-		//查询总的数据量,返回可分页的次数.
-		
-		//对分页进行校验,不满足条件进行默认查询
-		
-		//从数据库中取出性感分类下的名称,从详细表中选出一个图片,按照时间排序.
+	public ModelAndView toImageList(@RequestParam(defaultValue="1") int pageNum,@PathVariable int imageType){
+
+		/**
+		 * 从缓存中校验一下 是不是有图片类型,没有默认使用1
+		 */
+		boolean flag = CommonCacheUtil.getImageTypeNameCache().containsKey(new Long(imageType));
+		if(!flag){
+			imageType = 1;
+		}
 		
 		
 		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(imageType);
@@ -58,9 +60,8 @@ public class ImageAccessController {
 		}else if ( pageNum >totalPage) {
 			pageNum = totalPage;
 		}
-		//查询该页内容--从solr中获取
-		
-		List<ImageList> imageList = imageAccessServiceImpl.findImageList(pageNum, ImageType.getTypeName(ImageType.XING_GAN_MEI_NV));
+		//查询该页内容
+		List<ImageList> imageList = imageAccessServiceImpl.findImageList(pageNum,imageType);
 		
 		
 		Map<String, Object> model  = new HashMap<String,Object>();
@@ -68,7 +69,8 @@ public class ImageAccessController {
 		model.put("list", imageList);
 		model.put("maxPage", totalPage);
 		model.put("nowPage", pageNum);
-		
+		model.put("imageTypeList", CommonCacheUtil.getImageTypeList());
+		model.put("nowImageType", CommonCacheUtil.getImageTypeList().get(imageType-1));
 		//要暂时的列表页
 		List<Integer> pageList = PageNumberListUtils.getPageNumList(pageNum, totalPage);
 		

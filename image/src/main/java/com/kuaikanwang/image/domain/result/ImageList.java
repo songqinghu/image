@@ -29,7 +29,7 @@ public class ImageList {
 	private Date createdate;
 	
 	
-	private String pictype;
+	private Long pictype;
 
 
 	public Integer getMid() {
@@ -82,14 +82,14 @@ public class ImageList {
 	}
 
 
-	public String getPictype() {
+	public Long getPictype() {
 		return pictype;
 	}
 
 
-	public void setPictype(String pictype) {
+	public void setPictype(Long pictype) {
 		this.pictype = pictype;
 	}
-	
+
 	
 }

@@ -19,9 +19,22 @@ import com.kuaikanwang.image.domain.result.ImageList;
  */
 public interface ImageAccessMapper {
 
+	/**
+	 * 当前类目下的条目数
+	 * <p>Title: getTotalPage</p>
+	 * <p>Description: </p>ss
+	 * @param type
+	 * @return
+	 */
+	public int  getTotalPage(Integer type);
 	
-	public int getTotalPage(String typeName);
-	
+	/**
+	 * 获取展示的指定分类下的图片列表 按照时间进行排序 分页
+	 * <p>Title: getImageList</p>
+	 * <p>Description: </p>
+	 * @param query
+	 * @return
+	 */
 	public List<ImageList> getImageList(ImageQuery query);
 	
 	

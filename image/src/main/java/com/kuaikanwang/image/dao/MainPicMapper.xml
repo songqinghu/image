@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kuaikanwang.image.dao.ImageAccessMapper" >
+<mapper namespace="com.kuaikanwang.image.dao.MainPicMapper" >
 
   <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
     <id column="pre_id" property="pid" jdbcType="INTEGER" />
@@ -8,43 +8,22 @@
     <result column="name" property="picName" jdbcType="VARCHAR" />
     <result column="cratedate" property="createdate" jdbcType="TIMESTAMP" />
     <result column="id" property="mid" jdbcType="INTEGER" />
-    <result column="murl" property="picUrl" jdbcType="VARCHAR" />
+    <result column="url" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
 
-  <select id="getTotalPage" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
-  	select count(1) from prepic where pictype =#{pictype} and flag = 0;
+  <select id="findMainPicByUrl" parameterType="java.lang.String" resultType="java.lang.Long" >
+		select count(1) from mainpic where url = #{url};
   </select>
-  <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
+  
 
-    SELECT
-	p.pre_id,
-	p.pictype,
-	p.`name`,
-	p.cratedate,
-	m.id,
-	p.murl
-	FROM
-		prepic p,
-	    mainpic m
-	WHERE
-		p.pre_id = m.pre_id
-	AND p.pictype = #{pictype}
-	AND p.flag = 0
-	GROUP BY
-		p.url
-	order by p.cratedate desc
-	LIMIT #{start},#{rows};
-  </select>
+  <insert id="insertMainPic" parameterType="com.kuaikanwang.image.domain.bean.MainPic" >
+  
+    insert into mainpic 
+    (pre_id, pictype, name,url)
+    values 
+    (#{pre_id}, #{pictype}, #{name}, #{url})
 
-  <select id="findDetailTotalCount" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
-  	select count(url) from mainpic where pre_id = #{pid};
-  </select>
-
-     <select id="getDetailImage" parameterType="map" resultType="com.kuaikanwang.image.domain.result.DetailImage" >
-  			select id,pre_id as pid ,`name` as picName,url as picUrl,cratedate as createDate  
-  			from mainpic
-  		    where pre_id = #{pid} limit #{pageNum},1 ;
- 	 </select>
+  </insert>
 
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >

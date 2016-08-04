@@ -70,7 +70,7 @@
 </div>
 <div class="place">您的位置:<a href='http://www.kuaikanwang.com/'>美女图片</a> > <a href='http://www.kuaikanwang.com/xinggan/'>性感美女</a> > 可人王梓童秒变尤物拍私房尺度喜人</div>
 <div class="content">
-   <h5>${image.picName}</h5>
+   <h5>${image.picName}(${nowPage})</h5>
    <div class="content-msg">更新时间：${image.createDate} <a href='http://www.kuaikanwang.com/'>快看网-美女图片</a></div>
    
    <div class="content-pic">

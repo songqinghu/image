@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kuaikanwang.image.dao.PrePicMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.PrePic;
-import com.kuaikanwang.image.spider.cto.main.CTOMainMysqlPipeline;
+import com.kuaikanwang.image.spider.cto.main.MainMysqlPipeline;
 import com.kuaikanwang.image.spider.cto.main.CTOMainProcessor;
 import com.kuaikanwang.image.spider.cto.pre.CTOPageProcessorTest;
 import com.kuaikanwang.image.spider.cto.pre.CTOPreMysqlPipeline;
@@ -38,6 +38,10 @@ public class CTOPreSpiderStartImpl implements CTOPreSpiderStart {
 	
 	@Autowired
 	private PrePicMapper prePicmapper;
+	
+	
+	@Autowired
+	private Pipeline mainMysqlPipeline;
 	
 	
 	public boolean preSpiderStart(long webId){
@@ -72,19 +76,21 @@ public class CTOPreSpiderStartImpl implements CTOPreSpiderStart {
 		while(max>start){
 			map.put("start", start);
 			
-			
 			PrePic pic = prePicmapper.findPrePicByWebId(map);
 			
+			//preid和pictype加入缓存中
+			CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PRE_ID, pic.getPre_id());
+			CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pic.getPictype());
 			
-			Spider.create(new CTOMainProcessor()).addPipeline(new CTOMainMysqlPipeline())
+			
+			Spider.create(new CTOMainProcessor()).addPipeline(mainMysqlPipeline)
 			.addUrl(pic.getUrl()).thread(7).run();
 		
 			start = start + 1;
 			
 		}
 		
-		
-		return false;
+		return true;
 	}
 	
 	

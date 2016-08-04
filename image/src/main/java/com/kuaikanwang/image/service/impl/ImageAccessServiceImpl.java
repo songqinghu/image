@@ -4,14 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.soap.Detail;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kuaikanwang.image.dao.ImageAccessMapper;
-import com.kuaikanwang.image.domain.enums.ImageType;
 import com.kuaikanwang.image.domain.query.ImageQuery;
 import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
@@ -35,7 +32,7 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 		
 		 //这里加个缓存--1小时定时清理一次
 		
-		 int totalCount = imageAccess.getTotalPage(ImageType.getTypeName(type));
+		 int totalCount = imageAccess.getTotalPage(type);
 		 
 		 int totalPage = ((totalCount+19)/20);
 		
@@ -44,12 +41,12 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	
 	
 	
-	public List<ImageList> findImageList(Integer pageNum ,String pictype){
+	public List<ImageList> findImageList(Integer pageNum ,Integer imageType){
 		
 
 		 ImageQuery query = new ImageQuery();
 		 
-		 query.setPictype(pictype);
+		 query.setPictype(imageType);
 		 query.setStart((pageNum-1)*20);
 		 
 		 List<ImageList> imageList = imageAccess.getImageList(query);

@@ -9,7 +9,7 @@ public interface IImageAccessService {
 
 	public Integer findTotalPageNum(Integer type);
 	
-	public List<ImageList> findImageList(Integer pageNum ,String pictype);
+	public List<ImageList> findImageList(Integer pageNum ,Integer imageType);
 	
 	public Integer findTotalCount(Integer pid);
 	
