@@ -18,7 +18,7 @@ import com.kuaikanwang.image.spider.cto.start.CTOPreSpiderStart;
  * @version 1.0
  */
 @Controller
-@RequestMapping("/spider")
+@RequestMapping("/image/spider")
 public class SpiderTestController {
 
 	@Autowired
@@ -30,7 +30,7 @@ public class SpiderTestController {
 	 * <p>Description: </p>
 	 * @return
 	 */
-	@RequestMapping("/start/pre")
+	@RequestMapping("/start")
 	@ResponseBody
 	public String spiderStartTest(){
 		ctoPreSpiderStartImpl.preSpiderStart(1l);

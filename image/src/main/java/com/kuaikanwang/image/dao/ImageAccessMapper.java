@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kuaikanwang.image.domain.query.ImageQuery;
+import com.kuaikanwang.image.domain.result.AppImageInfo;
 import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 
@@ -42,5 +43,22 @@ public interface ImageAccessMapper {
 	
 	
 	public DetailImage getDetailImage(Map<String, Integer> map);
+	
+	
+
+	/**
+	 * 查询库中所有可以展示的图片数目
+	 * <p>Title: getImageCount</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public int  getImageCountNum();
+	
+	/**
+	 * 分页展示图片
+	 */
+	public List<AppImageInfo> findImageByPage(ImageQuery query);
+	
+	
 	
 }

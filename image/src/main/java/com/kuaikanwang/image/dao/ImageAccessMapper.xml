@@ -46,6 +46,16 @@
   		    where pre_id = #{pid} limit #{pageNum},1 ;
  	 </select>
 
+	  <select id="getImageCountNum"  resultType="java.lang.Integer" >
+  			select count(1) from mainpic where flag =0;
+  	  </select>
+	
+	  <select id="findImageByPage"  parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultType="com.kuaikanwang.image.domain.result.AppImageInfo" >
+  			select name,url from mainpic where flag =0 order by cratedate desc limit #{start},#{rows};
+  	  </select>
+	
+
+		
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
