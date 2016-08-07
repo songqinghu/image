@@ -26,7 +26,8 @@ public class DetailImage {
 	
 	private Date createDate;//创建时间
 
-
+	private Integer  pictype;//图片类型
+	
 	public Integer getId() {
 		return id;
 	}
@@ -75,7 +76,16 @@ public class DetailImage {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+
+
+	public Integer getPictype() {
+		return pictype;
+	}
+
+
+	public void setPictype(Integer pictype) {
+		this.pictype = pictype;
+	}
 	
 	
 }

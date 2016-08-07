@@ -8,10 +8,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.dao.ImageTypeMapper;
 import com.kuaikanwang.image.domain.bean.ImageType;
+import com.kuaikanwang.image.domain.result.ImageList;
+import com.kuaikanwang.image.service.ImageExtendService;
+import com.kuaikanwang.image.service.impl.ImageExtendServiceImpl;
 /**
  * 通用缓存类---用于缓存平时常用的元素--设置定时清理后读取
  * <p>Title: CommonCacheUtil.java</p>
@@ -27,6 +31,9 @@ public class CommonCacheUtil implements InitializingBean{
 
 	@Resource
 	private ImageTypeMapper ImageTypeMapper;
+	
+	@Autowired
+	private ImageExtendService imageExtendServiceImpl;
 	
 	public static final String  WEB_ID = "webId";
 	public static final String  PICTYPE = "pictype";
@@ -58,8 +65,47 @@ public class CommonCacheUtil implements InitializingBean{
 	}
 
 
+	//缓存 最新图片信息到内存中 使用定时器 定时更新
+	private static List<ImageList> latestPicList =  new ArrayList<ImageList>();
+	private static List<ImageList> latestPicListCache =  new ArrayList<ImageList>();
+	
+	public static List<ImageList> getLatestPicList() {
+
+		if(latestPicList.isEmpty()){
+			return latestPicListCache;
+		}
+		return latestPicList;
+	}
+
+	public static List<ImageList> getLatestPicListCache() {
+		return latestPicListCache;
+	}
 
 
+	//缓存 最新图片信息到内存中 使用定时器 定时更新
+	private static List<ImageList> countPicList =  new ArrayList<ImageList>();
+	private static List<ImageList> countPicListCache =  new ArrayList<ImageList>();
+
+	public static List<ImageList> getCountPicList() {
+		if(countPicList.isEmpty()){
+			return countPicListCache;
+		}
+		return countPicList;
+	}
+
+	public static List<ImageList> getCountPicListCache() {
+		return countPicListCache;
+	}
+	
+	private static Integer  maxPid ;
+	
+	public static Integer getMaxPid() {
+		return maxPid;
+	}
+
+	public static void setMaxPid(Integer maxPid) {
+		CommonCacheUtil.maxPid = maxPid;
+	}
 
 	/**
 	 * 
@@ -91,7 +137,11 @@ public class CommonCacheUtil implements InitializingBean{
 			imageTypeList.add(type);
 		}
 		
+		imageExtendServiceImpl.getLatestPicList(11);
 		
+		imageExtendServiceImpl.getCountPicList(10);
+		
+		imageExtendServiceImpl.getMaxPic();
 		
 	}
 	

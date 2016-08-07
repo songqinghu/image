@@ -34,9 +34,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li ><a href="http://www.kuaikanwang.com/images/1/list">美女图片<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.kuaikanwang.com/page/detail">detail<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.kuaikanwang.com/page/search">search<span class="sr-only">(current)</span></a></li>
+        <li ><a target="_blank" href="http://www.kuaikanwang.com/images/1/list">美女图片<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/detail">热门小说<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/search">技术博客<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/search">技术工具<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/search">有奖建议<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.kuaikanwang.com/page/search">加入我们<span class="sr-only">(current)</span></a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

@@ -15,6 +15,7 @@ import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.IImageAccessService;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
+import com.kuaikanwang.image.utils.arithmetic.SimpleImageListArithmeticUtil;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 /**
@@ -76,6 +77,11 @@ public class ImageAccessController {
 		
 		model.put("pageList", pageList);
 		
+	     //扩展信息部分
+	     model.put("latestPicList", CommonCacheUtil.getLatestPicList());//最新图片
+	     model.put("countPicList", CommonCacheUtil.getCountPicList());//最多观看
+	     
+		
 		return new ModelAndView("/image",model);
 	}
 	
@@ -114,12 +120,28 @@ public class ImageAccessController {
 	     model.put("maxPage", totalCount);
 	     model.put("nowPage", pageNum);
 		 model.put("pid", pid);	
+		 model.put("imageTypeList", CommonCacheUtil.getImageTypeList());
+		 model.put("nowImageType", CommonCacheUtil.getImageTypeList().get(image.getPictype()-1));
 	     //要暂时的列表页
 	     List<Integer> pageList = PageNumberListUtils.getPageNumList(pageNum, totalCount);
 			
 	     model.put("pageList", pageList);
 			
+	     //扩展展示内容
+	     
+	     //上一组和下一组的图片
+	     ImageList previousImage = imageAccessServiceImpl.getImageListByPid(pid+1, image.getPictype());
+	     ImageList nextImage = imageAccessServiceImpl.getImageListByPid(pid-1, image.getPictype());
+	     model.put("previousImage", previousImage);	
+	     model.put("nextImage", nextImage);	
+	     //下部展示页 --设计简单的算法
+			//获取要推荐的列表图
+	     List<ImageList> recommendImageList = imageAccessServiceImpl.
+	    		 getRecommendImageList(SimpleImageListArithmeticUtil.getRecommendPid(CommonCacheUtil.getMaxPid(), pid));
 		
+	     model.put("recommendImageList", recommendImageList);	
+	     
+	     
 		 return new ModelAndView("/detail",model);
 	}
 	

@@ -8,6 +8,8 @@ public class ImageQuery {
 	private Integer rows  =20;
 	
 	private Integer pictype;
+	
+	private Integer pid;
 
 	public Integer getStart() {
 		return start;
@@ -33,5 +35,11 @@ public class ImageQuery {
 		this.pictype = pictype;
 	}
 
+	public Integer getPid() {
+		return pid;
+	}
 
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
 }

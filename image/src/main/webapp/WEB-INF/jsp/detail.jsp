@@ -9,10 +9,10 @@
     <meta name="applicable-device"content="pc">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>可人王梓童秒变尤物拍私房尺度喜人_美女图片 - 快看网</title><!-- 动态生成标题 -->
+    <title>${image.picName}_美女图片 - 快看网</title><!-- 动态生成标题 -->
 	
-	<meta name="keywords" content="可人,王梓童,尤物" /><!-- 动态生成关键字 -->
-	<meta name="description" content="快看网-美女图片提供性感美女高清图片-可人王梓童秒变尤物拍私房尺度喜人。www.kuaikanwang.com" />
+	<meta name="keywords" content="${image.picName}" /><!-- 动态生成关键字 -->
+	<meta name="description" content="快看网-美女图片提供性感美女高清图片-${image.picName}。www.kuaikanwang.com" />
     
     <!-- Bootstrap -->
     <link href="http://www.kuaikanwang.com/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -36,15 +36,22 @@
 <div class="toper">
  </div>
 <div class="header">
-   <a href="http://www.kuaikanwang.com">
+<!--     <a href="http://www.kuaikanwang.com">
    <img height="50%" width="15%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
-   </a>
-   <div class="share">
+   </a> -->
+   <div class="share"> 
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
    </div>
-   <div class="search">
+
+   <div  class="search">
+      <a href="http://www.kuaikanwang.com">
+      <img height="300%" width="100%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
+      </a>
+   </div>
+
+<!--    <div class="search">
    			<form id="form1" name="form1" method="post" action="http://www.kuaikanwang.com/search/">
    			<input type="text" name="keyword" id="textfield" class="search_text"/>
    			<input type="image" name="imageField" id="imageField" src="http://www.kuaikanwang.com/image/search_btn.png" />
@@ -55,26 +62,25 @@
 		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=写真">写真</a>
 		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=校花">校花</a>
 		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=张馨予">张馨予</a>
-		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=翟凌">翟凌</a></div>
-	</div>
+		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=翟凌">翟凌</a>
+		</div> -->
+	</div> 
 <div class="nav">
    <ul>
-      <li><a href='/'>首页</a></li>
-      <li><a href='http://www.kuaikanwang.com/xinggan/'>性感美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/qingchun/'>清纯美眉</a></li>    
-      <li><a href='http://www.kuaikanwang.com/xiaohua/'>美女校花</a></li>
-      <li><a href='http://www.kuaikanwang.com/chemo/'>性感车模</a></li>
-      <li><a href='http://www.kuaikanwang.com/qipao/'>旗袍美女</a></li>
-      <li><a href='http://www.kuaikanwang.com/mingxing/'>明星写真</a></li>
+      <li><a href='http://www.kuaikanwang.com/'>首页</a></li>
+      <!-- 这里是动态从数据库中获取图片分类 -->
+       <c:forEach var="type"  items="${imageTypeList}">
+  		<li><a href='http://www.kuaikanwang.com/images/${type.imageType}/list'>${type.typeName}</a></li>
+	  </c:forEach>
    </ul>
 </div>
-<div class="place">您的位置:<a href='http://www.kuaikanwang.com/'>美女图片</a> > <a href='http://www.kuaikanwang.com/xinggan/'>性感美女</a> > 可人王梓童秒变尤物拍私房尺度喜人</div>
+<div class="place">您的位置:<a href='http://www.kuaikanwang.com/'>美女图片</a> > <a href='http://www.kuaikanwang.com/images/${nowImageType.imageType}/list'>${nowImageType.typeName}</a> > ${image.picName}</div>
 <div class="content">
    <h5>${image.picName}(${nowPage})</h5>
    <div class="content-msg">更新时间：${image.createDate} <a href='http://www.kuaikanwang.com/'>快看网-美女图片</a></div>
    
    <div class="content-pic">
-   			<a href='2569_2.html'><!-- 下一张图片或者 下一个列表页 -->
+   			<a href='?pid=${pid}&pageNum=${nowPage + 1}'><!-- 下一张图片或者 下一个列表页 -->
    				<img alt="${image.picName}" src="${image.picUrl}" />
    			</a>
    </div>
@@ -128,14 +134,39 @@
    		<a href='2569_2.html' class="page-ch">下一页</a>-->
    		</div> 
    <div class="updown">
-	   	<a href='http://www.mm131.com/xinggan/2568.html' class="updown_l">学生妹赵小米秀完制服诱惑秀情趣</a> 
-	   	<a href='#' class="updown_r">没有了</a>
+                <c:choose>
+    			<c:when test="${not empty previousImage}">
+    				<a href='http://www.kuaikanwang.com/images/detail?pid=${previousImage.pid}' class="updown_l">${previousImage.picName}</a> 
+    			</c:when>
+   				 <c:otherwise>
+        			<a href='#' class="updown_l">没有了</a>
+   			 	</c:otherwise>
+			</c:choose>
+                <c:choose>
+    			<c:when test="${not empty nextImage}">
+    				<a href='http://www.kuaikanwang.com/images/detail?pid=${nextImage.pid}' class="updown_r">${nextImage.picName}</a> 
+    			</c:when>
+   				 <c:otherwise>
+        			<a href='#' class="updown_r">没有了</a>
+   			 	</c:otherwise>
+			</c:choose>
+
+<!-- 	   	<a href='http://www.mm131.com/xinggan/2568.html' class="updown_l">学生妹赵小米秀完制服诱惑秀情趣</a> 
+	   	<a href='#' class="updown_r">没有了</a> -->
     </div>
    <div class="otherpic">
       <div class="arr_left"><span class="anleft"></span></div>
       <div class="otherlist" id="opic">
          <ul>
-         <li>
+      <c:forEach var="recommendImage"  items="${recommendImageList}">
+          <li>
+         <a href="http://www.kuaikanwang.com/images/detail?pid=${recommendImage.pid}" target="_blank">
+         <img src="${recommendImage.picUrl}" alt="${recommendImage.picName}">
+         ${recommendImage.picName}
+         </a>
+         </li>
+	  </c:forEach>
+       <!--   <li>
          <a href="http://www.mm131.com/xinggan/2148.html" target="_blank">
          <img src="http://img1.mm131.com/pic/2148/0.jpg" alt="尤果网齐贝贝浴室内湿身诱惑写真">
          尤果网齐贝贝浴室内湿
@@ -201,7 +232,7 @@
 	     <img src="http://img1.mm131.com/pic/2050/0.jpg" alt="黑纱薄裙张栩菲展现朦胧女人美">
 	     黑纱薄裙张栩菲展现朦
 	     </a>
-	     </li>
+	     </li> -->
 	     </ul>
       </div>
       <div class="arr_right"><span class="anright"></span></div>
@@ -214,4 +245,39 @@
 		&copy; 2016 (<a href="/" target="_blank">www.kuaikanwang.com</a>) 快看网-美女图片 版权所有 黔ICP备14005250号-2 
 		<script type="text/javascript" src="http://www.kuaikanwang.com/js/stat.js"></script></div>
 </body>
+<script type="text/javascript">
+
+	window.onload=function(){
+	
+	
+	var pid = "${pid}";
+
+	
+	 $.ajax(  
+		        {  
+		            type : 'POST',  
+		            url : 'http://www.kuaikanwang.com/image/count/add/pid',  
+		            data : "pid=" + pid, 
+		            success : function(data)  
+		            {  
+		                if (data == "true")  
+		                {  
+		          /*           var form = document.getElementById("myForm");  
+		                    form.action = "Common/source/download";  
+		                    form.submit(); */  
+		                }  
+		                else  
+		                {  
+		                   /*  alert("下载出现错误!");   */
+		                }  
+		                return;  
+		            },  
+		            error : function()  
+		            {  
+		               /*  alert("下载出现未知错误!");   */
+		            }  
+		        });  
+	}
+
+</script>
 </html> 

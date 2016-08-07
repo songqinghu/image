@@ -15,4 +15,9 @@ public interface IImageAccessService {
 	
 	
 	public DetailImage getDetailImage(Integer pid,Integer pageNum);
+	
+	
+	public  ImageList  getImageListByPid(Integer pid,Integer pictype);
+	
+	public List<ImageList> getRecommendImageList(Integer pid);
 }

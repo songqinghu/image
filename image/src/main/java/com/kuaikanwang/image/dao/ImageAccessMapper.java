@@ -61,4 +61,48 @@ public interface ImageAccessMapper {
 	
 	
 	
+	/**
+	 * 获取最新的图片信息
+	 */
+	public List<ImageList> getLatestPicList(Integer num);
+	
+	
+	
+	/**
+	 * 校验是否含有次pid
+	 */
+	
+	public Integer findPreInfoByPid(Long pid);
+	
+	
+	/**
+	 * 获取 最多观看数目排序后的结果
+	 */
+	
+	public List<ImageList> getCountPicList(Integer num);
+	
+	
+	
+	/**
+	 * 通过pid 获取单张图片信息
+	 */
+	public ImageList getImageListByPid(ImageQuery query);
+	
+	
+	
+	/**
+	 * 查询pre 中 最大可展示的pid的值
+	 * <p>Title: getImageCount</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public Integer  getMaxPid();
+	
+	/**
+	 * 推荐的图片列表获取
+	 */
+	public List<ImageList> getRecommendImageList(Integer pid);
+	
+	
+	
 }

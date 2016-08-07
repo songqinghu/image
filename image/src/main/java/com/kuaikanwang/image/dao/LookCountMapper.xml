@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kuaikanwang.image.dao.ImageAccessMapper" >
+<mapper namespace="com.kuaikanwang.image.dao.LookCountMapper" >
 
   <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
     <id column="pre_id" property="pid" jdbcType="INTEGER" />
@@ -8,140 +8,22 @@
     <result column="name" property="picName" jdbcType="VARCHAR" />
     <result column="cratedate" property="createdate" jdbcType="TIMESTAMP" />
     <result column="id" property="mid" jdbcType="INTEGER" />
-    <result column="murl" property="picUrl" jdbcType="VARCHAR" />
+    <result column="url" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
 
-  <select id="getTotalPage" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
-  	select count(1) from prepic where pictype =#{pictype} and flag = 0;
-  </select>
-  <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
-
-    SELECT
-	p.pre_id,
-	p.pictype,
-	p.`name`,
-	p.cratedate,
-	m.id,
-	p.murl
-	FROM
-		prepic p,
-	    mainpic m
-	WHERE
-		p.pre_id = m.pre_id
-	AND p.pictype = #{pictype}
-	AND p.flag = 0
-	GROUP BY
-		p.url
-	order by p.pre_id desc
-	LIMIT #{start},#{rows};
-  </select>
-
-  <select id="findDetailTotalCount" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
-  	select count(url) from mainpic where pre_id = #{pid};
-  </select>
-
-     <select id="getDetailImage" parameterType="map" resultType="com.kuaikanwang.image.domain.result.DetailImage" >
-  			select id,pre_id as pid ,`name` as picName,url as picUrl,cratedate as createDate,pictype  
-  			from mainpic
-  		    where pre_id = #{pid} limit #{pageNum},1 ;
- 	 </select>
-
-	  <select id="getImageCountNum"  resultType="java.lang.Integer" >
-  			select count(1) from mainpic where flag =0;
-  	  </select>
-	
-	  <select id="findImageByPage"  parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultType="com.kuaikanwang.image.domain.result.AppImageInfo" >
-  			select name,url from mainpic where flag =0 order by cratedate desc limit #{start},#{rows};
-  	  </select>
-  	  <!-- 确定详情页有图片 -->
-	  <select id="getLatestPicList"  parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-  			    SELECT
-				p.pre_id,
-				p.pictype,
-				p.`name`,
-				p.cratedate,
-				m.id
-				FROM
-					prepic p,
-				    mainpic m
-				WHERE
-					p.pre_id = m.pre_id
-				AND p.flag = 0
-				GROUP BY
-					p.url
-				order by p.cratedate desc limit 0,#{num};
-  	  </select>
-	
 	  <select id="findPreInfoByPid"  parameterType="java.lang.Long" resultType="java.lang.Integer" >
-  			select count(1) from mainpic where pre_id = #{pid};
+  			select count(1) from pretimecount where pre_id = #{pid};
   	  </select>
-
-		
-  	  <!--  按照 浏览量进行排序  -->
-	  <select id="getCountPicList"  parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-			SELECT
-				p.pre_id,
-				p.pictype,
-				p.`name`
-			FROM
-				prepic p,
-				pretimecount m
-			WHERE
-				p.pre_id = m.pre_id
-			AND p.flag = 0
-			GROUP BY
-				p.url
-			ORDER BY
-				m.lookcount DESC
-			LIMIT 0,
-			 #{num};
-  	  </select>
-
-  <select id="getImageListByPid" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-    SELECT
-	p.pre_id,
-	p.pictype,
-	p.`name`,
-	p.cratedate,
-	m.id,
-	p.murl
-	FROM
-		prepic p,
-	    mainpic m
-	WHERE
-		p.pre_id = m.pre_id
-	AND p.pictype = #{pictype}
-	AND p.flag = 0
-  and p.pre_id = #{pid}
-	GROUP BY
-		p.url
-  </select>
-
-	  <select id="getMaxPid"  resultType="java.lang.Integer" >
-  			select pre_id from prepic where flag =0 order by pre_id desc limit 0,1;
-  	  </select>
-
-  <select id="getRecommendImageList" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-
-    SELECT
-	p.pre_id,
-	p.pictype,
-	p.`name`,
-	p.cratedate,
-	m.id,
-	p.murl
-	FROM
-		prepic p,
-	  mainpic m
-	WHERE
-		p.pre_id = m.pre_id
-	AND p.pictype = 1
-	AND p.flag = 0
-    and 	p.pre_id BETWEEN #{pid}+1 and #{pid}+10
-	GROUP BY
-		p.url
-	order by p.pre_id desc
-  </select>
+  	  
+  	  <insert id="insertLookCountInfo" parameterType="java.lang.Long">
+  	  	insert into pretimecount(pre_id) values(#{pid});
+  	  </insert>
+  	  <update id="updateLookCountInfo"  parameterType="java.lang.Long">
+  	  		UPDATE pretimecount SET lookcount=lookcount+1 where pre_id=#{pid};
+  	  </update>
+  	  
+  	  
+  	  
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />

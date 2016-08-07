@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,6 +88,40 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 		map.put("pageNum", pageNum -1);
 		
 		return imageAccess.getDetailImage(map);
+	}
+
+
+	/**
+	 * 通过pid 获取指定图片的信息
+	 * <p>Title: getImageListByPid</p>
+	 * <p>Description: </p>
+	 * @param pid
+	 * @return
+	 * @see com.kuaikanwang.image.service.IImageAccessService#getImageListByPid(java.lang.Integer)
+	 */
+	@Override
+	public ImageList getImageListByPid(Integer pid,Integer pictype) {
+		
+		ImageQuery query  = new ImageQuery();
+		
+		query.setPid(pid);
+		query.setPictype(pictype);
+		
+		return imageAccess.getImageListByPid(query  );
+	}
+
+
+	/**
+	 * 获取推荐的图片列表
+	 * <p>Title: getRecommendImageList</p>
+	 * <p>Description: </p>
+	 * @param pid
+	 * @return
+	 * @see com.kuaikanwang.image.service.IImageAccessService#getRecommendImageList(java.lang.Integer)
+	 */
+	@Override
+	public List<ImageList> getRecommendImageList(Integer pid) {
+		return imageAccess.getRecommendImageList(pid);
 	}
 	
 	
