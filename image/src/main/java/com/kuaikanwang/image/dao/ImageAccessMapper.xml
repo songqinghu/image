@@ -10,6 +10,13 @@
     <result column="id" property="mid" jdbcType="INTEGER" />
     <result column="murl" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <resultMap id="IndexResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
+    <id column="pre_id" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="picName" jdbcType="VARCHAR" />
+    <result column="url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="lookcount" property="lookcount" jdbcType="INTEGER" />
+  </resultMap>
 
   <select id="getTotalPage" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
   	select count(1) from prepic where pictype =#{pictype} and flag = 0;
@@ -135,12 +142,31 @@
 	  mainpic m
 	WHERE
 		p.pre_id = m.pre_id
-	AND p.pictype = 1
 	AND p.flag = 0
     and 	p.pre_id BETWEEN #{pid}+1 and #{pid}+10
 	GROUP BY
 		p.url
 	order by p.pre_id desc
+  </select>
+  
+  <select id="getIndexImageListByType" parameterType="java.lang.Integer" resultMap="IndexResultMap" >
+		SELECT
+			m.pre_id,
+			m.`name`,
+			m.url,
+			p.lookcount
+		FROM
+			mainpic m,
+			pretimecount p
+		WHERE
+			m.pre_id = p.pre_id
+		AND m.pictype = #{pictype}
+		GROUP BY
+			p.pre_id
+		ORDER BY
+			p.lookcount DESC
+		LIMIT 0,
+		 4;
   </select>
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >

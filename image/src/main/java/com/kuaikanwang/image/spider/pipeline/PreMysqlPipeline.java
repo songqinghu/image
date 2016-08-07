@@ -1,4 +1,4 @@
-package com.kuaikanwang.image.spider.cto.pre;
+package com.kuaikanwang.image.spider.pipeline;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +16,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 
 //2cto 的地址预处理到 mysql数据库中
 @Component("ctoPreMysqlPipeline")
-public class CTOPreMysqlPipeline implements Pipeline {
+public class PreMysqlPipeline implements Pipeline {
 
 	
 	@Autowired

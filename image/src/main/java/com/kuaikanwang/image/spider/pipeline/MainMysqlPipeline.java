@@ -1,4 +1,4 @@
-package com.kuaikanwang.image.spider.cto.main;
+package com.kuaikanwang.image.spider.pipeline;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import com.kuaikanwang.image.dao.MainPicMapper;
 import com.kuaikanwang.image.domain.bean.MainPic;
 import com.kuaikanwang.image.domain.bean.PrePic;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
+import com.kuaikanwang.image.utils.string.StringProcessUtil;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -52,7 +53,7 @@ public class MainMysqlPipeline implements Pipeline{
 					MainPic pic = new MainPic();
 					
 					pic.setUrl(urls.get(0));
-					pic.setName(names.get(0));
+					pic.setName(StringProcessUtil.getBeautifulString(names.get(0)));//将最后的括号过滤掉
 					pic.setPre_id(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PRE_ID));
 					pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE));
 					

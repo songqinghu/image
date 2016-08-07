@@ -38,7 +38,13 @@ public interface ImageAccessMapper {
 	 */
 	public List<ImageList> getImageList(ImageQuery query);
 	
-	
+	/**
+	 * 获取mainpic表中 指定pid 对应 图片的个数
+	 * <p>Title: findDetailTotalCount</p>
+	 * <p>Description: </p>
+	 * @param pid
+	 * @return
+	 */
 	public Integer findDetailTotalCount(Integer pid);
 	
 	
@@ -102,6 +108,11 @@ public interface ImageAccessMapper {
 	 * 推荐的图片列表获取
 	 */
 	public List<ImageList> getRecommendImageList(Integer pid);
+	
+	/**
+	 * 获取分类目录下浏览量最高的图片 用于首页展示
+	 */
+	public List<ImageList> getIndexImageListByType(Integer pictype);
 	
 	
 	

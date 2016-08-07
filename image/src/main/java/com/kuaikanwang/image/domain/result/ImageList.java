@@ -31,6 +31,7 @@ public class ImageList {
 	
 	private Long pictype;
 
+	private Long lookcount; //浏览量
 
 	public Integer getMid() {
 		return mid;
@@ -89,6 +90,16 @@ public class ImageList {
 
 	public void setPictype(Long pictype) {
 		this.pictype = pictype;
+	}
+
+
+	public Long getLookcount() {
+		return lookcount;
+	}
+
+
+	public void setLookcount(Long lookcount) {
+		this.lookcount = lookcount;
 	}
 
 	

@@ -64,6 +64,23 @@
         <property name="cronExpression" value="${max.pid.cron}">
         </property>
     </bean>
+	      <!--  爬虫定时任务 -->
+    <bean id="spiderTimerJobDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <bean class="com.kuaikanwang.image.component.timer.SpiderTimerTask"></bean>
+        </property>
+        <property name="targetMethod" value="work" />
+        <property name="concurrent" value="false" />
+    </bean>
+     
+    <bean id="spiderTimerJobTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="spiderTimerJobDetail">
+        </property>
+        <property name="cronExpression" value="${spider.timer.cron}">
+        </property>
+    </bean>
  
  
  
@@ -77,6 +94,7 @@
                 <ref bean="latestPicCacheJobTrigger" />
                 <ref bean="countPicCacheJobTrigger" />
                 <ref bean="maxPidCacheJobTrigger" />
+                <ref bean="spiderTimerJobTrigger" />
             </list>
         </property>
     </bean>

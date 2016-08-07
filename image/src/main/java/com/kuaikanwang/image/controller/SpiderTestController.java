@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kuaikanwang.image.spider.cto.start.CTOPreSpiderStart;
+import com.kuaikanwang.image.spider.start.SpiderStart;
 
 /**
  * 爬虫功能测试类
@@ -22,7 +22,7 @@ import com.kuaikanwang.image.spider.cto.start.CTOPreSpiderStart;
 public class SpiderTestController {
 
 	@Autowired
-	private CTOPreSpiderStart ctoPreSpiderStartImpl;
+	private SpiderStart ctoPreSpiderStartImpl;
 	
 	/**
 	 * 图片预抓取
@@ -32,9 +32,9 @@ public class SpiderTestController {
 	 */
 	@RequestMapping("/start")
 	@ResponseBody
-	public String spiderStartTest(){
-		ctoPreSpiderStartImpl.preSpiderStart(1l);
-		return "抓取结束!";
+	public Object spiderStartTest(){
+		Long count = ctoPreSpiderStartImpl.preSpiderStart(1l);
+		return count;
 	}
 	
 	
