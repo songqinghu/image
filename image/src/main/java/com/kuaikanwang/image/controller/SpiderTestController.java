@@ -3,6 +3,7 @@ package com.kuaikanwang.image.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kuaikanwang.image.spider.start.SpiderStart;
@@ -32,8 +33,8 @@ public class SpiderTestController {
 	 */
 	@RequestMapping("/start")
 	@ResponseBody
-	public Object spiderStartTest(){
-		Long count = ctoPreSpiderStartImpl.preSpiderStart(1l);
+	public Object spiderStartTest(@RequestParam(defaultValue="1") Long webId){
+		Long count = ctoPreSpiderStartImpl.preSpiderStart(webId);
 		return count;
 	}
 	

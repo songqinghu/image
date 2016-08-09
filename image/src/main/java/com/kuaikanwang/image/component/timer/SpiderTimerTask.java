@@ -19,10 +19,10 @@ import com.kuaikanwang.image.spider.start.SpiderStart;
 public class SpiderTimerTask {
 
 	@Autowired
-	private SpiderStart ctoPreSpiderStartImpl;
+	private SpiderStart spiderStartImpl;
 	
 	public void work(){
-		Long count = ctoPreSpiderStartImpl.preSpiderStart(1l);
+		Long count = spiderStartImpl.preSpiderStart(1l);
 	}
 	
 }

@@ -15,7 +15,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
 //2cto 的地址预处理到 mysql数据库中
-@Component("ctoPreMysqlPipeline")
+@Component("preMysqlPipeline")
 public class PreMysqlPipeline implements Pipeline {
 
 	
