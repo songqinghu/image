@@ -2,14 +2,12 @@ package com.kuaikanwang.image.spider.souutu.main;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.selector.Html;
-import us.codecraft.webmagic.selector.Selectable;
-
+@Component("souutuMainPageProcessor")
 public class SouutuMainPageProcessor  implements PageProcessor{
 
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等

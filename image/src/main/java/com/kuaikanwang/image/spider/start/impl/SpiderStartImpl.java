@@ -15,7 +15,7 @@ import com.kuaikanwang.image.dao.PrePicMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.PrePic;
 import com.kuaikanwang.image.spider.cto.main.CTOMainProcessor;
-import com.kuaikanwang.image.spider.cto.pre.CTOPageProcessorTest;
+import com.kuaikanwang.image.spider.cto.pre.CTOPrePageProcessor;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
 import com.kuaikanwang.image.spider.dispatch.impl.SpiderSelectDispatchImpl;
 import com.kuaikanwang.image.spider.mm131.main.MMMainPageProcessor;

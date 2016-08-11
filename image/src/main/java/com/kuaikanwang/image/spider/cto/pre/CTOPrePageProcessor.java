@@ -1,14 +1,11 @@
 package com.kuaikanwang.image.spider.cto.pre;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
+import org.springframework.stereotype.Component;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 /**
  * 
@@ -16,7 +13,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * 第一次抓取 
  * 抓取每张图片的url地址和名称
  */
-public class CTOPageProcessorTest implements PageProcessor {
+@Component("ctoPrePageProcessor")
+public class CTOPrePageProcessor implements PageProcessor {
 
 	
 	private Site site = Site.me().setRetryTimes(4).setSleepTime(500);

@@ -5,13 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.kuaikanwang.image.spider.cto.main.CTOMainProcessor;
-import com.kuaikanwang.image.spider.cto.pre.CTOPageProcessorTest;
+import com.kuaikanwang.image.spider.container.PageProcessorContainer;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
-import com.kuaikanwang.image.spider.mm131.main.MMMainPageProcessor;
-import com.kuaikanwang.image.spider.mm131.pre.MMPrePageProcessor;
-import com.kuaikanwang.image.spider.souutu.main.SouutuMainPageProcessor;
-import com.kuaikanwang.image.spider.souutu.pre.SouutuPrePageProcessor;
 
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -37,43 +32,36 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 	private Pipeline mainMysqlPipeline;
 	
 	
+	//爬虫容器
+	@Resource
+	private PageProcessorContainer pageProcessorContainer;
+	
+	
+	
+	
 	@Override
 	public boolean callPreSpider(long webId, String url) {
-		if(webId ==1){
-			Spider.create(new CTOPageProcessorTest()).addPipeline(preMysqlPipeline).
+		
+		if(pageProcessorContainer.getPrePageProcessorContainer().containsKey(webId)){
+			Spider.create(pageProcessorContainer.getPrePageProcessorContainer().get(webId)).addPipeline(preMysqlPipeline).
 			addUrl(url).
 			thread(7).run();
 		}
-		else if(webId ==2){
-			Spider.create(new MMPrePageProcessor()).addPipeline(preMysqlPipeline).
-			addUrl(url).
-			thread(7).run();
-		}
-		else if (webId ==3) {
-			Spider.create(new SouutuPrePageProcessor()).addPipeline(preMysqlPipeline).
-			addUrl(url).
-			thread(7).run();
-		}
+
 		return true;
 	}
 
 	@Override
 	public boolean callMainSpider(long webId, String url) {
 		
-		if(webId ==1){
-			
-			Spider.create(new CTOMainProcessor()).addPipeline(mainMysqlPipeline)
-			.addUrl(url).thread(7).run();
-			
-		}
-		else if (webId ==2) {
-			Spider.create(new MMMainPageProcessor()).addPipeline(mainMysqlPipeline)
+		
+		if(pageProcessorContainer.getMainPageProcessorContainer().containsKey(webId)){
+			Spider.create(pageProcessorContainer.getMainPageProcessorContainer().get(webId)).
+			addPipeline(mainMysqlPipeline)
 			.addUrl(url).thread(7).run();
 		}
-		else if (webId ==3) {
-			Spider.create(new SouutuMainPageProcessor()).addPipeline(mainMysqlPipeline)
-			.addUrl(url).thread(7).run();
-		}
+		
+
 		return true;
 	}
 

@@ -2,10 +2,12 @@ package com.kuaikanwang.image.spider.mm131.pre;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
-
+@Component("mmPrePageProcessor")
 public class MMPrePageProcessor implements PageProcessor {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
