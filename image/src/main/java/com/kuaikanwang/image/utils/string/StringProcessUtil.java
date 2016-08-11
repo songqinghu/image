@@ -27,11 +27,11 @@ public class StringProcessUtil {
 	 */
 	public static String getBeautifulString(String name){
 		
-		String regex = "\\(\\d+\\)";
+		String regex = "\\(.+\\)";
 		Matcher matcher = Pattern.compile(regex).matcher(name);
 		name= matcher.replaceFirst("");
 		//中文处理 （7）
-		regex = "\\（\\d+\\）";
+		regex = "\\（.+\\）";
 		Matcher matcher2 = Pattern.compile(regex).matcher(name);
 		name= matcher2.replaceFirst("");
 		

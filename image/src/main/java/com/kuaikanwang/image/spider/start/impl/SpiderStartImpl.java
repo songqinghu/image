@@ -16,6 +16,8 @@ import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.PrePic;
 import com.kuaikanwang.image.spider.cto.main.CTOMainProcessor;
 import com.kuaikanwang.image.spider.cto.pre.CTOPageProcessorTest;
+import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
+import com.kuaikanwang.image.spider.dispatch.impl.SpiderSelectDispatchImpl;
 import com.kuaikanwang.image.spider.mm131.main.MMMainPageProcessor;
 import com.kuaikanwang.image.spider.mm131.pre.MMPrePageProcessor;
 import com.kuaikanwang.image.spider.start.SpiderStart;
@@ -32,16 +34,17 @@ public class SpiderStartImpl implements SpiderStart {
 	@Resource
 	private SpiderInfoMapper spiderInfoMapper;
 	
-	@Resource
-	private Pipeline preMysqlPipeline;
-	
-	
 	@Autowired
 	private PrePicMapper prePicmapper;
 	
+	@Resource
+	private Pipeline preMysqlPipeline;
 	
-	@Autowired
-	private Pipeline mainMysqlPipeline;
+//	@Autowired
+//	private Pipeline mainMysqlPipeline;
+	
+	@Resource
+	private SpiderSelectDispatch spiderSelectDispatchImpl;
 	
 	@Resource
 	private ImageAccessMapper imageAccessMapper;
@@ -62,15 +65,17 @@ public class SpiderStartImpl implements SpiderStart {
 			
 			CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pictype);
 			
-			if(webId ==1){
-				Spider.create(new CTOPageProcessorTest()).addPipeline(preMysqlPipeline).
-				addUrl(url).
-				thread(7).run();
-			}else if(webId ==2){
-				Spider.create(new MMPrePageProcessor()).addPipeline(preMysqlPipeline).
-				addUrl(url).
-				thread(7).run();
-			}
+			
+			spiderSelectDispatchImpl.callPreSpider(webId, url);
+//			if(webId ==1){
+//				Spider.create(new CTOPageProcessorTest()).addPipeline(preMysqlPipeline).
+//				addUrl(url).
+//				thread(7).run();
+//			}else if(webId ==2){
+//				Spider.create(new MMPrePageProcessor()).addPipeline(preMysqlPipeline).
+//				addUrl(url).
+//				thread(7).run();
+//			}
 		}
 		/**
 		 * 正式抓取
@@ -96,17 +101,18 @@ public class SpiderStartImpl implements SpiderStart {
 				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PRE_ID, pic.getPre_id());
 				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pic.getPictype());
 				
-				if(webId ==1){
-					
-					Spider.create(new CTOMainProcessor()).addPipeline(mainMysqlPipeline)
-					.addUrl(pic.getUrl()).thread(7).run();
-					
-				}
-				else if (webId ==2) {
-					Spider.create(new MMMainPageProcessor()).addPipeline(mainMysqlPipeline)
-					.addUrl(pic.getUrl()).thread(7).run();
-				}
-					
+				
+				spiderSelectDispatchImpl.callMainSpider(webId, pic.getUrl());
+//				if(webId ==1){
+//					
+//					Spider.create(new CTOMainProcessor()).addPipeline(mainMysqlPipeline)
+//					.addUrl(pic.getUrl()).thread(7).run();
+//					
+//				}
+//				else if (webId ==2) {
+//					Spider.create(new MMMainPageProcessor()).addPipeline(mainMysqlPipeline)
+//					.addUrl(pic.getUrl()).thread(7).run();
+//				}
 				
 			}
 		

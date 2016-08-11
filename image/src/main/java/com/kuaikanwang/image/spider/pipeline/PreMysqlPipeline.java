@@ -34,7 +34,9 @@ public class PreMysqlPipeline implements Pipeline {
 		List<String> murls = (List<String>) all.get("murls");
 		//保证链接数
 
-		for (int i = 0; i < urls.size(); i++) {
+		int size = Math.min(urls.size(), Math.min(names.size(),murls.size()));
+		
+		for (int i = 0; i < size; i++) {
 			long count = prePicmapper.findPrePicByUrl(urls.get(i));
 			if(count >0){
 				//已经存在,继续循环
