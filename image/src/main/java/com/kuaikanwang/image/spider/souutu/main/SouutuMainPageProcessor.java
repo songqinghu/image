@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.kuaikanwang.image.spider.website.WebSiteIdentification;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 @Component("souutuMainPageProcessor")
-public class SouutuMainPageProcessor  implements PageProcessor{
+public class SouutuMainPageProcessor  implements PageProcessor,WebSiteIdentification{
 
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().setRetryTimes(3).setSleepTime(500);
@@ -28,7 +31,7 @@ public class SouutuMainPageProcessor  implements PageProcessor{
     			.xpath("//div[@class='meinvshow-banner cl']/div/div/h1/strong/a/text()").all();
 
     	
-    	
+    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("url", urls);
     	page.putField("name",names);
     	 
@@ -52,25 +55,12 @@ public class SouutuMainPageProcessor  implements PageProcessor{
     public Site getSite() {
         return site;
     }
-    
-    
-//    public static void main(String[] args) {
-//		//http://www.souutu.com/mnmm/xgmm/  45
-//    	//http://www.souutu.com/mnmm/qc/    7
-//    	//http://www.souutu.com/mnmm/mote/  18
-//    	//http://www.souutu.com/mnmm/Mtsw/   4 
-//    	//http://www.souutu.com/mnmm/fzl/    6
-//    	//http://www.souutu.com/mnmm/baobei/ 3 
-//    	//http://www.souutu.com/mnmm/cm/     2
-//    	//http://www.souutu.com/mnmm/hgmn/   6
-//    	//http://www.souutu.com/mnmm/rbmn/   6
-//    	//http://www.souutu.com/mnmm/mnmx/   9
-//    	Spider.create(new SouutuMainPageProcessor()).
-//    	addUrl("http://www.souutu.com/mnmm/xgmm/17.html")
-//    	.addPipeline(new ConsolePipeline()).
-//    	thread(10).run();
-//    	
-//	}
+
+	@Override
+	public long getWebId() {
+		return 3;
+	}
+
     
 
 }

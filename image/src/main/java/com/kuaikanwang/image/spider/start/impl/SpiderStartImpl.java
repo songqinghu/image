@@ -63,19 +63,12 @@ public class SpiderStartImpl implements SpiderStart {
 			String url = (String) map.get("url");
 			Long pictype = (Long) map.get("pictype");
 			
-			CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pictype);
+			//加入站点信息 --思考多线程实现
+			CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE+webId, pictype);
 			
 			
 			spiderSelectDispatchImpl.callPreSpider(webId, url);
-//			if(webId ==1){
-//				Spider.create(new CTOPageProcessorTest()).addPipeline(preMysqlPipeline).
-//				addUrl(url).
-//				thread(7).run();
-//			}else if(webId ==2){
-//				Spider.create(new MMPrePageProcessor()).addPipeline(preMysqlPipeline).
-//				addUrl(url).
-//				thread(7).run();
-//			}
+
 		}
 		/**
 		 * 正式抓取
@@ -98,21 +91,15 @@ public class SpiderStartImpl implements SpiderStart {
 				spiderCount++;
 				
 				//preid和pictype加入缓存中
-				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PRE_ID, pic.getPre_id());
-				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pic.getPictype());
+				CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.PRE_ID+webId, pic.getPre_id());
+				CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.PICTYPE+webId, pic.getPictype());
 				
+				
+//				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PRE_ID, pic.getPre_id());
+//				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pic.getPictype());
 				
 				spiderSelectDispatchImpl.callMainSpider(webId, pic.getUrl());
-//				if(webId ==1){
-//					
-//					Spider.create(new CTOMainProcessor()).addPipeline(mainMysqlPipeline)
-//					.addUrl(pic.getUrl()).thread(7).run();
-//					
-//				}
-//				else if (webId ==2) {
-//					Spider.create(new MMMainPageProcessor()).addPipeline(mainMysqlPipeline)
-//					.addUrl(pic.getUrl()).thread(7).run();
-//				}
+
 				
 			}
 		

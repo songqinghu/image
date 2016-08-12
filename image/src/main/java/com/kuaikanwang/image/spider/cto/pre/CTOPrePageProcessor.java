@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.kuaikanwang.image.spider.website.WebSiteIdentification;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -14,7 +17,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * 抓取每张图片的url地址和名称
  */
 @Component("ctoPrePageProcessor")
-public class CTOPrePageProcessor implements PageProcessor {
+public class CTOPrePageProcessor implements PageProcessor,WebSiteIdentification {
 
 	
 	private Site site = Site.me().setRetryTimes(4).setSleepTime(500);
@@ -41,7 +44,7 @@ public class CTOPrePageProcessor implements PageProcessor {
 		//for (String name : names) {
 		//	System.out.println(name);
 		//}
-		
+		page.putField(CommonCacheUtil.WEB_ID, getWebId());
 		page.putField("urls", urls);
 		page.putField("names", names);
 		page.putField("murls", murls);
@@ -73,6 +76,12 @@ public class CTOPrePageProcessor implements PageProcessor {
 	@Override
 	public Site getSite() {
 		return site;
+	}
+
+	@Override
+	public long getWebId() {
+		
+		return 1;
 	}
 
 	

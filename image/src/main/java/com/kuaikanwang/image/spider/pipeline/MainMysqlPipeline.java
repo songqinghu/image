@@ -44,6 +44,10 @@ public class MainMysqlPipeline implements Pipeline{
 		List<String> urls = (List<String>) all.get("url");
 		List<String> names = (List<String>) all.get("name");
 		
+		//webid
+		Long webId = (Long) all.get(CommonCacheUtil.WEB_ID);
+		
+		
 		if(urls.size()>0&& names.size()>0){
 
 			    long count = mainPicMapper.findMainPicByUrl(urls.get(0));
@@ -54,8 +58,8 @@ public class MainMysqlPipeline implements Pipeline{
 					
 					pic.setUrl(urls.get(0));
 					pic.setName(StringProcessUtil.getBeautifulString(names.get(0)));//将最后的括号过滤掉
-					pic.setPre_id(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PRE_ID));
-					pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE));
+					pic.setPre_id(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PRE_ID+webId));
+					pic.setPictype(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PICTYPE+webId));
 					
 					mainPicMapper.insertMainPic(pic);
 					

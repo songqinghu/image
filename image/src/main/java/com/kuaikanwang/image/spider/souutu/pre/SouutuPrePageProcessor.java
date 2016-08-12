@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.kuaikanwang.image.spider.website.WebSiteIdentification;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 @Component("souutuPrePageProcessor")
-public class SouutuPrePageProcessor  implements PageProcessor{
+public class SouutuPrePageProcessor  implements PageProcessor,WebSiteIdentification{
 
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().setRetryTimes(3).setSleepTime(500);
@@ -30,7 +33,7 @@ public class SouutuPrePageProcessor  implements PageProcessor{
     			xpath("//ul[@class='l-meinv-wrapp cl']/li/div[@class='timg']/a/img")
     	.regex("http://img\\.souutu\\.com/.+/.+/.+\\.jpg\\.234\\.360\\.jpg").all();
     	
-    	
+    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("urls", urls);
     	page.putField("murls", murls);
     	page.putField("names",names);
@@ -55,6 +58,11 @@ public class SouutuPrePageProcessor  implements PageProcessor{
     public Site getSite() {
         return site;
     }
+
+	@Override
+	public long getWebId() {
+		return 3;
+	}
     
     
 //    public static void main(String[] args) {

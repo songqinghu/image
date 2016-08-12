@@ -46,7 +46,14 @@ public class CommonCacheUtil implements InitializingBean{
 	public static Map<String, Long>  getPreCacehInfoMap(){
 		return preCacheInfo;
 	}
+
+	//主抓取信息缓存
+	private static Map<String, Long> mainCacheInfo = new HashMap<String,Long>();
 	
+	public static Map<String, Long> getMainCacheInfo() {
+		return mainCacheInfo;
+	}
+
 	//图片类型缓存 --初始化从 数据库中获取
 	private static Map<Long,String > imageTypeNameCache = new HashMap<Long,String>();
 

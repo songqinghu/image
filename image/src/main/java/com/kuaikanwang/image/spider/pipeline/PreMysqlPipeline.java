@@ -32,8 +32,12 @@ public class PreMysqlPipeline implements Pipeline {
 		List<String> names = (List<String>) all.get("names");
 		//列表图片地址
 		List<String> murls = (List<String>) all.get("murls");
+		
+		//获取webid
+		Long webId = (Long) all.get(CommonCacheUtil.WEB_ID);
+		
 		//保证链接数
-
+		
 		int size = Math.min(urls.size(), Math.min(names.size(),murls.size()));
 		
 		for (int i = 0; i < size; i++) {
@@ -47,8 +51,8 @@ public class PreMysqlPipeline implements Pipeline {
 				pic.setUrl(urls.get(i));
 				pic.setName(names.get(i));
 				pic.setMurl(murls.get(i));
-				pic.setWeb_id(CommonCacheUtil.getPreCacehInfoMap().get("webId"));
-				pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE));
+				pic.setWeb_id(webId);
+				pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE+webId));
 				
 				prePicmapper.insertPrePic(pic);
 				

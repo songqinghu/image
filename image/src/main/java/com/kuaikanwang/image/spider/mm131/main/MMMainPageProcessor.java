@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.kuaikanwang.image.spider.website.WebSiteIdentification;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 @Component("mmMainPageProcessor")
-public class MMMainPageProcessor implements PageProcessor {
+public class MMMainPageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().setRetryTimes(3).setSleepTime(600);
@@ -24,7 +27,7 @@ public class MMMainPageProcessor implements PageProcessor {
     	
     	List<String> names = page.getHtml().xpath("//div[@class='content']/h5/text()").all();
     	//()代表取出其中的数据
-
+    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("url", urls);
     	page.putField("name",names);
 
@@ -45,6 +48,11 @@ public class MMMainPageProcessor implements PageProcessor {
     public Site getSite() {
         return site;
     }
+
+	@Override
+	public long getWebId() {
+		return 2;
+	}
 
     
 }
