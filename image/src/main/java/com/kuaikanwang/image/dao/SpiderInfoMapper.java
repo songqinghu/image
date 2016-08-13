@@ -19,5 +19,6 @@ public interface SpiderInfoMapper {
 	public List<Map<String, Object>> findWebSpiderPreUrl(long webId);
 	
 	
+	public List<Long> findAllWebIds();
 
 }
