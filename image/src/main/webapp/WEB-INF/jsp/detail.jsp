@@ -28,7 +28,7 @@
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     
     <script src="/css/uaredirect.js" type="text/javascript"></script>
-    <script type="text/javascript">uaredirect("http://m.kuaikanwang.com/xinggan/2569.html");</script>
+    <script type="text/javascript">uaredirect("http://m.zuiyuyue.com/xinggan/2569.html");</script>
     <script language="javascript" src="http://www.zuiyuyue.com/js/mmpic.js"></script>
   </head>
 
@@ -81,7 +81,7 @@
    
    <div class="content-pic">
    			<a href='?pid=${pid}&pageNum=${nowPage + 1}'><!-- 下一张图片或者 下一个列表页 -->
-   				<img alt="${image.picName}" src="${image.picUrl}" />
+   				<img height="100%" width="90%" alt="${image.picName}" src="${image.picUrl}" />
    			</a>
    </div>
    <div class="content-page">

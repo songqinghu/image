@@ -10,6 +10,9 @@
     <title>最愉阅-看你所看</title>
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
+  	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com" >
+    <meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com"/>
   </head>
   <body>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -70,7 +73,7 @@
  
 </div>
 <div class="page-header">
-  <h1><span class="label label-danger">性感车模</span><small><a href="http://www.zuiyuyue.com/images/4/list" >更多</a></small></h1>
+  <h1><span class="label label-danger">性感模特</span><small><a href="http://www.zuiyuyue.com/images/4/list" >更多</a></small></h1>
 </div>
 <div class="row" id="three">
  

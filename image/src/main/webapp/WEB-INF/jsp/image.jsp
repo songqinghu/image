@@ -20,7 +20,7 @@
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
     <link href="http://www.zuiyuyue.com/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com/xinggan/" >
-    <meta name="mobile-agent" content="format=html5;url=http://m.kuaikanwang.com/xinggan/"/>
+    <meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com"/>
     
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     
