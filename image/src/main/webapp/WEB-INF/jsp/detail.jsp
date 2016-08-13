@@ -9,18 +9,18 @@
     <meta name="applicable-device"content="pc">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>${image.picName}_美女图片 - 快看网</title><!-- 动态生成标题 -->
+    <title>${image.picName}_美女图片 - 最愉阅</title><!-- 动态生成标题 -->
 	
 	<meta name="keywords" content="${image.picName}" /><!-- 动态生成关键字 -->
-	<meta name="description" content="快看网-美女图片提供性感美女高清图片-${image.picName}。www.kuaikanwang.com" />
+	<meta name="description" content="最愉阅-美女图片提供性感美女高清图片-${image.picName}。www.zuiyuyue.com" />
     
     <!-- Bootstrap -->
-    <link href="http://www.kuaikanwang.com/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="http://www.kuaikanwang.com/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="http://www.kuaikanwang.com/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://www.zuiyuyue.com/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="http://www.zuiyuyue.com/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
     
-  	<link rel="shortcut icon" href="http://www.kuaikanwang.com/image/logo.gif" type="image/x-icon">
-    <link href="http://www.kuaikanwang.com/css/content.css" rel="stylesheet" type="text/css" />
+  	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
+    <link href="http://www.zuiyuyue.com/css/content.css" rel="stylesheet" type="text/css" />
     <!-- 跳转到m站 -->
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com/xinggan/2569.html" >
     <meta name="mobile-agent" content="format=html5;url=http://m.kuaikanwang.com/xinggan/2569.html"/>
@@ -29,15 +29,15 @@
     
     <script src="/css/uaredirect.js" type="text/javascript"></script>
     <script type="text/javascript">uaredirect("http://m.kuaikanwang.com/xinggan/2569.html");</script>
-    <script language="javascript" src="http://www.kuaikanwang.com/js/mmpic.js"></script>
+    <script language="javascript" src="http://www.zuiyuyue.com/js/mmpic.js"></script>
   </head>
 
 <body>
 <div class="toper">
  </div>
 <div class="header">
-<!--     <a href="http://www.kuaikanwang.com">
-   <img height="50%" width="15%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
+<!--     <a href="http://www.zuiyuyue.com">
+   <img height="50%" width="15%" alt="http://www.zuiyuyue.com" src="http://www.zuiyuyue.com/image/logo.gif">
    </a> -->
    <div class="share"> 
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
@@ -46,38 +46,38 @@
    </div>
 
    <div  class="search">
-      <a href="http://www.kuaikanwang.com">
-      <img height="300%" width="100%" alt="http://www.kuaikanwang.com" src="http://www.kuaikanwang.com/image/logo.gif">
+      <a href="http://www.zuiyuyue.com">
+      <img height="300%" width="100%" alt="http://www.zuiyuyue.com" src="http://www.zuiyuyue.com/image/logo.gif">
       </a>
    </div>
 
 <!--    <div class="search">
-   			<form id="form1" name="form1" method="post" action="http://www.kuaikanwang.com/search/">
+   			<form id="form1" name="form1" method="post" action="http://www.zuiyuyue.com/search/">
    			<input type="text" name="keyword" id="textfield" class="search_text"/>
-   			<input type="image" name="imageField" id="imageField" src="http://www.kuaikanwang.com/image/search_btn.png" />
+   			<input type="image" name="imageField" id="imageField" src="http://www.zuiyuyue.com/image/search_btn.png" />
    			</form>
    </div>
-   <div class="search_hot"><a>热门搜索：</a><a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=美女">美女
-		</a><a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=mm图片">mm图片</a>
-		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=写真">写真</a>
-		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=校花">校花</a>
-		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=张馨予">张馨予</a>
-		<a href="http://www.kuaikanwang.com/search/?kwtype=0&keyword=翟凌">翟凌</a>
+   <div class="search_hot"><a>热门搜索：</a><a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=美女">美女
+		</a><a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=mm图片">mm图片</a>
+		<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=写真">写真</a>
+		<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=校花">校花</a>
+		<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=张馨予">张馨予</a>
+		<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=翟凌">翟凌</a>
 		</div> -->
 	</div> 
 <div class="nav">
    <ul>
-      <li><a href='http://www.kuaikanwang.com/'>首页</a></li>
+      <li><a href='http://www.zuiyuyue.com/'>首页</a></li>
       <!-- 这里是动态从数据库中获取图片分类 -->
        <c:forEach var="type"  items="${imageTypeList}">
-  		<li><a href='http://www.kuaikanwang.com/images/${type.imageType}/list'>${type.typeName}</a></li>
+  		<li><a href='http://www.zuiyuyue.com/images/${type.imageType}/list'>${type.typeName}</a></li>
 	  </c:forEach>
    </ul>
 </div>
-<div class="place">您的位置:<a href='http://www.kuaikanwang.com/'>美女图片</a> > <a href='http://www.kuaikanwang.com/images/${nowImageType.imageType}/list'>${nowImageType.typeName}</a> > ${image.picName}</div>
+<div class="place">您的位置:<a href='http://www.zuiyuyue.com/'>美女图片</a> > <a href='http://www.zuiyuyue.com/images/${nowImageType.imageType}/list'>${nowImageType.typeName}</a> > ${image.picName}</div>
 <div class="content">
    <h5>${image.picName}(${nowPage})</h5>
-   <div class="content-msg">更新时间：${image.createDate} <a href='http://www.kuaikanwang.com/'>快看网-美女图片</a></div>
+   <div class="content-msg">更新时间：${image.createDate} <a href='http://www.zuiyuyue.com/'>最愉阅-美女图片</a></div>
    
    <div class="content-pic">
    			<a href='?pid=${pid}&pageNum=${nowPage + 1}'><!-- 下一张图片或者 下一个列表页 -->
@@ -136,7 +136,7 @@
    <div class="updown">
                 <c:choose>
     			<c:when test="${not empty previousImage}">
-    				<a href='http://www.kuaikanwang.com/images/detail?pid=${previousImage.pid}' class="updown_l">${previousImage.picName}</a> 
+    				<a href='http://www.zuiyuyue.com/images/detail?pid=${previousImage.pid}' class="updown_l">${previousImage.picName}</a> 
     			</c:when>
    				 <c:otherwise>
         			<a href='#' class="updown_l">没有了</a>
@@ -144,7 +144,7 @@
 			</c:choose>
                 <c:choose>
     			<c:when test="${not empty nextImage}">
-    				<a href='http://www.kuaikanwang.com/images/detail?pid=${nextImage.pid}' class="updown_r">${nextImage.picName}</a> 
+    				<a href='http://www.zuiyuyue.com/images/detail?pid=${nextImage.pid}' class="updown_r">${nextImage.picName}</a> 
     			</c:when>
    				 <c:otherwise>
         			<a href='#' class="updown_r">没有了</a>
@@ -160,7 +160,7 @@
          <ul>
       <c:forEach var="recommendImage"  items="${recommendImageList}">
           <li>
-         <a href="http://www.kuaikanwang.com/images/detail?pid=${recommendImage.pid}" target="_blank">
+         <a href="http://www.zuiyuyue.com/images/detail?pid=${recommendImage.pid}" target="_blank">
          <img src="${recommendImage.picUrl}" alt="${recommendImage.picName}">
          ${recommendImage.picName}
          </a>
@@ -237,13 +237,13 @@
       </div>
       <div class="arr_right"><span class="anright"></span></div>
    </div>
-   <div style="clear:both;"><script language="javascript" src="http://www.kuaikanwang.com/js/mmm.js"></script></div>
+   <div style="clear:both;"><script language="javascript" src="http://www.zuiyuyue.com/js/mmm.js"></script></div>
 </div>
-<div class="footer">本站纯属免费<a href="http://www.kuaikanwang.com/" title="美女图片">美女图片
-		</a>欣赏网站,所有<a href="http://www.kuaikanwang.com/" title="mm">mm</a>
+<div class="footer">本站纯属免费<a href="http://www.zuiyuyue.com/" title="美女图片">美女图片
+		</a>欣赏网站,所有<a href="http://www.zuiyuyue.com/" title="mm">mm</a>
 		图片均收集于互联网,如有侵犯版权请来信告知,我们将立即更正。<br />
-		&copy; 2016 (<a href="/" target="_blank">www.kuaikanwang.com</a>) 快看网-美女图片 版权所有 黔ICP备14005250号-2 
-		<script type="text/javascript" src="http://www.kuaikanwang.com/js/stat.js"></script></div>
+		&copy; 2016 (<a href="/" target="_blank">www.zuiyuyue.com</a>) 最愉阅-美女图片 版权所有 
+		<script type="text/javascript" src="http://www.zuiyuyue.com/js/stat.js"></script></div>
 </body>
 <script type="text/javascript">
 
@@ -256,7 +256,7 @@
 	 $.ajax(  
 		        {  
 		            type : 'POST',  
-		            url : 'http://www.kuaikanwang.com/image/count/add/pid',  
+		            url : 'http://www.zuiyuyue.com/image/count/add/pid',  
 		            data : "pid=" + pid, 
 		            success : function(data)  
 		            {  
