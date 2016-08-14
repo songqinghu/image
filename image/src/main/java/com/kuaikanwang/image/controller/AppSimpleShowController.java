@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kuaikanwang.image.domain.bean.AppVersion;
 import com.kuaikanwang.image.domain.result.AppImageInfo;
 import com.kuaikanwang.image.domain.result.ResultData;
 import com.kuaikanwang.image.service.AppSimpleShowService;
@@ -63,6 +64,42 @@ public class AppSimpleShowController {
 			
 		} catch (Exception e) {
 			result = new ResultData<List<AppImageInfo>>();
+			result.setSuccess(false);
+			result.setMessage("occor unkonw error !");
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * 版本检查
+	 * <p>Title: versionCheck</p>
+	 * <p>Description: </p>
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@RequestMapping("/version/check")
+	@ResponseBody
+	public ResultData<AppVersion> versionCheck(){
+		
+		ResultData<AppVersion> result ;
+		
+		try {
+			//数据校验
+			
+			AppVersion version = appSimpleShowServiceImpl.versionCheck();
+			result = new ResultData<AppVersion>();
+			
+			result.setData(version);
+			result.setSuccess(true);
+			result.setTotalCount(1l);
+			
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = new ResultData<AppVersion>();
 			result.setSuccess(false);
 			result.setMessage("occor unkonw error !");
 		}

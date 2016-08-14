@@ -22,13 +22,13 @@
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
     <link href="http://www.zuiyuyue.com/css/content.css" rel="stylesheet" type="text/css" />
     <!-- 跳转到m站 -->
-    <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com/xinggan/2569.html" >
-    <meta name="mobile-agent" content="format=html5;url=http://m.kuaikanwang.com/xinggan/2569.html"/>
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.zuiyuyue.com/m/image/1/detail/list" >
+    <meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com/m/image/1/detail/list"/>
     
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     
     <script src="/css/uaredirect.js" type="text/javascript"></script>
-    <script type="text/javascript">uaredirect("http://m.zuiyuyue.com/xinggan/2569.html");</script>
+    <script type="text/javascript">uaredirect("http://m.zuiyuyue.com/m/image/1/detail/list");</script>
     <script language="javascript" src="http://www.zuiyuyue.com/js/mmpic.js"></script>
   </head>
 

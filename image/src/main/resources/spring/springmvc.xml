@@ -20,7 +20,9 @@
 			<property name="prefix"  value="/WEB-INF/jsp/"></property>
 			<property name="suffix"  value=".jsp"></property>
 		</bean>
-
+	<!-- 日志 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	 <bean class="com.kuaikanwang.image.utils.log.SearchPlatformLogAspector" /> 
 	<!-- 静态资源的加载 -->
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>

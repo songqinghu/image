@@ -2,6 +2,8 @@ package com.kuaikanwang.image.component.timer;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,8 @@ import com.kuaikanwang.image.spider.start.SpiderStart;
 @Component
 public class SpiderTimerTask {
 
+	private static Logger logger = LoggerFactory.getLogger(SpiderTimerTask.class);
+	
 	@Autowired
 	private SpiderStart spiderStartImpl;
 	
@@ -32,11 +36,15 @@ public class SpiderTimerTask {
 		List<Long> webIds = spiderInfoMapper.findAllWebIds();
 		
 		for (final Long webId : webIds) {
-			System.out.println("开始爬取站点id : "+ webId);
+			
 			Thread thread = new Thread(new Runnable() {
 				@Override
 				public void run() {
+					logger.warn("start spider website the webId is " + webId);
+					long start = System.currentTimeMillis();
 					Long count = spiderStartImpl.preSpiderStart(webId);
+				    logger.warn("spider webstie {"+webId+"} is end , "
+				    		+ "lost time is "+(System.currentTimeMillis()-start)+"  ms"+",spider number is :" + count);
 				}
 			});
 			thread.start();

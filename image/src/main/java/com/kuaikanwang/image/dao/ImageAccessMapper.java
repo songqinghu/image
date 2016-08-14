@@ -93,6 +93,14 @@ public interface ImageAccessMapper {
 	 * 通过pid 获取单张图片信息
 	 */
 	public ImageList getImageListByPid(ImageQuery query);
+	/**
+	 * 通过pid 获取上一张图片
+	 */
+	public ImageList getPreviousImageByPid(ImageQuery query);
+	/**
+	 * 通过pid 获取下一张图片
+	 */
+	public ImageList getNextImageByPid(ImageQuery query);
 	
 	
 	
@@ -114,6 +122,20 @@ public interface ImageAccessMapper {
 	 */
 	public List<ImageList> getIndexImageListByType(Integer pictype);
 	
+	
+	/**
+	 * 获取主表某分类下图片总数
+	 */
+	public Integer getImageShowCountByImageType(Integer imagetype);
+	
+	/**
+	 * 获取展示的指定分类下的图片详情  分页 用于m站展示
+	 * <p>Title: findMWebImageList</p>
+	 * <p>Description: </p>
+	 * @param query
+	 * @return
+	 */
+	public List<ImageList> findMWebImageList(ImageQuery query);
 	
 	
 }

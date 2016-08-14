@@ -2,11 +2,15 @@ package com.kuaikanwang.image.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kuaikanwang.image.dao.AppSimpleShowMapper;
 import com.kuaikanwang.image.dao.ImageAccessMapper;
+import com.kuaikanwang.image.domain.bean.AppVersion;
 import com.kuaikanwang.image.domain.query.ImageQuery;
 import com.kuaikanwang.image.domain.result.AppImageInfo;
 import com.kuaikanwang.image.service.AppSimpleShowService;
@@ -18,6 +22,9 @@ public class AppSimpleShowServiceImpl implements AppSimpleShowService {
 	
 	@Autowired
 	private ImageAccessMapper imageAccess;
+	
+	@Resource
+	private AppSimpleShowMapper appSimpleShowMapper;
 	
 	
 	/**
@@ -50,6 +57,19 @@ public class AppSimpleShowServiceImpl implements AppSimpleShowService {
 		query.setRows(pageSize);
 		
 		return imageAccess.findImageByPage(query);
+	}
+
+	/**
+	 * 获取库中最新的版本号嘛
+	 * <p>Title: versionCheck</p>
+	 * <p>Description: </p>
+	 * @return
+	 * @see com.kuaikanwang.image.service.AppSimpleShowService#versionCheck()
+	 */
+	@Override
+	public AppVersion versionCheck() {
+		
+		return appSimpleShowMapper.versionCheck();
 	}
 	
 	

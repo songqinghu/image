@@ -47,7 +47,7 @@ public class ImageAccessController {
 
 		/**
 		 * 从缓存中校验一下 是不是有图片类型,没有默认使用1
-		 */
+		  */
 		boolean flag = CommonCacheUtil.getImageTypeNameCache().containsKey(new Long(imageType));
 		if(!flag){
 			imageType = 1;
@@ -130,8 +130,8 @@ public class ImageAccessController {
 	     //扩展展示内容
 	     
 	     //上一组和下一组的图片
-	     ImageList previousImage = imageAccessServiceImpl.getImageListByPid(pid+1, image.getPictype());
-	     ImageList nextImage = imageAccessServiceImpl.getImageListByPid(pid-1, image.getPictype());
+	     ImageList previousImage = imageAccessServiceImpl.getPreviousImageByPid(pid,image.getPictype());
+	     ImageList nextImage = imageAccessServiceImpl.getNextImageByPid(pid, image.getPictype());
 	     model.put("previousImage", previousImage);	
 	     model.put("nextImage", nextImage);	
 	     //下部展示页 --设计简单的算法

@@ -111,6 +111,33 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	}
 
 
+
+
+	@Override
+	public ImageList getPreviousImageByPid(Integer pid, Integer pictype) {
+		
+		ImageQuery query  = new ImageQuery();
+		
+		query.setPid(pid);
+		query.setPictype(pictype);
+		
+		return imageAccess.getPreviousImageByPid(query  );
+	}
+
+
+
+	@Override
+	public ImageList getNextImageByPid(Integer pid, Integer pictype) {
+		
+		ImageQuery query  = new ImageQuery();
+		
+		query.setPid(pid);
+		query.setPictype(pictype);
+		
+		return imageAccess.getNextImageByPid(query  );
+	}
+	
+
 	/**
 	 * 获取推荐的图片列表
 	 * <p>Title: getRecommendImageList</p>
@@ -123,7 +150,7 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	public List<ImageList> getRecommendImageList(Integer pid) {
 		return imageAccess.getRecommendImageList(pid);
 	}
-	
+
 	
 	
 	

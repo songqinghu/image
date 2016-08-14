@@ -19,5 +19,11 @@ public interface IImageAccessService {
 	
 	public  ImageList  getImageListByPid(Integer pid,Integer pictype);
 	
+	public  ImageList  getPreviousImageByPid(Integer pid,Integer pictype);
+	
+	public  ImageList  getNextImageByPid(Integer pid,Integer pictype);
+	
+	
+	
 	public List<ImageList> getRecommendImageList(Integer pid);
 }

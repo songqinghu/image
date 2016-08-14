@@ -3,6 +3,8 @@ package com.kuaikanwang.image.spider.pipeline;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 @Component("preMysqlPipeline")
 public class PreMysqlPipeline implements Pipeline {
 
+	private static Logger Logger = LoggerFactory.getLogger(PreMysqlPipeline.class);
 	
 	@Autowired
 	private PrePicMapper prePicmapper;
@@ -47,7 +50,7 @@ public class PreMysqlPipeline implements Pipeline {
 				continue;
 			}else{
 				PrePic pic = new PrePic();
-				
+				Logger.info("pre get name is :{}" + names.get(i));
 				pic.setUrl(urls.get(i));
 				pic.setName(names.get(i));
 				pic.setMurl(murls.get(i));
