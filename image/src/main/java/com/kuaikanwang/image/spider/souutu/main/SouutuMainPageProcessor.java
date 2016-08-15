@@ -14,7 +14,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class SouutuMainPageProcessor  implements PageProcessor,WebSiteIdentification{
 
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
-    private Site site = Site.me().setRetryTimes(3).setSleepTime(500);
+    private Site site = Site.me().setRetryTimes(5).setSleepTime(1000);
 	
 
     @Override

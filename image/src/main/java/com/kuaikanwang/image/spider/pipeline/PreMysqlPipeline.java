@@ -44,20 +44,22 @@ public class PreMysqlPipeline implements Pipeline {
 		int size = Math.min(urls.size(), Math.min(names.size(),murls.size()));
 		
 		for (int i = 0; i < size; i++) {
-			long count = prePicmapper.findPrePicByUrl(urls.get(i));
-			if(count >0){
-				//已经存在,继续循环
-				continue;
-			}else{
-				PrePic pic = new PrePic();
-				Logger.info("pre get name is :{}" + names.get(i));
-				pic.setUrl(urls.get(i));
-				pic.setName(names.get(i));
-				pic.setMurl(murls.get(i));
-				pic.setWeb_id(webId);
-				pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE+webId));
-				
-				prePicmapper.insertPrePic(pic);
+			PrePic pic = new PrePic();
+			Logger.info("pre get name is :{}" + names.get(i));
+			pic.setUrl(urls.get(i));
+			pic.setName(names.get(i));
+			pic.setMurl(murls.get(i));
+			pic.setWeb_id(webId);
+			pic.setPictype(CommonCacheUtil.getPreCacehInfoMap().get(CommonCacheUtil.PICTYPE+webId));
+			synchronized(this){
+				long count = prePicmapper.findPrePicByUrl(urls.get(i));
+				if(count >0){
+					//已经存在,继续循环
+					continue;
+				}else{
+					prePicmapper.insertPrePic(pic);
+					
+				}
 				
 			}
 		}

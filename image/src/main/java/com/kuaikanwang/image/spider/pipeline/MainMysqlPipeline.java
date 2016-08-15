@@ -50,20 +50,21 @@ public class MainMysqlPipeline implements Pipeline{
 		
 		if(urls.size()>0&& names.size()>0){
 
-			    long count = mainPicMapper.findMainPicByUrl(urls.get(0));
+			MainPic pic = new MainPic();
+			
+			pic.setUrl(urls.get(0));
+			pic.setName(StringProcessUtil.getBeautifulString(names.get(0)));//将最后的括号过滤掉
+			pic.setPre_id(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PRE_ID+webId));
+			pic.setPictype(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PICTYPE+webId));
+			
+			synchronized(this){
+				
+				long count = mainPicMapper.findMainPicByUrl(urls.get(0));
 				
 				if(count <= 0){
-					
-					MainPic pic = new MainPic();
-					
-					pic.setUrl(urls.get(0));
-					pic.setName(StringProcessUtil.getBeautifulString(names.get(0)));//将最后的括号过滤掉
-					pic.setPre_id(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PRE_ID+webId));
-					pic.setPictype(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PICTYPE+webId));
-					
 					mainPicMapper.insertMainPic(pic);
-					
 				}
+			}
 			
 			
 		}

@@ -20,7 +20,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class CTOPrePageProcessor implements PageProcessor,WebSiteIdentification {
 
 	
-	private Site site = Site.me().setRetryTimes(4).setSleepTime(500);
+	private Site site = Site.me().setRetryTimes(5).setSleepTime(1000);
 	
 	
 	@Override
