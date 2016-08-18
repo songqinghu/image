@@ -243,6 +243,10 @@
     order by m.pre_id asc
     LIMIT #{start},#{rows};
   </select>
+
+  <select id="findImageListByPid" parameterType="java.lang.Long" resultMap="IndexResultMap" >
+		select pre_id ,`name`,url from mainpic where pre_id =#{pid};
+  </select>
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />

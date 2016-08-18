@@ -137,5 +137,13 @@ public interface ImageAccessMapper {
 	 */
 	public List<ImageList> findMWebImageList(ImageQuery query);
 	
-	
+	/**
+	 * 
+	 * 获取指定的pid下的图片列表 mainpic
+	 * <p>Title: findImageListByPid</p>
+	 * <p>Description: </p>
+	 * @param pid
+	 * @return
+	 */
+	public List<ImageList> findImageListByPid(Long pid);
 }
