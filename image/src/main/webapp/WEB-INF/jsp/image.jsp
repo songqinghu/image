@@ -11,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
-	<meta name="keywords" content="性感美女,性感图片,美女套图" />
-	<meta name="description" content="性感美女频道提供各类顶级美女机构性感美女图片，如推女郎、秀人网、ROSI等众多性感美女写真及大胆日本美女艺术套图。" />
+	<meta name="keywords" content="${nowImageType.typeName}" />
+	<meta name="description" content="${nowImageType.typeName}" />
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="http://www.zuiyuyue.com/css/bootstrap.css" rel="stylesheet" type="text/css">
