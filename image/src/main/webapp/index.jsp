@@ -89,7 +89,15 @@
  <div class="row">
 	<h3><span class="label label-warning">&nbsp;&nbsp;&nbsp;友情链接</span></h3>
 	<div>
-		<h4><span >&nbsp;&nbsp;&nbsp;&nbsp;友情链接&nbsp;&nbsp;友情链接&nbsp;&nbsp;友情链接&nbsp;&nbsp;友情链接</span></h4>
+		<h4><span >&nbsp;&nbsp;
+		&nbsp;&nbsp;<a href="http://www.7160.com/" target="_blank" >美女图片网</a>
+		&nbsp;&nbsp;<a href="http://www.27270.com" target="_blank" >27270图片大全</a>
+		&nbsp;&nbsp;<a href="http://www.qqszc.com" target="_blank" >诱舞坊</a>
+		&nbsp;&nbsp;<a href="http://www.513redian.com" target="_blank" >513热点网</a>
+		&nbsp;&nbsp;<a href="http://www.qiushibaike.com/" target="_blank" >糗事百科</a>
+		&nbsp;&nbsp;<a href="http://www.qiushimm.com" target="_blank" >糗妹妹</a>
+		
+		</span></h4>
 	</div>
   </div>
   </body>
