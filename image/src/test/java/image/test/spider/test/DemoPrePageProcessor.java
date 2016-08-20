@@ -17,8 +17,9 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
-    private Site site = Site.me().setRetryTimes(5).setSleepTime(1000);
+    private Site site = Site.me().setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").setRetryTimes(5).setSleepTime(1000);
 	
+    
 
     @Override
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
@@ -81,8 +82,10 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 	}
     
 	public static void main(String[] args){
-		String url = "http://www.meizitu.com/";
-		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).thread(5).run();
+		//String url = "http://www.meizitu.com/";
+		String url = "http://www.mzitu.com/xinggan";
+		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
+		thread(5).run();
 	}
     
 }
