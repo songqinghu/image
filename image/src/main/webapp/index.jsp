@@ -102,8 +102,12 @@
 
 	window.onload=function(){
 	
-
-
+     var url = window.location.href;
+     
+     if(!(url.indexOf("http://www.zuiyuyue.com")>-1)){
+    	 this.location = "http://www.zuiyuyue.com"; 
+     }
+     
 	var pictype = 1;
 
 	 $.ajax(  
