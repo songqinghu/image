@@ -7,7 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>最愉阅-看你所看</title>
+    <title>最愉阅-美女图片邪恶动态图糗事百科成人</title>
+    	<meta name="keywords" content="美女图片,邪恶动态图,糗事百科 成人版" />
+	<meta name="description" content=
+	"美女图片全身一件不留，美女图片大全无内衣,美女祼体图片图,美女屁股,性感美女胸罩衣服美女脱身胸部高清遮挡, 
+	邪恶动态图xxoo,邪恶动态图吸奶,美女邪恶gif动态图,邪恶动态图啪啪,邪恶动态图27报,动态图片坐爱,
+	糗事百科,糗事百科成人版最愉阅,糗事百科成人版黑木耳,qiushibaikechengrenban,糗事百科成人版手机版,糗事百科成人版gif 图" />
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
@@ -37,26 +42,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li ><a target="_blank" href="http://www.zuiyuyue.com/images/1/list">美女图片<span class="sr-only">(current)</span></a></li>
-<!--         <li ><a href="http://www.zuiyuyue.com/page/detail">热门小说<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/page/search">技术博客<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/page/search">技术工具<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/page/search">有奖建议<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/page/search">加入我们<span class="sr-only">(current)</span></a></li> -->
+        <li ><a target="_blank" href="http://www.zuiyuyue.com/images/1/list">美女图片</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-<!--       <form class="navbar-form navbar-left" role="search">
- 		 <div class="form-group">
-   		 <input type="text" class="form-control" placeholder="想看什么图片">
-  		</div>
- 		 <button type="submit" class="btn btn-default">嗖一下</button>
-		</form> -->
-               <li ><a href="#">有奖建议<span class="sr-only">(current)</span></a></li>
-              <li ><a href="#">加入我们<span class="sr-only">(current)</span></a></li>
+
+               <li ><a href="#">有奖建议</a></li>
+              <li ><a href="#">加入我们</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 
@@ -67,25 +62,25 @@
 <div class="row" id="one">
 </div>
 <div class="page-header">
-  <h1><span class="label label-success">美女诱惑</span><small><a href="http://www.zuiyuyue.com/images/3/list" >更多</a></small></h1>
+  <h2><span class="label label-success">美女诱惑</span><small><a href="http://www.zuiyuyue.com/images/3/list" >更多</a></small></h2>
 </div>
 <div class="row" id="two">
  
 </div>
 <div class="page-header">
-  <h1><span class="label label-danger">性感模特</span><small><a href="http://www.zuiyuyue.com/images/4/list" >更多</a></small></h1>
+  <h2><span class="label label-danger">性感模特</span><small><a href="http://www.zuiyuyue.com/images/4/list" >更多</a></small></h2>
 </div>
 <div class="row" id="three">
  
 </div>
 <div class="page-header">
-  <h1><span class="label label-warning">清纯美女</span><small><a href="http://www.zuiyuyue.com/images/6/list" >更多</a></small></h1>
+  <h2><span class="label label-warning">清纯美女</span><small><a href="http://www.zuiyuyue.com/images/6/list" >更多</a></small></h2>
 </div>
 <div class="row" id="four">
  
 </div>
 <div class="page-header">
-  <h1><span class="label label-info">明星图片</span><small><a href="http://www.zuiyuyue.com/images/7/list" >更多</a></small></h1>
+  <h2><span class="label label-info">明星图片</span><small><a href="http://www.zuiyuyue.com/images/7/list" >更多</a></small></h2>
 </div>
 <div class="row"  id="five">
  

@@ -50,21 +50,7 @@
       <img height="300%" width="100%" alt="http://www.zuiyuyue.com" src="http://www.zuiyuyue.com/image/logo.gif">
       </a>
    </div>
-   <!-- 暂时不要搜索部分 后期使用 solr 再加入 -->
-<!--    <div class="search">
-   <form id="form1" name="form1" method="post" action="/search/">
-   <input type="text"name="keyword" id="textfield" class="search_text"/>
-   <input type="image" name="imageField" id="imageField" src="http://www.zuiyuyue.com/image/search_btn.png" />
-   </form>
 
-   </div> -->
-<!-- <div class="search_hot"><a>热门搜索：</a>这里应该是动态生成的! 先写死
-    <a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=性感美女">性感美女</a>
-    <a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=mm">mm</a>
-	<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=图片">图片</a>
-	<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=妹子图">妹子图</a>
-	<a href="http://www.zuiyuyue.com/search/?kwtype=0&keyword=人体艺术">人体艺术</a>
-</div> -->
 </div>
 <div class="nav">
    <ul>
@@ -119,16 +105,7 @@
             <c:forEach var="image"  items="${countPicList}">
          	        <dd><a target="_blank" href="http://www.zuiyuyue.com/images/detail?pid=${image.pid}">${image.picName}</a></dd>
 	  	     </c:forEach>
-<!--           <dd><a target="_blank" href="http://www.mm131.com/xinggan/2155.html">mm王语纯诱惑黑丝透明情趣大PK</a></dd>
-	      <dd><a target="_blank" href="http://www.mm131.com/xinggan/2283.html">推女郎易阳丰臀巨乳让人垂涎三尺</a></dd>
-		  <dd><a target="_blank" href="http ://www.mm131.com/xinggan/2250.html">妹子艾莉Evelyn紧身内内刺激男人眼</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/1419.html">蕾丝兔宝宝海边性感露臀写真</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/513.html">日本媚娘新图精选无水印</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2148.html">尤果网齐贝贝浴室内湿身诱惑写真</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2359.html">果儿mm肥硕美乳圆润玉滑诱惑有加</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2260.html">麻辣教官刘娅希与小猎物的激情碰撞</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2424.html">推女郎易阳露深沟巨大美乳呼之欲出</a></dd>
-		  <dd><a target="_blank" href="http://www.mm131.com/xinggan/2334.html">美乳黄佳丽为博欢心几近全裸上阵</a></dd> -->
+
       </dl>
       <dl class="channel_list public-box list_new">
          <dt class="public-title">最近更新</dt>
