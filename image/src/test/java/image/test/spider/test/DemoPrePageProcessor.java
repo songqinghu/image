@@ -17,7 +17,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
-    private Site site = Site.me().setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").setRetryTimes(5).setSleepTime(1000);
+    private Site site = Site.
+    		me().
+    		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
+    		setRetryTimes(5).setSleepTime(1000);
 	
     
 
@@ -25,14 +28,12 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
     public void process(Page page) {
         // 部分二：定义如何抽取页面信息，并保存下来
-       // page.putField("author", page.getUrl().regex("https://github\\.com/(\\w+)/.*").toString());
-     //   page.putField("url", page.getHtml().xpath("//h1[@class='entry-title public']/strong/a/text()").toString());
+
     	
-    	//page.putField("url", page.getHtml().links().regex("(http://img1\\.mm131\\.com/pic/\\w+/\\w+.jpg)").all());
-    	
-    //	List<String> all2 = page.getHtml().css("div.main").links().regex("(http://www\\.mm131\\.com/xinggan/\\d+\\.html)").all();
-    	List<String> urls = page.getHtml().xpath("//dl[@class='list-left public-box']").links().regex("(http://www\\.mm131\\.com/\\w+/\\d+\\.html)").all();
-    	List<String> names = page.getHtml().xpath("//dl[@class='list-left public-box']/dd/a[@target='_blank']/text()").all();
+    	List<String> urls = page.getHtml().
+    			xpath("//div[@class='main']/div[@class='main-content']/div[@class='postlist']/ul[@id='pins']/li/span/a").
+    			links().all();
+    	List<String> names = page.getHtml().xpath("//div[@class='main']/div[@class='main-content']/div[@class='postlist']/ul[@id='pins']/li/span/a/text()").all();
     	
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
     	//()代表取出其中的数据
@@ -40,8 +41,11 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 //			System.out.println(string);
 //		}
     	
-    	List<String> murls = page.getHtml().xpath("//dl[@class='list-left public-box']/dd/a/img").
-    	regex("http://img1\\.mm131\\.com/pic/.+/.+\\.jpg").all();
+    	List<String> murls = page.getHtml().
+    			xpath("//div[@class='main']/div[@class='main-content']/div[@class='postlist']/ul[@id='pins']/li/a/img").
+    	//regex("http://img1\\.mm131\\.com/pic/.+/.+\\.jpg")
+    	regex("http://i\\.meizitu\\.net/thumbs/.+/.+/.+\\.jpg")
+    	.all();
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("urls", urls);
@@ -63,7 +67,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
         
         // 部分三：从页面发现后续的url地址来抓取
-        List<String> all = page.getHtml().css("dd.page").links().regex("list\\_\\w+\\_\\w+\\.html").all();
+        List<String> all = page.getHtml().xpath("//div[@class='main']/div[@class='main-content']/div[@class='postlist']/nav/div[@class='nav-links']")
+        		.
+        		links().regex("http://www\\.mzitu\\.com/.+/.+/\\d+").all();
 //       for (String string : all) {
 //		System.out.println(string);
 //       }
@@ -85,7 +91,7 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 		//String url = "http://www.meizitu.com/";
 		String url = "http://www.mzitu.com/xinggan";
 		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(5).run();
+		thread(10).run();
 	}
     
 }
