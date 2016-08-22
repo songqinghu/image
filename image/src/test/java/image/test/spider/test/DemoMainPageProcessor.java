@@ -26,13 +26,13 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    	//http://img1.mm131.com/pic/2506/1.jpg
 	    	//http://img1.mm131.com/pic/2506/2.jpg
 	    	List<String> urls = page.getHtml().
-	    			xpath("//div[@class='main']/div[@class='content']/div[@class='main-image']/p/a/img").
-	    			regex("(http://i\\.meizitu\\.net/.+/.+/.+\\.jpg)").
+	    			xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/div[@class='articlePic']/p/a/img").
+	    			regex("(http://kanimg\\.9ku\\.com/pic/.+/.+/.+/.+\\.jpg.+\\.jpg)").
 	    			all();
 	    	
 	    	
 	    	List<String> names = page.getHtml().
-	    			xpath("//div[@class='main']/div[@class='content']/h2/text()").
+	    			xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/h1/text()").
 	    			all();
 	    	//()代表取出其中的数据
 	    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
@@ -47,9 +47,9 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	        
 	        // 部分三：从页面发现后续的url地址来抓取  //2506_3.html
 	        List<String> all = page.getHtml().
-	        		xpath("//div[@class='main']/div[@class='content']/div[@class='pagenavi']/a").
+	        		xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/div[@class='articlePage']/a").
 	        		links().
-	        		regex("http://www\\.mzitu\\.com/.+/\\d+").all();
+	        		regex("http://kan\\.9ku\\.com/.+/.+/\\d+\\.html").all();
 	       
 	        page.addTargetRequests(all);
 	        	
@@ -68,7 +68,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.mzitu.com/72264";
+			String url = "http://kan.9ku.com/mingxing/13731/";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}

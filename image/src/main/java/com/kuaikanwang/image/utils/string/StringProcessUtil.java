@@ -34,9 +34,13 @@ public class StringProcessUtil {
 		regex = "\\（.+\\）";
 		Matcher matcher2 = Pattern.compile(regex).matcher(name);
 		name= matcher2.replaceFirst("");
+		// 嫩模斯戴媛Amy火辣身材魅力写真图片第4张
+		
+		regex = "第\\d+张";
+		Matcher matcher3 = Pattern.compile(regex).matcher(name);
+		name= matcher3.replaceFirst("");
 		
 		return name;
 	}
-	
-	
+
 }
