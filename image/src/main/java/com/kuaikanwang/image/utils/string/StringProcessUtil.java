@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.solr.client.solrj.impl.LBHttpSolrClient.Rsp;
+import org.springframework.format.datetime.joda.MillisecondInstantPrinter;
 
 /**
  * 字符串处理工具
@@ -42,5 +43,11 @@ public class StringProcessUtil {
 		
 		return name;
 	}
+	
+	public static void main(String[] args) {
+	    String text ="头条女神张梓柔身着厨娘装，真空上阵 大胆展示完美身材(1/40)";
+        String name = getBeautifulString(text);
+        System.out.println(name);
+    }
 
 }

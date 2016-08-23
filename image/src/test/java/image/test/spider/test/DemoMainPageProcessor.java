@@ -24,15 +24,15 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    public void process(Page page) {
 	        // 部分二：定义如何抽取页面信息，并保存下来
 	    	//http://img1.mm131.com/pic/2506/1.jpg
-	    	//http://img1.mm131.com/pic/2506/2.jpg
+	    	//http://pic.59pic.com/2016/0809/20160809025057198.jpg
 	    	List<String> urls = page.getHtml().
-	    			xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/div[@class='articlePic']/p/a/img").
-	    			regex("(http://kanimg\\.9ku\\.com/pic/.+/.+/.+/.+\\.jpg.+\\.jpg)").
+	    			xpath("//div[@class='longConWhite']/div[@class='workContentWrapper']/div/ul/li/img").
+	    			regex("(http://pic\\.59pic\\.com/.+/.+/.+\\.jpg)").
 	    			all();
 	    	
 	    	
 	    	List<String> names = page.getHtml().
-	    			xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/h1/text()").
+	    			xpath("//div[@class='longConWhite']/div/h1/a/text()").
 	    			all();
 	    	//()代表取出其中的数据
 	    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
@@ -45,11 +45,11 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	        }
 
 	        
-	        // 部分三：从页面发现后续的url地址来抓取  //2506_3.html
+	        // 部分三：从页面发现后续的url地址来抓取  //http://www.59pic.com/mn/1445_5.html
 	        List<String> all = page.getHtml().
-	        		xpath("//div[@class='box']/div[@class='main clearfix']/div[@class='article']/div[@class='articlePage']/a").
+	        		xpath("//div[@class='longConWhite']/div[@class='workContentWrapper']/div/div/div/span/a").
 	        		links().
-	        		regex("http://kan\\.9ku\\.com/.+/.+/\\d+\\.html").all();
+	        		regex("http://www\\.59pic\\.com/.+/.+\\.html").all();
 	       
 	        page.addTargetRequests(all);
 	        	
@@ -68,7 +68,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://kan.9ku.com/mingxing/13731/";
+			String url = "http://www.59pic.com/mn/1445.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}
