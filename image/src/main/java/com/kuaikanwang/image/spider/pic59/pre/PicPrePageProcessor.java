@@ -1,4 +1,4 @@
-package image.test.spider.test;
+package com.kuaikanwang.image.spider.pic59.pre;
 
 import java.util.List;
 
@@ -9,14 +9,11 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+@Component("picPrePageProcessor")
+public class PicPrePageProcessor implements PageProcessor,WebSiteIdentification {
 
-
-public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
-	
-    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
+	   // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
     		me().
     		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
@@ -31,11 +28,11 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
     	
     	List<String> urls = page.getHtml().
-		  xpath("//div[@class='listmain left']/div/div/a").
+		  xpath("//div[@class='index_listc']/div/ul/li/a").
 		  links().
 		  all();
     	List<String> names = page.getHtml()
-    			.xpath("//div[@class='listmain left']/div/div/p/a/text()")
+    			.xpath("//div[@class='index_listc']/div/ul/li/div/div/p/a/text()")
     			.all();
     	
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
@@ -45,9 +42,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 //		}
     	//http://kanimg.9ku.com/pic/scimg/2016/08-16/14713330831571472121.jpg@1e_1c_0o_0l_320h_240w.src
     	List<String> murls = page.getHtml().
-    			xpath("//div[@class='listmain left']/div/div/a/img").
+    			xpath("//div[@class='index_listc']/div/ul/li/a/img").
     	//regex("http://img1\\.mm131\\.com/pic/.+/.+\\.jpg")
-    	regex("http://imgnew\\.uumnt\\.cc.+/.+/.+/.+/.+\\.jpg")
+    	regex("http://pic\\.59pic\\.com/.+\\.jpg")
     	.all();
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
@@ -71,9 +68,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
         
         // 部分三：从页面发现后续的url地址来抓取
         List<String> all = page.getHtml().
-        		xpath("//div[@class='listmain left']/div/ul/a")
+        		xpath("//div[@class='index_listc']/div[@class='bigpages']/div/span/a")
         		.links()
-        		.regex("http://www\\.uumnt\\.com/.+/.+\\.html")
+        		.regex("http://www\\.59pic\\.com/.+/\\d+\\.html")
         		.all();
 //       for (String string : all) {
 //		System.out.println(string);
@@ -89,14 +86,7 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
 	@Override
 	public long getWebId() {
-		return 2;
-	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.meizitu.com/";
-		String url = "http://www.uumnt.com/rihan/";
-		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(10).run();
+		return 6;
 	}
     
 }

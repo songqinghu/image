@@ -39,6 +39,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor mzituPrePageProcessor;
 	@Resource
 	private PageProcessor kuPrePageProcessor;
+	@Resource
+	private PageProcessor picPrePageProcessor;
 	
 	
 	//主抓取部分
@@ -52,6 +54,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor mzituMainPageProcessor;
 	@Resource
 	private PageProcessor kuMainPageProcessor;
+	@Resource
+	private PageProcessor picMainPageProcessor;
 	
 	
 	@Override
@@ -63,6 +67,7 @@ public class PageProcessorContainer implements InitializingBean{
 		prePageProcessorContainer.put(3l, souutuPrePageProcessor);
 		prePageProcessorContainer.put(4l, mzituPrePageProcessor);
 		prePageProcessorContainer.put(5l, kuPrePageProcessor);
+		prePageProcessorContainer.put(6l, picPrePageProcessor);
 		
 		
 		
@@ -72,6 +77,7 @@ public class PageProcessorContainer implements InitializingBean{
 		mainPageProcessorContainer.put(3l, souutuMainPageProcessor);
 		mainPageProcessorContainer.put(4l, mzituMainPageProcessor);
 		mainPageProcessorContainer.put(5l, kuMainPageProcessor);
+		mainPageProcessorContainer.put(6l, picMainPageProcessor);
 		
 	}
 

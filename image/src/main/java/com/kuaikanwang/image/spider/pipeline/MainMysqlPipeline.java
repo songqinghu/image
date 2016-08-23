@@ -53,7 +53,7 @@ public class MainMysqlPipeline implements Pipeline{
 				MainPic pic = new MainPic();
 				
 				pic.setUrl(urls.get(i));
-				pic.setName(StringProcessUtil.getBeautifulString(names.get(i)));//将最后的括号过滤掉
+				pic.setName(StringProcessUtil.getBeautifulString(names.get(0)));//将最后的括号过滤掉
 				pic.setPre_id(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PRE_ID+webId));
 				pic.setPictype(CommonCacheUtil.getMainCacheInfo().get(CommonCacheUtil.PICTYPE+webId));
 				
