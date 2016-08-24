@@ -9,7 +9,13 @@
     <meta name="applicable-device"content="pc">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>${image.picName}_美女图片 - 最愉阅</title><!-- 动态生成标题 -->
+    <c:if test="${nowPage == 1}">
+  		<title>${image.picName}_美女图片-${nowImageType.typeName} - 最愉阅</title><!-- 动态生成标题 -->
+	</c:if>
+    <c:if test="${nowPage > 1}">
+  		<title>${image.picName}_美女图片-${nowImageType.typeName} - 最愉阅-第${nowPage}页</title><!-- 动态生成标题 -->
+	</c:if>
+    
 	
 	<meta name="keywords" content="${image.picName}" /><!-- 动态生成关键字 -->
 	<meta name="description" content="最愉阅-美女图片提供性感美女高清图片-${image.picName}。www.zuiyuyue.com" />

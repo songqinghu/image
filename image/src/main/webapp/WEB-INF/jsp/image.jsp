@@ -10,7 +10,13 @@
     <meta name="applicable-device"content="pc">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
+    <c:if test="${nowPage == 1}">
+  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
+	</c:if>
+    <c:if test="${nowPage > 1}">
+  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片-第${nowPage}页</title>
+	</c:if>
+	
 	<meta name="keywords" content="${nowImageType.typeName}" />
 	<meta name="description" content="${nowImageType.typeName}" />
     <!-- Bootstrap -->
@@ -25,7 +31,10 @@
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     
     <script src="/css/uaredirect.js" type="text/javascript"></script>
-    <script type="text/javascript">uaredirect("http://m.zuiyuyue.com/m/image/1/detail/list");</script>
+	<script type="text/javascript">
+    	var type = window.location.href.replace("http://www.zuiyuyue.com/images/","").replace("/list","");
+	    uaredirect("http://m.zuiyuyue.com/m/image/"+type+"/detail/list");
+    </script>
   </head>
   <body>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -119,6 +128,7 @@
 </div>
   <div class="footer">本站纯属免费<a href="http://www.zuiyuyue.com/" title="美女图片">美女图片</a>欣赏网站,所有<a href="http://www.zuiyuyue.com/" title="mm">mm</a>图片均收集于互联网,如有侵犯版权请来信告知,我们将立即更正。<br />&copy; 2016 (<a href="/" target="_blank">www.zuiyuyue.com</a>) 最愉阅 美女图片 版权所有  <script type="text/javascript" src="http://www.zuiyuyue.com/css/stat.js"></script></div>
   </body>
+
 </html> 
 
 

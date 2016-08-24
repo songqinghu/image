@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>最愉阅(zuiyuyue)-美女图片邪恶动态图糗事百科成人</title>
-    	<meta name="keywords" content="美女图片,邪恶动态图,糗事百科 成人版,meinv,meinvtupian,pa,papa,papapa" />
+    <title>最愉阅(zuiyuyue)-美女图片邪恶动态图VR成人福利资源</title>
+    	<meta name="keywords" content="美女图片,邪恶动态图,VR成人福利资源,meinv,meinvtupian,pa,papa,papapa" />
 	<meta name="description" content=
 	"美女图片全身一件不留，美女图片大全无内衣,美女祼体图片图,美女屁股,性感美女胸罩衣服美女脱身胸部高清遮挡, 
 	邪恶动态图xxoo,邪恶动态图吸奶,美女邪恶gif动态图,邪恶动态图啪啪,邪恶动态图27报,动态图片坐爱,
-	糗事百科,糗事百科成人版最愉阅,糗事百科成人版黑木耳,qiushibaikechengrenban,糗事百科成人版手机版,糗事百科成人版gif 图" />
+	VR,VR成人福利,VR资源,VR岛国成人视频 "/>
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
