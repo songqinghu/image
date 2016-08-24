@@ -1,5 +1,6 @@
 package com.kuaikanwang.image.component.timer;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -40,14 +41,22 @@ public class SpiderTimerTask {
 			Thread thread = new Thread(new Runnable() {
 				@Override
 				public void run() {
-					logger.warn("start spider website the webId is " + webId);
+				    long webid = webId;
+					logger.warn("start spider website the webId is " + webid);
+					System.out.println(new Date() + "  start spider website the webId is " + webid);
 					long start = System.currentTimeMillis();
-					Long count = spiderStartImpl.preSpiderStart(webId);
-				    logger.warn("spider webstie {"+webId+"} is end , "
+					Long count = spiderStartImpl.preSpiderStart(webid);
+					System.out.println(new Date() + "  spider webstie {"+webid+"} is end");
+				    logger.warn("spider webstie {"+webid+"} is end , "
 				    		+ "lost time is "+(System.currentTimeMillis()-start)+"  ms"+",spider number is :" + count);
 				}
 			});
 			thread.start();
+			try {
+                thread.sleep(1500);
+            } catch (InterruptedException e) {
+                logger.error(" task spider is error : "+e);
+            }
 		}
 		
 	}
