@@ -152,7 +152,7 @@
   and 
 	p.pre_id > #{pid}
 	GROUP BY
-		p.url
+		p.pre_id
   order by p.pre_id limit 0,1 ;
 
   </select>
@@ -175,7 +175,7 @@
   and 
 	p.pre_id  &lt; #{pid}
 	GROUP BY
-		p.url
+		p.pre_id
   order by p.pre_id desc limit 0,1 ;
 
   </select>
@@ -200,7 +200,7 @@
 	AND p.flag = 0
     and 	p.pre_id > #{pid}
 	GROUP BY
-		p.url
+		p.pre_id
 	order by p.pre_id asc
  limit 0,10
 
