@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,8 +46,12 @@ public class ImageAccessController {
 	 * @return
 	 */
 	@RequestMapping("/{imageType}/list")
-	public ModelAndView toImageList(@RequestParam(defaultValue="1") int pageNum,@PathVariable int imageType){
+	public ModelAndView toImageList(@RequestParam(defaultValue="1") 
+	int pageNum,
+	@PathVariable int imageType,
+	HttpServletResponse response){
 
+		response.setHeader("Referer", "");
 		/**
 		 * 从缓存中校验一下 是不是有图片类型,没有默认使用1
 		  */
