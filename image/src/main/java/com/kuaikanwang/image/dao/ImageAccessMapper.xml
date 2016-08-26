@@ -19,8 +19,8 @@
   </resultMap>
 
   <select id="getTotalPage" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
-   select count(c)  from ( SELECT
-	count(p.pre_id) c
+    select count(c)  from ( SELECT
+	count(p.pre_id) c,p.web_id wid
 	FROM
 		prepic p,
 	    mainpic m
@@ -29,7 +29,7 @@
 	AND p.pictype = #{pictype}
 	AND p.flag = 0
 	GROUP BY
-		p.url) s;
+		p.pre_id) s where wid !=6 and wid !=7;
   </select>
   <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
 

@@ -15,6 +15,7 @@ import com.kuaikanwang.image.domain.query.ImageQuery;
 import com.kuaikanwang.image.domain.result.DetailImage;
 import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.IImageAccessService;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 @Service
 @Transactional
@@ -33,13 +34,20 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	public Integer findTotalPageNum(Integer type){
 		
 		 //这里加个缓存--1小时定时清理一次
-		
+			
+		 Integer cacheCount = CommonCacheUtil.getTypeCountCache().get(type);
+		 if(cacheCount!=null){
+			 return ((cacheCount+19)/20);
+		 }
 		 int totalCount = imageAccess.getTotalPage(type);
+		 
+		 CommonCacheUtil.getTypeCountCache().put(type, totalCount);
 		 
 		 int totalPage = ((totalCount+19)/20);
 		
 		 return totalPage;
 	}
+	
 	
 	
 	

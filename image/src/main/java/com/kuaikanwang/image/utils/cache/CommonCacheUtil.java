@@ -114,6 +114,13 @@ public class CommonCacheUtil implements InitializingBean{
 		CommonCacheUtil.maxPid = maxPid;
 	}
 
+	//缓存分类对应最大可用图片数目
+	private static Map<Integer,Integer > typeCountCache = new HashMap<Integer,Integer>();
+	
+	public static Map<Integer, Integer> getTypeCountCache() {
+		return typeCountCache;
+	}
+
 	/**
 	 * 
 	 * <p>Title: afterPropertiesSet</p>
