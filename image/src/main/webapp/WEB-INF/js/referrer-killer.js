@@ -223,7 +223,9 @@ var ReferrerKiller = (function () {
 		} else {
 			imgAttributes.style = defaultStyles;
 		}
-		return htmlString('<img src="' + escapeDoubleQuotes(url) + '" ' + objectToHtmlAttributes(imgAttributes) + '/>');
+		
+		//return htmlString('<img  width="120" height="160" src= "' + escapeDoubleQuotes(url) + '" ' + objectToHtmlAttributes(imgAttributes) + '/>');
+		return htmlString('<img   src= "' + escapeDoubleQuotes(url) + '" ' + objectToHtmlAttributes(imgAttributes) + '/>');
 	};
 	
 	/**

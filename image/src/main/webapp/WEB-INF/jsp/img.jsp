@@ -47,7 +47,10 @@
 
 
 	<ul>
-		<li>Without sending referrer: <br/> <span id="image_kill_referrer"></span></li>
+		<li>Without sending referrer: <br/> 
+		<span id="image_kill_referrer"  style='width:120px;height:160px;'>
+		</span>
+		</li>
 		<img alt="测试" src="http://imgnew.uumnt.cc:8088/Thumb/2016/0804/ba793e8d5ed4ad3ace2e33c361fcd591.jpg">
 	</ul>
 	<script>
