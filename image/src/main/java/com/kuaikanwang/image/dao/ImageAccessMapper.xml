@@ -33,7 +33,7 @@
   </select>
   <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
 
-    SELECT
+	    SELECT
 	p.pre_id,
 	p.pictype,
 	p.`name`,
@@ -47,8 +47,10 @@
 		p.pre_id = m.pre_id
 	AND p.pictype = #{pictype}
 	AND p.flag = 0
+  and p.web_id !=6 
+  and p.web_id !=7
 	GROUP BY
-		p.url
+		p.pre_id
 	order by p.pre_id desc
 	LIMIT #{start},#{rows};
   </select>
@@ -72,7 +74,7 @@
   	  </select>
   	  <!-- 确定详情页有图片 -->
 	  <select id="getLatestPicList"  parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-  			    SELECT
+			 SELECT
 				p.pre_id,
 				p.pictype,
 				p.`name`,
@@ -84,8 +86,10 @@
 				WHERE
 					p.pre_id = m.pre_id
 				AND p.flag = 0
+         	    and p.web_id !=6 
+				and p.web_id !=7
 				GROUP BY
-					p.url
+					p.pre_id
 				order by p.cratedate desc limit 0,#{num};
   	  </select>
 	
@@ -96,7 +100,8 @@
 		
   	  <!--  按照 浏览量进行排序  -->
 	  <select id="getCountPicList"  parameterType="java.lang.Integer" resultMap="BaseResultMap" >
-			SELECT
+			 
+		    SELECT
 				p.pre_id,
 				p.pictype,
 				p.`name`
@@ -106,8 +111,10 @@
 			WHERE
 				p.pre_id = m.pre_id
 			AND p.flag = 0
+			and p.web_id !=6 
+			and p.web_id !=7
 			GROUP BY
-				p.url
+				p.pre_id
 			ORDER BY
 				m.lookcount DESC
 			LIMIT 0,
@@ -149,7 +156,9 @@
 		p.pre_id = m.pre_id
 	AND p.pictype = #{pictype}
 	AND p.flag = 0
-  and 
+	and p.web_id !=6 
+    and p.web_id !=7
+    and 
 	p.pre_id > #{pid}
 	GROUP BY
 		p.pre_id
@@ -172,7 +181,9 @@
 		p.pre_id = m.pre_id
 	AND p.pictype = #{pictype}
 	AND p.flag = 0
-  and 
+	and p.web_id !=6 
+  	and p.web_id !=7
+ 	 and 
 	p.pre_id  &lt; #{pid}
 	GROUP BY
 		p.pre_id
@@ -198,6 +209,8 @@
 	WHERE
 		p.pre_id = m.pre_id
 	AND p.flag = 0
+	and p.web_id !=6 
+  	and p.web_id !=7
     and 	p.pre_id > #{pid}
 	GROUP BY
 		p.pre_id
