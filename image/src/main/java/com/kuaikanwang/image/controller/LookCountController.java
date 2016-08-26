@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kuaikanwang.image.service.LookCountService;
 /**
@@ -33,9 +34,11 @@ public class LookCountController {
 	 * @param pid
 	 */
 	@RequestMapping("/add/pid")
-	public void addCountByPid(@RequestParam Long pid){
+	@ResponseBody
+	public String addCountByPid(@RequestParam Long pid){
 		
 		lookCountServiceImpl.addCountByPid(pid);
+		return "true";
 	}
 	
 	
