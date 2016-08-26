@@ -49,6 +49,7 @@
 	AND p.flag = 0
   and p.web_id !=6 
   and p.web_id !=7
+  and p.web_id !=5
 	GROUP BY
 		p.pre_id
 	order by p.pre_id desc
@@ -88,6 +89,7 @@
 				AND p.flag = 0
          	    and p.web_id !=6 
 				and p.web_id !=7
+				and p.web_id !=5
 				GROUP BY
 					p.pre_id
 				order by p.cratedate desc limit 0,#{num};
@@ -113,6 +115,7 @@
 			AND p.flag = 0
 			and p.web_id !=6 
 			and p.web_id !=7
+			and p.web_id !=5
 			GROUP BY
 				p.pre_id
 			ORDER BY
@@ -158,6 +161,7 @@
 	AND p.flag = 0
 	and p.web_id !=6 
     and p.web_id !=7
+    and p.web_id !=5
     and 
 	p.pre_id > #{pid}
 	GROUP BY
@@ -183,6 +187,7 @@
 	AND p.flag = 0
 	and p.web_id !=6 
   	and p.web_id !=7
+  	and p.web_id !=5
  	 and 
 	p.pre_id  &lt; #{pid}
 	GROUP BY
@@ -211,6 +216,7 @@
 	AND p.flag = 0
 	and p.web_id !=6 
   	and p.web_id !=7
+  	and p.web_id !=5
     and 	p.pre_id > #{pid}
 	GROUP BY
 		p.pre_id

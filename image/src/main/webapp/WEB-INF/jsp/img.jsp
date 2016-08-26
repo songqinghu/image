@@ -44,14 +44,14 @@
     <script src="http://www.zuiyuyue.com/js/bootstrap.min.js"></script>
 
 
-
+	<img alt="啦啦啦" src="http://pic.59pic.com/2015/0616/20150616052205321.jpg.196.265.jpg">
 
 	<ul>
 		<li>Without sending referrer: <br/> 
 		<span id="image_kill_referrer"  style='width:120px;height:160px;'>
 		</span>
 		</li>
-		<img alt="测试" src="http://imgnew.uumnt.cc:8088/Thumb/2016/0804/ba793e8d5ed4ad3ace2e33c361fcd591.jpg">
+		<img alt="测试" src="http://pic.59pic.com/2015/0616/20150616052205321.jpg.196.265.jpg">
 	</ul>
 	<script>
 		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://imgnew.uumnt.cc:8088/Thumb/2016/0804/ba793e8d5ed4ad3ace2e33c361fcd591.jpg');
