@@ -94,7 +94,7 @@ public class MWebAccessController {
 			if(!flag){
 				imageType = 1;
 			}
-			Integer totalPage =	imageAccessServiceImpl.findTotalPageNum(imageType,15);//M站展示15
+			Integer totalPage =	imageAccessServiceImpl.findTotalPageNum(imageType,20);//M站展示20
 			
 			if(pageNum<=0 ){
 				pageNum=1;
@@ -114,7 +114,7 @@ public class MWebAccessController {
 			model.put("nowPage", pageNum);
 			model.put("nowImageType", CommonCacheUtil.getImageTypeList().get(imageType-1));
 			//要暂时的列表页
-			List<Integer> pageList = PageNumberListUtils.getPageNumList(pageNum, totalPage);
+			List<Integer> pageList = PageNumberListUtils.getPageNumList4M(pageNum, totalPage);
 			
 			model.put("pageList", pageList);
 			
@@ -160,7 +160,7 @@ public class MWebAccessController {
 		 model.put("imageTypeList", CommonCacheUtil.getImageTypeList());
 		 model.put("nowImageType", CommonCacheUtil.getImageTypeList().get(image.getPictype()-1));
 	     //要暂时的列表页
-	     List<Integer> pageList = PageNumberListUtils.getPageNumList(pageNum, totalCount);
+	     List<Integer> pageList = PageNumberListUtils.getPageNumList4M(pageNum, totalCount);
 			
 	     model.put("pageList", pageList);
 			

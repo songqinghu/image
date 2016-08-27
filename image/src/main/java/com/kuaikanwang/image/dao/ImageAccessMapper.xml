@@ -9,6 +9,7 @@
     <result column="cratedate" property="createdate" jdbcType="TIMESTAMP" />
     <result column="id" property="mid" jdbcType="INTEGER" />
     <result column="murl" property="picUrl" jdbcType="VARCHAR" />
+    <result column="url" property="showUrl" jdbcType="VARCHAR" />
   </resultMap>
   
   <resultMap id="IndexResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
@@ -44,7 +45,8 @@
 	p.`name`,
 	p.cratedate,
 	m.id,
-	p.murl
+	p.murl,
+    m.url url
 	FROM
 		prepic p,
 	    mainpic m

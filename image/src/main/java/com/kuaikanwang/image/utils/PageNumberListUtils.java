@@ -51,6 +51,41 @@ public class PageNumberListUtils {
 		}
 		return pageNum;
 	}
+	/**
+	 * 根据当前页和最大页数确定展示的列表---默认展示9页
+	 * <p>Title: getPageNumList</p>
+	 * <p>Description: </p>
+	 * @param nowPage
+	 * @param maxPage
+	 * @return
+	 */
+	public static List<Integer> getPageNumList4M(Integer nowPage,Integer maxPage){
+		List<Integer> pageNum = new ArrayList<Integer>();
+		
+		if(nowPage<=3){
+			if(maxPage>=5){
+				for (int i = 1; i <=5; i++) {
+					pageNum.add(i);
+				}
+			}else{
+				for (int i = 1; i <=maxPage; i++) {
+					pageNum.add(i);
+				}
+			}
+		}else if (nowPage+5 > maxPage) {
+			
+			for (int i = maxPage - 4; i <=maxPage; i++) {
+				pageNum.add(i);
+			}
+		}else{
+			
+			for (int i = -2; i <=2; i++) {
+				pageNum.add((nowPage + i));
+			}
+			
+		}
+		return pageNum;
+	}
 	
 	
 }

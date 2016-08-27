@@ -69,7 +69,7 @@
 		  <div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 			<a  target="_blank"  href="http://www.zuiyuyue.com/m/image/detail?pid=${image.pid}" class="thumbnail">
-			<img src="${image.picUrl}" alt="${image.picName}">
+			<img src="${image.showUrl}" alt="${image.picName}">
 			<div class="caption">
 				<h3>${image.picName}</h3>
 			</div>
@@ -84,9 +84,6 @@
         <span aria-hidden="true">首页</span>
       </a>
     </li>
-    <c:if test="${nowPage > 1}">
-  				<li> <a href='?pageNum=${nowPage - 1}'>上一页</a></li>
-			</c:if>
              <c:forEach var="page"  items="${pageList}">
              <c:choose>
     			<c:when test="${nowPage == page}">

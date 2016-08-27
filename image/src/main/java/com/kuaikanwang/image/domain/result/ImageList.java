@@ -25,6 +25,8 @@ public class ImageList {
 	
 	private String picUrl;
 	
+	private String showUrl;//大图url
+	
 	
 	private Date createdate;
 	
@@ -102,5 +104,14 @@ public class ImageList {
 		this.lookcount = lookcount;
 	}
 
+
+	public String getShowUrl() {
+		return showUrl;
+	}
+
+
+	public void setShowUrl(String showUrl) {
+		this.showUrl = showUrl;
+	}
 	
 }

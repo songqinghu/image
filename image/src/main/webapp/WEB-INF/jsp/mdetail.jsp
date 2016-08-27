@@ -72,7 +72,7 @@
 		  <div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 			<a href="?pid=${pid}&pageNum=${nowPage + 1}" class="thumbnail">
-			<img src="${image.picUrl}" alt="${image.picName}">
+			<img  src="${image.picUrl}" alt="${image.picName}">
 			<div class="caption">
 				<h3>${image.picName}</h3>
 			</div>
@@ -83,22 +83,24 @@
   <ul class="pager">
   	         <c:choose>
     			<c:when test="${not empty previousImage}">
-    			 <li class="previous"><a href="http://www.zuiyuyue.com/m/image/detail?pid=${previousImage.pid}"><span aria-hidden="true">&larr;</span>上一组:${previousImage.picName}</a></li>
+    			 <li><a href="http://www.zuiyuyue.com/m/image/detail?pid=${previousImage.pid}">上一组:${previousImage.picName}</a></li>
     			</c:when>
    				 <c:otherwise>
-        			 <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>没有了</a></li>
-   			 	</c:otherwise>
-   			 	
-			</c:choose>
-                <c:choose>
-    			<c:when test="${not empty nextImage}">
-    			 <li class="next"><a href="http://www.zuiyuyue.com/m/image/detail?pid=${nextImage.pid}">下一组:${nextImage.picName} <span aria-hidden="true">&rarr;</span></a></li>
-    			</c:when>
-   				 <c:otherwise>
-        			 <li class="next"><a href="#">没有了<span aria-hidden="true">&rarr;</span></a></li>
+   				 	<li><a href="#">没有了</a></li>
    			 	</c:otherwise>
 			</c:choose>
   </ul>
+  <ul class="pager">
+                  <c:choose>
+    			<c:when test="${not empty nextImage}">
+    			 <li><a href="http://www.zuiyuyue.com/m/image/detail?pid=${nextImage.pid}">下一组:${nextImage.picName} </a></li>
+    			</c:when>
+   				 <c:otherwise>
+        			 <li><a href="#">没有了</a></li>
+   			 	</c:otherwise>
+			</c:choose>
+  </ul>
+  
   <ul class="pagination">
     <li>
       <a href="?pid=${pid}&pageNum=1" aria-label="Previous">
