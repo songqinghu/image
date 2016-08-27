@@ -36,7 +36,6 @@
     <script src="/css/uaredirect.js" type="text/javascript"></script>
     <script type="text/javascript">
 		var param = window.location.href.replace("http://www.zuiyuyue.com/images/detail?","");
-	    alert(param);
 		uaredirect("http://m.zuiyuyue.com/m/image/detail?"+param);
     </script>
     <script language="javascript" src="http://www.zuiyuyue.com/js/mmpic.js"></script>
