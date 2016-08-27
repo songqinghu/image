@@ -62,11 +62,6 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
-<div class="alert alert-success" role="alert">top:分类目录已折叠哦!</div>
-<div class="page-header">
-  <h2><span class="label label-primary">${nowImageType.typeName}</span></h2>
-</div>
 <div class="row" id="one">
         <!-- 这里应该也是动态的获取数据 -->
 		  <div class="col-sm-6 col-md-3">
@@ -107,9 +102,6 @@
         <span aria-hidden="true">首页</span>
       </a>
     </li>
-    <c:if test="${nowPage > 1}">
-  				<li> <a href='?pid=${pid}&pageNum=${nowPage - 1}'>上一页</a></li>
-			</c:if>
              <c:forEach var="page"  items="${pageList}">
              <c:choose>
     			<c:when test="${nowPage == page}">

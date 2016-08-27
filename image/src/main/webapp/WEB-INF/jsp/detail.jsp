@@ -34,7 +34,11 @@
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     
     <script src="/css/uaredirect.js" type="text/javascript"></script>
-    <script type="text/javascript">uaredirect("http://m.zuiyuyue.com/m/image/1/detail/list");</script>
+    <script type="text/javascript">
+		var param = window.location.href.replace("http://www.zuiyuyue.com/images/detail?","");
+	    alert(param);
+		uaredirect("http://m.zuiyuyue.com/m/image/detail?"+param);
+    </script>
     <script language="javascript" src="http://www.zuiyuyue.com/js/mmpic.js"></script>
   </head>
 
