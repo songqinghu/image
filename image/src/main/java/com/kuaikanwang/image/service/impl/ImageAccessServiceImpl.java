@@ -31,19 +31,19 @@ public class ImageAccessServiceImpl implements IImageAccessService {
 	 * <p>Description: </p>
 	 * @return
 	 */
-	public Integer findTotalPageNum(Integer type){
+	public Integer findTotalPageNum(Integer type,Integer pageSize){
 		
 		 //这里加个缓存--1小时定时清理一次
 			
 		 Integer cacheCount = CommonCacheUtil.getTypeCountCache().get(type);
 		 if(cacheCount!=null){
-			 return ((cacheCount+19)/20);
+			 return ((cacheCount+pageSize -1)/pageSize);
 		 }
 		 int totalCount = imageAccess.getTotalPage(type);
 		 
 		 CommonCacheUtil.getTypeCountCache().put(type, totalCount);
 		 
-		 int totalPage = ((totalCount+19)/20);
+		 int totalPage = ((totalCount+pageSize -1)/pageSize);
 		
 		 return totalPage;
 	}

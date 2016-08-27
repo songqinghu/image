@@ -13,6 +13,7 @@
   
   <resultMap id="IndexResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
     <id column="pre_id" property="pid" jdbcType="INTEGER" />
+    <result column="pictype" property="pictype" jdbcType="VARCHAR" />
     <result column="name" property="picName" jdbcType="VARCHAR" />
     <result column="url" property="picUrl" jdbcType="VARCHAR" />
     <result column="lookcount" property="lookcount" jdbcType="INTEGER" />
@@ -29,7 +30,11 @@
 	AND p.pictype = #{pictype}
 	AND p.flag = 0
 	GROUP BY
-		p.pre_id) s where wid !=6 and wid !=7;
+		p.pre_id) s 
+   where
+    wid !=6 
+    and wid !=7
+    and wid !=5;
   </select>
   <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
 
@@ -264,7 +269,7 @@
   </select>
 
   <select id="findImageListByPid" parameterType="java.lang.Long" resultMap="IndexResultMap" >
-		select pre_id ,`name`,url from mainpic where pre_id =#{pid};
+		select pre_id ,pictype,`name`,url from mainpic where pre_id =#{pid};
   </select>
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />

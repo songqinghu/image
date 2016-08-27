@@ -61,7 +61,7 @@ public class ImageAccessController {
 		}
 		
 		
-		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(imageType);
+		Integer totalPage = imageAccessServiceImpl.findTotalPageNum(imageType,20);//PC展示20个
 		
 		if(pageNum<=0 ){
 			pageNum=1;

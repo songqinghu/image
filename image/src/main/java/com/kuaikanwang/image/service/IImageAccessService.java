@@ -7,7 +7,7 @@ import com.kuaikanwang.image.domain.result.ImageList;
 
 public interface IImageAccessService {
 
-	public Integer findTotalPageNum(Integer type);
+	public Integer findTotalPageNum(Integer type,Integer pageSize);
 	
 	public List<ImageList> findImageList(Integer pageNum ,Integer imageType);
 	

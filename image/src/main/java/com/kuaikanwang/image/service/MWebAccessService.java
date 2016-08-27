@@ -11,5 +11,8 @@ public interface MWebAccessService {
 	
 	
 	public List<ImageList> findMWebImageList(Integer pageNum ,Integer imageType);
+	
+	
+	public List<ImageList> findImageListByPid(Long pid);
 
 }

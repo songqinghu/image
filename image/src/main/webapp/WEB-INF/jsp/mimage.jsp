@@ -8,7 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>最愉阅-看你所看</title>
+    <c:if test="${nowPage == 1}">
+  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
+	</c:if>
+    <c:if test="${nowPage > 1}">
+  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片-第${nowPage}页</title>
+	</c:if>
+    
+    <meta name="keywords" content="${nowImageType.typeName}" />
+	<meta name="description" content="${nowImageType.typeName}" />
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
@@ -37,14 +45,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" id="showList">
-        <li ><a href="http://www.zuiyuyue.com/m/image/1/detail/list">性感美女<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/2/detail/list">比基尼<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/3/detail/list">美女诱惑<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/4/detail/list">性感模特<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/5/detail/list">美女自拍<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/6/detail/list">清纯美女<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/7/detail/list">明星图片<span class="sr-only">(current)</span></a></li>
-        <li ><a href="http://www.zuiyuyue.com/m/image/8/detail/list">推荐图片<span class="sr-only">(current)</span></a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/1/detail/list">性感美女</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/2/detail/list">比基尼</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/3/detail/list">美女诱惑</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/4/detail/list">性感模特</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/5/detail/list">美女自拍</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/6/detail/list">清纯美女</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/7/detail/list">明星图片</a></li>
+        <li ><a href="http://www.zuiyuyue.com/m/image/8/detail/list">推荐图片</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -60,7 +68,7 @@
       <c:forEach var="image"  items="${list}">
 		  <div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-			<a href="#" class="thumbnail">
+			<a  target="_blank"  href="http://www.zuiyuyue.com/m/image/detail?pid=${image.pid}" class="thumbnail">
 			<img src="${image.picUrl}" alt="${image.picName}">
 			<div class="caption">
 				<h3>${image.picName}</h3>

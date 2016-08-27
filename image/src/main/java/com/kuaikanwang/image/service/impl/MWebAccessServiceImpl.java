@@ -61,6 +61,11 @@ public class MWebAccessServiceImpl implements MWebAccessService {
 		
 	}
 
+	@Override
+	public List<ImageList> findImageListByPid(Long pid) {
+		return imageAccessMapper.findImageListByPid(pid);
+	}
+
 	
 	
 	
