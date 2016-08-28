@@ -1,11 +1,15 @@
 package com.kuaikanwang.image.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kuaikanwang.image.spider.gif.start.GifSpiderStart;
+import com.kuaikanwang.image.spider.gif.start.impl.GifSpiderStartImpl;
 import com.kuaikanwang.image.spider.start.SpiderStart;
 
 /**
@@ -25,18 +29,43 @@ public class SpiderTestController {
 	@Autowired
 	private SpiderStart ctoPreSpiderStartImpl;
 	
+	@Resource
+	private GifSpiderStart gifSpiderStartImpl;
+	
 	/**
-	 * 图片预抓取
+	 * 图片抓取
 	 * <p>Title: spiderStartTest</p>
 	 * <p>Description: </p>
 	 * @return
 	 */
-	@RequestMapping("/start")
+	@RequestMapping("/start/img")
 	@ResponseBody
 	public Object spiderStartTest(@RequestParam(defaultValue="1") Long webId){
 		Long count = ctoPreSpiderStartImpl.preSpiderStart(webId);
 		return count;
 	}
+	
+	
+	
+	/**
+	 * 动态图抓取
+	 * <p>Title: spiderStartTest</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/gif")
+	@ResponseBody
+	public Object spiderStartGif(@RequestParam(defaultValue="1") Long webId){
+		
+		Long count = gifSpiderStartImpl.preSpiderStart(webId);
+		
+		return count;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

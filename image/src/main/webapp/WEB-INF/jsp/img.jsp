@@ -51,7 +51,7 @@
 		<span id="image_kill_referrer"  style='width:120px;height:160px;'>
 		</span>
 		</li>
-		<img alt="测试" src="http://pic.59pic.com/2015/0616/20150616052205321.jpg.196.265.jpg">
+		<img alt="测试" src="http://zhx.zhiyinmanhua.com/2015/10/cf44c3287006f3015eeb08eb4e8eb5af.gif">
 	</ul>
 	<script>
 		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://imgnew.uumnt.cc:8088/Thumb/2016/0804/ba793e8d5ed4ad3ace2e33c361fcd591.jpg');

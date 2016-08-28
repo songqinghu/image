@@ -26,13 +26,14 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    	//http://img1.mm131.com/pic/2506/1.jpg
 	    	//http://pic.59pic.com/2016/0809/20160809025057198.jpg
 	    	List<String> urls = page.getHtml().
-	    			xpath("//div[@class='warp clearfix mt14']/div/a/img").
-	    			regex("(http://imgnew\\.uumnt\\.cc:8088/.+/.+/.+/.+/.+\\.jpg)").
-	    			all();
+	    			xpath("//div[@class='main']/div/div/div/div/div/p/a/img")
+	    			.regex("(http://.+\\.gif)")
+	    			//.links()
+	    			.all();
 	    	
 	    	
 	    	List<String> names = page.getHtml().
-	    			xpath("//div[@class='warp clearfix mt14']/div/h1/text()").
+	    			xpath("//div[@class='main']/div/div/div/div/div/h1/text()").
 	    			all();
 	    	//()代表取出其中的数据
 	    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
@@ -47,9 +48,10 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	        
 	        // 部分三：从页面发现后续的url地址来抓取  //http://www.59pic.com/mn/1445_5.html
 	        List<String> all = page.getHtml().
-	        		xpath("//div[@class='warp clearfix mt14']/div/div/a").
-	        		links().
-	        		regex("http://www\\.uumnt\\.com/.+/.+\\.html").all();
+	        		xpath("//div[@class='main']/div/div/div/div[@class='pageturn']/a").
+	        		links()
+	        		.regex("http://www\\.kx1d\\.com/.+/\\d+_\\d+\\.html")
+	        		.all();
 	       
 	        page.addTargetRequests(all);
 	        	
@@ -68,7 +70,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.uumnt.com/xinggan/7776.html";
+			String url = "http://www.kx1d.com/xieegif/30913.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}

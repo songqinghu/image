@@ -31,6 +31,12 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 	@Autowired
 	private Pipeline mainMysqlPipeline;
 	
+	//预处理存入数据库 动态图
+	@Resource
+	private Pipeline gifPreMysqlPipeline;
+	@Autowired
+	private Pipeline gifMainMysqlPipeline;
+	
 	
 	//爬虫容器
 	@Resource
@@ -43,7 +49,10 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 	public boolean callPreSpider(long webId, String url) {
 		
 		if(pageProcessorContainer.getPrePageProcessorContainer().containsKey(webId)){
-			Spider.create(pageProcessorContainer.getPrePageProcessorContainer().get(webId)).addPipeline(preMysqlPipeline).
+			Spider
+			.create(pageProcessorContainer.getPrePageProcessorContainer()
+			.get(webId))
+			.addPipeline(preMysqlPipeline).
 			addUrl(url).
 			thread(7).run();
 		}
@@ -58,6 +67,32 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 		if(pageProcessorContainer.getMainPageProcessorContainer().containsKey(webId)){
 			Spider.create(pageProcessorContainer.getMainPageProcessorContainer().get(webId)).
 			addPipeline(mainMysqlPipeline)
+			.addUrl(url).thread(7).run();
+		}
+		
+
+		return true;
+	}
+
+	@Override
+	public boolean callPreGifSpider(long gwebId, String url) {
+		
+		if(pageProcessorContainer.getPrePageProcessorContainer().containsKey(gwebId)){
+			Spider.
+			create(pageProcessorContainer.getPreGifPageProcessorContainer().get(gwebId))
+			.addPipeline(gifPreMysqlPipeline).
+			addUrl(url).
+			thread(7).run();
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean callMaicGifSpider(long gwebId, String url) {
+		if(pageProcessorContainer.getMainPageProcessorContainer().containsKey(gwebId)){
+			Spider.create(pageProcessorContainer.getMainGifPageProcessorContainer().get(gwebId)).
+			addPipeline(gifMainMysqlPipeline)
 			.addUrl(url).thread(7).run();
 		}
 		

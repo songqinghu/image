@@ -20,5 +20,16 @@ public interface SpiderInfoMapper {
 	
 	
 	public List<Long> findAllWebIds();
+	
+	/**
+	 * 获取要爬取的动态图的地址
+	 * <p>Title: findGWebSpiderPreUrl</p>
+	 * <p>Description: </p>
+	 * @param gwebId
+	 * @return
+	 */
+	public List<String> findGWebSpiderPreUrl(long gwebId);
+	
+	
 
 }

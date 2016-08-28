@@ -1,4 +1,4 @@
-package image.test.spider.test;
+package com.kuaikanwang.image.spider.gif.process.kx1d.pre;
 
 import java.util.List;
 
@@ -9,14 +9,11 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+@Component("kx1dPrePageProcessor")
+public class KX1DPrePageProcessor implements PageProcessor,WebSiteIdentification {
 
-
-public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
-	
-    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
+	   // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
     		me().
     		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
@@ -87,14 +84,7 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
 	@Override
 	public long getWebId() {
-		return 2;
+		return 1;
 	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.meizitu.com/";
-		String url = "http://www.kx1d.com/xieegif/";
-		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
-	}
-    
+	
 }

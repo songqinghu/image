@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kuaikanwang.image.dao.SpiderInfoMapper" >
+<mapper namespace="com.kuaikanwang.image.dao.MainGifMapper" >
 
   <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
     <id column="pre_id" property="pid" jdbcType="INTEGER" />
@@ -11,17 +11,21 @@
     <result column="url" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
 
-  <select id="findWebSpiderPreUrl" parameterType="java.lang.Long" resultType="map" >
-		select  url,pictype from webspiderinfo where web_id  = #{id};
-  </select>
-
-  <select id="findAllWebIds" resultType="java.lang.Long" >
-		select id  from webinfo ;
+  <select id="findMainGifByUrl" parameterType="java.lang.String" resultType="java.lang.Long" >
+		select count(1) from maingif where url = #{url};
   </select>
   
-    <select id="findGWebSpiderPreUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from gwebspiderinfo where gweb_id  = #{id};
-  </select>
+
+  <insert id="insertMainGif" parameterType="com.kuaikanwang.image.domain.bean.gif.MainGif" >
+  
+    insert into maingif 
+    (pre_id, gweb_id, name,url)
+    values 
+    (#{pre_id}, #{gweb_id}, #{name}, #{url})
+
+  </insert>
+
+
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />

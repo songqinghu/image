@@ -22,13 +22,16 @@ import us.codecraft.webmagic.processor.PageProcessor;
 @Component
 public class PageProcessorContainer implements InitializingBean{
 
-	
+	//图片
 	private Map<Long, PageProcessor> prePageProcessorContainer = new HashMap<Long, PageProcessor>();
-	
+	//图片
 	private Map<Long, PageProcessor> mainPageProcessorContainer = new HashMap<Long, PageProcessor>();
+	//动态图
+	private Map<Long, PageProcessor> preGifPageProcessorContainer = new HashMap<Long, PageProcessor>();
+	//动态图
+	private Map<Long, PageProcessor> mainGifPageProcessorContainer = new HashMap<Long, PageProcessor>();
 	
-	//预处理部分
-	
+	//预处理部分 --图片部分
 	@Resource
 	private PageProcessor ctoPrePageProcessor;
 	@Resource
@@ -44,8 +47,7 @@ public class PageProcessorContainer implements InitializingBean{
 	@Resource
 	private PageProcessor uumntPrePageProcessor;
 	
-	
-	//主抓取部分
+	//主抓取部分 --图片部分
 	@Resource
 	private PageProcessor ctoMainPageProcessor;
 	@Resource
@@ -62,10 +64,20 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor uumntMainPageProcessor;
 	
 	
+	//预处理部分 --动态图部分
+	@Resource
+	private PageProcessor kx1dPrePageProcessor;
+	
+	
+	//主抓取部分 --动态图部分
+	@Resource
+	private PageProcessor kx1dMainPageProcessor;
+	
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		
-		//预处理
+		//预处理 --图片
 		prePageProcessorContainer.put(1l, ctoPrePageProcessor);
 		prePageProcessorContainer.put(2l, mmPrePageProcessor);
 		prePageProcessorContainer.put(3l, souutuPrePageProcessor);
@@ -76,7 +88,7 @@ public class PageProcessorContainer implements InitializingBean{
 		
 		
 		
-		//主抓取
+		//主抓取 --图片
 		mainPageProcessorContainer.put(1l, ctoMainPageProcessor);
 		mainPageProcessorContainer.put(2l, mmMainPageProcessor);
 		mainPageProcessorContainer.put(3l, souutuMainPageProcessor);
@@ -84,6 +96,14 @@ public class PageProcessorContainer implements InitializingBean{
 		mainPageProcessorContainer.put(5l, kuMainPageProcessor);
 		mainPageProcessorContainer.put(6l, picMainPageProcessor);
 		mainPageProcessorContainer.put(7l, uumntMainPageProcessor);
+		
+		
+		//预处理 --动态图
+		preGifPageProcessorContainer.put(1l, kx1dPrePageProcessor);
+		
+		//主抓取 --动态图
+		mainGifPageProcessorContainer.put(1l, kx1dMainPageProcessor);
+		
 		
 	}
 
@@ -98,8 +118,14 @@ public class PageProcessorContainer implements InitializingBean{
 	}
 
 
-	
-	
+	public Map<Long, PageProcessor> getPreGifPageProcessorContainer() {
+		return preGifPageProcessorContainer;
+	}
+
+
+	public Map<Long, PageProcessor> getMainGifPageProcessorContainer() {
+		return mainGifPageProcessorContainer;
+	}
 	
 
 }

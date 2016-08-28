@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kuaikanwang.image.dao.SpiderInfoMapper" >
+<mapper namespace="com.kuaikanwang.image.dao.PreGifMapper" >
 
-  <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
-    <id column="pre_id" property="pid" jdbcType="INTEGER" />
-    <result column="pictype" property="pictype" jdbcType="VARCHAR" />
-    <result column="name" property="picName" jdbcType="VARCHAR" />
-    <result column="cratedate" property="createdate" jdbcType="TIMESTAMP" />
-    <result column="id" property="mid" jdbcType="INTEGER" />
-    <result column="url" property="picUrl" jdbcType="VARCHAR" />
-  </resultMap>
 
-  <select id="findWebSpiderPreUrl" parameterType="java.lang.Long" resultType="map" >
-		select  url,pictype from webspiderinfo where web_id  = #{id};
-  </select>
 
-  <select id="findAllWebIds" resultType="java.lang.Long" >
-		select id  from webinfo ;
+  <select id="findPreGifByUrl" parameterType="java.lang.String" resultType="java.lang.Long" >
+		select count(1) from pregif where url = #{url};
   </select>
   
-    <select id="findGWebSpiderPreUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from gwebspiderinfo where gweb_id  = #{id};
+  <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
+		select pre_id,url from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;
   </select>
+  <select id="findMaxNumberByWebId" parameterType="java.lang.Long" resultType="java.lang.Long" >
+		select count(1) from pregif where gweb_id =#{webId};
+  </select> 
+
+
+  <insert id="insertPreGif" parameterType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
+  
+    insert into pregif 
+      (gweb_id,name,url, murl)
+      
+    values (#{gweb_id}, #{name}, 
+      #{url}, #{murl})
+  </insert>
+
+
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />

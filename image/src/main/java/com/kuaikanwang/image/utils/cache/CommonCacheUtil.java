@@ -38,7 +38,7 @@ public class CommonCacheUtil implements InitializingBean{
 	public static final String  WEB_ID = "webId";
 	public static final String  PICTYPE = "pictype";
 	public static final String  PRE_ID = "pre_id";
-	
+	public static final String  GPRE_ID="gpre_id";//动态图 副表preid
 	
 	private static Map<String, Long> preCacheInfo = new HashMap<String,Long>();
 	
