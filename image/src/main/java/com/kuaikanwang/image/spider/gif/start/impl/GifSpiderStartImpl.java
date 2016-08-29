@@ -45,16 +45,16 @@ public class GifSpiderStartImpl implements GifSpiderStart{
 	public Long preSpiderStart(long gwebId){
 		
 		
-//		List<String> list = spiderInfoMapper.findGWebSpiderPreUrl(gwebId);//url 和 类别
-//		
-//		/**
-//		 * 预抓取
-//		 */
-//		for (String url : list) {
-//			
-//			spiderSelectDispatchImpl.callPreGifSpider(gwebId, url);
-//			
-//		}
+		List<String> list = spiderInfoMapper.findGWebSpiderPreUrl(gwebId);//url 和 类别
+		
+		/**
+		 * 预抓取
+		 */
+		for (String url : list) {
+			
+			spiderSelectDispatchImpl.callPreGifSpider(gwebId, url);
+			
+		}
 			
 
 		/**
