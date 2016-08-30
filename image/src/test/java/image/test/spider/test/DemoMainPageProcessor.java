@@ -25,12 +25,19 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	        // 部分二：定义如何抽取页面信息，并保存下来
 	    	//http://img1.mm131.com/pic/2506/1.jpg
 	    	//http://pic.59pic.com/2016/0809/20160809025057198.jpg
-	    	List<String> urls = page.getHtml().
+	    	List<String> urls = 
+	    			page.getHtml().
 	    			xpath("//div[@id='main']/div/div/center/div/a/img")
 	    			.regex("src=\"(http://.+\\.gif)\"")
 	    			//.links()
 	    			.all();
-	    	
+	    	if(urls ==null || urls.size()==0){
+	    		urls = page.getHtml().
+		    			xpath("//div[@id='main']/div/div/center/p/a/img")
+		    			.regex("src=\"(http://.+\\.gif)\"")
+		    			//.links()
+		    			.all();
+	    	}
 	    	
 	    	List<String> names = page.getHtml().
 	    			xpath("//div[@id='main']/div/h1/text()").
@@ -60,7 +67,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    @Override
 	    public Site getSite() {
 	        return site;
-	    }
+	    } 
 
 		@Override
 		public long getWebId() {
@@ -70,7 +77,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.qqszc.com/dongtaitupian/58586.html";
+			String url = "http://www.qqszc.com/dongtaitupian/58058.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}

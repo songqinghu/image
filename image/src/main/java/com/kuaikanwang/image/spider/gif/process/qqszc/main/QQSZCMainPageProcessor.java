@@ -29,7 +29,13 @@ public class QQSZCMainPageProcessor implements PageProcessor,WebSiteIdentificati
     			.regex("src=\"(http://.+\\.gif)\"")
     			//.links()
     			.all();
-    	
+    	if(urls ==null || urls.size()==0){
+    		urls = page.getHtml().
+	    			xpath("//div[@id='main']/div/div/center/p/a/img")
+	    			.regex("src=\"(http://.+\\.gif)\"")
+	    			//.links()
+	    			.all();
+    	}
     	
     	List<String> names = page.getHtml().
     			xpath("//div[@id='main']/div/h1/text()").
