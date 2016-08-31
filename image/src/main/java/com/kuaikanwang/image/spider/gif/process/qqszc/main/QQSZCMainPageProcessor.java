@@ -24,18 +24,48 @@ public class QQSZCMainPageProcessor implements PageProcessor,WebSiteIdentificati
         // 部分二：定义如何抽取页面信息，并保存下来
     	//http://img1.mm131.com/pic/2506/1.jpg
     	//http://pic.59pic.com/2016/0809/20160809025057198.jpg
-    	List<String> urls = page.getHtml().
+		List<String> urls = 
+    			page.getHtml().
     			xpath("//div[@id='main']/div/div/center/div/a/img")
-    			.regex("src=\"(http://.+\\.gif)\"")
+    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
     			//.links()
     			.all();
     	if(urls ==null || urls.size()==0){
     		urls = page.getHtml().
 	    			xpath("//div[@id='main']/div/div/center/p/a/img")
-	    			.regex("src=\"(http://.+\\.gif)\"")
+	    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
 	    			//.links()
 	    			.all();
     	}
+    	if(urls ==null || urls.size()==0){
+    		urls = page.getHtml().
+    				xpath("//div[@id='main']/div/div/center/div/div/a/img")
+    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+    				//.links()
+    				.all();
+    	}
+    	if(urls ==null || urls.size()==0){
+    		urls = page.getHtml().
+    				xpath("//div[@id='main']/div/div/a/img")
+    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+    				//.links()
+    				.all();
+    	}
+    	if(urls ==null || urls.size()==0){
+    		urls = page.getHtml().
+    				xpath("//div[@id='main']/div/div/center/p/span/a/img")
+    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+    				//.links()
+    				.all();
+    	}
+    	if(urls ==null || urls.size()==0){
+    		urls = page.getHtml().
+    				xpath("//div[@id='main']/div/div/center/a/img")
+    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+    				//.links()
+    				.all();
+    	}
+    	
     	
     	List<String> names = page.getHtml().
     			xpath("//div[@id='main']/div/h1/text()").

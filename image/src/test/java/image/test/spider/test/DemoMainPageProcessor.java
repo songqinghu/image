@@ -28,15 +28,43 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    	List<String> urls = 
 	    			page.getHtml().
 	    			xpath("//div[@id='main']/div/div/center/div/a/img")
-	    			.regex("src=\"(http://.+\\.gif)\"")
+	    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
 	    			//.links()
 	    			.all();
 	    	if(urls ==null || urls.size()==0){
 	    		urls = page.getHtml().
 		    			xpath("//div[@id='main']/div/div/center/p/a/img")
-		    			.regex("src=\"(http://.+\\.gif)\"")
+		    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
 		    			//.links()
 		    			.all();
+	    	}
+	    	if(urls ==null || urls.size()==0){
+	    		urls = page.getHtml().
+	    				xpath("//div[@id='main']/div/div/center/div/div/a/img")
+	    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	    				//.links()
+	    				.all();
+	    	}
+	    	if(urls ==null || urls.size()==0){
+	    		urls = page.getHtml().
+	    				xpath("//div[@id='main']/div/div/a/img")
+	    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	    				//.links()
+	    				.all();
+	    	}
+	    	if(urls ==null || urls.size()==0){
+	    		urls = page.getHtml().
+	    				xpath("//div[@id='main']/div/div/center/p/span/a/img")
+	    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	    				//.links()
+	    				.all();
+	    	}
+	    	if(urls ==null || urls.size()==0){
+	    		urls = page.getHtml().
+	    				xpath("//div[@id='main']/div/div/center/a/img")
+	    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	    				//.links()
+	    				.all();
 	    	}
 	    	
 	    	List<String> names = page.getHtml().
@@ -77,7 +105,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.qqszc.com/dongtaitupian/58058.html";
+			String url = "http://www.qqszc.com/dongtaitupian/35082.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}
