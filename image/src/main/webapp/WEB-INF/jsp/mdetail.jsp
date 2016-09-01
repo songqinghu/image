@@ -26,6 +26,15 @@
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com" >
     <meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com"/>
+        <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e0621038655f4a4c83fa7510e4c4d08b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
   </head>
   <body>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

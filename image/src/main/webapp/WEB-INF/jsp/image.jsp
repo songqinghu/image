@@ -35,6 +35,15 @@
     	var type = window.location.href.replace("http://www.zuiyuyue.com/images/","").replace("/list","");
 	    uaredirect("http://m.zuiyuyue.com/m/image/"+type+"/detail/list");
     </script>
+        <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e0621038655f4a4c83fa7510e4c4d08b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
   </head>
   <body>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
