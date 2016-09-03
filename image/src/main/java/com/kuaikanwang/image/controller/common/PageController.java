@@ -1,4 +1,4 @@
-package com.kuaikanwang.image.controller;
+package com.kuaikanwang.image.controller.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

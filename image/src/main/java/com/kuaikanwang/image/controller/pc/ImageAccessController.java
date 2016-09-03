@@ -1,4 +1,4 @@
-package com.kuaikanwang.image.controller;
+package com.kuaikanwang.image.controller.pc;
 
 import java.util.HashMap;
 import java.util.List;

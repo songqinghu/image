@@ -1,4 +1,4 @@
-package com.kuaikanwang.image.controller;
+package com.kuaikanwang.image.controller.app;
 
 import java.util.List;
 
