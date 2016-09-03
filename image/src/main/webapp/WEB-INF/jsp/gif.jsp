@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,11 +20,16 @@
 
 <meta name="robots" content="noarchive">
 
-<%--
-<link href="http://static.qiushibaike.com/css/dist/web/app.min.css?v=3715c9e1f7541af31e31e9c8e92455d6"  media="screen, projection" rel="stylesheet" type="text/css"/>
---%>
 <link href="http://localhost/css/app.css"  media="screen, projection" rel="stylesheet" type="text/css"/>
-
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e0621038655f4a4c83fa7510e4c4d08b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
 </head>
 <body>
 
@@ -60,7 +65,8 @@
 <div class="content-block clearfix">
 
 <div id="content-left" class="col1">
-
+  <c:forEach begin="0" end="5" >
+ 
 <div class="article block untagged mb15" id='qiushi_tag_117404086'>
 
 	<div class="author clearfix">
@@ -121,7 +127,7 @@
 <div class="single-clear"></div>
 
 </div>
-
+ </c:forEach>
 
 
 
