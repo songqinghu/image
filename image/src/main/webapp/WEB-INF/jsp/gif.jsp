@@ -65,7 +65,7 @@
 <div class="content-block clearfix">
 
 <div id="content-left" class="col1">
-  <c:forEach begin="0" end="5" >
+  <c:forEach var="gif" items="${list}" >
  
 <div class="article block untagged mb15" id='qiushi_tag_117404086'>
 
@@ -74,15 +74,14 @@
 			<img src="http://pic.qiushibaike.com/system/avtnew/3046/30466168/medium/2016082504170014.JPEG" alt="韩冰凝"/>
 		</a>
 		<a href="/users/30466168/" target="_blank" title="韩冰凝">
-			<h2>韩冰凝</h2>
+			<h2>${gif.gifName}</h2>
 		</a>
 	</div>
 	<div class="content">
-		这漫画简直画出无数情侣的真实写照，当男生和女朋友同居后，上厕所是这样的：
 	</div>
 	<div class="thumb">
 		<a href="/article/117404086" target="_blank">
-			<img src="http://pic.qiushibaike.com/system/pictures/11740/117404086/medium/app117404086.jpg" alt="这漫画简直画出无数情侣的真实写照" />
+			<img src="${gif.gifUrl}" alt="${gif.gifName}" />
 		</a>
 	</div>
 

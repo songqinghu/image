@@ -12,5 +12,7 @@
 	
 	<context:component-scan base-package="com.kuaikanwang.image.service,com.kuaikanwang.image.component,com.kuaikanwang.image.spider"></context:component-scan>
 	<context:component-scan base-package="com.kuaikanwang.image.utils"></context:component-scan>
+	<context:component-scan base-package="com.kuaikanwang.image.redis"></context:component-scan>
+	
 	
 </beans>

@@ -121,6 +121,8 @@ public class CommonCacheUtil implements InitializingBean{
 		return typeCountCache;
 	}
 
+	
+	
 	/**
 	 * 
 	 * <p>Title: afterPropertiesSet</p>

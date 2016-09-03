@@ -52,7 +52,7 @@ public class PageNumberListUtils {
 		return pageNum;
 	}
 	/**
-	 * 根据当前页和最大页数确定展示的列表---默认展示9页
+	 * 根据当前页和最大页数确定展示的列表---默认展示5页
 	 * <p>Title: getPageNumList</p>
 	 * <p>Description: </p>
 	 * @param nowPage

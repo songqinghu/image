@@ -48,10 +48,8 @@ public class ImageAccessController {
 	@RequestMapping("/{imageType}/list")
 	public ModelAndView toImageList(@RequestParam(defaultValue="1") 
 	int pageNum,
-	@PathVariable int imageType,
-	HttpServletResponse response){
+	@PathVariable int imageType){
 
-		response.setHeader("Referer", "");
 		/**
 		 * 从缓存中校验一下 是不是有图片类型,没有默认使用1
 		  */

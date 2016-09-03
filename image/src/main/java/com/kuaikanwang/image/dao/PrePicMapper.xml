@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kuaikanwang.image.dao.PrePicMapper" >
-
+	<cache  eviction="FIFO"  flushInterval="180000"  size="1024"  readOnly="true"/> 
+<!-- 先进先出   缓存180s  缓存1024个  只读 -->
   <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
     <id column="pre_id" property="pid" jdbcType="INTEGER" />
     <result column="pictype" property="pictype" jdbcType="VARCHAR" />

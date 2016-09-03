@@ -70,7 +70,7 @@ public class GifSpiderStartImpl implements GifSpiderStart{
 			map.put("start", start);
 			
 			PreGif gif = preGifMapper.findPreGifByWebId(map);
-			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度
+			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度---做hashcode 部分重复抓取
 			Integer count = gifAccessMapper.findDetailTotalCount((int) gif.getPre_id());
 			if(count<=0){ //未抓取过再去抓取
 				//纪录抓取的数量
