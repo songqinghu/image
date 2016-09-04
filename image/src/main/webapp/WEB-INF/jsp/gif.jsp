@@ -33,8 +33,13 @@
     <script src="/css/uaredirect.js" type="text/javascript"></script>
 	
 	<script type="text/javascript">
-    	//var type = window.location.href.replace("http://www.zuiyuyue.com/images/","").replace("/list","");
-	    uaredirect("http://m.zuiyuyue.com/m/image/"+1+"/detail/list");
+    	var type = window.location.href.replace("http://www.zuiyuyue.com/gif/list","").replace("?pageNum=","");
+    	if(type=="" || type ==0){
+    		uaredirect("http://m.zuiyuyue.com/m/gif/detail/list");
+    	}else{
+    		uaredirect("http://m.zuiyuyue.com/m/gif/detail/list?pageNum="+type*2);
+    	}
+    	
     </script>  
     
     
