@@ -31,5 +31,8 @@ public interface SpiderInfoMapper {
 	public List<String> findGWebSpiderPreUrl(long gwebId);
 	
 	
+	public List<Long> findGifAllWebIds();
+	
+	
 
 }

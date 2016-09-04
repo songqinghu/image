@@ -30,12 +30,26 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
 	    			//.links()
 	    			.all();
-	    	
+	    	if( urls == null || urls.size()==0){
+	    		urls = page.getHtml().
+		    			xpath("//table/tbody/tr/td/div/a/img")
+		    			.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+		    			//.links()
+		    			.all();
+	    	}
+	    	if( urls == null || urls.size()==0){
+	    		urls = page.getHtml().
+	    				xpath("//table/tbody/tr/td/div/p/a/img")
+	    				.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	    				//.links()
+	    				.all();
+	    	}
 	    	
 	    	List<String> names = page.getHtml()
-	    			.xpath("//table/tbody/tr/td/p/text()")
+	    			.xpath("//div[@class='indexbox']/div/div/div/h1/text()")
 	    			.regex("\\S+")
 	    			.all();
+	    	
 	    	//()代表取出其中的数据
 	    	page.putField(CommonCacheUtil.WEB_ID, getWebId());
 	    	page.putField("url", urls);
@@ -71,7 +85,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.youqu.net/xieedongtaitu/2014/0623/1696_2.html";
+			String url = "http://www.youqu.net/xieedongtaitu/2016/0709/33686.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}

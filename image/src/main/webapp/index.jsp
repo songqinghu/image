@@ -66,7 +66,7 @@
 </nav>
 
 
-<div class="alert alert-success" role="alert">   本站目前已有美女图片模块,点击左上角的美女图片观看吧!                后续更多精彩内容,敬请期待!!</div>
+<div class="alert alert-success" role="alert"> 动态图电脑版本上线喽!             后续更多精彩内容,敬请期待!!</div>
 <div class="page-header">
   <h2><span class="label label-primary">性感美女</span><small><a href="http://www.zuiyuyue.com/images/1/list" >更多</a></small></h2>
 </div>

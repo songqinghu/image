@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,8 +86,11 @@ public class SpiderStartImpl implements SpiderStart {
 			PrePic pic = prePicmapper.findPrePicByWebId(map);
 			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度
 			Integer count = imageAccessMapper.findDetailTotalCount((int) pic.getPre_id());
-			
-			if(count<=0){ //未抓取过再去抓取
+			boolean flag = false;
+			if(count <=0 || RandomUtils.nextInt(16)%15==0){
+				flag =true;
+			}
+			if(flag){ //未抓取过再去抓取
 				//纪录抓取的数量
 				spiderCount++;
 				

@@ -3,9 +3,11 @@ package com.kuaikanwang.image.spider.gif.start.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,7 +74,12 @@ public class GifSpiderStartImpl implements GifSpiderStart{
 			PreGif gif = preGifMapper.findPreGifByWebId(map);
 			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度---做hashcode 部分重复抓取
 			Integer count = gifAccessMapper.findDetailTotalCount((int) gif.getPre_id());
-			if(count<=0){ //未抓取过再去抓取
+			boolean flag = false;
+			if(count <=0 || RandomUtils.nextInt(6)%5==0){
+				flag =true;
+			}
+			
+			if(flag){ //未抓取过再去抓取
 				//纪录抓取的数量
 				spiderCount++;
 				

@@ -1,4 +1,4 @@
-package image.test.spider.test;
+package com.kuaikanwang.image.spider.gif.process.youqu.pre;
 
 import java.util.List;
 
@@ -9,13 +9,10 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+@Component("youquPrePageProcessor")
+public class YOUQUPrePageProcessor implements PageProcessor,WebSiteIdentification{
 
-
-public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
-	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
     		me().
@@ -32,12 +29,10 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 		  xpath("//div[@class='indexbox']/div/div/ul/li/a").
 		  links().
 		  all();
-
     	List<String> names = page.getHtml()
     			.xpath("//div[@class='indexbox']/div/div/ul/li/p/a")
     			.regex("title=\"(.+)\"")
     			.all();
-
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
     	//()代表取出其中的数据
 //    	for (String string : all2) {
@@ -50,8 +45,6 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     	.regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"",1)
     	.replace("^/uploads","http://www.youqu.net/uploads")
     	.all();
-    	
-
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("urls", urls);
@@ -93,14 +86,7 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
 	@Override
 	public long getWebId() {
-		return 2;
-	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.meizitu.com/";
-		String url = "http://www.youqu.net/xieedongtaitu/";
-		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
+		return 3;
 	}
     
 }
