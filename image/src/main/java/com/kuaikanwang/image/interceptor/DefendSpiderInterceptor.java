@@ -50,7 +50,7 @@ public class DefendSpiderInterceptor implements HandlerInterceptor {
 		
 		//正常爬虫访问的频率是很低的 算 1分钟10次就很高了
 		if(AccessURIRegexUtil.accessPage(uri)){ //加1
-			Boolean flag = redisDaoImpl.incrValueByKey(RedisKeyUtil.getSpiderOneKey(userIP),60,10); //1 分钟 多余10次异常
+			Boolean flag = redisDaoImpl.incrValueByKey(RedisKeyUtil.getSpiderOneKey(userIP),60,20); //1 分钟 多余20次异常
 			//如果是 false 需要进入二级识别 加1  三次进入黑名单 
 			if(!flag){
 				Boolean twoFlag = redisDaoImpl.incrValueByKey(RedisKeyUtil.getSpiderTwoKey(userIP),86400,2); //1天 多余 3次 异常
