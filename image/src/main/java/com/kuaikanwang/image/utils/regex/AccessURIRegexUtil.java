@@ -33,7 +33,7 @@ public class AccessURIRegexUtil {
 		// /m/image/1/detail/list
 		// /m/image/detail
 		Pattern pattern = Pattern.
-				compile("(/images/\\d/list)|(/images/detail)|(/gif/list)|(/m/image/\\d/detail/list)|(/m/image/detail)");
+				compile("(/images/\\d/list)|(/images/detail)|(/gif/list)|(/m/image/\\d/detail/list)|(/m/image/detail)|(/m/gif/detail/list)");
 		
 		Matcher matcher = pattern.matcher(uri);
 		
@@ -41,7 +41,7 @@ public class AccessURIRegexUtil {
 	}
 	
 	public static void main(String[] args) {
-		boolean accessPage = accessPage("/m/image/1/detail/list");
+		boolean accessPage = accessPage("/m/gif/detail/list");
 		System.out.println(accessPage);
 	}
 	
