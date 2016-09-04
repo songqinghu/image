@@ -37,13 +37,13 @@ public class ImageExtendServiceImpl implements ImageExtendService {
 			}
 		}
 		
-		
+		if(num ==11){ //是图片页展示
 		if(CommonCacheUtil.getLatestPicListCache().isEmpty()){
 			CommonCacheUtil.getLatestPicListCache().addAll(list);
 		}
 		CommonCacheUtil.getLatestPicList().clear();
 		CommonCacheUtil.getLatestPicList().addAll(list);
-		
+		}
 		return list;
 	}
 
@@ -68,13 +68,13 @@ public class ImageExtendServiceImpl implements ImageExtendService {
 			}
 		}
 		
-		
+		if(num ==10){ //是图片页面展示
 		if(CommonCacheUtil.getCountPicListCache().isEmpty()){
 			CommonCacheUtil.getCountPicListCache().addAll(list);
 		}
 		CommonCacheUtil.getCountPicList().clear();
 		CommonCacheUtil.getCountPicList().addAll(list);
-		
+		}
 		return list;
 	}
 

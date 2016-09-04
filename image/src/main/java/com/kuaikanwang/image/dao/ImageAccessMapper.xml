@@ -88,6 +88,7 @@
 				p.pictype,
 				p.`name`,
 				p.cratedate,
+				p.murl,
 				m.id
 				FROM
 					prepic p,
@@ -114,7 +115,8 @@
 		    SELECT
 				p.pre_id,
 				p.pictype,
-				p.`name`
+				p.`name`,
+				p.murl
 			FROM
 				prepic p,
 				pretimecount m

@@ -1,26 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
-<meta name="renderer" content="webkit"/>
-<meta name="applicable-device" content="pc">
-<title>
-	超搞笑图片_笑死人不偿命的爆笑笑话图片大全 - 糗事百科
-</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="applicable-device"content="pc">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <c:if test="${nowPage == 1}">
+  		<title>${list[0].gifName} 邪恶动态图 - 最愉阅-啪啪啪动态图-papapa</title>
+	</c:if>
+    <c:if test="${nowPage > 1}">
+  		<title>${list[0].gifName} 邪恶动态图 - 最愉阅-啪啪啪动态图-papapa-第${nowPage}页</title>
+	</c:if>
+	
+<meta name="keywords" content="啪啪啪,邪恶,动态图,papapa" />
+<meta name="description" content="最愉阅官网提供最热门啪啪啪动态图,热门邪恶动态图,给你最想要的啪啪啪资源"/>
 
-<meta name="keywords" content="搞笑图片,笑死人不偿命" />
-<meta name="description" content="糗事百科官网提供最热门搞笑图片糗事,热门图片类笑话,笑死人不偿命的爆笑笑话,超级搞笑笑话图片大全,不怕你不笑！"/>
+<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
+<link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.zuiyuyue.com" >
+<meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com"/>
 
-<meta http-equiv="mobile-agent" content="format=xhtml;url=http://www.qiushibaike.com/">
-<meta http-equiv="mobile-agent" content="format=html5;url=http://www.qiushibaike.com/">
 
-<meta name="robots" content="noarchive">
+<%-- <meta name="robots" content="noarchive">--%>
 
-<link href="http://localhost/css/app.css"  media="screen, projection" rel="stylesheet" type="text/css"/>
+<link href="http://www.zuiyuyue.com/css/app.css"  media="screen, projection" rel="stylesheet" type="text/css"/>
+    
+      <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    
+    <script src="/css/uaredirect.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+    	//var type = window.location.href.replace("http://www.zuiyuyue.com/images/","").replace("/list","");
+	    uaredirect("http://m.zuiyuyue.com/m/image/"+1+"/detail/list");
+    </script>  
+    
+    
     <script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -32,29 +49,42 @@
 	</script>
 </head>
 <body>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://www.zuiyuyue.com/js/bootstrap.min.js"></script>
+  	<script>
+  	 $.ajax(  
+		        {  
+		            type : 'GET',  
+		            url : 'http://www.zuiyuyue.com/spider/show/count',  
+		        });  
+	</script>
 
 <div id="header" class="head">
 <div class="content-block">
 <div class="logo" id="hd_logo">
-	<a href="/"><h1>糗事百科</h1></a>
+	<a href="/"><h1>最愉阅-啪啪啪动态图</h1></a>
 </div>
 <div id="menu" class="menu-bar menu clearfix" style="margin:0 10px">
-	<a  href="/" rel="nofollow">热门</a>
+	<a  id="highlight"  href="/gif/list">啪啪啪</a>
+	<a  href="/images/1/list">美女图片</a>
+	<%--<a  href="/" rel="nofollow">热门</a>
 	<a  href="/hot/">24小时</a>
-	<a  id="highlight"  href="/imgrank/">热图</a>
 	<a  href="/text/">文字</a>
 	<a  href="/history/">穿越</a>
 	<a  href="/pic/">糗图</a>
 	<a  href="/textnew/">新鲜</a>
 	<a  class="fn-signin-required" href="javascript:void(0);" data-go="/add" rel="nofollow">投稿</a>
+	--%>
 </div>
-<!-- <div class="userbar clearfix">
+<%-- <div class="userbar clearfix">
 	<div class="login hidden">
 		<a href="/my" class="username" id="uname" rel="nofollow"></a>
 	</div>
 <div class="logout">
 	<a href="javascript:void(0);" class="fn-signin-required logintop" id='logintop' rel="nofollow" style="font-size:16.5px;">登录</a>
-</div> -->
+</div> --%>
 </div>
 </div>
 </div>
@@ -70,22 +100,23 @@
 <div class="article block untagged mb15" id='qiushi_tag_117404086'>
 
 	<div class="author clearfix">
-		<a href="/users/30466168/" target="_blank" rel="nofollow">
-			<img src="http://pic.qiushibaike.com/system/avtnew/3046/30466168/medium/2016082504170014.JPEG" alt="韩冰凝"/>
+		<a href="/" target="_blank" rel="nofollow">
+			<img src="http://www.zuiyuyue.com/image/logo.png" alt="最愉阅"/>
 		</a>
-		<a href="/users/30466168/" target="_blank" title="韩冰凝">
-			<h2>${gif.gifName}</h2>
+		<a href="/" target="_blank" title="啪啪啪动态图">
+			<h2>最愉阅-啪啪啪动态图</h2>
 		</a>
 	</div>
 	<div class="content">
+		${gif.gifName}
 	</div>
 	<div class="thumb">
-		<a href="/article/117404086" target="_blank">
-			<img src="${gif.gifUrl}" alt="${gif.gifName}" />
+		<a href="#" target="_blank">
+			<img src="${gif.gifUrl}" alt="${gif.gifName}"  rel="nofollow"/>
 		</a>
 	</div>
 
-	<div class="stats">
+<%--	<div class="stats">
 	<span class="stats-vote"><i class="number">522</i> 好笑</span>
 	<span class="stats-comments">
 		<span class="dash"> · </span>
@@ -124,271 +155,83 @@
 <a class="share-weibo" data-type="weibo" title="分享到微博" rel="nofollow">微博</a>
 </div>
 <div class="single-clear"></div>
-
+--%>
 </div>
  </c:forEach>
-
-
-
-
-
-
 
 <ul class="pagination">
 
 
-<li>
-<span class="current" >
-1
-</span>
-</li>
-<li>
-<a href="/imgrank/page/2?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/2/" rel="nofollow">-->
-<span class="page-numbers">
-2
-</span>
-</a>
-</li>
-<li>
-<a href="/imgrank/page/3?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/3/" rel="nofollow">-->
-<span class="page-numbers">
-3
-</span>
-</a>
-</li>
-<li>
-<a href="/imgrank/page/4?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/4/" rel="nofollow">-->
-<span class="page-numbers">
-4
-</span>
-</a>
-</li>
-<li>
-<a href="/imgrank/page/5?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/5/" rel="nofollow">-->
-<span class="page-numbers">
-5
-</span>
-</a>
-</li>
+<c:forEach var="page"  items="${pageList}">
+     <c:choose>
+    	<c:when test="${nowPage == page}">
+    	<li>
+			<span class="current" >
+				${nowPage}
+			</span>
+			</li>
+    	</c:when>
 
-<li>
-<span class="dots">
-…
-</span>
-</li>
-
-<li>
-<a href="/imgrank/page/35?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/35/" rel="nofollow">-->
-<span class="page-numbers">
-35
-</span>
-</a>
-</li>
-
-<li>
-<a href="/imgrank/page/2?s=4908539" rel="nofollow">
-<!--<a href="/imgrank/page/2/" rel="nofollow">-->
-<span class="next">
-下一页
-</span>
-</a>
-</li>
-
+   	    <c:otherwise>
+   	    <li>
+		   <a href='?pageNum=${page}' >
+			<span class="page-numbers">
+				${page}
+			</span>
+			</a>
+		</li>
+   	    </c:otherwise>
+	</c:choose>
+</c:forEach>
+      	    <c:if test="${nowPage < maxPage}">
+      	    <li>
+			<a href='?pageNum=${nowPage + 1}' >
+				<span class="next">
+				下一页
+				</span>
+			</a>
+			</li>
+			</c:if>          
 </ul>
 
 </div>
 <div class="col2">
 <div id="sidebar" class="sidebar">
 <div class="sidebar-tutorial clearfix">
-<h3>糗百小提示</h3>
+<h3>愉阅小提示</h3>
 <div class="sidebar-tutorial-block">
 <div class="sidebar-tutorial-keyboard"></div>
-<div class="sidebar-tutorial-text">按 Ctrl+D 键，<br/>把糗事百科加入收藏夹</div>
+<div class="sidebar-tutorial-text">按 Ctrl+D 键，<br/>把最愉阅加入收藏夹</div>
 </div>
 </div>
 <div class="sidebar-tag clearfix">
-<h3>爆笑笑话大全</h3>
+<h3>美女图片精选</h3>
 <div class="sidebar-tag-block">
 
-
-<a href="/joke/34014/">lol英雄联盟搞笑歌曲</a>
-
-<a href="/joke/34015/">lol搞笑歌曲下载</a>
-
-<a href="/joke/34016/">lol搞笑歌曲大全</a>
-
-<a href="/joke/34017/">lol搞笑歌曲 我贱就是你贱</a>
-
-<a href="/joke/34018/">lol搞笑歌词</a>
-
-<a href="/joke/34019/">搞笑lol头像</a>
-
-<a href="/joke/34020/">qqlol搞笑头像</a>
-
-<a href="/joke/34021/">lol英雄搞笑头像</a>
-
-<a href="/joke/34022/">lol搞笑卡通头像</a>
-
-<a href="/joke/34023/">lol搞笑qq头像</a>
-
-<a href="/joke/34024/">lol盖伦搞笑头像</a>
-
-<a href="/joke/34025/">英雄联盟lol的搞笑段子</a>
-
-<a href="/joke/34026/">小学生lol搞笑段子</a>
-
-<a href="/joke/34027/">关于lol搞笑段子</a>
-
-<a href="/joke/34028/">关于lol的搞笑段子</a>
-
-<a href="/joke/34029/">lol经典搞笑段子</a>
-
-<a href="/joke/34030/">lol搞笑段子顺口溜大全</a>
-
-<a href="/joke/34031/">lol 搞笑段子</a>
-
-<a href="/joke/34032/">英雄联盟lol搞笑动画</a>
-
-<a href="/joke/34033/">lol英雄联盟搞笑动画</a>
-
-
+<c:forEach  var="pic"  items="${newList}">
+	<a href="/images/detail?pid=${pic.pid}">${pic.picName}</a>
+</c:forEach>
 </div>
 </div>
 <div class="sidebar-hot clearfix">
-<h3>爆笑糗事精选</h3>
+<h3>性感美女精选</h3>
 <ul>
 
+<c:forEach var="max"  items="${maxList}">
 <li class="item">
-<a href="/article/117401876" title="可是都领养都没人送我" rel="nofollow">
+<a href="/images/detail?pid=${max.pid}" title="${max.picName}" rel="nofollow">
 <span>
-<img src="http://img1.mm131.com/pic/2258/0.jpg" alt="可是都领养都没人送我">
+<img src="${max.picUrl}" alt="${max.picName}"   rel="nofollow">
 </span>
 </a>
-<a href="/article/117401876" title="可是都领养都没人送我">
-<p>可是都领养都没人送我</p>
+<a href="/images/detail?pid=${max.pid}" title="${max.picName}">
+<p>${max.picName}</p>
 </a>
 </li>
-
-<li class="item">
-<a href="/article/117405787" title="奇丑无比的鱼" rel="nofollow">
-<span><img src="http://img1.mm131.com/pic/2258/0.jpg" alt="奇丑无比的鱼"></span>
-</a>
-<a href="/article/117405787" title="奇丑无比的鱼">
-<p>奇丑无比的鱼</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117403304" title="在也没有原先在一起吃烤串喝酒吹牛逼的气氛" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117403304/small/app117403304.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="在也没有原先在一起吃烤串喝酒吹牛逼的气氛"></span>
-</a>
-<a href="/article/117403304" title="在也没有原先在一起吃烤串喝酒吹牛逼的气氛">
-<p>在也没有原先在一起吃烤串喝酒吹牛逼的气氛</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117405113" title="在我心中我就是最美的" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117405113/small/app117405113.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="在我心中我就是最美的"></span>
-</a>
-<a href="/article/117405113" title="在我心中我就是最美的">
-<p>在我心中我就是最美的</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117403511" title="进军" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117403511/small/app117403511.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="进军"></span>
-</a>
-<a href="/article/117403511" title="进军">
-<p>进军</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117404048" title="这应该叫什么" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117404048/small/app117404048.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="这应该叫什么"></span>
-</a>
-<a href="/article/117404048" title="这应该叫什么">
-<p>这应该叫什么</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117403896" title="感觉很骚的" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117403896/small/app117403896.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="感觉很骚的"></span>
-</a>
-<a href="/article/117403896" title="感觉很骚的">
-<p>感觉很骚的</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117402040" title="有了一次欺骗以后就怀疑从前所有的好" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117402040/small/app117402040.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="有了一次欺骗以后就怀疑从前所有的好"></span>
-</a>
-<a href="/article/117402040" title="有了一次欺骗以后就怀疑从前所有的好">
-<p>有了一次欺骗以后就怀疑从前所有的好</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117402793" title="我们公司的两只动物" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117402793/small/app117402793.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="我们公司的两只动物"></span>
-</a>
-<a href="/article/117402793" title="我们公司的两只动物">
-<p>我们公司的两只动物</p>
-</a>
-</li>
-
-<li class="item">
-<a href="/article/117404029" title="热闹的街头" rel="nofollow">
-<span><img src="http://pic.qiushibaike.com/system/pictures/11740/117404029/small/app117404029.jpg?imageView2
-
-
-
-/1/w/146/h/146" alt="热闹的街头"></span>
-</a>
-<a href="/article/117404029" title="热闹的街头">
-<p>热闹的街头</p>
-</a>
-</li>
-
+</c:forEach>
 </ul>
 </div>
+<%--
 <div class="sidebar-tag clearfix">
 <h3>热门话题</h3>
 <div class="sidebar-tag-block">
@@ -396,48 +239,16 @@
 
 <a href="/joke/14149/">老外中文考试笑话</a>
 
-<a href="/joke/12526/">2016超搞笑笑话</a>
-
-<a href="/joke/12525/">超级搞笑英语笑话</a>
-
-<a href="/joke/12524/">超级搞笑的长笑话</a>
-
-<a href="/joke/12522/">超搞笑笑话下载</a>
-
-<a href="/joke/12344/">爆笑笑话能笑死人的</a>
-
-<a href="/joke/12340/">爆笑放屁笑话</a>
-
-<a href="/joke/12339/">2016年爆笑笑话</a>
-
-<a href="/joke/12338/">青少年爆笑笑话</a>
-
-<a href="/joke/12337/">神经病爆笑笑话</a>
-
-<a href="/joke/12336/">爆笑笑话脑筋急转弯</a>
-
-<a href="/joke/10818/">棒棒糖搞笑图片</a>
-
-<a href="/joke/10817/">搞笑图片戳楼上屁眼</a>
-
-<a href="/joke/10810/">有点色的搞笑图片</a>
-
-<a href="/joke/10805/">如果我是dj搞笑图片</a>
-
-<a href="/joke/10804/">向我开炮搞笑图片</a>
-
-<a href="/joke/10802/">找媳妇搞笑图片</a>
-
-<a href="/joke/10801/">割包皮搞笑图片</a>
-
-<a href="/joke/10791/">股票跳楼搞笑图片</a>
-
-<a href="/joke/8489/">抓狂网糗事百科</a>
-
-
 </div>
 </div>
 
+<div class="sidebar-tag clearfix">
+<h3>热门话题</h3>
+<div class="sidebar-tag-block">
+<a href="/joke/14149/">老外中文考试笑话</a>
+</div>
+</div>
+ --%>
 
 </div>
 </div>
@@ -557,11 +368,15 @@ rel="external nofollow">官方粉丝群
 </div>
 </div> --%> 
 <div class="foot-copyrights">
-<p>&copy; Qiushibaike.com 糗事百科版权所有</p>
+<p>&copy; 2016 zuiyuyue.com 最愉阅版权所有</p>
 <p>
+<span>本站纯属免费动态图欣赏网站,所有动态图均收集于互联网,如有侵犯版权请来信告知,我们将立即更正。</span>
+
+<%-- 
 <span>京ICP备14028348号-1</span>
 <span>京ICP证140448号</span>
 <span>京公网安备11010502026088</span>
+--%>
 </p>
 </div>
 </div>

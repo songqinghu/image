@@ -28,13 +28,13 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
+
   </head>
   <body>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://www.zuiyuyue.com/js/bootstrap.min.js"></script>
-  
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,6 +53,7 @@
       <ul class="nav navbar-nav">
 
         <li ><a target="_blank" href="http://www.zuiyuyue.com/images/1/list">美女图片</a></li>
+         <li ><a target="_blank" href="http://www.zuiyuyue.com/gif/list">啪啪啪动态图</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

@@ -37,7 +37,7 @@ public class PageController {
 	@ResponseBody
 	public String cacheKey(@PathVariable String key){
 		
-		redisDaoImpl.setValueByKey("127.0.0.1");
+		//redisDaoImpl.incrValueByKey(key);
 		
 		return "success";
 	}

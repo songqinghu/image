@@ -23,7 +23,7 @@ import com.kuaikanwang.image.spider.start.SpiderStart;
  * @version 1.0
  */
 @Controller
-@RequestMapping("/image/spider")
+@RequestMapping("/spider")
 public class SpiderTestController {
 
 	@Autowired
@@ -63,8 +63,11 @@ public class SpiderTestController {
 	}
 	
 	
-	
-	
+	@RequestMapping("/show/count")
+	@ResponseBody
+	public Object spiderAccessCount(){
+		return true;
+	}
 	
 	
 	

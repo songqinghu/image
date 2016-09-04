@@ -20,7 +20,7 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     private Site site = Site.
     		me().
     		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
-    		setRetryTimes(5).setSleepTime(1000);
+    		setRetryTimes(5).setSleepTime(5000);
 
     @Override
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
@@ -50,7 +50,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     	.regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"",1)
     	.replace("^/uploads","http://www.youqu.net/uploads")
     	.all();
+    	
     	System.err.println(murls.size());
+    	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("urls", urls);
     	page.putField("murls", murls);
@@ -73,9 +75,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
         
         // 部分三：从页面发现后续的url地址来抓取
         List<String> all = page.getHtml().
-        		xpath("//div[@class='indexbox']/div/div/div/a")
+        		xpath("//div[@class='main']/dl/dd[@class='page']/a")
         		.links()
-        		.regex("http://www.youqu.net/.+\\.html")
+        	//	.regex("http://www.youqu.net/.+\\.html")
         		.all();
 //       for (String string : all) {
 //		System.out.println(string);
@@ -96,9 +98,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     
 	public static void main(String[] args){
 		//String url = "http://www.meizitu.com/";
-		String url = "http://www.youqu.net/xieedongtaitu/list_52_1.html";
+		String url = "http://www.zuiyuyue.com/images/1/list";
 		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
+		thread(1).run();
 	}
     
 }

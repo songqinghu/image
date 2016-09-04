@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kuaikanwang.image.domain.bean.gif.GifList;
+import com.kuaikanwang.image.domain.result.ImageList;
 import com.kuaikanwang.image.service.GifAccessService;
+import com.kuaikanwang.image.service.ImageExtendService;
 import com.kuaikanwang.image.service.impl.GifAccessServiceImpl;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
@@ -33,6 +35,8 @@ public class GifAccessController {
 	@Autowired
 	private GifAccessService gifAccessServiceImpl;
 	
+	@Autowired
+	private ImageExtendService imageExtendServiceImpl;
 	
 	/**
 	 * 列表页展示动态图
@@ -67,8 +71,13 @@ public class GifAccessController {
 		model.put("pageList", pageList);
 		
 		//扩展信息 
+		//随机算法推荐的图片 --展示名字 --展示最新
+		//浏览量最高的图片 16个
+		List<ImageList> newPicList = imageExtendServiceImpl.getLatestPicList(20);
+		List<ImageList> maxCountPicList = imageExtendServiceImpl.getCountPicList(20);
 		
-		
+		model.put("newList", newPicList);
+		model.put("maxList", maxCountPicList);
 		
 		return new ModelAndView("/gif",model);
 		

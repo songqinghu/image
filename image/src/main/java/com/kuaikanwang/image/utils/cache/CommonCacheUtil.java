@@ -121,8 +121,6 @@ public class CommonCacheUtil implements InitializingBean{
 		return typeCountCache;
 	}
 
-	
-	
 	/**
 	 * 
 	 * <p>Title: afterPropertiesSet</p>
@@ -158,6 +156,7 @@ public class CommonCacheUtil implements InitializingBean{
 		imageExtendServiceImpl.getCountPicList(10);
 		
 		imageExtendServiceImpl.getMaxPic();
+		 
 		
 	}
 	

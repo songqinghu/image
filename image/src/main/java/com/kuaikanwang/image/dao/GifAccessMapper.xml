@@ -17,7 +17,7 @@
 	select count(id) from maingif where flag = 0;
   </select>
   <select id="findGifListShow" parameterType="java.lang.Integer" resultMap="BaseGifMap" >
-	select id,pre_id,url,name,cratedate from maingif
+	select id,pre_id,url,name,cratedate from maingif where flag =0 order by cratedate desc
 	LIMIT #{start},#{rows};
   </select>
 

@@ -48,6 +48,13 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
+	  	<script>
+  	 $.ajax(  
+		        {  
+		            type : 'GET',  
+		            url : 'http://www.zuiyuyue.com/spider/show/count',  
+		        });  
+	</script>
   </head>
 
 <body>

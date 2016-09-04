@@ -50,7 +50,13 @@
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://www.zuiyuyue.com/js/bootstrap.min.js"></script>
-
+	  	<script>
+  	 $.ajax(  
+		        {  
+		            type : 'GET',  
+		            url : 'http://www.zuiyuyue.com/spider/show/count',  
+		        });  
+	</script>
 
 <div class="toper">
 
