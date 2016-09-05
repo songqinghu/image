@@ -86,7 +86,7 @@
     <bean id="gifSpiderTimerJobDetail"
         class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
-            <bean class="com.kuaikanwang.image.component.timer.SpiderTimerTask"></bean>
+            <bean class="com.kuaikanwang.image.component.timer.GifSpiderTimerTask"></bean>
         </property>
         <property name="targetMethod" value="work" />
         <property name="concurrent" value="false" />
