@@ -1,5 +1,6 @@
 package image.test.mail;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -11,6 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 public class SendmailUtil {
 
@@ -22,9 +24,9 @@ public class SendmailUtil {
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
     // 发件人用户名、密码
-    private String SEND_USER = "295533359@qq.com";
-    private String SEND_UNAME = "295533359@qq.com";
-    private String SEND_PWD = "sqh13884449757";
+    private String SEND_USER = "251518179@qq.com";
+    private String SEND_UNAME = "251518179@qq.com";
+    private String SEND_PWD = "bijhynwphiesbhad";
     // 建立会话
     private MimeMessage message;
     private Session s;
@@ -64,7 +66,10 @@ public class SendmailUtil {
             String receiveUser) {
         try {
             // 发件人
-            InternetAddress from = new InternetAddress(SEND_USER);
+        	String nick=MimeUtility.encodeText("最愉阅官方");
+        	
+            InternetAddress from = new InternetAddress(nick + "<"+SEND_USER+">");
+			
             message.setFrom(from);
             // 收件人
             InternetAddress to = new InternetAddress(receiveUser);
@@ -85,10 +90,11 @@ public class SendmailUtil {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             System.out.println("send success!");
-        } catch (AddressException e) {
+        } catch (AddressException   e) {
+        	
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } catch (MessagingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
