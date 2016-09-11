@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
+import com.kuaikanwang.image.spider.email.start.impl.EmailSpiderStartImpl;
 import com.kuaikanwang.image.spider.gif.start.GifSpiderStart;
 import com.kuaikanwang.image.spider.gif.start.impl.GifSpiderStartImpl;
 import com.kuaikanwang.image.spider.start.SpiderStart;
@@ -24,13 +26,17 @@ import com.kuaikanwang.image.spider.start.SpiderStart;
  */
 @Controller
 @RequestMapping("/spider")
-public class SpiderTestController {
+public class SpiderController {
 
 	@Autowired
 	private SpiderStart ctoPreSpiderStartImpl;
 	
 	@Resource
 	private GifSpiderStart gifSpiderStartImpl;
+	
+	
+	@Resource
+	private EmailSpiderStart emailSpiderStartImpl;
 	
 	/**
 	 * 图片抓取
@@ -61,8 +67,32 @@ public class SpiderTestController {
 		
 		return count;
 	}
+	/**
+	 * 爬取邮箱
+	 * <p>Title: spiderStartEmail</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/email")
+	@ResponseBody
+	public Object spiderStartEmail(@RequestParam(defaultValue="1") Long emailwebId){
+		
+		Long count = emailSpiderStartImpl.spiderStart(emailwebId);
+		
+		return count;
+		
+	}
 	
 	
+	
+	
+	
+	/**
+	 * 反爬虫统计
+	 * <p>Title: spiderAccessCount</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
 	@RequestMapping("/show/count")
 	@ResponseBody
 	public Object spiderAccessCount(){

@@ -30,6 +30,10 @@ public class PageProcessorContainer implements InitializingBean{
 	private Map<Long, PageProcessor> preGifPageProcessorContainer = new HashMap<Long, PageProcessor>();
 	//动态图
 	private Map<Long, PageProcessor> mainGifPageProcessorContainer = new HashMap<Long, PageProcessor>();
+	//邮箱
+	private Map<Long, PageProcessor> preEmailPageProcessorContainer = new HashMap<Long, PageProcessor>();
+	//邮箱
+	private Map<Long, PageProcessor> mainEmailPageProcessorContainer = new HashMap<Long, PageProcessor>();
 	
 	//预处理部分 --图片部分
 	@Resource
@@ -82,6 +86,16 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor youquMainPageProcessor;
 	
 	
+	//预处理部分 --邮箱部分
+	@Resource
+	private PageProcessor tiebaPrePageProcessor;
+	
+	//主抓取部分 --邮箱部分
+	@Resource
+	private PageProcessor tiebaMainPageProcessor;
+	
+	
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		
@@ -117,6 +131,11 @@ public class PageProcessorContainer implements InitializingBean{
 		mainGifPageProcessorContainer.put(3l, youquMainPageProcessor);
 		
 		
+		//预处理 --邮箱
+		preEmailPageProcessorContainer.put(1l, tiebaPrePageProcessor);
+		//主抓取 --邮箱
+		mainEmailPageProcessorContainer.put(1l, tiebaMainPageProcessor);
+		
 	}
 
 
@@ -138,6 +157,17 @@ public class PageProcessorContainer implements InitializingBean{
 	public Map<Long, PageProcessor> getMainGifPageProcessorContainer() {
 		return mainGifPageProcessorContainer;
 	}
+
+
+	public Map<Long, PageProcessor> getPreEmailPageProcessorContainer() {
+		return preEmailPageProcessorContainer;
+	}
+
+
+	public Map<Long, PageProcessor> getMainEmailPageProcessorContainer() {
+		return mainEmailPageProcessorContainer;
+	}
+
 	
 
 }

@@ -27,6 +27,15 @@
   <select id="findGifAllWebIds" resultType="java.lang.Long" >
 		select id  from gwebinfo ;
   </select>
+  
+      <select id="findEmailWebSpiderPreUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
+		select  url from emailwebspiderinfo where emailweb_id  = #{id};
+  </select>
+  
+    <select id="findEmailAllWebIds" resultType="java.lang.Long" >
+		select id  from mailwebinfo ;
+  </select>
+  
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />

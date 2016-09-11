@@ -44,4 +44,26 @@ public interface SpiderSelectDispatch {
 	public boolean callMaicGifSpider(long gwebId,String url);
 	
 	
+	/**
+	 * 调用预处理爬虫爬取贴吧地址
+	 * <p>Title: callPreGifSpider</p>
+	 * <p>Description: </p>
+	 * @param gwebId
+	 * @param url
+	 * @return
+	 */
+	public boolean callPreEmailSpider(long emailwebId,String url);
+	
+	
+	/**
+	 * 调用主处理处理爬虫爬取贴吧地址
+	 * <p>Title: callMaicGifSpider</p>
+	 * <p>Description: </p>
+	 * @param gwebId
+	 * @param url
+	 * @return
+	 */
+	public boolean callMainEmailSpider(long emailwebId,String url);
+	
+	
 }

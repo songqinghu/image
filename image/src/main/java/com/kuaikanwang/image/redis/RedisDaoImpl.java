@@ -3,6 +3,7 @@ package com.kuaikanwang.image.redis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.google.common.base.FinalizablePhantomReference;
 import com.kuaikanwang.image.utils.redis.SimpleJedisTemplate;
 import com.kuaikanwang.image.utils.redis.SimpleJedisTemplate.RedisCallback;
 
@@ -24,6 +25,24 @@ public class RedisDaoImpl implements RedisDao {
 			}
 		});
 	}
+	
+	@Override
+	public Long getValueByKeyNum(final String key) {
+		return jedisTemplate.execute(new SimpleJedisTemplate.RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(JedisCommands commands) {
+				
+				String string = commands.get(key);
+				
+				if(string ==null){
+					return 0l;
+				}
+				
+				return Long.valueOf(string);
+			}
+		});
+	}
+	
 	/**
 	 * 指定的key加1
 	 * <p>Title: incrValueByKey</p>
@@ -76,7 +95,37 @@ public class RedisDaoImpl implements RedisDao {
 		
 		
 	}
+
+	@Override
+	public Boolean incrValueByKey(final String key) {
+		
+		return jedisTemplate.execute(new RedisCallback<Boolean>() {
+
+			@Override
+			public Boolean doInRedis(JedisCommands commands) {
+
+				commands.incr(key);
 	
+				return true;
+			}
+		});
+	}
+
+	@Override
+	public Boolean setValueByKey(final String key,final String value) {
+		
+		return jedisTemplate.execute(new RedisCallback<Boolean>() {
+
+			@Override
+			public Boolean doInRedis(JedisCommands commands) {
+
+				commands.set(key, value);
+	
+				return true;
+			}
+		});
+	}
+
 	
 	
 	

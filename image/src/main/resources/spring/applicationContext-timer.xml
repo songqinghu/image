@@ -100,8 +100,23 @@
         </property>
     </bean>
  
- 
- 
+ <!-- 邮箱爬取 -->
+     <bean id="emailSpiderTimerJobDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <bean class="com.kuaikanwang.image.component.timer.EmailSpiderTimerTask"></bean>
+        </property>
+        <property name="targetMethod" value="work" />
+        <property name="concurrent" value="false" />
+    </bean>
+     
+    <bean id="emailSpiderTimerJobTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="emailSpiderTimerJobDetail">
+        </property>
+        <property name="cronExpression" value="${email.spider.timer.cron}">
+        </property>
+    </bean>
  
  
  	<bean name="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
@@ -112,6 +127,7 @@
                 <ref bean="maxPidCacheJobTrigger" />
                 <ref bean="spiderTimerJobTrigger" />
                 <ref bean="gifSpiderTimerJobTrigger" />
+                <ref bean="emailSpiderTimerJobTrigger" />
             </list>
         </property>
     </bean>

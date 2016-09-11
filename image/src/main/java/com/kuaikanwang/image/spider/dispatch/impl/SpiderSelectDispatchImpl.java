@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.spider.container.PageProcessorContainer;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
+import com.kuaikanwang.image.spider.email.pipline.EmailMainMysqlPipeline;
+import com.kuaikanwang.image.spider.email.pipline.EmailPreMysqlPipeline;
 
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -37,6 +39,12 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 	@Autowired
 	private Pipeline gifMainMysqlPipeline;
 	
+	//邮箱部分 入mysql
+	@Resource
+	private Pipeline emailPreMysqlPipeline;
+	
+	@Resource
+	private Pipeline emailMainMysqlPipeline;
 	
 	//爬虫容器
 	@Resource
@@ -97,6 +105,37 @@ public class SpiderSelectDispatchImpl implements SpiderSelectDispatch {
 		}
 		
 
+		return true;
+	}
+
+	//邮箱部分
+	
+	
+	@Override
+	public boolean callPreEmailSpider(long emailwebId, String url) {
+		
+		if(pageProcessorContainer.getPreEmailPageProcessorContainer().containsKey(emailwebId)){
+			Spider.
+			create(pageProcessorContainer.getPreEmailPageProcessorContainer().get(emailwebId))
+			.addPipeline(emailPreMysqlPipeline).
+			addUrl(url).
+			thread(7).run();
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean callMainEmailSpider(long emailwebId, String url) {
+		
+		if(pageProcessorContainer.getMainEmailPageProcessorContainer().containsKey(emailwebId)){
+			Spider.
+			create(pageProcessorContainer.getMainEmailPageProcessorContainer().get(emailwebId))
+			.addPipeline(emailMainMysqlPipeline).
+			addUrl(url).
+			thread(7).run();
+		}
+		
 		return true;
 	}
 

@@ -34,5 +34,20 @@ public interface SpiderInfoMapper {
 	public List<Long> findGifAllWebIds();
 	
 	
+	/**
+	 * 获取要爬取的贴吧地址
+	 * <p>Title: findEmailWebSpiderPreUrl</p>
+	 * <p>Description: </p>
+	 * @param emailwebId
+	 * @return
+	 */
+	public List<String> findEmailWebSpiderPreUrl(long emailwebId);
+	
+	
+	public List<Long> findEmailAllWebIds();
+	
+	
+	
+	
 
 }

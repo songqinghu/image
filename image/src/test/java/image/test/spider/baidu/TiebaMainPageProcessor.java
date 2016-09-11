@@ -22,7 +22,7 @@ public class TiebaMainPageProcessor implements PageProcessor,WebSiteIdentificati
 	    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
 	    private Site site = Site.me().
 	    		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
-	    		setRetryTimes(5).setSleepTime(1000);
+	    		setRetryTimes(5).setSleepTime(5000);
 
 	    private final static Pattern emailer = Pattern.compile("\\w+?@\\w+?.com");  
 	    
@@ -34,27 +34,24 @@ public class TiebaMainPageProcessor implements PageProcessor,WebSiteIdentificati
 	    	//http://pic.59pic.com/2016/0809/20160809025057198.jpg
 	    	List<String> urls = page.getHtml()
 	    			.xpath("//div[@class='p_content']/cc/div/text()")
-	    			//.regex("(\\D+(\\d+＠qq.com).+)+",2)
+	    			//.regex(".+(\\w+?@\\w+?.com).+")
 	    			//.links()
 	    			.all();
 	    	for (String string : urls) {
-				//System.out.println(string.trim());
-
 				Matcher matchr = emailer.matcher(string);  
 		        while (matchr.find()) {  
-		            String email = matchr.group();  
+		            String email = matchr.group().replaceAll("。", ".").toLowerCase();
 		            System.out.println(email);  
 		        } 
 			}
-	        System.out.println("end");
 	        // 部分三：从页面发现后续的url地址来抓取  //http://www.59pic.com/mn/1445_5.html
 	        List<String> all = page.getHtml().
-	        		xpath("//div[@class='indexbox']/div/div/div/a").
+	        		xpath("//div[@class='wrap1']/div[@class='wrap2']/div/div/div/div/div/ul/li/a").
 	        		links()
-	        		.regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+	        		.regex("http://tieba\\.baidu\\.com/p/.+")
 	        		.all();
 	       
-	      //  page.addTargetRequests(all);
+	        page.addTargetRequests(all);
 	        	
 	    }
 

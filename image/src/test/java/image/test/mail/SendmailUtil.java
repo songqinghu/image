@@ -48,7 +48,7 @@ public class SendmailUtil {
               protected PasswordAuthentication getPasswordAuthentication() {
                   return new PasswordAuthentication(SEND_UNAME, SEND_PWD);
               }});
-        s.setDebug(true);
+        s.setDebug(false);
         message = new MimeMessage(s);
     }
  
@@ -85,11 +85,7 @@ public class SendmailUtil {
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
             // 发送
             transport.sendMessage(message, message.getAllRecipients());
-            to.setAddress("295533359@qq.com");
-            message.setRecipient(Message.RecipientType.TO, to);
-            transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            System.out.println("send success!");
         } catch (AddressException   e) {
         	
             // TODO Auto-generated catch block

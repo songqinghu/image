@@ -1,4 +1,4 @@
-package image.test.spider.baidu;
+package com.kuaikanwang.image.spider.email.process.tieba.pre;
 
 import java.util.List;
 
@@ -9,18 +9,15 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+@Component("tiebaPrePageProcessor")
+public class TiebaPrePageProcessor implements PageProcessor,WebSiteIdentification{
 
-
-public class TiebaPrePageProcessor implements PageProcessor,WebSiteIdentification {
-	
-    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
+	   // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
     		me().
     		setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
-    		setRetryTimes(5).setSleepTime(5000);
+    		setRetryTimes(5).setSleepTime(3000);
 
     
     
@@ -34,10 +31,6 @@ public class TiebaPrePageProcessor implements PageProcessor,WebSiteIdentificatio
 		  xpath("//div[@class='s_post_list']/div/span/a").
 		  links().
 		  all();
-
-//    	for (String url : urls) {
-//			System.out.println(url);
-//		}
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("urls", urls);
@@ -68,13 +61,6 @@ public class TiebaPrePageProcessor implements PageProcessor,WebSiteIdentificatio
 	@Override
 	public long getWebId() {
 		return 1;
-	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.meizitu.com/";
-		String url = "http://tieba.baidu.com/f/search/res?ie=utf-8&kw=&qw=%26quot%3B%40qq.com%20%E6%A5%BC%E4%B8%BB%26quot%3B&rn=30&un=&sm=1";
-		Spider.create(new TiebaPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
 	}
     
 }

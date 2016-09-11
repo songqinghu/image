@@ -49,6 +49,19 @@ public class RedisKeyUtil {
 		return "spider_blacklist_"+key;
 	}
 	
+	/**
+	 * 发送图片的key
+	 * <p>Title: getSendPicStartValue</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public static String getSendPicStartValue(){
+		return "send_pic_start";
+	}
+	
+	public static String getSendEmailStartValue(){
+		return "send_email_start";
+	}
 	
 	
 }

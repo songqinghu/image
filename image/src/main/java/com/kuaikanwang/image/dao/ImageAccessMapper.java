@@ -146,4 +146,13 @@ public interface ImageAccessMapper {
 	 * @return
 	 */
 	public List<ImageList> findImageListByPid(Long pid);
+	/**
+	 * 
+	 * 获取要发送的图片地址
+	 * <p>Title: findImageListByPid</p>
+	 * <p>Description: </p>
+	 * @param pid
+	 * @return
+	 */
+	public String findImageByEmail(Long start);
 }

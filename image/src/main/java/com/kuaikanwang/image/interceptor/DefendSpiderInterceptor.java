@@ -1,5 +1,7 @@
 package com.kuaikanwang.image.interceptor;
 
+import java.util.regex.Pattern;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +41,9 @@ public class DefendSpiderInterceptor implements HandlerInterceptor {
 		
 		String userIP = IPUtil.getRemoteIpAddr(request);
 		//爬虫--白名单 --各大搜索引擎 --放行
-		
+		if(Pattern.compile("^66\\.249\\..+").matcher(userIP).find()){//谷歌
+			return true;
+		}
 		//爬虫黑名单 -- ip禁封10天
 		if(redisDaoImpl.getValueByKey(RedisKeyUtil.getSpiderBlackListKey(userIP))!=null){
 			response.setStatus(403);

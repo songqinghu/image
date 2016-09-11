@@ -1,5 +1,6 @@
 package com.kuaikanwang.image.utils.mail;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -11,6 +12,9 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
+
+import com.kuaikanwang.image.domain.bean.email.PicEmail;
 
 public class SendmailUtil {
 
@@ -22,9 +26,9 @@ public class SendmailUtil {
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
     // 发件人用户名、密码
-    private String SEND_USER = "****@qq.com";
-    private String SEND_UNAME = "****@qq.com";
-    private String SEND_PWD = "****";
+    private String SEND_USER = "251518179@qq.com";
+    private String SEND_UNAME = "251518179@qq.com";
+    private String SEND_PWD = "bijhynwphiesbhad";
     // 建立会话
     private MimeMessage message;
     private Session s;
@@ -64,7 +68,10 @@ public class SendmailUtil {
             String receiveUser) {
         try {
             // 发件人
-            InternetAddress from = new InternetAddress(SEND_USER);
+        	String nick=MimeUtility.encodeText("最愉阅官方");
+        	
+            InternetAddress from = new InternetAddress(nick + "<"+SEND_USER+">");
+			
             message.setFrom(from);
             // 收件人
             InternetAddress to = new InternetAddress(receiveUser);
@@ -80,15 +87,11 @@ public class SendmailUtil {
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
             // 发送
             transport.sendMessage(message, message.getAllRecipients());
-            to.setAddress("12323342@qq.com");
-            message.setRecipient(Message.RecipientType.TO, to);
-            transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            System.out.println("send success!");
-        } catch (AddressException e) {
-            // TODO Auto-generated catch block
+        } catch (AddressException   e) {
+        	
             e.printStackTrace();
-        } catch (MessagingException e) {
+        } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -96,9 +99,11 @@ public class SendmailUtil {
     public static void main(String[] args) {
         SendmailUtil se = new SendmailUtil();
         
-        String htmlBody="<body><img src=\"http://zuiyuyue.com/mail/click/reflact\" style=\"width:0px;height:0px\"/></body><h1>hello world</h1> ";
+        PicEmail picEmail = new PicEmail();
         
+        picEmail.setEmail("sqh2010304012@126.com");
+        picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160618/1-16061Q52302.jpg ");
         
-        se.doSendHtmlEmail("每日美图",htmlBody, "234353432@126.com");
+        se.doSendHtmlEmail("每日美图",picEmail.toString(), "sqh2010304012@126.com");
     }
 }
