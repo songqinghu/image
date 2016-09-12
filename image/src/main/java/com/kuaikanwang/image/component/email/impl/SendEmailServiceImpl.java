@@ -1,10 +1,12 @@
 package com.kuaikanwang.image.component.email.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -51,11 +53,13 @@ public class SendEmailServiceImpl implements SendEmailService{
 		
 		Long max = mainEmailMapper.findEmailMaxNum();
 		
+		redisDaoImpl.setValueByKey(RedisKeyUtil.getSendEmailStartValue(), (start+limit)+"");
+		
 		if(max<start+limit){
 			limit = max -start;
+			redisDaoImpl.setValueByKey(RedisKeyUtil.getSendEmailStartValue(),"0");
 		}
 		
-		redisDaoImpl.setValueByKey(RedisKeyUtil.getSendEmailStartValue(), (start+limit)+"");
 		
 		
 		int threadNum = 5;
@@ -71,8 +75,8 @@ public class SendEmailServiceImpl implements SendEmailService{
 			start = start + limit;
 			
 		}
-		
-		return limit;
+		//乘以线程数
+		return limit*threadNum;
 	}
 	
 	/**
@@ -107,16 +111,17 @@ public class SendEmailServiceImpl implements SendEmailService{
 			
 			picEmail.setPicUrl(picUrl);
 			while(start<limit){
-				List<String> emails = mainEmailMapper.findEmailByRandge(start);
-			
-				for (String email : emails) {
-					picEmail.setEmail(email);
+				try {
+					List<String> emails = mainEmailMapper.findEmailByRandge(start);
+		
 					SendmailUtil sendmailUtil = new SendmailUtil();
-					
-					sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail.toString(),"295533359@qq.com");
-					
+						
+					sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,emails);
+	
+					start = start+10;
+				} catch (UnsupportedEncodingException |MessagingException    e) {
+					e.printStackTrace();
 				}
-				start = start+10;
 			}
 		}
 		

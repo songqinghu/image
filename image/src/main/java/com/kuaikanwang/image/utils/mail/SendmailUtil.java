@@ -1,6 +1,7 @@
 package com.kuaikanwang.image.utils.mail;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -14,8 +15,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
-import com.kuaikanwang.image.domain.bean.email.PicEmail;
+import org.springframework.stereotype.Component;
 
+import com.kuaikanwang.image.domain.bean.email.PicEmail;
+import com.kuaikanwang.image.spider.pic59.main.PicMainPageProcessor;
+
+@Component
 public class SendmailUtil {
 
 	  
@@ -31,7 +36,7 @@ public class SendmailUtil {
     private String SEND_PWD = "bijhynwphiesbhad";
     // 建立会话
     private MimeMessage message;
-    private Session s;
+    public Session s;
  
     final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";  
     /*
@@ -50,7 +55,7 @@ public class SendmailUtil {
               protected PasswordAuthentication getPasswordAuthentication() {
                   return new PasswordAuthentication(SEND_UNAME, SEND_PWD);
               }});
-        s.setDebug(true);
+        s.setDebug(false);
         message = new MimeMessage(s);
     }
  
@@ -63,10 +68,12 @@ public class SendmailUtil {
      *            邮件内容
      * @param receiveUser
      *            收件人地址
+     * @throws UnsupportedEncodingException 
+     * @throws MessagingException 
      */
     public void doSendHtmlEmail(String headName, String sendHtml,
-            String receiveUser) {
-        try {
+            String receiveUser) throws UnsupportedEncodingException, MessagingException {
+     
             // 发件人
         	String nick=MimeUtility.encodeText("最愉阅官方");
         	
@@ -87,23 +94,64 @@ public class SendmailUtil {
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
             // 发送
             transport.sendMessage(message, message.getAllRecipients());
+            
             transport.close();
-        } catch (AddressException   e) {
-        	
-            e.printStackTrace();
-        } catch (MessagingException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+       
+    }
+    /**
+     * 发送邮件 --群发邮件
+     * 
+     * @param headName
+     *            邮件头文件名
+     * @param sendHtml
+     *            邮件内容
+     * @param receiveUser
+     *            收件人地址
+     * @throws UnsupportedEncodingException 
+     * @throws MessagingException 
+     */
+    public void doSendHtmlEmail(String headName, PicEmail picEmail,
+    		List<String> receiveUsers) throws UnsupportedEncodingException, MessagingException {
+    	
+    	// 发件人
+    	String nick=MimeUtility.encodeText("最愉阅官方");
+    	
+    	InternetAddress from = new InternetAddress(nick + "<"+SEND_USER+">");
+    	
+    	message.setFrom(from);
+    	Transport transport = s.getTransport("smtp");
+    	// smtp验证，就是你用来发邮件的邮箱用户名密码
+    	transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
+    	for (String receiveUser : receiveUsers) {
+    		// 收件人
+    		InternetAddress to = new InternetAddress(receiveUser);
+    		//InternetAddress to = new InternetAddress("295533359@qq.com");
+    		message.setRecipient(Message.RecipientType.TO, to);
+    		// 邮件标题
+    		message.setSubject(headName);
+    		picEmail.setEmail(receiveUser);
+    		String content = picEmail.toString();
+    		// 邮件内容,也可以使纯文本"text/plain"
+    		message.setContent(content, "text/html;charset=GBK");
+    		message.saveChanges();
+    		// 发送
+    		transport.sendMessage(message, message.getAllRecipients());
+			
+		}
+    	
+    	
+    	transport.close();
+    	
     }
  
     public static void main(String[] args) {
-        SendmailUtil se = new SendmailUtil();
-        
-        PicEmail picEmail = new PicEmail();
-        
-        picEmail.setEmail("sqh2010304012@126.com");
-        picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160618/1-16061Q52302.jpg ");
-        
-        se.doSendHtmlEmail("每日美图",picEmail.toString(), "sqh2010304012@126.com");
+//        SendmailUtil se = new SendmailUtil();
+//        
+//        PicEmail picEmail = new PicEmail();
+//        
+//        picEmail.setEmail("295533359@qq.com");
+//        picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160618/1-16061Q52302.jpg ");
+//        Transport transport = s.getTransport("smtp");
+//        se.doSendHtmlEmail(picEmail.getHeadName(),picEmail.toString(), "295533359@qq.com");
     }
 }

@@ -34,6 +34,13 @@
 		select count(1) from mainemail;
   </select>
   
+	<update id="updateClickCountByEmail" parameterType="java.lang.String" >
+		UPDATE mainemail SET clickcount=clickcount+1 where email = #{email};
+	</update>
+  
+	<update id="updateDetailCountByEmail" parameterType="java.lang.String" >
+		UPDATE mainemail SET detailcount=detailcount+1 where email = #{email};
+	</update>
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />

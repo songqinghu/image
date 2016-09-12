@@ -31,4 +31,17 @@ public interface MainEmailMapper {
 	 */
 	public Long  findEmailMaxNum();
 	
+	
+	/**
+	 * 根据email更新 点击邮件的次数 clickcount
+	 */
+	
+	public void updateClickCountByEmail(String email);
+	
+	/**
+	 * 据email更新 点击邮件进入网站的次数 clickcount
+	 */
+	public void updateDetailCountByEmail(String email);
+	
+	
 }

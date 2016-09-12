@@ -7,13 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kuaikanwang.image.component.email.SendEmailService;
+import com.kuaikanwang.image.redis.RedisDao;
+import com.kuaikanwang.image.redis.RedisDaoImpl;
+import com.kuaikanwang.image.utils.redis.RedisKeyUtil;
 
 @Controller
-@RequestMapping("/email")
+@RequestMapping("/email/send")
 public class EmailSendController {
 
 	@Resource
 	private SendEmailService sendEmailServiceImpl;
+	@Resource
+	private RedisDao redisDaoImpl;
+	
 	
 	@RequestMapping("/test")
 	@ResponseBody
@@ -21,6 +27,15 @@ public class EmailSendController {
 		
 		return sendEmailServiceImpl.sendEmail(0);
 		
+	}
+	
+	@RequestMapping("/pic")
+	@ResponseBody
+	public Long sendEmail(){
+		String start = redisDaoImpl.getValueByKey(RedisKeyUtil.getSendEmailStartValue());
+		System.out.println(start);
+		Long num = sendEmailServiceImpl.sendEmail(Long.valueOf(start));
+		return num;
 	}
 	
 }
