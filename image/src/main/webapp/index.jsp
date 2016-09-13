@@ -65,8 +65,11 @@
   </div>
 </nav>
 
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong> 动态图电脑版本上线喽!             后续更多精彩内容,敬请期待!!</strong> 
+</div>
 
-<div class="alert alert-success" role="alert"> 动态图电脑版本上线喽!             后续更多精彩内容,敬请期待!!</div>
 <div class="page-header">
   <h2><span class="label label-primary">性感美女</span><small><a href="http://www.zuiyuyue.com/images/1/list" >更多</a></small></h2>
 </div>
@@ -96,7 +99,11 @@
 <div class="row"  id="five">
  
 </div>
-<div class="alert alert-success" role="alert">欢迎站长联系互加友情链接!</div>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Warning!</strong> 本站纯属免费资源欣赏网站,所有资源均收集于互联网,如有侵犯版权或犯规请来信告知,我们将立即更正。联系邮箱251518179@qq.com  另,欢迎站长联系互加友情链接!
+</div>
+
  <div class="row">
 	<h3><span class="label label-warning">&nbsp;&nbsp;&nbsp;友情链接</span></h3>
 	<div>

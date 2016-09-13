@@ -6,17 +6,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kuaikanwang.image.dao.GifAccessMapper;
 import com.kuaikanwang.image.dao.PreEmailMapper;
-import com.kuaikanwang.image.dao.PreGifMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.email.PreEmail;
-import com.kuaikanwang.image.domain.bean.gif.PreGif;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
 import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
@@ -41,9 +37,6 @@ public class EmailSpiderStartImpl implements EmailSpiderStart{
 	@Resource
 	private PreEmailMapper preEmailMapper;
 	
-	@Autowired
-	private PreGifMapper preGifMapper;
-	
 	
 	@Resource
 	private SpiderSelectDispatch spiderSelectDispatchImpl;
@@ -60,11 +53,11 @@ public class EmailSpiderStartImpl implements EmailSpiderStart{
 		/**
 		 * 预抓取
 		 */
-//		for (String url : list) {
-//			
-//			spiderSelectDispatchImpl.callPreEmailSpider(emailwebId, url);
-//			
-//		}
+		for (String url : list) {
+			
+			spiderSelectDispatchImpl.callPreEmailSpider(emailwebId, url);
+			
+		}
 			
 
 		/**

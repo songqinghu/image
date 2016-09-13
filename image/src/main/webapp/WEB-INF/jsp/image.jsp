@@ -141,7 +141,7 @@
    </div>
    <div class="clearfloat"></div>
 </div>
-  <div class="footer">本站纯属免费<a href="http://www.zuiyuyue.com/" title="美女图片">美女图片</a>欣赏网站,所有<a href="http://www.zuiyuyue.com/" title="mm">mm</a>图片均收集于互联网,如有侵犯版权请来信告知,我们将立即更正。<br />&copy; 2016 (<a href="/" target="_blank">www.zuiyuyue.com</a>) 最愉阅 美女图片 版权所有  <script type="text/javascript" src="http://www.zuiyuyue.com/css/stat.js"></script></div>
+  <div class="footer">本站纯属免费<a href="http://www.zuiyuyue.com/" title="美女图片">美女图片</a>欣赏网站,所有<a href="http://www.zuiyuyue.com/" title="mm">mm</a>图片均收集于互联网,如有侵犯版权或违规图片请来信告知,我们将立即更正。联系邮箱251518179@qq.com<br />&copy; 2016 (<a href="/" target="_blank">www.zuiyuyue.com</a>) 最愉阅 美女图片 版权所有  <script type="text/javascript" src="http://www.zuiyuyue.com/css/stat.js"></script></div>
   </body>
 
 </html> 

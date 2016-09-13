@@ -375,7 +375,7 @@ rel="external nofollow">官方粉丝群
 <div class="foot-copyrights">
 <p>&copy; 2016 zuiyuyue.com 最愉阅版权所有</p>
 <p>
-<span>本站纯属免费动态图欣赏网站,所有动态图均收集于互联网,如有侵犯版权请来信告知,我们将立即更正。</span>
+<span>本站纯属免费动态图欣赏网站,所有动态图均收集于互联网,如有侵犯版权或犯规图片请来信告知,我们将立即更正。联系邮箱251518179@qq.com</span>
 
 <%-- 
 <span>京ICP备14028348号-1</span>

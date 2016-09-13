@@ -10,17 +10,15 @@ import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
-import com.kuaikanwang.image.spider.gif.start.GifSpiderStart;
-import com.kuaikanwang.image.spider.start.SpiderStart;
 
 /**
- * 动态图定时任务
- * <p>Title: GifSpiderTimerTask.java</p>
+ * 邮箱定时抓取
+ * <p>Title: EmailSpiderTimerTask.java</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2016</p>
  * <p>Company: Sage</p>
  * @author 五虎将
- * @date 2016年9月4日下午3:12:43
+ * @date 2016年9月13日下午9:55:01
  * @version 1.0
  */
 @Component
