@@ -32,9 +32,9 @@ public class EmailSendController {
 	@RequestMapping("/pic")
 	@ResponseBody
 	public Long sendEmail(){
-		String start = redisDaoImpl.getValueByKey(RedisKeyUtil.getSendEmailStartValue());
+		Long start = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailStartValue());
 		System.out.println(start);
-		Long num = sendEmailServiceImpl.sendEmail(Long.valueOf(start));
+		Long num = sendEmailServiceImpl.sendEmail(start);
 		return num;
 	}
 	
