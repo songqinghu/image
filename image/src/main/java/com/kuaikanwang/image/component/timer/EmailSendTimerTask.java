@@ -27,9 +27,9 @@ public class EmailSendTimerTask {
 
 	public void work(){
 		System.out.println("send mail start !");
-		String start = redisDaoImpl.getValueByKey(RedisKeyUtil.getSendEmailStartValue());
-		System.out.println(start);
-		Long num = sendEmailServiceImpl.sendEmail(Long.valueOf(start));
+		Long start = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailStartValue());
+		Long num = sendEmailServiceImpl.sendEmail(start);
+		System.out.println("send emial num is : " + num + " and start is : " + start);
 	}
 	
 	
