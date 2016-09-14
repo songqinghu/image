@@ -62,7 +62,7 @@ public class SendEmailServiceImpl implements SendEmailService{
 		
 		
 		
-		int threadNum = 5;
+		int threadNum = 1;
 		
 		limit = limit /threadNum; //可能会剩余几个不能发 --以后再处理
 		
