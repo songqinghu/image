@@ -2,6 +2,7 @@ package com.kuaikanwang.image.controller.common;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,21 +22,23 @@ public class EmailSendController {
 	private RedisDao redisDaoImpl;
 	
 	
-	@RequestMapping("/test")
-	@ResponseBody
-	public Long sendTest(){
-		
-		return sendEmailServiceImpl.sendEmail(0);
-		
-	}
-	
+	/**
+	 * 用给定的邮箱发送邮件--默认发送250封
+	 * <p>Title: sendEmail</p>
+	 * <p>Description: </p>
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping("/pic")
 	@ResponseBody
-	public Long sendEmail(){
+	public String sendEmail(String username,String password){
 		Long start = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailStartValue());
-		System.out.println(start);
-		Long num = sendEmailServiceImpl.sendEmail(start);
-		return num;
+		Long num = 0l;
+		if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)){
+			num=sendEmailServiceImpl.sendEmail(start,username,password);
+		}
+		return "start is :"+start +" send num is :"+ num;
 	}
 	
 }

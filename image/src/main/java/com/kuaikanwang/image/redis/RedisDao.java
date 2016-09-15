@@ -14,4 +14,6 @@ public interface RedisDao {
 	
 	public Boolean setValueByKey(String key,String value);
 	
+	public boolean getValueByKeyAndUpdate( String key);
+	
 }

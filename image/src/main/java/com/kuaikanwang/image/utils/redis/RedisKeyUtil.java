@@ -63,5 +63,16 @@ public class RedisKeyUtil {
 		return "send_email_start";
 	}
 	
+	/**
+	 * 
+	 * <p>Title: getTimeTaskKey</p>
+	 * <p>Description: </p>
+	 * @param one 动作 如 spider send
+	 * @param two 性质 如 email pic
+	 * @return
+	 */
+	public static String getTimeTaskKey(String one,String two){
+		return "task_"+one+"_"+two;
+	}
 	
 }

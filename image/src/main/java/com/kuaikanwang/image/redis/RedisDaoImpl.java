@@ -25,6 +25,30 @@ public class RedisDaoImpl implements RedisDao {
 			}
 		});
 	}
+	/**
+	 * 获取boolean值并且删除这个值 如果获取不到返回false;
+	 * <p>Title: getValueByKey</p>
+	 * <p>Description: </p>
+	 * @param key
+	 * @return
+	 * @see com.kuaikanwang.image.redis.RedisDao#getValueByKey(java.lang.String)
+	 */
+	@Override
+	public boolean getValueByKeyAndUpdate(final String key) {
+		return jedisTemplate.execute(new SimpleJedisTemplate.RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(JedisCommands commands) {
+				
+				String flag = commands.get(key);
+				if(flag==null|| flag.length()<1){
+					return false;
+				}else{
+					commands.del(key);
+					return true;
+				}
+			}
+		});
+	}
 	
 	@Override
 	public Long getValueByKeyNum(final String key) {

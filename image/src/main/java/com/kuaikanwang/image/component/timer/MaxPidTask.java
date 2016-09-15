@@ -18,7 +18,7 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
  * @date 2016年8月6日下午6:23:31
  * @version 1.0
  */
-@Component
+
 public class MaxPidTask {
 
 	@Resource

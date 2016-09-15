@@ -31,9 +31,9 @@ public class SendmailUtil {
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
     // 发件人用户名、密码
-    private String SEND_USER = "251518179@qq.com";
-    private String SEND_UNAME = "251518179@qq.com";
-    private String SEND_PWD = "bijhynwphiesbhad";
+    private String SEND_USER; //= "251518179@qq.com";
+    private String SEND_UNAME; //= "251518179@qq.com";
+    private String SEND_PWD;// = "bijhynwphiesbhad";
     // 建立会话
     private MimeMessage message;
     public Session s;
@@ -59,6 +59,33 @@ public class SendmailUtil {
         message = new MimeMessage(s);
     }
  
+    /*
+     * 初始化方法 新账户和密码 --必须要有账号和密码
+     */
+    public SendmailUtil(String username,String password) {
+    	
+    	if(username!=null && password !=null){
+    	     SEND_USER = username;
+    	     SEND_UNAME = username;
+    	     SEND_PWD = password;
+    	}
+    	
+    	Properties props = System.getProperties();
+    	props.setProperty(KEY_SMTP, VALUE_SMTP);
+    	props.put(KEY_PROPS, "true");
+    	props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
+    	props.setProperty("mail.smtp.socketFactory.fallback", "false");
+    	props.setProperty("mail.smtp.port", "465");  
+    	props.setProperty("mail.smtp.socketFactory.port", "465");  
+    	//props.put("mail.smtp.auth", "true");
+    	s =  Session.getDefaultInstance(props, new Authenticator(){
+    		protected PasswordAuthentication getPasswordAuthentication() {
+    			return new PasswordAuthentication(SEND_UNAME, SEND_PWD);
+    		}});
+    	s.setDebug(false);
+    	message = new MimeMessage(s);
+    }
+    
     /**
      * 发送邮件
      * 
@@ -144,6 +171,48 @@ public class SendmailUtil {
     	
     }
  
+    /**
+     * 发送邮件 --群发邮件
+     * 
+     * @param headName
+     *            邮件头文件名
+     * @param sendHtml
+     *            邮件内容
+     * @param receiveUser
+     *            收件人地址
+     * @throws UnsupportedEncodingException 
+     * @throws MessagingException 
+     */
+    public void doSendHtmlEmail(String headName, PicEmail picEmail,
+    		String receiveUser) throws UnsupportedEncodingException, MessagingException {
+    	
+    	// 发件人
+    	String nick=MimeUtility.encodeText("最愉阅官方");
+    	
+    	InternetAddress from = new InternetAddress(nick + "<"+SEND_USER+">");
+    	
+    	message.setFrom(from);
+    	Transport transport = s.getTransport("smtp");
+    	// smtp验证，就是你用来发邮件的邮箱用户名密码
+    	transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
+    		// 收件人
+    		InternetAddress to = new InternetAddress(receiveUser);
+    		//InternetAddress to = new InternetAddress("295533359@qq.com");
+    		message.setRecipient(Message.RecipientType.TO, to);
+    		// 邮件标题
+    		message.setSubject(headName);
+    		picEmail.setEmail(receiveUser);
+    		String content = picEmail.toString();
+    		// 邮件内容,也可以使纯文本"text/plain"
+    		message.setContent(content, "text/html;charset=GBK");
+    		message.saveChanges();
+    		// 发送
+    		transport.sendMessage(message, message.getAllRecipients());
+    	
+    	transport.close();
+    	
+    }
+    
     public static void main(String[] args) {
 //        SendmailUtil se = new SendmailUtil();
 //        
