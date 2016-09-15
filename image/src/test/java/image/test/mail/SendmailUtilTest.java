@@ -14,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
-public class SendmailUtil {
+public class SendmailUtilTest {
 
 	  
     // 设置服务器
@@ -38,7 +38,7 @@ public class SendmailUtil {
     /*
      * 初始化方法
      */
-    public SendmailUtil() {
+    public SendmailUtilTest() {
         Properties props = System.getProperties();
         props.setProperty(KEY_SMTP, VALUE_SMTP);
         props.put(KEY_PROPS, "true");
@@ -74,20 +74,26 @@ public class SendmailUtil {
             InternetAddress from = new InternetAddress(nick + "<"+SEND_USER+">");
 			
             message.setFrom(from);
-            // 收件人
-            InternetAddress to = new InternetAddress(receiveUser);
-            message.setRecipient(Message.RecipientType.TO, to);
-            // 邮件标题
-            message.setSubject(headName);
-            String content = sendHtml.toString();
-            // 邮件内容,也可以使纯文本"text/plain"
-            message.setContent(content, "text/html;charset=GBK");
-            message.saveChanges();
             Transport transport = s.getTransport("smtp");
             // smtp验证，就是你用来发邮件的邮箱用户名密码
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
-            // 发送
-            transport.sendMessage(message, message.getAllRecipients());
+            
+              for (int i = 0; i < 2; i++) {
+				
+            	  // 收件人
+            	  InternetAddress to = new InternetAddress(receiveUser);
+            	  message.setRecipient(Message.RecipientType.TO, to);
+            	  // 邮件标题
+            	  message.setSubject(headName);
+            	  String content = sendHtml.toString();
+            	  // 邮件内容,也可以使纯文本"text/plain"
+            	  message.setContent(content, "text/html;charset=GBK");
+            	  message.saveChanges();
+            	  transport.sendMessage(message, message.getAllRecipients());
+			}
+
+
+           // 发送
             transport.close();
         } catch (AddressException   e) {
         	
@@ -99,12 +105,12 @@ public class SendmailUtil {
     }
  
     public static void main(String[] args) {
-    	for (int i = 0; i < 100; i++) {
-    		SendmailUtil se = new SendmailUtil();
+    	for (int i = 0; i < 150; i++) {
+    		SendmailUtilTest se = new SendmailUtilTest();
     		
     		String htmlBody="<body><img src=\"http://zuiyuyue.com/mail/click/reflact\" style=\"width:0px;height:0px\"/></body><h1>hello world</h1> ";
     		
-    		se.doSendHtmlEmail("每日美图",htmlBody, "sqh2010304012@126.com");
+    		se.doSendHtmlEmail("每日美图",htmlBody, "205483531@qq.com");
 		}
     }
 }
