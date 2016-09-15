@@ -24,9 +24,12 @@ public class SendmailUtil {
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
     // 发件人用户名、密码
-    private String SEND_USER = "251518179@qq.com";
-    private String SEND_UNAME = "251518179@qq.com";
-    private String SEND_PWD = "bijhynwphiesbhad";
+//    private String SEND_USER = "251518179@qq.com";
+//    private String SEND_UNAME = "251518179@qq.com";
+//    private String SEND_PWD = "bijhynwphiesbhad";
+    private String SEND_USER = "205483531@qq.com";
+    private String SEND_UNAME = "205483531@qq.com";
+    private String SEND_PWD = "pvugjmrvdftubhej";
     // 建立会话
     private MimeMessage message;
     private Session s;
@@ -48,7 +51,7 @@ public class SendmailUtil {
               protected PasswordAuthentication getPasswordAuthentication() {
                   return new PasswordAuthentication(SEND_UNAME, SEND_PWD);
               }});
-        s.setDebug(false);
+        s.setDebug(true);
         message = new MimeMessage(s);
     }
  
@@ -96,11 +99,12 @@ public class SendmailUtil {
     }
  
     public static void main(String[] args) {
-        SendmailUtil se = new SendmailUtil();
-        
-        String htmlBody="<body><img src=\"http://zuiyuyue.com/mail/click/reflact\" style=\"width:0px;height:0px\"/></body><h1>hello world</h1> ";
-        
-        
-        se.doSendHtmlEmail("每日美图",htmlBody, "sqh2010304012@126.com");
+    	for (int i = 0; i < 100; i++) {
+    		SendmailUtil se = new SendmailUtil();
+    		
+    		String htmlBody="<body><img src=\"http://zuiyuyue.com/mail/click/reflact\" style=\"width:0px;height:0px\"/></body><h1>hello world</h1> ";
+    		
+    		se.doSendHtmlEmail("每日美图",htmlBody, "sqh2010304012@126.com");
+		}
     }
 }
