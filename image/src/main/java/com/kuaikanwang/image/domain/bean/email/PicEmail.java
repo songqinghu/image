@@ -48,7 +48,7 @@ public class PicEmail {
 		
 		String htmlBody= "<body><img src=\"http://zuiyuyue.com/email/click/reflact?email="+email+"\" style=\"width:0px;height:0px\"/></body>"
 			//	+ "<h1>今天的美图到啦! <a href=\"https://client.luosimao.com/u/unsubscribe/04-A0B4EE6C-C1F0-785D-9F11-A12B88F683D8\" style=\"font-family: 'Microsoft Yahei',sans-serif; color: #999; font-size: 24px; text-decoration: none;\">点此查看更多美图</a> </h1><a href=\"www.zuiyuyue.com/email/click/detail?email="+email+"\"> <img src=\""+picUrl+"\" /></a><br>";
-					+ "<h1> <a href=\"www.zuiyuyue.com/email/click/detail?email="+email+"\" style=\"font-family: 'Microsoft Yahei',sans-serif; color: #999; font-size: 36px; text-decoration: none;\">今天的美图到啦! -- 点此查看更多美图</a> </h1><a href=\"www.zuiyuyue.com/email/click/detail?email="+email+"\" style=\"font-family: 'Microsoft Yahei',sans-serif; color: #999; font-size: 36px; text-decoration: none;\"> <img src=\""+picUrl+"\" /></a><br>";
+					+ "<h1> <a href=\"http://www.zuiyuyue.com/email/click/detail?email="+email+"\" style=\"font-family: 'Microsoft Yahei',sans-serif; color: #999; font-size: 36px; text-decoration: none;\">今天的美图到啦! -- 点此查看更多美图</a> </h1><a href=\"http://www.zuiyuyue.com/email/click/detail?email="+email+"\" style=\"font-family: 'Microsoft Yahei',sans-serif; color: #999; font-size: 36px; text-decoration: none;\"> <img src=\""+picUrl+"\" /></a><br>";
 		
 		return htmlBody;
 	}

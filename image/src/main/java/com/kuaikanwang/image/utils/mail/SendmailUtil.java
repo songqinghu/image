@@ -26,7 +26,8 @@ public class SendmailUtil {
 	  
     // 设置服务器
     private static String KEY_SMTP = "mail.smtp.host";
-    private static String VALUE_SMTP = "smtp.qq.com";
+//    private static String VALUE_SMTP = "smtp.qq.com";
+    private static String VALUE_SMTP = "smtp.126.com";
     // 服务器验证
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
@@ -46,10 +47,11 @@ public class SendmailUtil {
         Properties props = System.getProperties();
         props.setProperty(KEY_SMTP, VALUE_SMTP);
         props.put(KEY_PROPS, "true");
-        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
-        props.setProperty("mail.smtp.socketFactory.fallback", "false");
-        props.setProperty("mail.smtp.port", "465");  
-        props.setProperty("mail.smtp.socketFactory.port", "465");  
+//        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
+//        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "25");  
+//        props.setProperty("mail.smtp.port", "465");  
+//        props.setProperty("mail.smtp.socketFactory.port", "465");  
         //props.put("mail.smtp.auth", "true");
         s =  Session.getDefaultInstance(props, new Authenticator(){
               protected PasswordAuthentication getPasswordAuthentication() {
@@ -73,10 +75,10 @@ public class SendmailUtil {
     	Properties props = System.getProperties();
     	props.setProperty(KEY_SMTP, VALUE_SMTP);
     	props.put(KEY_PROPS, "true");
-    	props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
-    	props.setProperty("mail.smtp.socketFactory.fallback", "false");
-    	props.setProperty("mail.smtp.port", "465");  
-    	props.setProperty("mail.smtp.socketFactory.port", "465");  
+//    	props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
+//    	props.setProperty("mail.smtp.socketFactory.fallback", "false");
+    	props.setProperty("mail.smtp.port", "25");  
+//    	props.setProperty("mail.smtp.socketFactory.port", "465");  
     	//props.put("mail.smtp.auth", "true");
     	s =  Session.getDefaultInstance(props, new Authenticator(){
     		protected PasswordAuthentication getPasswordAuthentication() {

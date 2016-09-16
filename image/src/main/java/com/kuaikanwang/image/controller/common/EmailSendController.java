@@ -67,28 +67,26 @@ public class EmailSendController {
 			@RequestParam(defaultValue="14400")Long frequency){
 		String result="false";
 		if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)&&StringUtils.isNotBlank(to)){
-			try {
 				
 				PicEmail picEmail = new PicEmail();
 				picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160507/1-16050G44635-50.jpg ");
 				for (int i = 0; i < num; i++) {
 					//这里要防止发送太快了 14.4秒发送一封! 1小时 250封
-					long sendStart = System.currentTimeMillis();
-					
-					SendmailUtil sendmailUtil = new SendmailUtil(username,password);
-					sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,to);
-					long sendEnd = System.currentTimeMillis();
-					frequency =frequency -(sendEnd-sendStart);
-					if(frequency>0){
-						Thread.sleep(frequency);
-					}
+				 try {
+						long sendStart = System.currentTimeMillis();
+						
+						SendmailUtil sendmailUtil = new SendmailUtil(username,password);
+						sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,to);
+						long sendEnd = System.currentTimeMillis();
+						frequency =frequency -(sendEnd-sendStart);
+						if(frequency>0){
+							Thread.sleep(frequency);
+						}
+					} catch (UnsupportedEncodingException |MessagingException|InterruptedException e) {
+						System.out.println("occur error is : "+ e);;
+					} 
 				}
-				
-				
 				result ="success";
-			} catch (UnsupportedEncodingException |MessagingException|InterruptedException e) {
-				result="occur error is : "+ e;
-			} 
 		}
 		return result;
 	}
