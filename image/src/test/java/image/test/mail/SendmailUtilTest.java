@@ -78,7 +78,7 @@ public class SendmailUtilTest {
             // smtp验证，就是你用来发邮件的邮箱用户名密码
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
             
-              for (int i = 0; i < 2; i++) {
+              for (int i = 0; i < 1; i++) {
 				
             	  // 收件人
             	  InternetAddress to = new InternetAddress(receiveUser);
@@ -105,7 +105,7 @@ public class SendmailUtilTest {
     }
  
     public static void main(String[] args) {
-    	for (int i = 0; i < 150; i++) {
+    	for (int i = 0; i < 1; i++) {
     		SendmailUtilTest se = new SendmailUtilTest();
     		
     		String htmlBody="<body><img src=\"http://zuiyuyue.com/mail/click/reflact\" style=\"width:0px;height:0px\"/></body><h1>hello world</h1> ";

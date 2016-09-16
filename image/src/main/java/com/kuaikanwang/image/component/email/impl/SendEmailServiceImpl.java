@@ -116,10 +116,16 @@ public class SendEmailServiceImpl implements SendEmailService{
 				List<String> emails = mainEmailMapper.findEmailByRandge(start);
 				for (String email : emails) {
 					try {
+						//这里要防止发送太快了 14.4秒发送一封! 1小时 250封
+						    long sendStart = System.currentTimeMillis();
 							SendmailUtil sendmailUtil = new SendmailUtil(username,password);
 							sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,email);
-		
-					} catch (UnsupportedEncodingException |MessagingException    e) {
+							long sendEnd = System.currentTimeMillis();
+							long frequency =14400 -(sendEnd-sendStart);
+							if(frequency>0){
+								Thread.sleep(frequency);
+							}
+					} catch (UnsupportedEncodingException |MessagingException |InterruptedException   e) {
 						logger.error("send email occor error ,the email is "+email+"the error is : "+ e);
 					}
 				}
