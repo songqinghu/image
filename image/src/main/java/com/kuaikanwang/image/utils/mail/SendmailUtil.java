@@ -1,6 +1,9 @@
 package com.kuaikanwang.image.utils.mail;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.domain.bean.email.PicEmail;
 import com.kuaikanwang.image.spider.pic59.main.PicMainPageProcessor;
+import com.mchange.v2.c3p0.impl.NewProxyDatabaseMetaData;
 
 @Component
 public class SendmailUtil {
@@ -32,9 +36,9 @@ public class SendmailUtil {
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
     // 发件人用户名、密码
-    private String SEND_USER; //= "251518179@qq.com";
-    private String SEND_UNAME; //= "251518179@qq.com";
-    private String SEND_PWD;// = "bijhynwphiesbhad";
+    private String SEND_USER; 
+    private String SEND_UNAME;
+    private String SEND_PWD;
     // 建立会话
     private MimeMessage message;
     public Session s;
@@ -216,13 +220,8 @@ public class SendmailUtil {
     }
     
     public static void main(String[] args) {
-//        SendmailUtil se = new SendmailUtil();
-//        
-//        PicEmail picEmail = new PicEmail();
-//        
-//        picEmail.setEmail("295533359@qq.com");
-//        picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160618/1-16061Q52302.jpg ");
-//        Transport transport = s.getTransport("smtp");
-//        se.doSendHtmlEmail(picEmail.getHeadName(),picEmail.toString(), "295533359@qq.com");
+    	SimpleDateFormat sdf = new SimpleDateFormat("-第MMdd期");
+    	String format = sdf.format( new Date());
+    	System.out.println(format);
     }
 }

@@ -62,6 +62,15 @@ public class RedisKeyUtil {
 	public static String getSendEmailStartValue(){
 		return "send_email_start";
 	}
+	/**
+	 * 获取要发送的轮数目
+	 * <p>Title: getSendEmailCountKey</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public static String getSendEmailCountKey(){
+		return "send_email_count";
+	}
 	
 	/**
 	 * 

@@ -28,20 +28,27 @@ public class EmailSendController {
 	
 	
 	/**
-	 * 用给定的邮箱发送邮件--默认发送250封
+	 * 用给定的邮箱发送邮件--默认发送10封
 	 * <p>Title: sendEmail</p>
 	 * <p>Description: </p>
-	 * @param username
-	 * @param password
+	 * @param flag
+	 * @param count 发送的次数 一次100封 每个账号10封 这里自己控制
 	 * @return
 	 */
 	@RequestMapping("/pic")
 	@ResponseBody
-	public String sendEmail(String username,String password){
+	public String sendEmail(String flag,@RequestParam(defaultValue="1")Integer count){
 		Long start = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailStartValue());
 		Long num = 0l;
-		if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)){
-			num=sendEmailServiceImpl.sendEmail(start,username,password);
+		if(StringUtils.isNotBlank(flag)){
+			for (int i = 0; i < count; i++) {
+				
+				try {
+					num=num +sendEmailServiceImpl.sendEmail(start);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return "start is :"+start +" send num is :"+ num;
 	}

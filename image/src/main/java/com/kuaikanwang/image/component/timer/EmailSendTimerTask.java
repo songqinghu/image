@@ -36,10 +36,15 @@ public class EmailSendTimerTask implements InitializingBean{
 		if(redisDaoImpl.getValueByKeyAndUpdate(RedisKeyUtil.getTimeTaskKey("send", "email"))){
 			System.out.println("send mail start !");
 			Long start = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailStartValue());
-			Long num = sendEmailServiceImpl.sendEmail(start,"251518179@qq.com","bijhynwphiesbhad");
-			System.out.println("send emial num is : " + num + " and start is : " + start);
+			Long count = redisDaoImpl.getValueByKeyNum(RedisKeyUtil.getSendEmailCountKey());
 			try {
-				Thread.sleep(500);//肯定能防止了吧
+				Long num =0l;
+				for (int i = 0; i < count; i++) {//多少轮设置成可调节的 从redis中取 先设置为3次
+					num = num + sendEmailServiceImpl.sendEmail(start);
+					Thread.sleep(500);//肯定能防止了吧
+				}
+			
+				System.out.println("send emial num is : " + num + " and start is : " + start);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
