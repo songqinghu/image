@@ -74,7 +74,7 @@ public class EmailSendController {
 			@RequestParam(defaultValue="14400")Long frequency){
 		String result="false";
 		if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)&&StringUtils.isNotBlank(to)){
-				
+				long testStart = System.currentTimeMillis();
 				PicEmail picEmail = new PicEmail();
 				picEmail.setPicUrl("http://www.2cto.com/meinv/uploads/allimg/160507/1-16050G44635-50.jpg ");
 				for (int i = 0; i < num; i++) {
@@ -93,7 +93,8 @@ public class EmailSendController {
 						System.out.println("occur error is : "+ e);;
 					} 
 				}
-				result ="success";
+				long testEnd = System.currentTimeMillis();
+				result ="success and cost time is : " +(testEnd -testStart)+" ms";
 		}
 		return result;
 	}

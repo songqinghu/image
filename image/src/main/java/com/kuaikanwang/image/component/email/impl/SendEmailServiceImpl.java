@@ -81,7 +81,7 @@ public class SendEmailServiceImpl implements SendEmailService,InitializingBean{
 		pools.submit(sendEmail);
 		//阻塞	
 	    latch.await();
-	    
+	    logger.warn("send email end ,the startPic is : " + startPic + " next send email start location is : " +(start+limit) );
 		return limit;
 	}
 	
@@ -138,7 +138,7 @@ public class SendEmailServiceImpl implements SendEmailService,InitializingBean{
 								Thread.sleep(frequency);
 							}
 					} catch (UnsupportedEncodingException |MessagingException |InterruptedException   e) {
-						logger.error("my email is : " + usernames.get(i) +"+send email occor error ,the email is "+email+"the error is : "+ e);
+						logger.error("my email is : " + usernames.get(i) +" send email occor error ,the email is "+email+"the error is : "+ e);
 					}
 				}
 				start = start+10;

@@ -1,10 +1,8 @@
 package com.kuaikanwang.image.component.timer;
 
 import javax.annotation.Resource;
-import javax.mail.Flags.Flag;
 
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.component.email.SendEmailService;
 import com.kuaikanwang.image.redis.RedisDao;
