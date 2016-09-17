@@ -24,9 +24,9 @@ public class SendmailUtilTest {
 	  
     // 设置服务器
     private static String KEY_SMTP = "mail.smtp.host";
-//    private static String VALUE_SMTP = "smtp.qq.com";
+    private static String VALUE_SMTP = "smtp.qq.com";
 //    private static String VALUE_SMTP = "smtp.tom.com";
-    private static String VALUE_SMTP = "smtp.163.com";
+//    private static String VALUE_SMTP = "smtp.126.com";
     // 服务器验证
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
@@ -34,11 +34,11 @@ public class SendmailUtilTest {
 //    private String SEND_USER = "251518179@qq.com";
 //    private String SEND_UNAME = "251518179@qq.com";
 //    private String SEND_PWD = "bijhynwphiesbhad";
-//    private String SEND_USER = "205483531@qq.com";
+    private String SEND_USER = "205483531@qq.com";
 //    private String SEND_UNAME = "205483531@qq.com";
-//    private String SEND_PWD = "pvugjmrvdftubhej";
-    private String SEND_USER = "tanqiao0697237qu@163.com";
-    private String SEND_PWD = "vow435499";
+    private String SEND_PWD = "pvugjmrvdftubhej";
+//    private String SEND_USER = "wenjushuf182759@126.com";
+//    private String SEND_PWD = "kunfuz96537";
     private static String toUser="sqh2010304012@126.com";
 //    private String SEND_USER = "dkwc7919@tom.com";
 //    private String SEND_PWD = "aa2018";
@@ -54,6 +54,14 @@ public class SendmailUtilTest {
     public SendmailUtilTest() {
     	 SEND_UNAME = SEND_USER;
         Properties props = System.getProperties();
+//	  	  props.setProperty("http.proxyHost", "202.119.199.147");
+//	      props.setProperty("http.proxyPort", "1080");
+//	  	  props.setProperty("http.proxyHost", "113.111.148.28");
+//	      props.setProperty("http.proxyPort", "9999");
+        	props.setProperty("proxySet", "true");  
+	  	  props.setProperty("http.proxyHost", "12.7.11.156");
+	      props.setProperty("http.proxyPort", "9000");
+
         props.setProperty(KEY_SMTP, VALUE_SMTP);
         props.put(KEY_PROPS, "true");
         props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 

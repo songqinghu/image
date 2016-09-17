@@ -28,11 +28,11 @@ public class EmailSendController {
 	
 	
 	/**
-	 * 用给定的邮箱发送邮件--默认发送10封
+	 * 
 	 * <p>Title: sendEmail</p>
 	 * <p>Description: </p>
 	 * @param flag
-	 * @param count 发送的次数 一次100封 每个账号10封 这里自己控制
+	 * @param count 发送的次数 一次100封 每个账号50封 这里自己控制
 	 * @return
 	 */
 	@RequestMapping("/pic")
@@ -70,6 +70,7 @@ public class EmailSendController {
 	@RequestMapping("/test")
 	@ResponseBody
 	public String sendEmailTest(String username,String password,
+			@RequestParam(defaultValue="smtp.126.com")String smtp,@RequestParam(defaultValue="false")Boolean isSSL,
 			String to,@RequestParam(defaultValue="1")Integer num,
 			@RequestParam(defaultValue="14400")Long frequency){
 		String result="false";
@@ -82,7 +83,7 @@ public class EmailSendController {
 				 try {
 						long sendStart = System.currentTimeMillis();
 						
-						SendmailUtil sendmailUtil = new SendmailUtil(username,password);
+						SendmailUtil sendmailUtil = new SendmailUtil(username, password, smtp, isSSL);
 						sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,to);
 						long sendEnd = System.currentTimeMillis();
 						frequency =frequency -(sendEnd-sendStart);

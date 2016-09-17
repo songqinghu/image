@@ -1,9 +1,6 @@
 package com.kuaikanwang.image.utils.mail;
 
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,7 +10,6 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
@@ -21,8 +17,6 @@ import javax.mail.internet.MimeUtility;
 import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.domain.bean.email.PicEmail;
-import com.kuaikanwang.image.spider.pic59.main.PicMainPageProcessor;
-import com.mchange.v2.c3p0.impl.NewProxyDatabaseMetaData;
 
 @Component
 public class SendmailUtil {
@@ -30,8 +24,8 @@ public class SendmailUtil {
 	  
     // 设置服务器
     private static String KEY_SMTP = "mail.smtp.host";
-    private static String VALUE_SMTP = "smtp.qq.com";
-//    private static String VALUE_SMTP = "smtp.126.com";
+//    private static String VALUE_SMTP = "smtp.qq.com";
+    private static String VALUE_SMTP = "smtp.126.com";
     // 服务器验证
     private static String KEY_PROPS = "mail.smtp.auth";
     private static boolean VALUE_PROPS = true;
@@ -68,7 +62,7 @@ public class SendmailUtil {
     /*
      * 初始化方法 新账户和密码 --必须要有账号和密码
      */
-    public SendmailUtil(String username,String password) {
+    public SendmailUtil(String username,String password,String smtp,boolean isSSL) {
     	
     	if(username!=null && password !=null){
     	     SEND_USER = username;
@@ -77,12 +71,21 @@ public class SendmailUtil {
     	}
     	
     	Properties props = System.getProperties();
-    	props.setProperty(KEY_SMTP, VALUE_SMTP);
+    	if(smtp!=null && smtp.length()>0){ //设置发送地址
+    		props.setProperty(KEY_SMTP, smtp);
+    	}else{
+    		props.setProperty(KEY_SMTP, VALUE_SMTP);//默认126邮箱
+    	}
     	props.put(KEY_PROPS, "true");
-    	props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
-    	props.setProperty("mail.smtp.socketFactory.fallback", "false");
-    	props.setProperty("mail.smtp.port", "465");  
-    	props.setProperty("mail.smtp.socketFactory.port", "465");  
+    	if(isSSL){ //是否加密
+    		props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
+    		props.setProperty("mail.smtp.socketFactory.fallback", "false");
+    		props.setProperty("mail.smtp.socketFactory.port", "465");  
+    		props.setProperty("mail.smtp.port", "465");  
+    	}else{
+    		props.setProperty("mail.smtp.port", "25");  
+    	}
+    	
     	//props.put("mail.smtp.auth", "true");
     	s =  Session.getDefaultInstance(props, new Authenticator(){
     		protected PasswordAuthentication getPasswordAuthentication() {
@@ -203,7 +206,7 @@ public class SendmailUtil {
     	transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
     		// 收件人
     		InternetAddress to = new InternetAddress(receiveUser);
-    		//InternetAddress to = new InternetAddress("295533359@qq.com");
+//    		InternetAddress to = new InternetAddress("295533359@qq.com");
     		message.setRecipient(Message.RecipientType.TO, to);
     		// 邮件标题
     		message.setSubject(headName);

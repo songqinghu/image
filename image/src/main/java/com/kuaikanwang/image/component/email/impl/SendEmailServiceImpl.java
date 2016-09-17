@@ -129,7 +129,7 @@ public class SendEmailServiceImpl implements SendEmailService,InitializingBean{
 						
 						    //这里要防止发送太快了 14.4秒发送一封! 1小时 250封
 						    long sendStart = System.currentTimeMillis();
-							SendmailUtil sendmailUtil = new SendmailUtil(usernames.get(i%2),passwords.get(i%2));
+						    SendmailUtil sendmailUtil = new SendmailUtil(usernames.get(i),passwords.get(i),"smtp.126.com",false);
 							i++;
 							sendmailUtil.doSendHtmlEmail(picEmail.getHeadName(), picEmail,email);
 							long sendEnd = System.currentTimeMillis();
@@ -153,32 +153,26 @@ public class SendEmailServiceImpl implements SendEmailService,InitializingBean{
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		//初始化邮箱帐号和密码-->后期放入数据库中
-		usernames.add("251518179@qq.com");
-		usernames.add("205483531@qq.com");
+		usernames.add("wenjushuf182759@126.com");
+		usernames.add("biedanq8726@126.com");
+		usernames.add("layuj16960@126.com");
+		usernames.add("gaohuangt692723@126.com");
+		usernames.add("miaofuhs7883@126.com");
+		usernames.add("qutongcaxg49137@126.com");
+		usernames.add("tangdiannq059478@126.com");
+		usernames.add("paaihw696794@126.com");
+		usernames.add("dujindq286079@126.com");
+		usernames.add("weibopd3196@126.com");
 		
-		passwords.add("bijhynwphiesbhad");
-		passwords.add("pvugjmrvdftubhej");
-		
-//		usernames.add("wenjushuf182759@126.com");
-//		usernames.add("biedanq8726@126.com");
-//		usernames.add("layuj16960@126.com");
-//		usernames.add("gaohuangt692723@126.com");
-//		usernames.add("miaofuhs7883@126.com");
-//		usernames.add("qutongcaxg49137@126.com");
-//		usernames.add("tangdiannq059478@126.com");
-//		usernames.add("paaihw696794@126.com");
-//		usernames.add("dujindq286079@126.com");
-//		usernames.add("weibopd3196@126.com");
-//		
-//		passwords.add("kunfuz96537");
-//		passwords.add("tanxb90133");
-//		passwords.add("binggg86682");
-//		passwords.add("ziup9148");
-//		passwords.add("jipq42963");
-//		passwords.add("huavvi63910");
-//		passwords.add("dailv33527");
-//		passwords.add("yanik0334");
-//		passwords.add("xiaohk91432");
-//		passwords.add("xiaxrj97630");
+		passwords.add("kunfuz96537");
+		passwords.add("tanxb90133");
+		passwords.add("binggg86682");
+		passwords.add("ziup9148");
+		passwords.add("jipq42963");
+		passwords.add("huavvi63910");
+		passwords.add("dailv33527");
+		passwords.add("yanik0334");
+		passwords.add("xiaohk91432");
+		passwords.add("xiaxrj97630");
 	}
 }
