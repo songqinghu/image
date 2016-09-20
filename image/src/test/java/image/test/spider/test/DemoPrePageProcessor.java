@@ -29,13 +29,13 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
     	
     	List<String> urls = page.getHtml().
-		  xpath("//div[@class='indexbox']/div/div/ul/li/a").
+		  xpath("//div[@class='ibody-lt lt']/ul[@class='photo lt']/li/a").
 		  links().
 		  all();
 
     	List<String> names = page.getHtml()
-    			.xpath("//div[@class='indexbox']/div/div/ul/li/p/a")
-    			.regex("title=\"(.+)\"")
+    			.xpath("//div[@class='ibody-lt lt']/ul[@class='photo lt']/li/a/span/text()")
+//    			.regex("title=\"(.+)\"")
     			.all();
 
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
@@ -46,9 +46,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     	///uploads/allimg/160830/2-160S00031030-L.jpg
     	//http://www.youqu.net/uploads/allimg/160830/2-160S00031030-L.jpg
     	List<String> murls = page.getHtml().
-    	xpath("//div[@class='indexbox']/div/div/ul/li/a/img")
+    	xpath("//div[@class='ibody-lt lt']/ul[@class='photo lt']/li/a/img")
     	.regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"",1)
-    	.replace("^/uploads","http://www.youqu.net/uploads")
+//    	.replace("^/uploads","http://www.youqu.net/uploads")
     	.all();
     	
 
@@ -75,9 +75,9 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
         
         // 部分三：从页面发现后续的url地址来抓取
         List<String> all = page.getHtml().
-        		xpath("//div[@class='indexbox']/div/div/div/a")
+        		xpath("//div[@class='ibody-lt lt']/div[@class='page lt']/a")
         		.links()
-        		.regex("http://www.youqu.net/.+\\.html")
+        		.regex("http://www.manhaoxiao.com/.+\\.html")
         		.all();
 //       for (String string : all) {
 //		System.out.println(string);
@@ -97,8 +97,8 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 	}
     
 	public static void main(String[] args){
-		//String url = "http://www.meizitu.com/";
-		String url = "http://www.youqu.net/xieedongtaitu/";
+		//String url = "http://www.manhaoxiao.com";
+		String url = "http://www.manhaoxiao.com/xedtt/";
 		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 		thread(7).run();
 	}
