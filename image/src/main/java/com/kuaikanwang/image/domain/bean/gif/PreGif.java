@@ -12,6 +12,7 @@ public class PreGif {
 	private String murl;//小图片的URL,用于列表展示
 	private Date cratedate;//抓取时的创建时间 默认当前时间
 	private long flag;//标识位,是否可用 默认0 可用
+	private long count;//抓取次数
 	public long getPre_id() {
 		return pre_id;
 	}
@@ -54,5 +55,11 @@ public class PreGif {
 	public void setFlag(long flag) {
 		this.flag = flag;
 	}
-
+    public long getCount() {
+        return count;
+    }
+    public void setCount(long count) {
+        this.count = count;
+    }
+	
 }

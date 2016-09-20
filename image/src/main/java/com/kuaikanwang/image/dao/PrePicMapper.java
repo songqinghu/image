@@ -42,4 +42,8 @@ public interface PrePicMapper {
 	 */
 	public Long findMaxNumberByWebId(Long webId);
 	
+	/**
+	 * 抓取后增加抓取次数
+	 */
+	public void UpdateSpiderCountByPreId(Long preId);
 }

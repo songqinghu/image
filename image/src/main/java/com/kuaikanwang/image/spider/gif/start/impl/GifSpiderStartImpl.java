@@ -75,7 +75,7 @@ public class GifSpiderStartImpl implements GifSpiderStart{
 			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度---做hashcode 部分重复抓取
 			Integer count = gifAccessMapper.findDetailTotalCount((int) gif.getPre_id());
 			boolean flag = false;
-			if(count <=0 || RandomUtils.nextInt(6)%5==0){
+			if((gif.getCount()<6 && count <=0) || RandomUtils.nextInt(100)%99==0){
 				flag =true;
 			}
 			
@@ -89,7 +89,7 @@ public class GifSpiderStartImpl implements GifSpiderStart{
 
 				spiderSelectDispatchImpl.callMaicGifSpider(gwebId, gif.getUrl());
 
-				
+				preGifMapper.UpdateSpiderCountByPreId(gif.getPre_id());
 			}
 		
 			start = start + 1;

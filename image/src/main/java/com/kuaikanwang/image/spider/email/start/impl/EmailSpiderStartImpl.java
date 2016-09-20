@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -77,7 +78,7 @@ public class EmailSpiderStartImpl implements EmailSpiderStart{
 			//判断 如果被抓取了5次了 就直接跳过
 			
 			boolean flag = false;
-			if(email.getCount() < 5 ){
+			if(email.getCount() < 5 || RandomUtils.nextInt(100)%99==0 ){
 				flag =true;
 			}
 			

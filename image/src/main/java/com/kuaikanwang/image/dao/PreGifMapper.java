@@ -30,5 +30,10 @@ public interface PreGifMapper {
 	 * 查询最大个数
 	 */
 	public Long findMaxNumberByWebId(Long webId);
+	
+	 /**
+     * 抓取后增加抓取次数
+     */
+    public void UpdateSpiderCountByPreId(Long preId);
 
 }

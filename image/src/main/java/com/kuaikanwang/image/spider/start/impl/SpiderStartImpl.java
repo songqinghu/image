@@ -87,7 +87,7 @@ public class SpiderStartImpl implements SpiderStart {
 			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度
 			Integer count = imageAccessMapper.findDetailTotalCount((int) pic.getPre_id());
 			boolean flag = false;
-			if(count <=0 || RandomUtils.nextInt(16)%15==0){
+			if((pic.getCount()<6 &&count <=0) || RandomUtils.nextInt(31)%30==0){
 				flag =true;
 			}
 			if(flag){ //未抓取过再去抓取
@@ -98,12 +98,9 @@ public class SpiderStartImpl implements SpiderStart {
 				CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.PRE_ID+webId, pic.getPre_id());
 				CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.PICTYPE+webId, pic.getPictype());
 				
-				
-//				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PRE_ID, pic.getPre_id());
-//				CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.PICTYPE, pic.getPictype());
-				
 				spiderSelectDispatchImpl.callMainSpider(webId, pic.getUrl());
-
+				
+				prePicmapper.UpdateSpiderCountByPreId(pic.getPre_id());
 				
 			}
 		

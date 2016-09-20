@@ -17,7 +17,7 @@
   </select>
   
   <select id="findPrePicByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.PrePic" >
-		select pre_id,pictype,url from prepic where web_id =#{webId} order by cratedate  limit #{start},1;
+		select pre_id,pictype,url,count from prepic where web_id =#{webId}  order by cratedate  limit #{start},1;
   </select>
   <select id="findMaxNumberByWebId" parameterType="java.lang.Long" resultType="java.lang.Long" >
 		select count(1) from prepic where web_id =#{webId};
@@ -33,6 +33,9 @@
       #{url}, #{murl})
   </insert>
 
+  <update id="UpdateSpiderCountByPreId" parameterType="java.lang.Long">
+  	 UPDATE prepic SET count=count+1 where pre_id = #{pre_id};
+  </update>
 
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
