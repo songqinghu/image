@@ -26,27 +26,27 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
         //http://img1.mm131.com/pic/2506/1.jpg
         //http://pic.59pic.com/2016/0809/20160809025057198.jpg
         List<String> urls = page.getHtml().
-                xpath("//table/tbody/tr/td/p/a/img")
+                xpath("//div[@class='list lt']/div/div/div/div[@class='cont']/p/img")
                 .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
                 //.links()
                 .all();
-        if( urls == null || urls.size()==0){
-            urls = page.getHtml().
-                    xpath("//table/tbody/tr/td/div/a/img")
-                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
-                    //.links()
-                    .all();
-        }
-        if( urls == null || urls.size()==0){
-            urls = page.getHtml().
-                    xpath("//table/tbody/tr/td/div/p/a/img")
-                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
-                    //.links()
-                    .all();
-        }
+//        if( urls == null || urls.size()==0){
+//            urls = page.getHtml().
+//                    xpath("//table/tbody/tr/td/div/a/img")
+//                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+//                    //.links()
+//                    .all();
+//        }
+//        if( urls == null || urls.size()==0){
+//            urls = page.getHtml().
+//                    xpath("//table/tbody/tr/td/div/p/a/img")
+//                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+//                    //.links()
+//                    .all();
+//        }
         
         List<String> names = page.getHtml()
-                .xpath("//div[@class='indexbox']/div/div/div/h1/text()")
+                .xpath("//div[@class='list lt']/div/div/div/h1/text()")
                 .regex("\\S+")
                 .all();
         
@@ -63,9 +63,9 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
         
         // 部分三：从页面发现后续的url地址来抓取  //http://www.59pic.com/mn/1445_5.html
         List<String> all = page.getHtml().
-                xpath("//div[@class='indexbox']/div/div/div/a").
+                xpath("//div[@class='list lt']/div/div/div/div[@class='pageturn']/").
                 links()
-                .regex("http://www.youqu.net/.+\\.html")
+                .regex("http://www.manhaoxiao.com/.+_\\d+\\.html")
                 .all();
        
         page.addTargetRequests(all);
@@ -85,7 +85,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.youqu.net/xieedongtaitu/2016/0621/33047.html";
+			String url = "http://www.manhaoxiao.com/xedtt/30737.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}
