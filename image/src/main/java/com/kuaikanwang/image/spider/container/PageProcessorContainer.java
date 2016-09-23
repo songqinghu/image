@@ -75,6 +75,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor qqszcPrePageProcessor;
 	@Resource
 	private PageProcessor youquPrePageProcessor;
+	@Resource
+	private PageProcessor manhaoxiaoPrePageProcessor;
 	
 	
 	//主抓取部分 --动态图部分
@@ -84,6 +86,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor qqszcMainPageProcessor;
 	@Resource
 	private PageProcessor youquMainPageProcessor;
+	@Resource
+	private PageProcessor manhaoxiaoMainPageProcessor;
 	
 	
 	//预处理部分 --邮箱部分
@@ -124,11 +128,13 @@ public class PageProcessorContainer implements InitializingBean{
 		preGifPageProcessorContainer.put(1l, kx1dPrePageProcessor);
 		preGifPageProcessorContainer.put(2l, qqszcPrePageProcessor);
 		preGifPageProcessorContainer.put(3l, youquPrePageProcessor);
+		preGifPageProcessorContainer.put(4l, manhaoxiaoPrePageProcessor);
 		
 		//主抓取 --动态图
 		mainGifPageProcessorContainer.put(1l, kx1dMainPageProcessor);
 		mainGifPageProcessorContainer.put(2l, qqszcMainPageProcessor);
 		mainGifPageProcessorContainer.put(3l, youquMainPageProcessor);
+		mainGifPageProcessorContainer.put(4l, manhaoxiaoMainPageProcessor);
 		
 		
 		//预处理 --邮箱
