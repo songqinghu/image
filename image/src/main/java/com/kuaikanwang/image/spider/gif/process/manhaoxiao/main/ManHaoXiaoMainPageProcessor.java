@@ -29,13 +29,13 @@ public class ManHaoXiaoMainPageProcessor implements PageProcessor,WebSiteIdentif
                 .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
                 //.links()
                 .all();
-//        if( urls == null || urls.size()==0){
-//            urls = page.getHtml().
-//                    xpath("//table/tbody/tr/td/div/a/img")
-//                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
-//                    //.links()
-//                    .all();
-//        }
+        if( urls == null || urls.size()==0){
+            urls = page.getHtml().
+                    xpath("//div[@class='list lt']/div/div/div/div[@class='cont']/img")
+                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+                    //.links()
+                    .all();
+        }
 //        if( urls == null || urls.size()==0){
 //            urls = page.getHtml().
 //                    xpath("//table/tbody/tr/td/div/p/a/img")

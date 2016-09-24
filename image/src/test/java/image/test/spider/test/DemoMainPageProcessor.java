@@ -30,13 +30,13 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
                 .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
                 //.links()
                 .all();
-//        if( urls == null || urls.size()==0){
-//            urls = page.getHtml().
-//                    xpath("//table/tbody/tr/td/div/a/img")
-//                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
-//                    //.links()
-//                    .all();
-//        }
+        if( urls == null || urls.size()==0){
+            urls = page.getHtml().
+                    xpath("//div[@class='list lt']/div/div/div/div[@class='cont']/img")
+                    .regex("src=\"\\s*(http://.+\\.gif)\\s*\"")
+                    //.links()
+                    .all();
+        }
 //        if( urls == null || urls.size()==0){
 //            urls = page.getHtml().
 //                    xpath("//table/tbody/tr/td/div/p/a/img")
@@ -85,7 +85,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.manhaoxiao.com/xedtt/30737.html";
+			String url = "http://www.manhaoxiao.com/xedtt/36769.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}

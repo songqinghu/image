@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <c:if test="${nowPage == 1}">
-  		<title>${list[0].gifName} 邪恶动态图 - 最愉阅-啪啪啪动态图-papapa</title>
+  		<title>邪恶动态图 - 最愉阅-啪啪啪动态图-papapa</title>
 	</c:if>
     <c:if test="${nowPage > 1}">
-  		<title>${list[0].gifName} 邪恶动态图 - 最愉阅-啪啪啪动态图-papapa-第${nowPage}页</title>
+  		<title>邪恶动态图 - 最愉阅-啪啪啪动态图-papapa-第${nowPage}页</title>
 	</c:if>
     
 	<meta name="keywords" content="啪啪啪,邪恶,动态图,papapa" />

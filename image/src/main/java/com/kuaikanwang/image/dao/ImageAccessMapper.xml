@@ -36,7 +36,8 @@
    where
     wid !=6 
     and wid !=7
-    and wid !=5;
+    and wid !=5
+    and wid !=1;
   </select>
   <select id="getImageList" parameterType="com.kuaikanwang.image.domain.query.ImageQuery" resultMap="BaseResultMap" >
 
@@ -58,6 +59,7 @@
   and p.web_id !=6 
   and p.web_id !=7
   and p.web_id !=5
+  and p.web_id !=1
 	GROUP BY
 		p.pre_id
 	order by p.pre_id desc
@@ -99,6 +101,7 @@
          	    and p.web_id !=6 
 				and p.web_id !=7
 				and p.web_id !=5
+				and p.web_id !=1
 				GROUP BY
 					p.pre_id
 				order by p.cratedate desc limit 0,#{num};
@@ -126,6 +129,7 @@
 			and p.web_id !=6 
 			and p.web_id !=7
 			and p.web_id !=5
+			and p.web_id !=1
 			GROUP BY
 				p.pre_id
 			ORDER BY
@@ -172,6 +176,7 @@
 	and p.web_id !=6 
     and p.web_id !=7
     and p.web_id !=5
+    and p.web_id !=1
     and 
 	p.pre_id > #{pid}
 	GROUP BY
@@ -198,6 +203,7 @@
 	and p.web_id !=6 
   	and p.web_id !=7
   	and p.web_id !=5
+  	and p.web_id !=1
  	 and 
 	p.pre_id  &lt; #{pid}
 	GROUP BY
@@ -227,6 +233,7 @@
 	and p.web_id !=6 
   	and p.web_id !=7
   	and p.web_id !=5
+  	and p.web_id !=1
     and 	p.pre_id > #{pid}
 	GROUP BY
 		p.pre_id
@@ -288,6 +295,7 @@
 		and p.web_id !=6 
 	  	and p.web_id !=7
 	  	and p.web_id !=5
+	  	and p.web_id !=1
 		order by m.id asc
 	   limit #{start},1;
   </select>
