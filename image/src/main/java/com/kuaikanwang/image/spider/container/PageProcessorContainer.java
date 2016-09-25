@@ -50,6 +50,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor picPrePageProcessor;
 	@Resource
 	private PageProcessor uumntPrePageProcessor;
+	@Resource
+	private PageProcessor qiPrePageProcessor;
 	
 	//主抓取部分 --图片部分
 	@Resource
@@ -66,6 +68,8 @@ public class PageProcessorContainer implements InitializingBean{
 	private PageProcessor picMainPageProcessor;
 	@Resource
 	private PageProcessor uumntMainPageProcessor;
+	@Resource
+	private PageProcessor qiMainPageProcessor;
 	
 	
 	//预处理部分 --动态图部分
@@ -111,6 +115,7 @@ public class PageProcessorContainer implements InitializingBean{
 		prePageProcessorContainer.put(5l, kuPrePageProcessor);
 		prePageProcessorContainer.put(6l, picPrePageProcessor);
 		prePageProcessorContainer.put(7l, uumntPrePageProcessor);
+		prePageProcessorContainer.put(8l, qiPrePageProcessor);
 		
 		
 		
@@ -122,6 +127,7 @@ public class PageProcessorContainer implements InitializingBean{
 		mainPageProcessorContainer.put(5l, kuMainPageProcessor);
 		mainPageProcessorContainer.put(6l, picMainPageProcessor);
 		mainPageProcessorContainer.put(7l, uumntMainPageProcessor);
+		mainPageProcessorContainer.put(8l, qiMainPageProcessor);
 		
 		
 		//预处理 --动态图

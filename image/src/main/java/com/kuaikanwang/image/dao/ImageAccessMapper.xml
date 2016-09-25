@@ -254,6 +254,7 @@
 		WHERE
 			m.pre_id = p.pre_id
 		AND m.pictype = #{pictype}
+		and p.flag = 0
 		GROUP BY
 			p.pre_id
 		ORDER BY

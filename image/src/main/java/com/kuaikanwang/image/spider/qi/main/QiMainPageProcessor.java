@@ -1,20 +1,19 @@
-package image.test.spider.test;
+package com.kuaikanwang.image.spider.qi.main;
 
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.spider.website.WebSiteIdentification;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+@Component("qiMainPageProcessor")
+public class QiMainPageProcessor  implements PageProcessor,WebSiteIdentification {
 
-
-public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentification {
-		
-    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
+	  // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().
             setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36ss").
             setRetryTimes(5).setSleepTime(1000);
@@ -79,15 +78,8 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 
 		@Override
 		public long getWebId() {
-			return 4;
+			return 8;
 		}
 
 	    
-		public static void main(String[] args){
-			//String url = "http://www.meizitu.com/";
-			String url = "http://www.7160.com/meinv/36001/index_10.html";
-			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-			thread(10).run();
-		}
-	    
-	}
+}
