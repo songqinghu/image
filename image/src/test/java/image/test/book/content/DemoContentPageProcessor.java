@@ -1,4 +1,4 @@
-package image.test.spider.test;
+package image.test.book.content;
 
 import java.util.List;
 
@@ -12,9 +12,18 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+/**
+ * 图书内容抓取测试类
+ * <p>Title: DemoIntroPageProcessor.java</p>
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2016</p>
+ * <p>Company: Sage</p>
+ * @author 五虎将
+ * @date 2016年10月2日下午8:40:03
+ * @version 1.0
+ */
 
-
-public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification {
+public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
@@ -27,19 +36,10 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     public void process(Page page) {
         // 部分二：定义如何抽取页面信息，并保存下来
 
-    	
-    	List<String> urls = page.getHtml().
-		  xpath("//ul[@class='chapter']/li/a").
-		  links().
-		  all();
-    	//<a href="http://www.7160.com/meinv/35991/" target="_blank" title="齐刘海蕾丝美女戴复古眼镜俏皮写真"><img src="http://img.7160.com/uploads/160923/12-160923110G1321.jpg" alt="<b>齐刘海蕾丝美女戴复古眼镜俏</b>"><br> <span class="bom_z"><b>齐刘海蕾丝美女戴复古眼镜俏</b></span></a>
-    	//<a href="http://www.7160.com/meinv/35870/" title="文艺美术系美女画室调皮写">[09-21]文艺美术系美女画室调皮写</a>
-    	List<String> names = page.getHtml()
-    			.xpath("//ul[@class='chapter']/li/a/text()")
-//    			.regex("alt=\"(.+)\"")
-//    			.replace("<b>", "")
-//    			.replace("</b>", "")
-    			.all();
+        List<String> contents = page.getHtml().
+                xpath("//div[@class='nr_nr']/div/text()")
+                .regex("\\S+")
+                .all();
 
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
     	//()代表取出其中的数据
@@ -57,11 +57,10 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
-    	page.putField("urls", urls);
-//    	page.putField("murls", murls);
-    	page.putField("names",names);
+    	page.putField("contents", contents);
+
     	 
-    	if (page.getResultItems().get("urls") == null //|| page.getResultItems().get("murls") ==null 
+    	if (page.getResultItems().get("contents") == null //|| page.getResultItems().get("murls") ==null 
     			) {
             //skip this page
             page.setSkip(true);
@@ -75,18 +74,8 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
 //			
 //		}
 
-        
-        // 部分三：从页面发现后续的url地址来抓取
-        List<String> all = page.getHtml().
-        		xpath("//div[@class='container']/div/div[@class='NEWS']/div/div/div[@class='page']/a")
-        		.links()
-        		.regex("http://www.7160.com/.+\\.html")
-        		.all();
-//       for (String string : all) {
-//		System.out.println(string);
-//       }
-        System.err.println("urls : " + urls.size() + " names : " + names.size());
-        page.addTargetRequests(all);
+        System.err.println("urls : " + contents.size());
+//        page.addTargetRequests(all);
         	
     }
 
@@ -102,8 +91,8 @@ public class DemoPrePageProcessor implements PageProcessor,WebSiteIdentification
     
 	public static void main(String[] args){
 		//String url = "http://www.manhaoxiao.com";
-		String url = "http://m.biquge.com/booklist/24816.html";
-		Spider.create(new DemoPrePageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
+		String url = "http://m.biquge.com/16_16431/9053371.html";
+		Spider.create(new DemoContentPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 		thread(7).run();
 	}
     

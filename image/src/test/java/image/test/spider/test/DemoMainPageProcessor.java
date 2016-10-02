@@ -26,8 +26,8 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
         //http://img1.mm131.com/pic/2506/1.jpg
         //http://pic.59pic.com/2016/0809/20160809025057198.jpg
         List<String> urls = page.getHtml().
-                xpath("//div[@class='container']/div/div[@class='NEWS']/div/div/p/a/img")
-                .regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"")
+                xpath("//div[@class='nr_nr']/div/text()")
+//                .regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"")
                 //.links()
                 .all();
         if( urls == null || urls.size()==0){
@@ -85,7 +85,7 @@ public class DemoMainPageProcessor implements PageProcessor,WebSiteIdentificatio
 	    
 		public static void main(String[] args){
 			//String url = "http://www.meizitu.com/";
-			String url = "http://www.7160.com/meinv/36001/index_10.html";
+			String url = "http://m.biquge.com/24_24816/1525231.html";
 			Spider.create(new DemoMainPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 			thread(10).run();
 		}
