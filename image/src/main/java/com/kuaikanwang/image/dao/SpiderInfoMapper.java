@@ -48,6 +48,17 @@ public interface SpiderInfoMapper {
 	
 	
 	
+	/**
+	 * 获取要爬取的动态图的地址
+	 * <p>Title: findGWebSpiderPreUrl</p>
+	 * <p>Description: </p>
+	 * @param gwebId
+	 * @return
+	 */
+	public List<String> findBookWebSpiderUrl(long bwebId);
 	
 
+	public List<Long> findBookAllWebIds();
+	
+	
 }

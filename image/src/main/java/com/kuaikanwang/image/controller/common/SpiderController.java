@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
+import com.kuaikanwang.image.spider.book.start.impl.BookSpiderStartImpl;
 import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
 import com.kuaikanwang.image.spider.email.start.impl.EmailSpiderStartImpl;
 import com.kuaikanwang.image.spider.gif.start.GifSpiderStart;
@@ -37,6 +39,10 @@ public class SpiderController {
 	
 	@Resource
 	private EmailSpiderStart emailSpiderStartImpl;
+	
+	@Resource
+	private BookSpiderStart bookSpiderStartImpl;
+	
 	
 	/**
 	 * 图片抓取
@@ -78,6 +84,21 @@ public class SpiderController {
 	public Object spiderStartEmail(@RequestParam(defaultValue="1") Long emailwebId){
 		
 		Long count = emailSpiderStartImpl.spiderStart(emailwebId);
+		
+		return count;
+		
+	}
+	/**
+	 * 图书爬取
+	 * <p>Title: spiderStartBook</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/book")
+	@ResponseBody
+	public Object spiderStartBook(@RequestParam(defaultValue="1") Long webId){
+		
+		Long count = bookSpiderStartImpl.bookSpiderStart(webId);
 		
 		return count;
 		

@@ -1,49 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kuaikanwang.image.dao.SpiderInfoMapper" >
+<mapper namespace="com.kuaikanwang.image.dao.BookIntroMapper" >
+
 	<cache  eviction="FIFO"  flushInterval="180000"  size="1024"  readOnly="true"/> 
-	<!-- 先进先出   缓存180s  缓存1024个  只读 -->
-  <resultMap id="BaseResultMap" type="com.kuaikanwang.image.domain.result.ImageList" >
-    <id column="pre_id" property="pid" jdbcType="INTEGER" />
-    <result column="pictype" property="pictype" jdbcType="VARCHAR" />
-    <result column="name" property="picName" jdbcType="VARCHAR" />
-    <result column="cratedate" property="createdate" jdbcType="TIMESTAMP" />
-    <result column="id" property="mid" jdbcType="INTEGER" />
-    <result column="url" property="picUrl" jdbcType="VARCHAR" />
-  </resultMap>
+<!-- 先进先出   缓存180s  缓存1024个  只读 -->
 
-  <select id="findWebSpiderPreUrl" parameterType="java.lang.Long" resultType="map" >
-		select  url,pictype from webspiderinfo where web_id  = #{id};
+  <select id="findBookByUrl" parameterType="java.lang.String" resultType="java.lang.Long" >
+		select count(1) from bookintro where url = #{url};
   </select>
+  
+  
+  <insert id="insertBookIntro" parameterType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
 
-  <select id="findAllWebIds" resultType="java.lang.Long" >
-		select id  from webinfo ;
+    insert into bookintro 
+      (bweb_id,name,author, booktype,url,old_pic_url)
+      
+    values (#{bweb_id}, #{name}, 
+      #{author}, #{booktype}, #{url},#{old_pic_url})
+  </insert>
+  
+  <select id="findBookIntroByIsSpider"  resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+		select intro_id,bweb_id,name,author,booktype,url from bookintro where isspider = 0;
   </select>
   
-    <select id="findGWebSpiderPreUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from gwebspiderinfo where gweb_id  = #{id};
+<!--   
+  <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
+		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;
   </select>
+  <select id="findMaxNumberByWebId" parameterType="java.lang.Long" resultType="java.lang.Long" >
+		select count(1) from pregif where gweb_id =#{webId};
+  </select> 
 
-  <select id="findGifAllWebIds" resultType="java.lang.Long" >
-		select id  from gwebinfo ;
-  </select>
-  
-      <select id="findEmailWebSpiderPreUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from emailwebspiderinfo where emailweb_id  = #{id};
-  </select>
-  
-    <select id="findEmailAllWebIds" resultType="java.lang.Long" >
-		select id  from emailwebinfo ;
-  </select>
-  
-      <select id="findBookWebSpiderUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from bookwebspiderinfo where bookweb_id  = #{id} and isAll = 0;
-  </select>
-  
-    <select id="findBookAllWebIds" resultType="java.lang.Long" >
-		select id  from bookwebinfo ;
-  </select>
-  
+  <update id="UpdateSpiderCountByPreId" parameterType="java.lang.Long">
+  	 UPDATE pregif SET count=count+1 where pre_id = #{pre_id};
+  </update> -->
+
 <!--   <resultMap id="BaseResultMap" type="com.taobao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />

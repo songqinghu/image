@@ -51,10 +51,10 @@
 		<span id="image_kill_referrer"  style='width:120px;height:160px;'>
 		</span>
 		</li>
-		<img alt="测试" src="http://img.7160.com/uploads/160923/12-160923112213522.jpg">
+		<img alt="测试" src="http://www.biquge.com/files/article/image/22/21470/21470.jpg">
 	</ul>
 	<script>
-		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://img.7160.com/uploads/160923/12-160923112213522.jpg');
+		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://www.biquge.com/files/article/image/22/21470/21470.jpg');
 	</script>
 
 	
