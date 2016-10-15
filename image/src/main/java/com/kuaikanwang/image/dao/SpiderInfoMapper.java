@@ -61,4 +61,7 @@ public interface SpiderInfoMapper {
 	public List<Long> findBookAllWebIds();
 	
 	
+	
+	
+	
 }

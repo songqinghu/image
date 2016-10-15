@@ -40,6 +40,9 @@ public class CommonCacheUtil implements InitializingBean{
 	public static final String  PRE_ID = "pre_id";
 	public static final String  GPRE_ID="gpre_id";//动态图 副表preid
 	public static final String  EMAILPRE_ID="emailpre_id";//邮箱 副表preid
+	public static final String BOOK_INTRO_ID="book_intro_id";//图书唯一id
+	public static final String BOOK_CHAPTER_ID="book_chapter_id";//图书唯一id
+	public static final String BOOK_NAME="book_name";//图书唯一id
 	
 	private static Map<String, Long> preCacheInfo = new HashMap<String,Long>();
 	
@@ -53,6 +56,12 @@ public class CommonCacheUtil implements InitializingBean{
 	
 	public static Map<String, Long> getMainCacheInfo() {
 		return mainCacheInfo;
+	}
+
+	private static Map<String, String> bookContentCache = new HashMap<String,String>();
+	
+	public static Map<String, String> getBookContentCache() {
+		return bookContentCache;
 	}
 
 	//图片类型缓存 --初始化从 数据库中获取

@@ -12,26 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.redis.RedisDao;
-import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
+import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
 import com.kuaikanwang.image.utils.redis.RedisKeyUtil;
 
-/**
- * 邮箱定时抓取
- * <p>Title: EmailSpiderTimerTask.java</p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2016</p>
- * <p>Company: Sage</p>
- * @author 五虎将
- * @date 2016年9月13日下午9:55:01
- * @version 1.0
- */
-
-public class EmailSpiderTimerTask implements InitializingBean{
+public class BookSpiderTimerTask implements InitializingBean{
 
 	private static Logger logger = LoggerFactory.getLogger(EmailSpiderTimerTask.class);
 	
 	@Autowired
-	private EmailSpiderStart emailSpiderStartImpl;
+	private  BookSpiderStart bookSpiderStartImpl;
 	
 	@Autowired
 	private SpiderInfoMapper spiderInfoMapper;
@@ -39,8 +28,8 @@ public class EmailSpiderTimerTask implements InitializingBean{
 	private RedisDao redisDaoImpl;
 	
 	public void work(){
-		if(redisDaoImpl.getValueByKeyAndUpdate(RedisKeyUtil.getTimeTaskKey("spider", "email"))){
-			List<Long> webIds = spiderInfoMapper.findEmailAllWebIds();
+		if(redisDaoImpl.getValueByKeyAndUpdate(RedisKeyUtil.getTimeTaskKey("spider", "book"))){
+			List<Long> webIds = spiderInfoMapper.findBookAllWebIds();
 			
 			for (final Long webId : webIds) {
 				
@@ -51,7 +40,7 @@ public class EmailSpiderTimerTask implements InitializingBean{
 						logger.warn("start email spider website the webId is " + webid);
 						System.out.println(new Date() + "  start email spider website the webId is " + webid);
 						long start = System.currentTimeMillis();
-						Long count = emailSpiderStartImpl.spiderStart(webid);
+						Long count = bookSpiderStartImpl.bookSpiderStart(webid);
 						System.out.println(new Date() + " email  spider webstie {"+webid+"} is end");
 					    logger.warn("email spider webstie {"+webid+"} is end , "
 					    		+ "lost time is "+(System.currentTimeMillis()-start)+"  ms"+",spider number is :" + count);
@@ -65,7 +54,7 @@ public class EmailSpiderTimerTask implements InitializingBean{
 	            }
 			}
 			//结束后 --将控制符设置回去
-			redisDaoImpl.setValueByKey(RedisKeyUtil.getTimeTaskKey("spider", "email"), "1");
+			redisDaoImpl.setValueByKey(RedisKeyUtil.getTimeTaskKey("spider", "book"), "1");
 			
 		}else{
 			//未获取到控制符 跳过
@@ -76,7 +65,7 @@ public class EmailSpiderTimerTask implements InitializingBean{
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		redisDaoImpl.setValueByKey(RedisKeyUtil.getTimeTaskKey("spider", "email"), "1");
+		redisDaoImpl.setValueByKey(RedisKeyUtil.getTimeTaskKey("spider", "book"), "1");
 	}
 	
 }

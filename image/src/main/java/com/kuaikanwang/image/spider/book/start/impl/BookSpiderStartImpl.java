@@ -8,13 +8,16 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kuaikanwang.image.dao.BookChapterMapper;
 import com.kuaikanwang.image.dao.BookIntroMapper;
 import com.kuaikanwang.image.dao.GifAccessMapper;
 import com.kuaikanwang.image.dao.PreGifMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
+import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.domain.bean.gif.PreGif;
 import com.kuaikanwang.image.spider.book.process.biquge.chapter.BQGChapterPageProcessor;
@@ -57,9 +60,20 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	@Resource
 	private PageProcessor BQGChapterPageProcessor;
 	
-	
 	@Resource
 	private BookIntroMapper bookIntroMapper;
+	
+	@Resource
+	private BookChapterMapper bookChapterMapper;
+	
+	@Resource
+	private Pipeline chapterMysqlPipeline;
+	
+	@Resource
+	private PageProcessor BQGContentPageProcessor;
+	
+	@Resource
+	private Pipeline contentMysqlPipeline;
 	
 	public Long bookSpiderStart(long bwebId){
 		
@@ -84,54 +98,70 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 		 */
 		 //取出未完全爬取过目录的图书进行爬取
 		List<BookIntro> bookIntros = bookIntroMapper.findBookIntroByIsSpider();
+		long spiderCount = 0;
 		for (BookIntro bookIntro : bookIntros) {
-			Spider.
-			create(BQGChapterPageProcessor)
-			.addPipeline(new ConsolePipeline()).
-			addUrl(bookIntro.getUrl()).
-			thread(7).run();
+			
+			spiderCount = spiderBookIntro(bwebId, bookIntro, spiderCount);
 		}
+		return spiderCount;
+	}
+	/**
+	 * 爬取webId下的某一本书 可用于增量部分
+	 * <p>Title: spiderBookIntro</p>
+	 * <p>Description: </p>
+	 * @param bwebId
+	 * @param bookIntro
+	 * @param spiderCount
+	 * @return
+	 */
+	public Long spiderBookIntro(Long bwebId,BookIntro bookIntro,Long spiderCount){
 		
+		CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.BOOK_INTRO_ID+bwebId, bookIntro.getIntro_id());
 		
-		
-		
+		Spider.
+		create(BQGChapterPageProcessor)
+		.addPipeline(chapterMysqlPipeline).
+		addUrl(bookIntro.getUrl()).
+		thread(7).run();
 		/**
 		 * 章节内容爬取
 		 */
-//		Long max = preGifMapper.findMaxNumberByWebId(bwebId);
-//		long start = 0;
-//		long spiderCount = 0;
-//		Map<String, Long> map = new HashMap<String,Long>();
-//		map.put("webId", bwebId);
-//		
-//		while(max>start){
-//			map.put("start", start);
-//			
-//			PreGif gif = preGifMapper.findPreGifByWebId(map);
-//			//这个需要加入一个判断 --如果mainpic中已经有pre_id了就跳过 --二次抓取提升速度---做hashcode 部分重复抓取
-//			Integer count = gifAccessMapper.findDetailTotalCount((int) gif.getPre_id());
-//			boolean flag = false;
-//			if((gif.getCount()<6 && count <=0) || RandomUtils.nextInt(100)%99==0){
-//				flag =true;
-//			}
-//			
-//			if(flag){ //未抓取过再去抓取
-//				//纪录抓取的数量
-//				spiderCount++;
-//				
-//				//preid和pictype加入缓存中
-//				CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.GPRE_ID+bwebId, gif.getPre_id());
-//				
-//
-//				spiderSelectDispatchImpl.callMaicGifSpider(bwebId, gif.getUrl());
-//
-//				preGifMapper.UpdateSpiderCountByPreId(gif.getPre_id());
-//			}
-//		
-//			start = start + 1;
-//			
-//		}
-//		return spiderCount;
-		return 0l;
+		Long max = bookChapterMapper.findMaxNumberForBookChapter();
+		long start = 0;
+		Map<String, Long> map = new HashMap<String,Long>();
+		map.put("webId", bwebId);
+		
+		while(max>start){
+			map.put("start", start);
+			
+			BookChapter chapter = bookChapterMapper.findSpiderChapter(map);
+			
+			spiderCount++;
+			//preid和pictype加入缓存中
+			CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.BOOK_CHAPTER_ID+bwebId,chapter.getChapter_id());
+			CommonCacheUtil.getMainCacheInfo().put(CommonCacheUtil.BOOK_INTRO_ID+bwebId,chapter.getIntro_id());
+			CommonCacheUtil.getBookContentCache().put(CommonCacheUtil.BOOK_NAME+bwebId,chapter.getName());
+			
+			Spider.
+			create(BQGContentPageProcessor)
+			.addPipeline(contentMysqlPipeline).
+			addUrl(chapter.getUrl()).
+			thread(7).run();
+			
+//		spiderSelectDispatchImpl.callMaicGifSpider(bwebId, gif.getUrl());
+			
+//	    preGifMapper.UpdateSpiderCountByPreId(gif.getPre_id());
+			
+			start = start + 1;
+			
+		}
+		bookChapterMapper.updateChapterIsSpider();
+		
+		return spiderCount;
 	}
+	
+	
+	
+	
+	
 }

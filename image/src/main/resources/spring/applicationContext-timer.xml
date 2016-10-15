@@ -135,7 +135,23 @@
         </property>
     </bean>
   -->  
-    
+     <!-- 图书爬取 -->
+     <bean id="bookSpiderTimerJobDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <bean class="com.kuaikanwang.image.component.timer.EmailSpiderTimerTask"></bean>
+        </property>
+        <property name="targetMethod" value="work" />
+        <property name="concurrent" value="false" />
+    </bean>
+     
+    <bean id="bookSpiderTimerJobTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="bookSpiderTimerJobDetail">
+        </property>
+        <property name="cronExpression" value="${book.spider.timer.cron}">
+        </property>
+    </bean>
  	<bean name="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
@@ -145,6 +161,7 @@
                 <ref bean="spiderTimerJobTrigger" />
                 <ref bean="gifSpiderTimerJobTrigger" />
                 <ref bean="emailSpiderTimerJobTrigger" />
+                <ref bean="bookSpiderTimerJobTrigger" />
             </list>
         </property>
     </bean>

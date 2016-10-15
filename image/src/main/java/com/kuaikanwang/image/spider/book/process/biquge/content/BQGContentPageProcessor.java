@@ -74,7 +74,7 @@ public class BQGContentPageProcessor implements PageProcessor,WebSiteIdentificat
 //			
 //		}
 
-        System.err.println("urls : " + contents.size());
+//        System.err.println("urls : " + contents.size());
 //        page.addTargetRequests(all);
         	
     }

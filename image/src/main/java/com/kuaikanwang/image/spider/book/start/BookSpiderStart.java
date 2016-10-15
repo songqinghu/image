@@ -1,4 +1,7 @@
 package com.kuaikanwang.image.spider.book.start;
+
+import com.kuaikanwang.image.domain.bean.book.BookIntro;
+
 /**
  * 图书爬取类
  * <p>Title: BookSpiderStart.java</p>
@@ -14,4 +17,5 @@ public interface BookSpiderStart {
 	
 	public Long bookSpiderStart(long gwebId);
 
+	public Long spiderBookIntro(Long bwebId,BookIntro bookIntro,Long spiderCount);
 }
