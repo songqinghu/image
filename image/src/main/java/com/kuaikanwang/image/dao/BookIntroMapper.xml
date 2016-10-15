@@ -23,6 +23,15 @@
 		select intro_id,bweb_id,name,author,booktype,url from bookintro where isspider = 0;
   </select>
   
+    <select id="findBookfPageTotal"  resultType="java.lang.Integer" >
+		select count(1) from bookintro where flag = 0 and preIntro_id =0;
+  </select>
+  
+    <select id="findBookListShow" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	select intro_id,name,author,newchapter,old_pic_url,show_pic_url,introInfo from bookintro where flag =0 order by updatedate desc
+	LIMIT #{start},#{rows};
+  </select>
+  
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
 		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;

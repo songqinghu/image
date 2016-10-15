@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="google-site-verification" content="NcHcdNHdRxsz4ePQcGnFi319wOFmT08Qf9NQQJmDCm0" />
-    <title>最愉阅(zuiyuyue)-美女图片邪恶动态图VR成人福利资源</title>
-    	<meta name="keywords" content="美女图片,邪恶动态图,VR成人福利资源,meinv,meinvtupian,pa,papa,papapa" />
+    <title>最愉阅(zuiyuyue)-美女图片邪恶动态图最新热门小说</title>
+    	<meta name="keywords" content="美女图片,邪恶动态图,最新热门小说,meinv,meinvtupian,pa,papa,papapa,xiaoshuo" />
 	<meta name="description" content=
 	"美女图片全身一件不留，美女图片大全无内衣,美女祼体图片图,美女屁股,性感美女胸罩衣服美女脱身胸部高清遮挡, 
 	邪恶动态图xxoo,邪恶动态图吸奶,美女邪恶gif动态图,邪恶动态图啪啪,邪恶动态图27报,动态图片坐爱,
-	VR,VR成人福利,VR资源,VR岛国成人视频 "/>
+	小说,最新小说,热门小说,小说排行 "/>
 	
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
@@ -55,6 +55,7 @@
 
         <li ><a target="_blank" href="http://www.zuiyuyue.com/images/1/list">美女图片</a></li>
          <li ><a target="_blank" href="http://www.zuiyuyue.com/gif/list">啪啪啪动态图</a></li>
+          <li ><a target="_blank" href="http://www.zuiyuyue.com/book/list">热门小说</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

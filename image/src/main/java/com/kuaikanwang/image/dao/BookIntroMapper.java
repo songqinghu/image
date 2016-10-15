@@ -1,6 +1,7 @@
 package com.kuaikanwang.image.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 
@@ -28,8 +29,21 @@ public interface BookIntroMapper {
 	 */
 	
 	public List<BookIntro> findBookIntroByIsSpider();
+
+	/**
+	 * 获取总的可用图书
+	 * <p>Title: findGifPageTotal</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public Integer findBookfPageTotal();
 	
 	
+	
+	/**
+	 * 根据 pageSize 和 pageNum 根据最后更新时间降序
+	 */
+	public List<BookIntro> findBookListShow(Map<String, Long> map);
 	
 	
 }
