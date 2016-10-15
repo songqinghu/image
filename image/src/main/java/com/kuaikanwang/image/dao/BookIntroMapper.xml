@@ -13,10 +13,10 @@
   <insert id="insertBookIntro" parameterType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
 
     insert into bookintro 
-      (bweb_id,name,author, booktype,url,old_pic_url)
+      (bweb_id,name,author, booktype,url,old_pic_url,introInfo)
       
     values (#{bweb_id}, #{name}, 
-      #{author}, #{booktype}, #{url},#{old_pic_url})
+      #{author}, #{booktype}, #{url},#{old_pic_url},#{introInfo})
   </insert>
   
   <select id="findBookIntroByIsSpider"  resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >

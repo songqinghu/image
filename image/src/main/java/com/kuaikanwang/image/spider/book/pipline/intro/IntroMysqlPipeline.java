@@ -48,6 +48,8 @@ public class IntroMysqlPipeline implements Pipeline{
 		List<String> types = (List<String>) all.get("type");
 		//图书图片---放在七牛云上 需要研究一下如何放上去和获取
 		List<String> imgs = (List<String>) all.get("img");
+		//图书简介 --取的是html
+		List<String> introInfos = (List<String>) all.get("introInfo");
 		
 		//获取webid
 		Long webId = (Long) all.get(CommonCacheUtil.WEB_ID);
@@ -62,7 +64,7 @@ public class IntroMysqlPipeline implements Pipeline{
 			bookIntro.setName(names.get(0));
 			bookIntro.setUrl(urls.get(0));
 			bookIntro.setOld_pic_url(imgs.get(0));
-			
+			bookIntro.setIntroInfo(introInfos.get(0));
 			synchronized(this){
 				long count = bookIntroMapper.findBookByUrl(urls.get(0));
 				if(count >0){

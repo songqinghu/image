@@ -57,7 +57,10 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
     			.regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"",1)
     			.all();
 
-    	
+    	List<String> introInfo = page.getHtml().
+    			xpath("//div[@class='cover']/div[@class='intro_info']")
+    			.regex("<div class=\"intro_info\">(.+)</div>")
+    			.all();
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("url", url);
@@ -65,7 +68,7 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
     	page.putField("author",author);
     	page.putField("type",type);
     	page.putField("img",img);
-    	
+    	page.putField("introInfo", introInfo);
     	 
     	if (page.getResultItems().get("url") == null //|| page.getResultItems().get("murls") ==null 
     			) {
@@ -87,7 +90,10 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
     	for (String string : img) {
     		System.out.println(string);
     	}
-
+    	
+    	for (String string : introInfo) {
+			System.out.println(string);
+		}
 
     }
 

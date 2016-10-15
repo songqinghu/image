@@ -20,7 +20,14 @@ public class BookIntro {
     private String 	newchapter;  
     private String 	old_pic_url;
     private String 	show_pic_url;
+    private String introInfo;
     
+	public String getIntroInfo() {
+		return introInfo;
+	}
+	public void setIntroInfo(String introInfo) {
+		this.introInfo = introInfo;
+	}
 	public long getIntro_id() {
 		return intro_id;
 	}

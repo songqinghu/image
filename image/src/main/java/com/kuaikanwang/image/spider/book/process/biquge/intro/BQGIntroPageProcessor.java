@@ -59,7 +59,10 @@ public class BQGIntroPageProcessor implements PageProcessor,WebSiteIdentificatio
     			.regex("src=\"\\s*((http://)?.+\\.(jpg|gif|png))\\s*\"",1)
     			.all();
 
-    	
+    	List<String> introInfo = page.getHtml().
+    			xpath("//div[@class='cover']/div[@class='intro_info']")
+    			.regex("<div class=\"intro_info\">(.+)</div>")
+    			.all();
     	
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
     	page.putField("url", url);
@@ -67,13 +70,14 @@ public class BQGIntroPageProcessor implements PageProcessor,WebSiteIdentificatio
     	page.putField("author",author);
     	page.putField("type",type);
     	page.putField("img",img);
-    	
+    	page.putField("introInfo", introInfo);
     	 
     	if (page.getResultItems().get("url") == null 
     			|| page.getResultItems().get("name") ==null 
     			|| page.getResultItems().get("author") ==null 
     			|| page.getResultItems().get("type") ==null 
-    			|| page.getResultItems().get("img") ==null 
+    			|| page.getResultItems().get("img") ==null
+    			|| page.getResultItems().get("introInfo") ==null
     			) {
             page.setSkip(true);
             logger.error("skip the book exist null ,check it!");
