@@ -37,7 +37,7 @@
   </select>
   
       <select id="findBookWebSpiderUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from bookwebspiderinfo where bookweb_id  = #{id} and isAll = 0;
+		select  url from bookwebspiderinfo where bookweb_id  = #{id};
   </select>
   
     <select id="findBookAllWebIds" resultType="java.lang.Long" >
