@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
-import com.kuaikanwang.image.spider.book.start.impl.BookSpiderStartImpl;
 import com.kuaikanwang.image.spider.email.start.EmailSpiderStart;
-import com.kuaikanwang.image.spider.email.start.impl.EmailSpiderStartImpl;
 import com.kuaikanwang.image.spider.gif.start.GifSpiderStart;
-import com.kuaikanwang.image.spider.gif.start.impl.GifSpiderStartImpl;
 import com.kuaikanwang.image.spider.start.SpiderStart;
 
 /**
@@ -99,6 +96,42 @@ public class SpiderController {
 	public Object spiderStartBook(@RequestParam(defaultValue="1") Long webId){
 		
 		Long count = bookSpiderStartImpl.bookSpiderStart(webId);
+		
+		return count;
+		
+	}
+	
+	/**
+	 * 爬取所有的图书的简介信息 在爬取单本前执行
+	 * <p>Title: spiderStartBook</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/book/intro")
+	@ResponseBody
+	public Object spiderAllBookIntro(@RequestParam(defaultValue="1") Long webId){
+		
+		//爬取所有图书简介
+		bookSpiderStartImpl.spiderAllBookIntro(webId);
+		
+		return true;
+		
+	}
+	
+	
+	
+	/**
+	 * 图书爬取指定的书籍
+	 * <p>Title: spiderStartBook</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/start/one/book")
+	@ResponseBody
+	public Object spiderStartOneBook(@RequestParam(defaultValue="1") Long introId){
+		
+		
+		Long count = bookSpiderStartImpl.spiderOneBookStart(introId);
 		
 		return count;
 		

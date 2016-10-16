@@ -60,8 +60,14 @@ public interface SpiderInfoMapper {
 
 	public List<Long> findBookAllWebIds();
 	
-	
-	
+	/**
+	 * 通过id获取url
+	 * <p>Title: findOneBookUrlById</p>
+	 * <p>Description: </p>
+	 * @param bookId
+	 * @return
+	 */
+	public String findOneBookUrlById(Long bookId);
 	
 	
 }

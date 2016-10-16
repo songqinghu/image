@@ -18,4 +18,11 @@ public interface BookSpiderStart {
 	public Long bookSpiderStart(long gwebId);
 
 	public Long spiderBookIntro(Long bwebId,BookIntro bookIntro,Long spiderCount);
+	
+	public  void spiderAllBookIntro(long bwebId);
+	
+	public Long spiderOneBookStart(Long introId);
+	
+	
+	
 }

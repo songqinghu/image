@@ -62,22 +62,8 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	
 	public Long bookSpiderStart(long bwebId){
 		
+		spiderAllBookIntro(bwebId);
 		
-		List<String> list = spiderInfoMapper.findBookWebSpiderUrl(bwebId);//url 和 类别
-		
-		/**
-		 * 图书简介爬取
-		 */
-		for (String url : list) {
-			
-//			spiderSelectDispatchImpl.callPreGifSpider(bwebId, url);
-			Spider.
-			create(BQGIntroPageProcessor)
-			.addPipeline(introMysqlPipeline).
-			addUrl(url).
-			thread(7).run();
-			
-		}
 		/**
 		 * 章节目录爬取	
 		 */
@@ -158,8 +144,47 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 		return spiderCount;
 	}
 	
+	/**
+	 * 爬取指定webId的所有图书简介
+	 * <p>Title: spiderAllBookIntro</p>
+	 * <p>Description: </p>
+	 * @param bwebId
+	 */
+	public  void spiderAllBookIntro(long bwebId){
+		
+		List<String> list = spiderInfoMapper.findBookWebSpiderUrl(bwebId);//url 和 类别
+		
+		/**
+		 * 图书简介爬取
+		 */
+		for (String url : list) {
+			
+//			spiderSelectDispatchImpl.callPreGifSpider(bwebId, url);
+			Spider.
+			create(BQGIntroPageProcessor)
+			.addPipeline(introMysqlPipeline).
+			addUrl(url).
+			thread(7).run();
+			
+		}
+	}
 	
 	
+	/**
+	 * 根据简介id进行爬取
+	 * <p>Title: spiderOneBookStart</p>
+	 * <p>Description: </p>
+	 * @param bookId
+	 * @return
+	 */
+	public Long spiderOneBookStart(Long introId){
+		
+		BookIntro bookIntro = bookIntroMapper.findBookIntroByIntroId(introId);
+		
+		Long count = spiderBookIntro(bookIntro.getBweb_id(), bookIntro, 0l);
+		
+		return count;
+	}
 	
 	
 }
