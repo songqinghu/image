@@ -25,8 +25,12 @@ public class BookContent {
 	
 	private String name;
 	
-	private String content;
+	private byte[] content;
 
+	
+	private String showContent;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -59,13 +63,21 @@ public class BookContent {
 		this.name = name;
 	}
 
-	public String getContent() {
+	public byte[] getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(byte[] content) {
 		this.content = content;
 	}
-	
+
+	public String getShowContent() {
+		return showContent;
+	}
+
+	public void setShowContent(String showContent) {
+		this.showContent = showContent;
+	}
+
 	
 }

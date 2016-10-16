@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.annotation.Resources;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kuaikanwang.image.dao.BookChapterMapper;
+import com.kuaikanwang.image.dao.BookContentMapper;
 import com.kuaikanwang.image.dao.BookIntroMapper;
+import com.kuaikanwang.image.domain.bean.book.BookChapter;
+import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.service.BookAccessService;
 
@@ -19,6 +24,12 @@ public class BookAccessServiceImpl implements BookAccessService {
 
 	@Resource
 	private BookIntroMapper bookIntroMapper;
+	
+	@Resource
+	private BookChapterMapper bookChapterMapper;
+	
+	@Resource
+	private BookContentMapper bookContentMapper;
 	
 	/**
 	 * 获取图书能展示的页数
@@ -57,7 +68,98 @@ public class BookAccessServiceImpl implements BookAccessService {
 		
 		List<BookIntro> books = bookIntroMapper.findBookListShow(map );
 		
+		for (BookIntro bookIntro : books) {
+			
+			String introInfo = bookIntro.getIntroInfo();
+			String result = introInfo.replaceAll("<br>", "")
+					.replaceAll("</br>", "")
+					.replaceAll("<p>", "")
+					.replaceAll("</p>", "");
+			bookIntro.setIntroInfo(result);
+		}
+		
+		
+		
 		return books;
 	}
+	
+	/**
+	 * 查询图书id是否可用或者存在
+	 * <p>Title: findIntroIdIsExit</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public boolean findIntroIdIsExit(Long introId){
+		
+		Long count = bookIntroMapper.findIntroIdIsExit(introId);
+		if(count>0){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 根据introId查询图书信息
+	 * <p>Title: findBookIntroByIntroId</p>
+	 * <p>Description: </p>
+	 * @param introId
+	 * @return
+	 */
+	public BookIntro findBookIntroByIntroId(Long introId){
+		
+		BookIntro bookIntro = bookIntroMapper.findBookIntroByIntroId(introId);
+		
+		return bookIntro;
+	}
+
+	/**
+	 * 获取最新的10的章节
+	 * <p>Title: getNearBookChapterByIntroId</p>
+	 * <p>Description: </p>
+	 * @param introId
+	 * @return
+	 * @see com.kuaikanwang.image.service.BookAccessService#getNearBookChapterByIntroId(java.lang.Long)
+	 */
+	@Override
+	public List<BookChapter> getNearBookChapterByIntroId(Long introId) {
+		
+		List<BookChapter> chapters = bookChapterMapper.getNearBookChapterByIntroId(introId);
+		
+		return chapters;
+	}
+
+	
+	@Override
+	public List<BookChapter> getAllBookChapterByIntroId(Long introId) {
+		
+		List<BookChapter> chapters = bookChapterMapper.getAllBookChapterByIntroId(introId);
+		
+		return chapters;
+	}
+
+	@Override
+	public BookContent getBookContentByChapterId(Long chapterId) {
+
+		BookContent bookContent = bookContentMapper.getBookContentByChapterId(chapterId);
+		
+		return bookContent;
+	}
+
+	@Override
+	public Long getBookPreviousChapterId(Long chapterId) {
+		
+		Long prev = bookChapterMapper.getBookPreviousChapterId(chapterId);
+		
+		return prev;
+	}
+
+	@Override
+	public Long getBookAfterChapterId(Long chapterId) {
+		
+		Long after = bookChapterMapper.getBookAfterChapterId(chapterId);
+		return after;
+	}
+	
+	
 
 }

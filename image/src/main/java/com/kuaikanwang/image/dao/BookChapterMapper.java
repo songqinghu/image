@@ -1,5 +1,6 @@
 package com.kuaikanwang.image.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
@@ -63,6 +64,46 @@ public interface BookChapterMapper {
 	 * <p>Description: </p>
 	 */
 	public void updateChapterIsSpider();
+
+	/**
+	 * 返回 已经爬取的isspider=2 及这本书的 number数最大的值的章节信息
+	 * <p>Title: findBookChapterMaxNumberByIntroId</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public BookChapter findBookChapterMaxNumberByIntroId(Long introId);
+	
+	
+	/**
+	 * 根据introid获取最新的10章信息
+	 */
+	public List<BookChapter> getNearBookChapterByIntroId(Long introId);
+	
+	/**
+	 * 获取全本小说的章节列表
+	 * <p>Title: getAllBookChapterByIntroId</p>
+	 * <p>Description: </p>
+	 * @param introId
+	 * @return
+	 */
+	public List<BookChapter> getAllBookChapterByIntroId(Long introId);
+	
+	/**
+	 * 获取同一本小说的前一章id
+	 * <p>Title: getBookPreviousChapterId</p>
+	 * <p>Description: </p>
+	 * @param chapterId
+	 * @return
+	 */
+	public Long getBookPreviousChapterId(Long chapterId);
+	/**
+	 * 获取同一本小说的后一章的id
+	 * <p>Title: getBookAfterChapterId</p>
+	 * <p>Description: </p>
+	 * @param chapterId
+	 * @return
+	 */
+	public Long getBookAfterChapterId(Long chapterId);
 	
 	
 }

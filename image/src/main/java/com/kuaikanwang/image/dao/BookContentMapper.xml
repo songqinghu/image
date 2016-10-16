@@ -16,8 +16,13 @@
       (intro_id,chapter_id,name, content)
       
     values (#{intro_id}, #{chapter_id}, 
-      #{name}, #{content})
+      #{name}, #{showContent})
   </insert>
+  
+  
+    <select id="getBookContentByChapterId" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookContent" >
+		select intro_id,name,content from bookcontent where chapter_id = #{id} and flag=0;
+ 	 </select>
   
 <!--   <select id="findMaxNumberForBookChapter"  resultType="java.lang.Long" >
 		select count(1) from bookchapter where isspider = 0 OR isspider = 1 and flag=0;

@@ -22,6 +22,15 @@ public interface BookContentMapper {
 	public void insertBookContent(BookContent bookContent);
 	
 	
+	/**
+	 * 获取指定图书内容信息
+	 * <p>Title: getBookContentByChapterId</p>
+	 * <p>Description: </p>
+	 * @param chapterId
+	 * @return
+	 */
+	public BookContent getBookContentByChapterId(Long chapterId);
+	
 	
 	
 }

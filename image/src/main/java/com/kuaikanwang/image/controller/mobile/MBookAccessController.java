@@ -6,13 +6,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kuaikanwang.image.domain.bean.book.BookChapter;
+import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.service.BookAccessService;
-import com.kuaikanwang.image.service.GifAccessService;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
 
 /**
@@ -33,6 +35,13 @@ public class MBookAccessController {
 	@Autowired
 	private BookAccessService bookAccessServiceImpl;
 	
+	/**
+	 * 分页展示所有的图书
+	 * <p>Title: showBookList</p>
+	 * <p>Description: </p>
+	 * @param pageNum
+	 * @return
+	 */
 	@RequestMapping("/list")
 	public ModelAndView showBookList(@RequestParam(defaultValue="1") int pageNum){
 		
@@ -67,7 +76,107 @@ public class MBookAccessController {
 		
 	}
 	
+	/**
+	 * 根据图书ID获取图书简介及最近的10章图书信息
+	 */
+	@RequestMapping("/detail/intro/{introId}")
+	public ModelAndView showBookIntro(@PathVariable Long introId){
+		
+		//查询id是否可用或者存在
+		boolean flag = bookAccessServiceImpl.findIntroIdIsExit(introId);
+		if(!flag){
+			introId=1l;//这里先写死,应该推荐最热门的图书的
+		}
+		
+		BookIntro bookIntro = bookAccessServiceImpl.findBookIntroByIntroId(introId); 
+		//获取最近10章的章节名称
+		List<BookChapter> chapters = bookAccessServiceImpl.getNearBookChapterByIntroId(introId);
+		
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		model.put("bookIntro", bookIntro);
+		model.put("chapters", chapters);
+		
+		return new ModelAndView("/mbookchapter",model);
+	}
 	
+	/**
+	 * 获取全本小说的章节列表信息
+	 * <p>Title: showBookChapter</p>
+	 * <p>Description: </p>
+	 * @param introId
+	 * @return
+	 */
+	@RequestMapping("/detail/chapter/{introId}")
+	public ModelAndView showBookChapter(@PathVariable Long introId){
+		
+		//查询id是否可用或者存在
+		boolean flag = bookAccessServiceImpl.findIntroIdIsExit(introId);
+		if(!flag){
+			introId=1l;//这里先写死,应该推荐最热门的图书的
+		}
+		
+		BookIntro bookIntro = bookAccessServiceImpl.findBookIntroByIntroId(introId); 
+		
+		List<BookChapter> chapters = bookAccessServiceImpl.getAllBookChapterByIntroId(introId);
+		
+		
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		model.put("bookIntro", bookIntro);
+		
+		model.put("chapters", chapters);
+		
+		return new ModelAndView("/mbookchapterdetail",model);
+		
+	}
 	
-	
+	/**
+	 * 获取指定小说的章节内容信息
+	 * <p>Title: showBookChapter</p>
+	 * <p>Description: </p>
+	 * @param introId
+	 * @return
+	 */
+	@RequestMapping("/detail/content/{introId}/{chapterId}")
+	public ModelAndView showBookContent(@PathVariable Long introId,@PathVariable Long chapterId){
+		
+		//查询id是否可用或者存在
+		boolean flag = bookAccessServiceImpl.findIntroIdIsExit(introId);
+		if(!flag){
+			introId=1l;//这里先写死,应该推荐最热门的图书的
+		}
+		BookIntro bookIntro = bookAccessServiceImpl.findBookIntroByIntroId(introId); 
+		
+		BookContent bookContent = bookAccessServiceImpl.getBookContentByChapterId(chapterId);
+		
+		byte[] content = bookContent.getContent();
+		
+		bookContent.setShowContent(new String(content));
+
+		//先后章节id
+		Long prev = bookAccessServiceImpl.getBookPreviousChapterId(chapterId);
+		Long after = bookAccessServiceImpl.getBookAfterChapterId(chapterId);
+
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		model.put("bookIntro", bookIntro);
+		
+		model.put("bookContent", bookContent);
+		
+		if(prev !=null){
+			model.put("prev", prev);
+		}else{
+			model.put("prev", 0);
+		}
+		if(after !=null){
+			model.put("after", after);
+		}else{
+			model.put("after", 0);
+		}
+		return new ModelAndView("/mbookcontent",model);
+	}
 }

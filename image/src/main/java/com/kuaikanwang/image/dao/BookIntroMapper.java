@@ -46,4 +46,18 @@ public interface BookIntroMapper {
 	public List<BookIntro> findBookListShow(Map<String, Long> map);
 	
 	
+	/**
+	 * 更新指定书籍最新的章节信息
+	 */
+	public void updateNewChapter4Intro(BookIntro bookIntro);
+	
+	
+	public Long  findIntroIdIsExit(Long introId);
+	
+	/**
+	 * 查询详细图书简介
+	 */
+	public BookIntro findBookIntroByIntroId(Long introId);
+	
+	
 }

@@ -18,10 +18,33 @@ public class BookIntro {
     private String 	booktype;  
     private String 	url;  
     private String 	newchapter;  
+    private Long 	newchapterId; 
+    private Long   isend;
     private String 	old_pic_url;
     private String 	show_pic_url;
     private String introInfo;
     
+    private String updatedate;
+    
+    
+	public String getUpdatedate() {
+		return updatedate;
+	}
+	public void setUpdatedate(String updatedate) {
+		this.updatedate = updatedate;
+	}
+	public Long getIsend() {
+		return isend;
+	}
+	public void setIsend(Long isend) {
+		this.isend = isend;
+	}
+	public Long getNewchapterId() {
+		return newchapterId;
+	}
+	public void setNewchapterId(Long newchapterId) {
+		this.newchapterId = newchapterId;
+	}
 	public String getIntroInfo() {
 		return introInfo;
 	}

@@ -55,7 +55,7 @@
 
         <li ><a target="_blank" href="http://www.zuiyuyue.com/images/1/list">美女图片</a></li>
          <li ><a target="_blank" href="http://www.zuiyuyue.com/gif/list">啪啪啪动态图</a></li>
-          <li ><a target="_blank" href="http://www.zuiyuyue.com/book/list">热门小说</a></li>
+          <li ><a target="_blank" href="http://www.zuiyuyue.com/m/book/list">热门小说</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

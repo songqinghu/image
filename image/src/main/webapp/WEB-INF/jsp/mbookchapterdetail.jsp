@@ -48,10 +48,9 @@
 	</script>
 
 <body>
-
 <div class="nav">
     <ul>
-    	<li><a href="/">最愉阅</a></li>
+    	<li><a href="/m/book/detail/intro/${bookIntro.intro_id}">${bookIntro.name}</a></li>
     	<li><a href="/m/book/list">首页</a></li>
     	<li><a href="#">分类</a></li>
         <li><a href="#">排行</a></li>
@@ -61,78 +60,18 @@
         <!-- <div class="cc"></div> -->
     </ul>
 </div>
- 
-
-
-<div class="search">
-  <form name="articlesearch" action="/m/book/list">
-  <input type="hidden" name="s" value="287293036948159515">
-    <table cellpadding="0" cellspacing="0" style="width:100%;">
-      <tr>
-	<td style="background-color:#fff; border:1px solid #CCC;"><input style="height:20px;line-height:20px
-;" id="s_key" name="q" type="text" class="key" value="输入书名后搜索，宁可少字不要错字" onFocus="this.value=''" /></td
->
-	<td style="width:35px; background-color:#0080C0; background-image:url('/image/search.png'); background-repeat
-:no-repeat; background-position:center"><input name="submit" type="submit" value="" class="go"></td>
-
-      </tr>
-    </table>
-  </form>
-</div>
-
-
-<div class="cover">
-	<div class="block">
-		<div class="block_img2">
-			<img src="${bookIntro.old_pic_url}" border="0" width='85' height='100' onerror="this.src='/image/book-noimg.jpg'"/>
-		</div>
-		<div class="block_txt2">
-			<p><a><h2>${bookIntro.name}</h2></a></P>
-			<p>作者：${bookIntro.author}</p>
-			<p>分类：${bookIntro.booktype}</p>
-			<p>状态：
-			    <c:if test="${bookIntro.isend == 0}">
-			  		  连载
-				</c:if>
-			    <c:if test="${bookIntro.isend == 1}">
-			  		  完本
-				</c:if>
-			    <c:if test="${bookIntro.isend == 2}">
-			  		  太监
-				</c:if>
-			</p>
-			<p>更新：${bookIntro.updatedate}</p>
-			<p>最新：<a href="/0_168/2502978.html">${bookIntro.newchapter}</a></p>
-		</div>
-	</div>
-	<div style="clear:both"></div>
-	<div class="ablum_read">
-		<span style="background:#FFFFFF;float:left;width:3%"></span>
-		<span class="margin_right">
-			<a href="/m/book/detail/chapter/${bookIntro.intro_id}">开始阅读</a>
-		</span>
-<!-- 		<span class="margin_right">
-			<a id='shujia' href='javascript:shujia(168,"http://m.zuiyuyue.com/0_168/")'style='color:#fff'>加入书架</a>
-		</span>
-		<span><a href="/bookcase.php">查看书架</a></span> -->
-	</div>
-	<script>biqu_top();</script>
-	<div class="intro"  id="intro" name="intro">${bookIntro.name}小说简介</div>
-	<script>biqu_enbto();</script>
-	<div class="intro_info">
-		${bookIntro.introInfo}
-	</div>
-	<div class="intro">${bookIntro.name}最新章节</div>
-	<ul class="chapter">
-	
-     <c:forEach var="chapter"  items="${chapters}">
+<div style="margin-top:0px;padding-top:0px;" class="cover">
+	<div id="intro" style="width:100%;margin-top:0px;padding-top:0px;" class="intro">${bookIntro.name}章节列表 <span style="float:right;padding-right:10px;"><a href="#bottom" style="color:Red;">↓直达页面底部</a></span></div>
+<ul class="chapter">
+      <c:forEach var="chapter"  items="${chapters}">
 		<li> <a href="/0_168/2502978.html">${chapter.name}</a></li>
- 	</c:forEach>   
-	</ul>
+ 	</c:forEach>  
+</ul>
 
-<div class="intro"><a href="/m/book/detail/chapter/${bookIntro.intro_id}">查看完整目录</a></div>
+<div id="bottom" class="read">
+<h3>列表结束！（底部）</h3>
+<span><a href="#intro">[返回顶部]</a></span>
 </div>
-                
 
 <!-- <div class="footer">
   <ul>

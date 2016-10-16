@@ -39,7 +39,68 @@
   	 UPDATE bookchapter SET isspider=2 where isspider = 1;
   </update>
   
+    <select id="findBookChapterMaxNumberByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
+ 	select chapter_id,name from bookchapter where isspider = 2 and intro_id=#{id} order by number desc limit 0,1;
+  </select>
   
+    <select id="getNearBookChapterByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
+ 		select chapter_id,name from bookchapter where isspider = 2 and intro_id=#{id} order by number desc limit 0,10;
+  	</select>
+  	
+  	<select id="getAllBookChapterByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
+ 		select chapter_id,name from bookchapter where isspider = 2 and intro_id=#{id} order by number asc;
+  	</select>
+  	
+	  	<select id="getBookPreviousChapterId"  parameterType="java.lang.Long"  resultType="java.lang.Long" >
+			 		SELECT
+				chapter_id
+			FROM
+				bookchapter a,
+				(
+					SELECT
+						intro_id,
+						number
+					FROM
+						bookchapter
+					WHERE
+						chapter_id = #{id}
+				) b
+			WHERE
+				a.number &lt; b.number
+			AND a.intro_id = b.intro_id
+			AND a.flag = 0
+			AND a.isspider = 2
+			ORDER BY
+				a.number desc
+			LIMIT 0,
+			 1;
+  	</select>  	
+  	
+	  	<select id="getBookAfterChapterId"  parameterType="java.lang.Long"  resultType="java.lang.Long" >
+			 		SELECT
+				chapter_id
+			FROM
+				bookchapter a,
+				(
+					SELECT
+						intro_id,
+						number
+					FROM
+						bookchapter
+					WHERE
+						chapter_id = #{id}
+				) b
+			WHERE
+				a.number > b.number
+			AND a.intro_id = b.intro_id
+			AND a.flag = 0
+			AND a.isspider = 2
+			ORDER BY
+				a.number ASC
+			LIMIT 0,
+			 1;
+  	</select>  	
+  	
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
 		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;

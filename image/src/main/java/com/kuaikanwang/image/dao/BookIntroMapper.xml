@@ -20,7 +20,7 @@
   </insert>
   
   <select id="findBookIntroByIsSpider"  resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
-		select intro_id,bweb_id,name,author,booktype,url from bookintro where isspider = 0;
+		select intro_id,bweb_id,name,author,booktype,url,newchapter from bookintro where isspider = 0;
   </select>
   
     <select id="findBookfPageTotal"  resultType="java.lang.Integer" >
@@ -28,10 +28,20 @@
   </select>
   
     <select id="findBookListShow" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
-	select intro_id,name,author,newchapter,old_pic_url,show_pic_url,introInfo from bookintro where flag =0 order by updatedate desc
+	select intro_id,name,author,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo from bookintro where flag =0 order by updatedate desc
 	LIMIT #{start},#{rows};
   </select>
   
+    <update id="updateNewChapter4Intro" parameterType="com.kuaikanwang.image.domain.bean.book.BookIntro">
+  	 UPDATE bookintro  SET newchapter =#{newchapter} , newchapterId =#{newchapterId} where intro_id  =#{intro_id};
+  </update> 
+  
+  <select id="findIntroIdIsExit" parameterType="java.lang.Long" resultType="java.lang.Long" >
+	select count(1) from bookintro where intro_id =#{id} and flag=0;
+  </select>
+  <select id="findBookIntroByIntroId" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	select intro_id,name,author,isend,booktype,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,updatedate from bookintro where intro_id =#{id};
+  </select>
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
 		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;

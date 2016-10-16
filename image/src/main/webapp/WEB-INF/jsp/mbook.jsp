@@ -21,6 +21,7 @@
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
     <link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.kuaikanwang.com" >
+    <link rel="stylesheet" type="text/css" href="/css/book.css" />
     <meta name="mobile-agent" content="format=html5;url=http://m.zuiyuyue.com"/>
         <script>
 	var _hmt = _hmt || [];
@@ -44,39 +45,103 @@
 		            url : 'http://www.zuiyuyue.com/spider/show/count',  
 		        });  
 	</script>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="http://www.zuiyuyue.com">最愉阅</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" id="showList">
-        <li ><a href="/book/list">首页</a></li>
-        <li ><a href="/m/image/2/detail/list">分类</a></li>
-        <li ><a href="/m/image/3/detail/list">排行</a></li>
-        <li ><a href="/m/image/3/detail/list">全本</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<div class="nav">
+    <ul>
+    	<li><a href="/">最愉阅</a></li>
+    	<li><a href="/m/book/list">首页</a></li>
+    	<li><a href="#">分类</a></li>
+        <li><a href="#">排行</a></li>
+        <li><a href="#">全本</a></li>
+<!--         <li><a href="/history.php">阅读记录</a></li>
+        <li><a href="/bookcase.php">书架</a></li> -->
+        <!-- <div class="cc"></div> -->
+    </ul>
+</div>
+ 
 
-<table class="table table-striped">
+<div class="search">
+  <form name="articlesearch" action="/m/book/list">
+  <input type="hidden" name="s" value="287293036948159515">
+    <table cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr>
+	<td style="background-color:#fff; border:1px solid #CCC;"><input style="height:20px;line-height:20px
+;" id="s_key" name="q" type="text" class="key" value="输入书名后搜索，宁可少字不要错字" onFocus="this.value=''" /></td
+>
+	<td style="width:35px; background-color:#0080C0; background-image:url('/image/search.png'); background-repeat
+:no-repeat; background-position:center"><input name="submit" type="submit" value="" class="go"></td>
+
+      </tr>
+    </table>
+  </form>
+</div>
+
+
+
+<div class="toptab">
+	<span class="active">小说列表</span>
+</div>
+      <c:forEach var="book"  items="${list}">
+<div class="bookbox">
+	<div class="bookimg">
+		<a href="/m/book/detail/intro/${book.intro_id}">
+			<img src="${book.old_pic_url}" onerror="this.src='/image/book-noimg.jpg'">
+		</a>
+	</div>
+    <div class="bookinfo">
+    	<h4 class="bookname">
+    		<i class="iTit"><a href="/m/book/detail/intro/${book.intro_id}">${book.name}</a></i>
+    	</h4>
+    	<div class="author">作者：${book.author}</div>
+    	<div class="cl0"></div><div class="update">
+    		<span>更新至：</span><a href="/m/book/detail/content/${book.intro_id}/${book.newchapterId}">${book.newchapter}</a></div>
+    	<div class="cl0"></div>
+    	<div class="intro_line">
+    	<span>简介：
+    	</span>
+    	${book.introInfo}
+<!-- 			天地本源之火有九种形态，赤，橙，黄，绿，青，蓝，紫，黑，白。紫焰成神，黑焰灭世，白焰创生。&nbsp;&nbsp;&nbsp;&nbsp;杨逍第一世，乃紫焰成神的天生
+			火神，站在众神之巅，却因顽石所化的肉身，无法更进一步，成为主宰，无奈自斩，投身人族。第二世，人族至尊，天生道体，却为人所算计，最终，虽集天下灵药之大成，化为人族药祖，炼出绝世神丹，也逃不过，自爆神格的
+			下场。&nbsp;&nbsp;&nbsp;&nbsp;如今，百万年之后，昔年好友，师尊，道侣，皆不知所踪，却在凡俗小地，强者归来！&nbsp;&nbsp;&nbsp;&nbsp;“这一世，我定要踏上那
+			主宰之境，算计我的，背叛我的，玩弄我的，皆要死！” -->
+			</div>
+		</div>
+	</div>
+ 
+ 	</c:forEach>                   
+
+<!-- <div class="footer">
+  <ul>
+    <li><a href="/">首页</a></li>
+    <li><a href="http://www.zuiyuyue.com/">电脑版</a></li>
+    <li><a href="/bookcase.php">书架</a></li>
+  </ul>
+</div> -->
+<span style="display:none;"><script>tj()</script></span>
+
+
+     <script>
+function page(){
+	var p = document.getElementById("pageinput").value;
+	if(isPositiveNum(p)){window.open("/fenlei1_"+p+".html","_self");}
+	function isPositiveNum(s){ 
+    var re = /^[0-9]*[1-9][0-9]*$/ ;  
+	    return re.test(s)  
+	}
+}
+document.getElementById("s1").style.cssText = "background-color:#CCCCCC";
+</script>
+
+</body>
+
+
+<%-- <table class="table table-striped">
   <caption align="top" class=" text-center" >小说列表</caption>
   <thead>
     <tr>
-      <th>名称</th>
-      <th>作者</th>
-      <th>最新章节</th>
-      <th>简介</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -84,12 +149,11 @@
 	    <tr>
 	      <td>${book.name}</td>
 	      <td>${book.author}</td>
-	      <td>${book.name}</td>
-	      <td>${book.introInfo}</td>
+	      <td>${book.newchapter}</td>
 	    </tr>
  	</c:forEach>
   </tbody>
-</table>
+</table> --%>
 
   <ul class="pagination">
     <li>
@@ -110,11 +174,6 @@
       	    <c:if test="${nowPage < maxPage}">
   				<li> <a href='?pageNum=${nowPage + 1}'>下一页</a></li>
 			</c:if>
-    <li>
-      <a href="?pageNum=${maxPage}" aria-label="Next">
-        <span aria-hidden="true">末页</span>
-      </a>
-    </li>
   </ul>
   </body>
 

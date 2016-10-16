@@ -6,28 +6,19 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kuaikanwang.image.dao.BookChapterMapper;
 import com.kuaikanwang.image.dao.BookIntroMapper;
-import com.kuaikanwang.image.dao.GifAccessMapper;
-import com.kuaikanwang.image.dao.PreGifMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
-import com.kuaikanwang.image.domain.bean.gif.PreGif;
-import com.kuaikanwang.image.spider.book.process.biquge.chapter.BQGChapterPageProcessor;
-import com.kuaikanwang.image.spider.book.process.biquge.intro.BQGIntroPageProcessor;
 import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
@@ -41,15 +32,9 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	@Resource
 	private SpiderInfoMapper spiderInfoMapper;
 	
-	@Autowired
-	private PreGifMapper preGifMapper;
-	
-	
 	@Resource
 	private SpiderSelectDispatch spiderSelectDispatchImpl;
 	
-	@Resource
-	private GifAccessMapper gifAccessMapper;
 	
 	@Resource
 	private PageProcessor BQGIntroPageProcessor;
@@ -156,6 +141,19 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 			
 		}
 		bookChapterMapper.updateChapterIsSpider();
+		//这本书爬取完毕,需要更新最新章节 --这里考虑多个来源的图书问题
+		//返回 已经爬取的isspider=2 及这本书的 number数最大的值的章节信息
+		BookChapter newBookChapter = bookChapterMapper.findBookChapterMaxNumberByIntroId(bookIntro.getIntro_id());
+		//获取图书简介页最新章节 比较是否相同,不同就更新
+		if(newBookChapter!=null && newBookChapter.getName() !=null){
+			if(!newBookChapter.getName().equals(bookIntro.getNewchapter())){
+				
+				bookIntro.setNewchapter(newBookChapter.getName());
+				bookIntro.setNewchapterId(newBookChapter.getChapter_id());
+				
+				bookIntroMapper.updateNewChapter4Intro(bookIntro);
+			}
+		}
 		
 		return spiderCount;
 	}
