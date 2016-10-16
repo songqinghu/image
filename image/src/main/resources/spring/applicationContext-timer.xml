@@ -135,7 +135,7 @@
         </property>
     </bean>
   -->  
-     <!-- 图书爬取 -->
+     <!-- 图书爬取
      <bean id="bookSpiderTimerJobDetail"
         class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
@@ -144,7 +144,7 @@
         <property name="targetMethod" value="work" />
         <property name="concurrent" value="false" />
     </bean>
-     
+      -->
     <bean id="bookSpiderTimerJobTrigger"
         class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="bookSpiderTimerJobDetail">
@@ -161,7 +161,6 @@
                 <ref bean="spiderTimerJobTrigger" />
                 <ref bean="gifSpiderTimerJobTrigger" />
                 <ref bean="emailSpiderTimerJobTrigger" />
-                <ref bean="bookSpiderTimerJobTrigger" />
             </list>
         </property>
     </bean>
