@@ -44,11 +44,11 @@
   </select>
   
     <select id="getNearBookChapterByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
- 		select chapter_id,name from bookchapter where isspider = 2 and intro_id=#{id} order by number desc limit 0,10;
+ 		select chapter_id,name from bookchapter where (isspider = 2 or isspider =1)  and intro_id=#{id} order by number desc limit 0,10;
   	</select>
   	
   	<select id="getAllBookChapterByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
- 		select chapter_id,name from bookchapter where isspider = 2 and intro_id=#{id} order by number asc;
+ 		select chapter_id,name from bookchapter where (isspider = 2 or isspider =1) and intro_id=#{id} order by number asc;
   	</select>
   	
 	  	<select id="getBookPreviousChapterId"  parameterType="java.lang.Long"  resultType="java.lang.Long" >
