@@ -97,7 +97,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 		/**
 		 * 章节内容爬取
 		 */
-		Long max = bookChapterMapper.findMaxNumberForBookChapter();
+		Long max = bookChapterMapper.findMaxNumberForBookChapter(bookIntro.getIntro_id());
 		long start = 0;
 		Map<String, Long> map = new HashMap<String,Long>();
 		map.put("webId", bwebId);

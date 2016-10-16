@@ -34,12 +34,13 @@ public interface BookChapterMapper {
 	
 
 	/**
-	 * 查询还未被爬取的图书最大数目
+	 * 查询指定书籍还未被爬取的最大章节数目
 	 * <p>Title: findMaxNumberByWebId</p>
 	 * <p>Description: </p>
+	 * @param l 
 	 * @return
 	 */
-	public Long findMaxNumberForBookChapter();
+	public Long findMaxNumberForBookChapter(long introId);
 	
 	/**
 	 * 按照顺序获取要爬取的列表

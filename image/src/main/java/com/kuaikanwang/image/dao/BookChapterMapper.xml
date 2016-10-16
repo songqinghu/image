@@ -25,7 +25,7 @@
 	  
   
   <select id="findMaxNumberForBookChapter"  resultType="java.lang.Long" >
-		select count(1) from bookchapter where isspider = 0 OR isspider = 1 and flag=0;
+		select count(1) from bookchapter where intro_id=#{id} and (isspider = 0 OR isspider = 1) and flag=0;
   </select>
   
   <select id="findSpiderChapter"  parameterType="map"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
