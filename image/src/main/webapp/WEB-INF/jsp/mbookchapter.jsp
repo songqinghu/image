@@ -102,7 +102,7 @@
 				</c:if>
 			</p>
 			<p>更新：${bookIntro.updatedate}</p>
-			<p>最新：<a href="/0_168/2502978.html">${bookIntro.newchapter}</a></p>
+			<p>最新：<a href="/m/book/detail/content/${bookIntro.intro_id}/${bookIntro.newchapterId}">${bookIntro.newchapter}</a></p>
 		</div>
 	</div>
 	<div style="clear:both"></div>
@@ -126,7 +126,7 @@
 	<ul class="chapter">
 	
      <c:forEach var="chapter"  items="${chapters}">
-		<li> <a href="/0_168/2502978.html">${chapter.name}</a></li>
+		<li> <a href="/m/book/detail/content/${bookIntro.intro_id}/${chapter.chapter_id}">${chapter.name}</a></li>
  	</c:forEach>   
 	</ul>
 

@@ -58,7 +58,11 @@ public class ContentMysqlPipeline implements Pipeline{
 		
 			BookContent content = new BookContent();
 			content.setChapter_id(chapterId);
-			content.setShowContent(contents.get(0));
+			StringBuffer temp = new StringBuffer();
+			for (String string : contents) {
+				temp.append(string);
+			}
+			content.setShowContent(temp.toString());
 			content.setIntro_id(introId);
 			content.setName(name);
 			

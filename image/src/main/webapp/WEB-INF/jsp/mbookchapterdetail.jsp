@@ -64,7 +64,7 @@
 	<div id="intro" style="width:100%;margin-top:0px;padding-top:0px;" class="intro">${bookIntro.name}章节列表 <span style="float:right;padding-right:10px;"><a href="#bottom" style="color:Red;">↓直达页面底部</a></span></div>
 <ul class="chapter">
       <c:forEach var="chapter"  items="${chapters}">
-		<li> <a href="/0_168/2502978.html">${chapter.name}</a></li>
+		<li> <a href="/m/book/detail/content/${bookIntro.intro_id}/${chapter.chapter_id}">${chapter.name}</a></li>
  	</c:forEach>  
 </ul>
 

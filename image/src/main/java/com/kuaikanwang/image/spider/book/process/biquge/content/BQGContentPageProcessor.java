@@ -37,7 +37,8 @@ public class BQGContentPageProcessor implements PageProcessor,WebSiteIdentificat
         // 部分二：定义如何抽取页面信息，并保存下来
 
         List<String> contents = page.getHtml().
-                xpath("//div[@class='nr_nr']/div/text()")
+                xpath("//div[@class='nr_nr']/div[@id='nr1']")
+//                .regex("<div, id=\"nr1\">(.+)</div>")
                 .regex("\\S+")
                 .all();
 

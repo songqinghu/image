@@ -91,9 +91,34 @@
    <script>style_middle()</script>
    <table cellpadding="0" cellspacing="0">
      <tr>
-	<td class="prev"><a id="pt_prev" href="./">上一章</a></td>
-	<td class="mulu"><a id="pt_mulu" href="/21_21470/">返回目录</a></td>
-	<td class="next"><a id="pt_next" href="1394112.html">下一章</a></td>
+<td class="prev">
+<%--     <c:if test="${prev ==0}">
+		<a id="pt_prev" href="/m/book/detail/chapter/${bookIntro.intro_id}">已到第一章</a>
+	</c:if> --%>
+	<c:if test="${prev > 0}">
+		<a id="pt_prev" href="/m/book/detail/content/${bookIntro.intro_id}/${prev}">上一章</a>
+	</c:if>
+</td>
+	<td class="mulu"><a id="pt_mulu" href="/m/book/detail/chapter/${bookIntro.intro_id}">返回目录</a></td>
+	<td class="next">
+	<%--     <c:if test="${after ==0}">
+			<a id="pt_next" href="/m/book/detail/chapter/${bookIntro.intro_id}">已到最后</a>
+		</c:if> --%>
+		<c:if test="${after > 0}">
+			<a id="pt_next" href="/m/book/detail/content/${bookIntro.intro_id}/${after}">下一章</a>
+		</c:if>
+		
+	</td>
+     </tr>
+          <tr>
+	<td class="prev">
+		<a id="pt_prev" href="/m/book/list">首页</a>
+	</td>
+	<td class="mulu">
+		<a id="pt_mulu" href="/m/book/detail/intro/${bookIntro.intro_id}">返回 ${bookIntro.name}</a></td>
+	<td class="next">
+		
+	</td>
      </tr>
    </table>
 </div>

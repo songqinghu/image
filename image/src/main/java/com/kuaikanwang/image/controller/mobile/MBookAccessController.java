@@ -48,7 +48,7 @@ public class MBookAccessController {
 		//按照更新时间降序
 		
 		//判断一共可以展示的页数 
-		Integer pageSize = 1;
+		Integer pageSize = 5;
 		Integer totalPage = bookAccessServiceImpl.findBookPageTotalByPageSize(pageSize);//先展示2个试试看
 		//对页数参数做处理
 		if(pageNum <1){

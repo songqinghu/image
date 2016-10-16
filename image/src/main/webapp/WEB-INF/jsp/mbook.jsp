@@ -100,10 +100,6 @@
     	<span>简介：
     	</span>
     	${book.introInfo}
-<!-- 			天地本源之火有九种形态，赤，橙，黄，绿，青，蓝，紫，黑，白。紫焰成神，黑焰灭世，白焰创生。&nbsp;&nbsp;&nbsp;&nbsp;杨逍第一世，乃紫焰成神的天生
-			火神，站在众神之巅，却因顽石所化的肉身，无法更进一步，成为主宰，无奈自斩，投身人族。第二世，人族至尊，天生道体，却为人所算计，最终，虽集天下灵药之大成，化为人族药祖，炼出绝世神丹，也逃不过，自爆神格的
-			下场。&nbsp;&nbsp;&nbsp;&nbsp;如今，百万年之后，昔年好友，师尊，道侣，皆不知所踪，却在凡俗小地，强者归来！&nbsp;&nbsp;&nbsp;&nbsp;“这一世，我定要踏上那
-			主宰之境，算计我的，背叛我的，玩弄我的，皆要死！” -->
 			</div>
 		</div>
 	</div>
@@ -117,20 +113,6 @@
     <li><a href="/bookcase.php">书架</a></li>
   </ul>
 </div> -->
-<span style="display:none;"><script>tj()</script></span>
-
-
-     <script>
-function page(){
-	var p = document.getElementById("pageinput").value;
-	if(isPositiveNum(p)){window.open("/fenlei1_"+p+".html","_self");}
-	function isPositiveNum(s){ 
-    var re = /^[0-9]*[1-9][0-9]*$/ ;  
-	    return re.test(s)  
-	}
-}
-document.getElementById("s1").style.cssText = "background-color:#CCCCCC";
-</script>
 
 </body>
 

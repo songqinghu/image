@@ -5,12 +5,10 @@ function showlogin(){//顶部登录框判断是否登录
 	//doAjax("/modules/article/wapajax.php", "showlogin=1", "showlogin2", "GET", 0);
 	get_user_info();
 	if(jieqiUserId != 0 && jieqiUserName != '' && document.cookie.indexOf('PHPSESSID') != -1){//已经登入
-		document.writeln('<div onclick="show_bookcase()" style="max-width:90px;overflow:hidden;height:50px
-;padding:0px 10px;" class="c_index_top">'+jieqiUserName+'</div>');
+		document.writeln('<div onclick="show_bookcase()" style="max-width:90px;overflow:hidden;height:50px;padding:0px 10px;" class="c_index_top">'+jieqiUserName+'</div>');
 		
 	}else{
-		document.writeln("<a class='box' href='/login.php'>登录<\/a><a href='/register.php' class='box' >注册<
-\/a>&nbsp;&nbsp;");
+		document.writeln("<a class='box' href='/login.php'>登录<\/a><a href='/register.php' class='box' >注册<\/a>&nbsp;&nbsp;");
 	}
 	
 }
@@ -46,8 +44,7 @@ function show_pt(articleid,chapterid){
 function show_sj(articleid){
 	get_user_info();
 	if(jieqiUserId==0){
-		document.writeln("<a href='/login.php?jumpurl=" +  encodeURIComponent(document.URL) + "' style='color
-:#fff'>加入书架<\/a>");
+		document.writeln("<a href='/login.php?jumpurl=" +  encodeURIComponent(document.URL) + "' style='color:#fff'>加入书架<\/a>");
 	}else{
 		document.writeln("<a id='shujia' onclick='shujia("+articleid+")' style='color:#fff'>加入书架<\/a>");
 	}
@@ -89,8 +86,7 @@ function get_cookie_value(Name){var search=Name+"=";var returnvalue="";if(docume
 function showlogin2(t){//顶部登录框判断是否登录
 	login_top = document.getElementById("login_top");
 	if(t != "nologin"){
-		login_top.innerHTML = "<div onclick='show_bookcase()' style='max-width:90px;overflow:hidden;height
-:50px;padding:0px 10px;' class='c_index_top'>" + t + "<\/div>";
+		login_top.innerHTML = "<div onclick='show_bookcase()' style='max-width:90px;overflow:hidden;height:50px;padding:0px 10px;' class='c_index_top'>" + t + "<\/div>";
 	}
 }
 function show_bookcase(){
@@ -120,8 +116,7 @@ function bookcaseurl2(t){
 function case_del(caseid,uid){
 	//alert(aid+"+"+uid);
 	doAjax("/ajax.php", "caseid=" + caseid +"&uid=" + uid, "case_del2", "POST", 0);
-	//document.getElementById("" + caseid).innerHTML = "<tr><td style='height:30px;line-height:30px;'><font
- color=red>删除中，请稍后...</font></td></tr>";
+	//document.getElementById("" + caseid).innerHTML = "<tr><td style='height:30px;line-height:30px;'><fontcolor=red>删除中，请稍后...</font></td></tr>";
 }
 function case_del2(t){
 	//alert(t);
@@ -398,7 +393,6 @@ function style_bottom(){//底端广告
 
 function tj(){
 document.writeln("<div style=\"display:none\" >");
-document.writeln("<script src=\"http://s95.cnzz.com/z_stat.php?id=1260112074&web_id=1260112074\" language
-=\"JavaScript\"></script>");
+document.writeln("<script src=\"http://s95.cnzz.com/z_stat.php?id=1260112074&web_id=1260112074\" language=\"JavaScript\"></script>");
 document.writeln("</div>");
 }

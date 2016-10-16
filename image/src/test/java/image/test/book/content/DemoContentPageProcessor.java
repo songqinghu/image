@@ -2,8 +2,6 @@ package image.test.book.content;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.kuaikanwang.image.spider.website.WebSiteIdentification;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
@@ -37,10 +35,10 @@ public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentifica
         // 部分二：定义如何抽取页面信息，并保存下来
 
         List<String> contents = page.getHtml().
-                xpath("//div[@class='nr_nr']/div/text()")
+                xpath("//div[@class='nr_nr']/div[@id='nr1']")
+//                .regex("<div, id=\"nr1\">(.+)</div>")
                 .regex("\\S+")
                 .all();
-
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
     	//()代表取出其中的数据
 //    	for (String string : all2) {
@@ -91,7 +89,7 @@ public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentifica
     
 	public static void main(String[] args){
 		//String url = "http://www.manhaoxiao.com";
-		String url = "http://m.biquge.com/16_16431/9053371.html";
+		String url = "http://m.biquge.com/21_21470/1394111.html";
 		Spider.create(new DemoContentPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
 		thread(7).run();
 	}
