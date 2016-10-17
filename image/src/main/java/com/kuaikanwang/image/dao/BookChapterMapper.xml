@@ -101,6 +101,10 @@
 			 1;
   	</select>  	
   	
+  	<select id="getAllBookChapterNumberByIntroId"  parameterType="java.lang.Long"  resultType="java.lang.Long" >
+ 		select count(1) from bookchapter where intro_id=#{id};
+  	</select>
+  	
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
 		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;

@@ -106,5 +106,9 @@ public interface BookChapterMapper {
 	 */
 	public Long getBookAfterChapterId(Long chapterId);
 	
+	/**
+	 * 增量部分获取指定书籍的章节数量
+	 */
+	public Long getAllBookChapterNumberByIntroId(Long introId);
 	
 }

@@ -144,7 +144,7 @@
         <property name="targetMethod" value="work" />
         <property name="concurrent" value="false" />
     </bean>
-      -->
+      
     <bean id="bookSpiderTimerJobTrigger"
         class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="bookSpiderTimerJobDetail">
@@ -152,6 +152,7 @@
         <property name="cronExpression" value="${book.spider.timer.cron}">
         </property>
     </bean>
+    -->
  	<bean name="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>

@@ -43,6 +43,10 @@ public class CommonCacheUtil implements InitializingBean{
 	public static final String BOOK_INTRO_ID="book_intro_id";//图书唯一id
 	public static final String BOOK_CHAPTER_ID="book_chapter_id";//图书唯一id
 	public static final String BOOK_NAME="book_name";//图书唯一id
+	public static final String BOOK_INCR_INTRO_ID="book_incr_intro_id";//增量部分图书intro_id
+	public static final String REDIS_INCR_INTROS="redis_incr_intros";//增量存在redis中的图书列表
+	public static final String REDIS_INCR_INTROS_SET="redis_incr_intros_set";//增量存在redis中的图书列表
+	
 	
 	private static Map<String, Long> preCacheInfo = new HashMap<String,Long>();
 	

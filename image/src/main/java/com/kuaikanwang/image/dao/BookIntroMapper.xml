@@ -40,7 +40,18 @@
 	select count(1) from bookintro where intro_id =#{id} and flag=0;
   </select>
   <select id="findBookIntroByIntroId" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
-	select intro_id,name,author,isend,booktype,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,updatedate from bookintro where intro_id =#{id};
+	select intro_id,bweb_id,name,url,author,isend,booktype,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,updatedate from bookintro where intro_id =#{id};
+  </select>
+
+  <select id="getIncrBookIntroByPage" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	SELECT
+	intro_id,
+	url,
+	bweb_id
+	FROM
+	bookintro
+	WHERE
+	isend =0 and flag=0 limit #{start},100;
   </select>
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >

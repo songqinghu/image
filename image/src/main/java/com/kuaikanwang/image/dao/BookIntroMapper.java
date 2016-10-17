@@ -60,4 +60,11 @@ public interface BookIntroMapper {
 	public BookIntro findBookIntroByIntroId(Long introId);
 	
 	
+	/**
+	 * 获取增量爬取的introbook 一次100条 循环取完
+	 */
+	public List<BookIntro> getIncrBookIntroByPage(Long start);
+	
+	
+	
 }

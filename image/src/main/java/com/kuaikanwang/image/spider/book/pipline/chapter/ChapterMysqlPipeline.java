@@ -10,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.dao.BookChapterMapper;
-import com.kuaikanwang.image.dao.BookIntroMapper;
-import com.kuaikanwang.image.dao.PreGifMapper;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
-import com.kuaikanwang.image.domain.bean.book.BookIntro;
-import com.kuaikanwang.image.domain.bean.gif.PreGif;
 import com.kuaikanwang.image.spider.pipeline.PreMysqlPipeline;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
@@ -62,7 +58,7 @@ public class ChapterMysqlPipeline implements Pipeline{
 				long count = bookChapterMapper.findBookByUrl(chapter.getUrl());
 				if(count >0){
 					//已经存在,继续循环
-					return ;
+					continue ;
 				}else{
 					//本书大于number的章节需要+1用于排序
 					Map<String, Long> map = new HashMap<String, Long>();
