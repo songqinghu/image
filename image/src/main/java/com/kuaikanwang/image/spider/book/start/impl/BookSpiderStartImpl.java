@@ -104,7 +104,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 		
 		while(max>start){
 			map.put("start", start);
-			
+			map.put("intro_id", bookIntro.getIntro_id());
 			BookChapter chapter = bookChapterMapper.findSpiderChapter(map);
 			
 			spiderCount++;

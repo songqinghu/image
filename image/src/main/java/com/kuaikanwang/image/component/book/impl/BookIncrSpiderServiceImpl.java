@@ -100,7 +100,6 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 				
 				if(introId !=null && introId.length()>0){
 					
-					System.out.println(introId);
 					
 					Long count = bookSpiderStartImpl.spiderOneBookStart(Long.parseLong(introId));
 					logger.warn("book incr spider introId is " + introId + "  and   spider count is : " + count);

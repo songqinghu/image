@@ -29,7 +29,7 @@
   </select>
   
   <select id="findSpiderChapter"  parameterType="map"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >
- 	select chapter_id,intro_id,url,name from bookchapter where isspider = 0 OR isspider = 1 and flag=0 ORDER BY chapter_id asc limit #{start},1;
+ 	select chapter_id,intro_id,url,name from bookchapter where intro_id=#{intro_id} and  (isspider = 0 OR isspider = 1) and flag=0 ORDER BY chapter_id asc limit #{start},1;
   </select>
   
     <update id="updateChapterSpiderStatus" parameterType="map">
@@ -102,7 +102,7 @@
   	</select>  	
   	
   	<select id="getAllBookChapterNumberByIntroId"  parameterType="java.lang.Long"  resultType="java.lang.Long" >
- 		select count(1) from bookchapter where intro_id=#{id};
+ 		select count(1) from bookchapter where intro_id=#{id} and isspider =2;
   	</select>
   	
 <!--   
