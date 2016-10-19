@@ -126,7 +126,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 			start = start + 1;
 			
 		}
-		bookChapterMapper.updateChapterIsSpider();
+		bookChapterMapper.updateChapterIsSpider(bookIntro.getIntro_id());
 		//这本书爬取完毕,需要更新最新章节 --这里考虑多个来源的图书问题
 		//返回 已经爬取的isspider=2 及这本书的 number数最大的值的章节信息
 		BookChapter newBookChapter = bookChapterMapper.findBookChapterMaxNumberByIntroId(bookIntro.getIntro_id());

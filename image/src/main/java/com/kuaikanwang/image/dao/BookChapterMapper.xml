@@ -35,8 +35,8 @@
     <update id="updateChapterSpiderStatus" parameterType="map">
   	 UPDATE bookchapter SET isspider=#{status} where chapter_id = #{chapter_id};
   </update>
-    <update id="updateChapterIsSpider" parameterType="map">
-  	 UPDATE bookchapter SET isspider=2 where isspider = 1;
+    <update id="updateChapterIsSpider" parameterType="java.lang.Long">
+  	 UPDATE bookchapter SET isspider=2 where isspider = 1 and intro_id =${id};
   </update>
   
     <select id="findBookChapterMaxNumberByIntroId"  parameterType="java.lang.Long"  resultType="com.kuaikanwang.image.domain.bean.book.BookChapter" >

@@ -60,11 +60,11 @@ public interface BookChapterMapper {
 	public void updateChapterSpiderStatus(Map<String, Long> map);
 	
 	/**
-	 * 更新中间态为已经爬取
+	 * 更新中间态为已经爬取 --指定小说id
 	 * <p>Title: updateChapterIsSpider</p>
 	 * <p>Description: </p>
 	 */
-	public void updateChapterIsSpider();
+	public void updateChapterIsSpider(Long introId);
 
 	/**
 	 * 返回 已经爬取的isspider=2 及这本书的 number数最大的值的章节信息
