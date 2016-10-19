@@ -45,6 +45,8 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 	//不停的循环爬取列表中信息和数据库中比对
 	public void incrBookMonitoring(){
 		
+		bookSpiderStartImpl.spiderAllBookIntro(1);
+		
 		while(true){
 			
 			long start =0l;
