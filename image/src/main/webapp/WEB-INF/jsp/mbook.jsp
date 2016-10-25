@@ -49,10 +49,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/m/book/list">首页</a></li>
-    	<li><a href="#">分类</a></li>
-        <li><a href="#">排行</a></li>
-        <li><a href="#">全本</a></li>
+    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/page/to/mbooksort">分类</a></li>
+        <li><a href="/m/book/list">排行</a></li>
+        <li><a href="/m/book/list">全本</a></li>
 <!--         <li><a href="/history.php">阅读记录</a></li>
         <li><a href="/bookcase.php">书架</a></li> -->
         <!-- <div class="cc"></div> -->
@@ -106,36 +106,7 @@
  
  	</c:forEach>                   
 
-<!-- <div class="footer">
-  <ul>
-    <li><a href="/">首页</a></li>
-    <li><a href="http://www.zuiyuyue.com/">电脑版</a></li>
-    <li><a href="/bookcase.php">书架</a></li>
-  </ul>
-</div> -->
 
-</body>
-
-
-<%-- <table class="table table-striped">
-  <caption align="top" class=" text-center" >小说列表</caption>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-      <c:forEach var="book"  items="${list}">
-	    <tr>
-	      <td>${book.name}</td>
-	      <td>${book.author}</td>
-	      <td>${book.newchapter}</td>
-	    </tr>
- 	</c:forEach>
-  </tbody>
-</table> --%>
 
   <ul class="pagination">
     <li>
