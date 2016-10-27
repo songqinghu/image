@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     
-   		<title>最愉阅_笔趣阁移动版_无弹窗书友最值得收藏的网络小说阅读网</title>
-		<meta name="keywords" content="最愉阅,笔趣阁,无弹窗,小说阅读网,biquge" />
-		<meta name="description" content="最愉阅笔趣阁是广大书友最值得收藏的网络小说阅读网，网站收录了当前最火热的网络小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
+   		<title>最愉阅_移动版_无弹窗书友最值得收藏的网络小说阅读网</title>
+		<meta name="keywords" content="最愉阅,无弹窗,小说阅读网,biquge" />
+		<meta name="description" content="最愉阅是广大书友最值得收藏的网络小说阅读网，网站收录了当前最火热的网络小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
 		<meta name="MobileOptimized" content="240"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0" />
 		<link rel="shortcut icon" href="/favicon.ico" />
@@ -50,10 +50,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/m/book/list">全本</a></li>
+        <li><a href="/page/to/mbookend">全本</a></li>
 <!--         <li><a href="/history.php">阅读记录</a></li>
         <li><a href="/bookcase.php">书架</a></li> -->
         <!-- <div class="cc"></div> -->
@@ -77,42 +77,24 @@
 
 <div class="article">
 	<h2 class="title"><span><a href="#">封面强推</a></span></h2>
-	
+	 <c:forEach var="book"  items="${hotBooks}">
            <div class="block">
-                <div class="block_img"><a href="/21_21470/">
-                	<img height=100 width=80 src="http://www.biquge.com/files/article/image/22/21470/21470.jpg" onerror="this.src='http://www.biquge.com/images/nopic.gif'"/></a></div>
-                    <div class="block_txt">
-                    <p><a href="/21_21470/"><h2>不朽凡人</h2></a></p>
-                    <p>作者：鹅是老五</p>
-                    <p><a href="/21_21470/">我，只有凡根，一介凡人！&nbsp;&nbsp;&nbsp;&nbsp;我，叫莫无忌！&nbsp;&nbsp;&nbsp;&nbsp;我，要不朽！</a></p>
+                <div class="block_img">
+                   <a href="/m/book/detail/intro/${book.intro_id}">
+                	 <img height=100 width=80 src="${book.old_pic_url}" onerror="this.src='/image/book-noimg.jpg'"/>
+                   </a>
+                </div>
+                <div class="block_txt">
+                    <p><a href="/m/book/detail/intro/${book.intro_id}"><h2>${book.name}</h2></a></p>
+                    <p>作者：${book.author}</p>
+                    <p><a href="/m/book/detail/intro/${book.intro_id}">
+                        <font size=0.5>${book.introInfo}</font>
+                        </a>
+                    </p>
                  </div>
                 <div style="clear:both"></div>
             </div>
-        
-            <div class="block">
-                <div class="block_img">
-                		<a href="/16_16431/"><img height=100 width=80 src="http://www.biquge.com/files/article/image/17/16431/16431.jpg" onerror="this.src='http://www.biquge.com/images/nopic.gif'"/></a></div>
-                        <div class="block_txt">
-                   		 <p><a href="/16_16431/"><h2>一念永恒</h2></a></p>
-                   		 <p>作者：耳根</p>
-                   		 <p><a href="/16_16431/">    一念成沧海，一念化桑田。一念斩千魔，一念诛万仙。唯我念……永恒各位书友要是觉得《一念永恒》还不错的话请不要忘记向您Q...</a></p>
-                </div>
-                <div style="clear:both"></div>
-            </div>
-        
-            <div class="block">
-                <div class="block_img">
-                	<a href="/13_13453/">
-                		<img height=100 width=80 src="http://www.biquge.com/files/article/image/14/13453/13453.jpg" onerror="this.src='http://www.biquge.com/images/nopic.gif'"/>
-                	</a>
-                </div>
-                <div class="block_txt">
-                    <p><a href="/13_13453/"><h2>龙王传说</h2></a></p>
-                    <p>作者：唐家三少</p>
-                    <p><a href="/13_13453/">    银色的庞大身躯缓缓低下头，低沉的声音在这片不再广袤的森林中回荡：“要毁灭他们，就要先了解他们。你们，跟我来。我们生存的世界...</a></p>
-                </div>
-                <div style="clear:both"></div>
-            </div>
+     </c:forEach>   
         
 </div>
 

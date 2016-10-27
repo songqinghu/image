@@ -24,9 +24,16 @@ public class BookIntro {
     private String 	show_pic_url;
     private String introInfo;
     
+    private Long count;
+    
     private String updatedate;
     
-    
+	public Long getCount() {
+		return count;
+	}
+	public void setCount(Long count) {
+		this.count = count;
+	}
 	public String getUpdatedate() {
 		return updatedate;
 	}

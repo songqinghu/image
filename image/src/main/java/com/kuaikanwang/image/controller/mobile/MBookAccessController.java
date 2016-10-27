@@ -36,6 +36,32 @@ public class MBookAccessController {
 	private BookAccessService bookAccessServiceImpl;
 	
 	/**
+	 * 展示m站首页信息
+	 * <p>Title: showBookIndex</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/index")
+	public ModelAndView showBookIndex(){
+		
+	
+	    //需要展示的信息 强推 各个分类 暂时定 强推三个 每个分类一个
+		List<BookIntro> hotBooks = bookAccessServiceImpl.getHotBookListIndex(3l);
+		//各个分类的信息
+		
+		
+		
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		model.put("hotBooks", hotBooks);
+		
+	     
+		return new ModelAndView("/mbookindex",model);
+	}
+	
+	
+	/**
 	 * 分页展示所有的图书
 	 * <p>Title: showBookList</p>
 	 * <p>Description: </p>

@@ -65,6 +65,11 @@ public interface BookIntroMapper {
 	 */
 	public List<BookIntro> getIncrBookIntroByPage(Long start);
 	
+	/**
+	 * 获取指定数目的倒叙热度未完结书籍
+	 */
+	public List<BookIntro> getHotBookList(Long limit);
+	
 	
 	
 }

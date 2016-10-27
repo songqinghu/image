@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -158,6 +157,34 @@ public class BookAccessServiceImpl implements BookAccessService {
 		
 		Long after = bookChapterMapper.getBookAfterChapterId(chapterId);
 		return after;
+	}
+	
+	
+	/**
+	 * 获取未完结图书按照从高到低排序指定获取的数量 num 最大为20个
+	 * <p>Title: getHotBookListIndex</p>
+	 * <p>Description: </p>
+	 * @param num
+	 * @return
+	 */
+	public List<BookIntro> getHotBookListIndex(Long limit){
+		
+		if(limit > 20){
+			limit =20l;
+		}
+		List<BookIntro> hotBooks = bookIntroMapper.getHotBookList(limit);
+		
+		for (BookIntro bookIntro : hotBooks) {
+			
+			String introInfo = bookIntro.getIntroInfo();
+			String result = introInfo.replaceAll("<br>", "")
+					.replaceAll("</br>", "")
+					.replaceAll("<p>", "")
+					.replaceAll("</p>", "");
+			bookIntro.setIntroInfo(result);
+		}
+		
+		return hotBooks;
 	}
 	
 	

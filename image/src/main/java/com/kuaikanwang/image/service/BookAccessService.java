@@ -30,4 +30,6 @@ public interface BookAccessService {
 	
 	public Long getBookAfterChapterId(Long chapterId);
 	
+	public List<BookIntro> getHotBookListIndex(Long limit);
+	
 }

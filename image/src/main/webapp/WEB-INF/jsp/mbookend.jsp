@@ -8,9 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>小说人气榜-小说排行榜-最愉阅移动版</title>
-	<meta name="keywords" content="最愉阅小说,小说人气月榜,小说阅读网,小说" />
-	<meta name="description" content="笔趣阁小说是广大书友最值得收藏的小说阅读网，网站收录了当前最火热的小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
+    
+        <title>全本小说 好看的全本小说_2015全本小说排行榜_最愉阅移动版</title>
+		<meta name="keywords" content="最愉阅,全本小说,小说阅读网,小说" />
+		<meta name="description" content="最愉阅是广大书友最值得收藏的全本小说阅读网，网站收录了当前最火热的全本小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">
@@ -73,7 +74,7 @@
 
 
 <div class="toptab">
-	<span class="active">小说人气榜单</span>
+	<span class="active">全本小说榜</span>
 </div>
       <c:forEach var="book"  items="${list}">
 <div class="bookbox">

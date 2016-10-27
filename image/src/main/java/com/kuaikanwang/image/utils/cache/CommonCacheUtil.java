@@ -170,11 +170,27 @@ public class CommonCacheUtil implements InitializingBean{
 		imageExtendServiceImpl.getCountPicList(10);
 		
 		imageExtendServiceImpl.getMaxPic();
+		
+		
+		bookTypeCache.put(1l, "玄幻奇幻");
+		bookTypeCache.put(2l, "武侠仙侠");
+		bookTypeCache.put(3l, "都市言情");
+		bookTypeCache.put(4l, "青春校园");
+		bookTypeCache.put(5l, "穿越架空");
+		bookTypeCache.put(6l, "惊悚悬疑");
+		bookTypeCache.put(7l, "历史军事");
+		bookTypeCache.put(8l, "游戏竞技");
+		bookTypeCache.put(9l, "耽美同人");
 		 
 		
 	}
 	
+	//主抓取信息缓存
+	private static Map<Long,String> bookTypeCache = new HashMap<Long,String>();
 	
+	public static Map<Long,String> getBookTypeCache() {
+		return bookTypeCache;
+	}
 	
 	
 	

@@ -8,15 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <c:if test="${nowPage == 1}">
-  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
-	</c:if>
-    <c:if test="${nowPage > 1}">
-  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片-第${nowPage}页</title>
-	</c:if>
-    
-    <meta name="keywords" content="${nowImageType.typeName}" />
-	<meta name="description" content="${nowImageType.typeName}" />
+    <title>${bookIntro.name}  ${bookContent.name}全文免费阅读 - 最愉阅移动版</title>
+	<meta name="keywords" content="${bookIntro.name}  ${bookContent.name}全文阅读" />
+	<meta name="description" content="最愉阅免费为大家提供${bookIntro.name}  ${bookContent.name}全文阅读,如果你想第一时间观看下一章节，请留意以及收藏最愉阅，方便你下次阅读${bookIntro.name}最新章节。"/>
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">

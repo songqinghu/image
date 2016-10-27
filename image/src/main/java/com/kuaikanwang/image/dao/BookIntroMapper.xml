@@ -53,6 +53,15 @@
 	WHERE
 	isend =0 and flag=0 limit #{start},100;
   </select>
+  
+    <select id="getHotBookList" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	SELECT
+	intro_id,name,author,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,count
+	FROM
+	bookintro
+	WHERE
+	isend =0 and flag=0 order by count desc limit 0,#{limit};
+  </select>
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >
 		select pre_id,url,count from pregif where gweb_id =#{webId} order by cratedate  limit #{start},1;

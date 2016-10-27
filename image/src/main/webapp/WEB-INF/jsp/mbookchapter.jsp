@@ -8,15 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <c:if test="${nowPage == 1}">
-  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片</title>
-	</c:if>
-    <c:if test="${nowPage > 1}">
-  		<title>${nowImageType.typeName}_性感图片_${nowImageType.typeName}美女套图 - 最愉阅-美女图片-第${nowPage}页</title>
-	</c:if>
-    
-    <meta name="keywords" content="${nowImageType.typeName}" />
-	<meta name="description" content="${nowImageType.typeName}" />
+    <title>${bookIntro.name}最新章节列表,${bookIntro.name}无弹窗广告 - 最愉阅移动版</title>
+	<meta name="keywords" content="${bookIntro.name}最新章节列表,${bookIntro.name}全文阅读,${bookIntro.name}无弹窗广告,${bookIntro.author},最愉阅" />
+	<meta name="description" content="${bookIntro.name}是${bookIntro.author}的作品,如果你是喜欢${bookIntro.name}吧友,那么请将${bookIntro.name}章节目录加入收藏方便下次全文阅读,最愉阅将于第一时间更新${bookIntro.name}无弹窗广告最新章节列表,如发现未及时更新,请联系我们。" />
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
   	<link rel="shortcut icon" href="http://www.zuiyuyue.com/image/logo.gif" type="image/x-icon">

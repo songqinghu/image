@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     
-   	<title>分类列表-笔趣阁移动版-最愉阅</title>
+   	<title>分类列表_移动版_最愉阅</title>
 	<meta name="keywords" content="分类列表,小说分类列表" />
 	<meta name="description" content="玄幻小说,修真小说,都市小说,历史小说,网游小说,科幻小说,言情小说" />
 	<meta name="MobileOptimized" content="240"/>
@@ -18,9 +18,6 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<meta http-equiv="Cache-Control" content="max-age=0" />
 	<meta http-equiv="Cache-Control" content="no-transform " />
-	<link rel="stylesheet" type="text/css" href="/css/sort.css" />
-	<script src="/js/common.js"></script>
-	
     
     <!-- Bootstrap -->
     <link href="http://www.zuiyuyue.com/css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +54,7 @@
     	<li><a href="/page/to/mbookindex">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/m/book/list">全本</a></li>
+        <li><a href="/page/to/mbookend">全本</a></li>
 <!--         <li><a href="/history.php">阅读记录</a></li>
         <li><a href="/bookcase.php">书架</a></li> -->
         <!-- <div class="cc"></div> -->
@@ -81,8 +78,8 @@
 
 <div class="content">
 <ul>
-<li class="prev"><a href="/fenlei1_1.html">玄幻小说</a></li>
-<li class="prev"><a href="/fenlei2_1.html">修真小说</a></li>
+<li class="prev"><a href="/page/to/mbooksortdetail">玄幻小说</a></li>
+<li class="prev"><a href="/page/to/mbooksortdetail">修真小说</a></li>
 <li class="prev"><a href="/fenlei3_1.html">都市小说</a></li>
 </ul>
 <ul>
@@ -91,8 +88,6 @@
 <li class="prev"><a href="/fenlei5_1.html">科幻小说</a></li>
 </ul>
 <ul>
-<li class="prev"><a href="/fenlei7_1.html">言情小说</a></li>
-<li class="prev"><a href="/fenlei7_1.html">言情小说</a></li>
 <li class="prev"><a href="/fenlei7_1.html">言情小说</a></li>
 </ul>
 </div>
