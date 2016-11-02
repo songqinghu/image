@@ -65,6 +65,7 @@ public class IntroMysqlPipeline implements Pipeline{
 			bookIntro.setUrl(urls.get(0));
 			bookIntro.setOld_pic_url(imgs.get(0));
 			bookIntro.setIntroInfo(introInfos.get(0));
+			bookIntro.setBookTypeNum(CommonCacheUtil.getBookIntroCache().get(CommonCacheUtil.BOOK_TYPE+webId));
 			synchronized(this){
 				long count = bookIntroMapper.findBookByUrl(urls.get(0));
 				if(count >0){

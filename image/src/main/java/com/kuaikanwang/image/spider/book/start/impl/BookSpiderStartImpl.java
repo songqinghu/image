@@ -14,6 +14,7 @@ import com.kuaikanwang.image.dao.BookIntroMapper;
 import com.kuaikanwang.image.dao.SpiderInfoMapper;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
+import com.kuaikanwang.image.domain.bean.book.BookSpiderInfo;
 import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
 import com.kuaikanwang.image.spider.dispatch.SpiderSelectDispatch;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
@@ -152,18 +153,21 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	 */
 	public  void spiderAllBookIntro(long bwebId){
 		
-		List<String> list = spiderInfoMapper.findBookWebSpiderUrl(bwebId);//url 和 类别
+		List<BookSpiderInfo> books = spiderInfoMapper.findBookWebSpiderUrl(bwebId);//url 和 类别
 		
 		/**
 		 * 图书简介爬取
 		 */
-		for (String url : list) {
+		for (BookSpiderInfo book : books) {
 			
 //			spiderSelectDispatchImpl.callPreGifSpider(bwebId, url);
+			
+			CommonCacheUtil.getBookIntroCache().put(CommonCacheUtil.BOOK_TYPE+bwebId, book.getBooktype());
+			
 			Spider.
 			create(BQGIntroPageProcessor)
 			.addPipeline(introMysqlPipeline).
-			addUrl(url).
+			addUrl(book.getUrl()).
 			thread(7).run();
 			
 		}

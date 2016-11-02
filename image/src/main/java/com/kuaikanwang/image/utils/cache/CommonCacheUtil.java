@@ -46,7 +46,7 @@ public class CommonCacheUtil implements InitializingBean{
 	public static final String BOOK_INCR_INTRO_ID="book_incr_intro_id";//增量部分图书intro_id
 	public static final String REDIS_INCR_INTROS="redis_incr_intros";//增量存在redis中的图书列表
 	public static final String REDIS_INCR_INTROS_SET="redis_incr_intros_set";//增量存在redis中的图书列表
-	
+	public static final String BOOK_TYPE="book_type";//图书类型
 	
 	private static Map<String, Long> preCacheInfo = new HashMap<String,Long>();
 	
@@ -66,6 +66,13 @@ public class CommonCacheUtil implements InitializingBean{
 	
 	public static Map<String, String> getBookContentCache() {
 		return bookContentCache;
+	}
+	
+	private static Map<String, Long> bookIntroCache = new HashMap<String,Long>();
+	
+	public static Map<String, Long> getBookIntroCache() {
+		
+		return bookIntroCache;
 	}
 
 	//图片类型缓存 --初始化从 数据库中获取

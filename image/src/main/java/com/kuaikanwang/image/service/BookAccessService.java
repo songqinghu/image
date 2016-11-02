@@ -32,4 +32,12 @@ public interface BookAccessService {
 	
 	public List<BookIntro> getHotBookListIndex(Long limit);
 	
+	public List<BookIntro> getBookListByType(Long pageNum,Long pageSize,Long booktype);
+	
+	public List<BookIntro> getBookListByEnd(Long pageNum,Long pageSize);
+
+	public Long findBookPageTotalByPageSizeAndBookType(Long pageSize, Long type);
+	
+	public Long findBookPageTotalByPageSizeAndEnd(Long pageSize);
+	
 }

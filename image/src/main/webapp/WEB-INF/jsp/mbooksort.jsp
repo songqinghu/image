@@ -51,13 +51,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/page/to/mbookend">全本</a></li>
-<!--         <li><a href="/history.php">阅读记录</a></li>
-        <li><a href="/bookcase.php">书架</a></li> -->
-        <!-- <div class="cc"></div> -->
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
  
@@ -78,17 +75,19 @@
 
 <div class="content">
 <ul>
-<li class="prev"><a href="/page/to/mbooksortdetail">玄幻小说</a></li>
-<li class="prev"><a href="/page/to/mbooksortdetail">修真小说</a></li>
-<li class="prev"><a href="/fenlei3_1.html">都市小说</a></li>
+<li class="prev"><a href="/m/book/type/1/1">玄幻奇幻</a></li>
+<li class="prev"><a href="/m/book/type/2/1">武侠仙侠</a></li>
+<li class="prev"><a href="/m/book/type/3/1">都市言情</a></li>
 </ul>
 <ul>
-<li class="prev"><a href="/fenlei4_1.html">历史小说</a></li>
-<li class="prev"><a href="/fenlei6_1.html">网游小说</a></li>
-<li class="prev"><a href="/fenlei5_1.html">科幻小说</a></li>
+<li class="prev"><a href="/m/book/type/4/1">青春校园</a></li>
+<li class="prev"><a href="/m/book/type/5/1">穿越架空</a></li>
+<li class="prev"><a href="/m/book/type/6/1">惊悚悬疑</a></li>
 </ul>
 <ul>
-<li class="prev"><a href="/fenlei7_1.html">言情小说</a></li>
+<li class="prev"><a href="/m/book/type/7/1">历史军事</a></li>
+<li class="prev"><a href="/m/book/type/8/1">游戏竞技</a></li>
+<li class="prev"><a href="/m/book/type/9/1">耽美同人</a></li>
 </ul>
 </div>
 
@@ -98,11 +97,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/m/book/list"></a></li>
-    	<li><a href="/m/book/list">首页</a></li>
-<!--     	<li><a href="#">分类</a></li>
-        <li><a href="#">排行</a></li>
-        <li><a href="#">全本</a></li> -->
+    	<li><a href="/m/book/index">首页</a></li>
+    	<li><a href="/page/to/mbooksort">分类</a></li>
+        <li><a href="/m/book/list">排行</a></li>
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
 

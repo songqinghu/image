@@ -36,8 +36,8 @@
 		select id  from emailwebinfo ;
   </select>
   
-      <select id="findBookWebSpiderUrl" parameterType="java.lang.Long" resultType="java.lang.String" >
-		select  url from bookwebspiderinfo where bookweb_id  = #{id};
+      <select id="findBookWebSpiderUrl" parameterType="java.lang.Long" resultType="com.kuaikanwang.image.domain.bean.book.BookSpiderInfo" >
+		select  url,booktype from bookwebspiderinfo where bookweb_id  = #{id};
   </select>
   
     <select id="findBookAllWebIds" resultType="java.lang.Long" >

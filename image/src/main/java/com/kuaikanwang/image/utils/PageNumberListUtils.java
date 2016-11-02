@@ -72,7 +72,13 @@ public class PageNumberListUtils {
 					pageNum.add(i);
 				}
 			}
-		}else if (nowPage+5 > maxPage) {
+		}else if (nowPage == 4 && maxPage ==4){
+			for (int i = 1; i <=maxPage; i++) {
+				pageNum.add(i);
+			}
+		}
+		
+		else if (nowPage+5 > maxPage) {
 			
 			for (int i = maxPage - 4; i <=maxPage; i++) {
 				pageNum.add(i);
@@ -87,5 +93,8 @@ public class PageNumberListUtils {
 		return pageNum;
 	}
 	
+	public static List<Integer> getPageNumList4M(Long nowPage,Long maxPage){
+		return getPageNumList4M(nowPage.intValue(), maxPage.intValue());
+	}
 	
 }

@@ -38,7 +38,21 @@ public interface BookIntroMapper {
 	 */
 	public Integer findBookfPageTotal();
 	
-	
+	/**
+	 * 获取指定分类的图书总数
+	 * <p>Title: findBookPageTotalByBookType</p>
+	 * <p>Description: </p>
+	 * @param bookType
+	 * @return
+	 */
+	public Long findBookPageTotalByBookType(Long bookType);
+	/**
+	 * 获取指定完本的图书总数
+	 * <p>Title: findBookPageTotalByBookType</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public Long findBookPageTotalByEnd();
 	
 	/**
 	 * 根据 pageSize 和 pageNum 根据最后更新时间降序
@@ -69,6 +83,23 @@ public interface BookIntroMapper {
 	 * 获取指定数目的倒叙热度未完结书籍
 	 */
 	public List<BookIntro> getHotBookList(Long limit);
+	
+	/**
+	 * 根据图书id获取指定区间的图书
+	 * <p>Title: getBookListByType</p>
+	 * <p>Description: </p>
+	 * @param map
+	 * @return
+	 */
+	public List<BookIntro> getBookListByType(Map<String, Long> map);
+	/**
+	 * 获取完结的图书 指定区间的图书
+	 * <p>Title: getBookListByType</p>
+	 * <p>Description: </p>
+	 * @param map
+	 * @return
+	 */
+	public List<BookIntro> getBookListByEnd(Map<String, Long> map);
 	
 	
 	

@@ -3,6 +3,8 @@ package com.kuaikanwang.image.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.kuaikanwang.image.domain.bean.book.BookSpiderInfo;
+
 /**
  * 爬虫相关信息获取
  * <p>Title: SpiderInfoMapper.java</p>
@@ -55,7 +57,7 @@ public interface SpiderInfoMapper {
 	 * @param gwebId
 	 * @return
 	 */
-	public List<String> findBookWebSpiderUrl(long bwebId);
+	public List<BookSpiderInfo> findBookWebSpiderUrl(long bwebId);
 	
 
 	public List<Long> findBookAllWebIds();

@@ -13,10 +13,10 @@
   <insert id="insertBookIntro" parameterType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
 
     insert into bookintro 
-      (bweb_id,name,author, booktype,url,old_pic_url,introInfo)
+      (bweb_id,name,author, booktype,url,old_pic_url,introInfo,bookTypeNum)
       
     values (#{bweb_id}, #{name}, 
-      #{author}, #{booktype}, #{url},#{old_pic_url},#{introInfo})
+      #{author}, #{booktype}, #{url},#{old_pic_url},#{introInfo},#{bookTypeNum})
   </insert>
   
   <select id="findBookIntroByIsSpider"  resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
@@ -25,6 +25,14 @@
   
     <select id="findBookfPageTotal"  resultType="java.lang.Integer" >
 		select count(1) from bookintro where flag = 0 and preIntro_id =0;
+  </select>
+  
+    <select id="findBookPageTotalByBookType"  resultType="java.lang.Long" parameterType="java.lang.Long">
+		select count(1) from bookintro where flag = 0 and preIntro_id =0 and bookTypeNum = #{type};
+  </select>
+  
+      <select id="findBookPageTotalByEnd"  resultType="java.lang.Long" >
+		select count(1) from bookintro where flag = 0 and preIntro_id =0 and isend=1;
   </select>
   
     <select id="findBookListShow" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
@@ -61,6 +69,24 @@
 	bookintro
 	WHERE
 	isend =0 and flag=0 order by count desc limit 0,#{limit};
+  </select>
+  
+      <select id="getBookListByType" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	SELECT
+	intro_id,name,author,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,count
+	FROM
+	bookintro
+	WHERE
+	bookTypeNum =#{bookTypeNum} and flag=0 order by count desc limit #{start},#{limit};
+  </select>
+  
+        <select id="getBookListByEnd" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.book.BookIntro" >
+	SELECT
+	intro_id,name,author,newchapter,newchapterId,old_pic_url,show_pic_url,introInfo,count
+	FROM
+	bookintro
+	WHERE
+	isend =1 and flag=0 order by count desc limit #{start},#{limit};
   </select>
 <!--   
   <select id="findPreGifByWebId" parameterType="map" resultType="com.kuaikanwang.image.domain.bean.gif.PreGif" >

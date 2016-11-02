@@ -24,10 +24,18 @@ public class BookIntro {
     private String 	show_pic_url;
     private String introInfo;
     
+    private Long bookTypeNum;//图书分类 数字
+    
     private Long count;
     
     private String updatedate;
     
+	public Long getBookTypeNum() {
+		return bookTypeNum;
+	}
+	public void setBookTypeNum(Long bookTypeNum) {
+		this.bookTypeNum = bookTypeNum;
+	}
 	public Long getCount() {
 		return count;
 	}

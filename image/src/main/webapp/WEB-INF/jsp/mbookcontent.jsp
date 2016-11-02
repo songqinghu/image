@@ -37,6 +37,7 @@
 	</script>
   </head>
 <body id="nr_body" class="nr_all c_nr">
+
 <div class="nr_set">
 	<div id="lightdiv" class="set1" onclick="nr_setbg('light')">关灯</div>
 	<div id="huyandiv" class="set1" onclick="nr_setbg('huyan')">护眼</div>
@@ -46,7 +47,7 @@
 	<div id="fontsmall" onclick="nr_setbg('small')">小</div></div>
 	<div class="cc"></div>
 </div>
-<div class="nr_title" id="nr_title">${bookIntro.name}</div>
+<div class="nr_title" ><font color="blue">${bookIntro.name}</font></div>
 <div class="nr_title" id="nr_title">${bookContent.name}</div>
 <script>style_head()</script>
 <div class="nr_page">

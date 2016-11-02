@@ -53,10 +53,7 @@
     	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/page/to/mbookend">全本</a></li>
-<!--         <li><a href="/history.php">阅读记录</a></li>
-        <li><a href="/bookcase.php">书架</a></li> -->
-        <!-- <div class="cc"></div> -->
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
  
@@ -99,156 +96,116 @@
 </div>
 
 <div class="article">
-	<h2 class="title"><span><a href="/fenlei1_1.html">玄幻小说</a></span><a href="/fenlei1_1.html">更多...</a></h2>
+	<h2 class="title"><span><a href="/m/book/type/1/1">玄幻奇幻</a></span><a href="/m/book/type/1/1">更多...</a></h2>
 	<div class="block">
 		<ul>
-		    
-                    <li><a href="/13_13453/" class="blue">龙王传说</a>/唐家三少</li>
-                
-                    <li><a href="/0_68/" class="blue">武炼巅峰</a>/莫默</li>
-                
-                    <li><a href="/0_168/" class="blue">择天记</a>/猫腻</li>
-                
-                    <li><a href="/16_16384/" class="blue">武破九霄</a>/花颜</li>
-                
-                    <li><a href="/0_381/" class="blue">琴帝</a>/唐家三少</li>
-                
-                    <li><a href="/19_19272/" class="blue">凌天战尊</a>/风轻扬</li>
+		     <c:forEach var="book"  items="${booktypes[1]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>    
+		</ul>
+	</div>
+</div>
+
+<div class="article">
+	<h2 class="title"><span><a href="/m/book/type/2/1">武侠仙侠</a></span><a href="/m/book/type/2/1">更多...</a></h2>
+	<div class="block">
+		<ul>
+		     <c:forEach var="book"  items="${booktypes[2]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>                
+		</ul>
+	</div>
+</div>
+
+<div class="article">
+	<h2 class="title"><span><a href="/m/book/type/3/1">都市言情</a></span><a href="/m/book/type/3/1">更多...</a></h2>
+	<div class="block">
+		<ul>
+		     <c:forEach var="book"  items="${booktypes[3]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
                 
 		</ul>
 	</div>
 </div>
 
 <div class="article">
-	<h2 class="title"><span><a href="/fenlei2_1.html">修真小说</a></span><a href="/fenlei2_1.html">更多...</a></h2>
+	<h2 class="title"><span><a href="/m/book/type/4/1">青春校园</a></span><a href="/m/book/type/4/1">更多...</a></h2>
 	<div class="block">
 		<ul>
-		    
-                    <li><a href="/0_399/" class="blue">星辰变</a>/我吃西红柿</li>
-                
-                    <li><a href="/21_21470/" class="blue">不朽凡人</a>/鹅是老五</li>
-                
-                    <li><a href="/0_314/" class="blue">求魔</a>/耳根</li>
-                
-                    <li><a href="/16_16431/" class="blue">一念永恒</a>/耳根</li>
-                
-                    <li><a href="/4_4295/" class="blue">掠天记</a>/黑山老鬼</li>
-                
-                    <li><a href="/0_258/" class="blue">武逆</a>/只是小虾米</li>
-                
-		</ul>
-	</div>
-</div>
-
-<div class="article">
-	<h2 class="title"><span><a href="/fenlei3_1.html">都市小说</a></span><a href="/fenlei3_1.html">更多...</a></h2>
-	<div class="block">
-		<ul>
-		    
-                    <li><a href="/0_161/" class="blue">校花的贴身高手</a>/鱼人二代</li>
-                
-                    <li><a href="/17_17552/" class="blue">兵王传奇</a>/四行</li>
-                
-                    <li><a href="/0_124/" class="blue">重生之妖孽人生</a>/黄金战士</li>
-                
-                    <li><a href="/9_9937/" class="blue">发个微信去天庭</a>/台灯下的节奏</li>
-                
-                    <li><a href="/9_9364/" class="blue">都市奇门医圣</a>/一念</li>
-                
-                    <li><a href="/0_147/" class="blue">特种兵在都市</a>/夜十三</li>
-                
-		</ul>
-	</div>
-</div>
-
-<div class="article">
-	<h2 class="title"><span><a href="/fenlei4_1.html">历史小说</a></span><a href="/fenlei4_1.html">更多...</a></h2>
-	<div class="block">
-		<ul>
-		    
-                    <li><a href="/17_17502/" class="blue">逆明1644</a>/天涯海跃</li>
-                
-                    <li><a href="/17_17069/" class="blue">庶子风流</a>/上山打老虎额</li>
-                
-                    <li><a href="/17_17709/" class="blue">最强特种兵之龙刺</a>/赤色星尘</li>
-                
-                    <li><a href="/0_95/" class="blue">三国之暴君颜良</a>/陷阵都尉</li>
-                
-                    <li><a href="/0_9/" class="blue">大官人</a>/三戒大师</li>
-                
-                    <li><a href="/14_14362/" class="blue">寒门状元</a>/天子</li>
+		    <c:forEach var="book"  items="${booktypes[4]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
                 
 		</ul>
 	</div>
 </div>
     
 <div class="article">
-	<h2 class="title"><span><a href="/fenlei5_1.html">科幻小说</a></span><a href="/fenlei5_1.html">更多...</a></h2>
+	<h2 class="title"><span><a href="/m/book/type/5/1">穿越架空</a></span><a href="/m/book/type/5/1">更多...</a></h2>
 	<div class="block">
 		<ul>
-		    
-                    <li><a href="/17_17602/" class="blue">重生之丧尸围城</a>/YY无罪</li>
-                
-                    <li><a href="/4_4292/" class="blue">修真四万年</a>/卧牛真人</li>
-                
-                    <li><a href="/9_9389/" class="blue">我在末世有套房</a>/晨星LL</li>
-                
-                    <li><a href="/0_54/" class="blue">末日新世界</a>/暗黑茄子</li>
-                
-                    <li><a href="/4_4326/" class="blue">重启末世</a>/古羲</li>
-                
-                    <li><a href="/0_122/" class="blue">希灵帝国</a>/远瞳</li>
+		     <c:forEach var="book"  items="${booktypes[5]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>                
+		</ul>
+	</div>
+</div>
+
+<div class="article">
+	<h2 class="title"><span><a href="/m/book/type/6/1">惊悚悬疑</a></span><a href="/m/book/type/6/1">更多...</a></h2>
+	<div class="block">
+		<ul>
+				     <c:forEach var="book"  items="${booktypes[6]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
                 
 		</ul>
 	</div>
 </div>
 
 <div class="article">
-	<h2 class="title"><span><a href="/fenlei6_1.html">网游小说</a></span><a href="/fenlei6_1.html">更多...</a></h2>
+	<h2 class="title"><span><a href="/m/book/type/7/1">历史军事</a></span><a href="/m/book/type/7/1">更多...</a></h2>
 	<div class="block">
 		<ul>
-		    
-                    <li><a href="/9_9362/" class="blue">重生之最强剑神</a>/天运老猫</li>
-                
-                    <li><a href="/4_4540/" class="blue">网游之大盗贼</a>/泛舟填词</li>
-                
-                    <li><a href="/0_185/" class="blue">英雄监狱</a>/黄华溢</li>
-                
-                    <li><a href="/11_11443/" class="blue">超级指环王</a>/兔来割草</li>
-                
-                    <li><a href="/10_10479/" class="blue">网游之逆天戒指</a>/上古圣贤</li>
-                
-                    <li><a href="/16_16198/" class="blue">武林半侠传</a>/文抄公</li>
-                
-		</ul>
-	</div>
-</div>
-
-<div class="article">
-	<h2 class="title"><span><a href="/fenlei7_1.html">女频小说</a></span><a href="/fenlei7_1.html">更多...</a></h2>
-	<div class="block">
-		<ul>
-		    
-                    <li><a href="/22_22600/" class="blue">深宫弃妃：皇上别过来</a>/萌不萌</li>
-                
-                    <li><a href="/21_21877/" class="blue">千亿盛宠：大叔，吻慢点</a>/荷小仙</li>
-                
-                    <li><a href="/21_21435/" class="blue">高调强宠：恶魔老公，停一停</a>/单®</li>
-                
+		     <c:forEach var="book"  items="${booktypes[7]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
 		</ul>
 	</div>
 </div>
     
+<div class="article">
+	<h2 class="title"><span><a href="/m/book/type/8/1">游戏竞技</a></span><a href="/m/book/type/8/1">更多...</a></h2>
+	<div class="block">
+		<ul>
+		     <c:forEach var="book"  items="${booktypes[8]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
+		</ul>
+	</div>
+</div>
+
+<div class="article">
+	<h2 class="title"><span><a href="/m/book/type/9/1">耽美同人</a></span><a href="/m/book/type/9/1">更多...</a></h2>
+	<div class="block">
+		<ul>
+		     <c:forEach var="book"  items="${booktypes[9]}">
+                    <li><a href="/m/book/detail/intro/${book.intro_id}" class="blue">${book.name}</a>/${book.author}</li>
+            </c:forEach>
+		</ul>
+	</div>
+</div>
 
 
 </body>
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/m/book/list">首页</a></li>
-    	<li><a href="#">分类</a></li>
-        <li><a href="#">排行</a></li>
-        <li><a href="#">全本</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
+    	<li><a href="/page/to/mbooksort">分类</a></li>
+        <li><a href="/m/book/list">排行</a></li>
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
 

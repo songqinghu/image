@@ -44,13 +44,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/page/to/mbookend">全本</a></li>
-<!--         <li><a href="/history.php">阅读记录</a></li>
-        <li><a href="/bookcase.php">书架</a></li> -->
-        <!-- <div class="cc"></div> -->
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
  
@@ -76,7 +73,7 @@
 <div class="toptab">
 	<span class="active">全本小说榜</span>
 </div>
-      <c:forEach var="book"  items="${list}">
+      <c:forEach var="book"  items="${books}">
 <div class="bookbox">
 	<div class="bookimg">
 		<a href="/m/book/detail/intro/${book.intro_id}">
@@ -105,22 +102,22 @@
 
   <ul class="pagination">
     <li>
-      <a href="?pageNum=1" aria-label="Previous">
+      <a href="/m/book/end/1" aria-label="Previous">
         <span aria-hidden="true">首页</span>
       </a>
     </li>
              <c:forEach var="page"  items="${pageList}">
              <c:choose>
     			<c:when test="${nowPage == page}">
-     				<li class="active"><a href='?pageNum=${nowPage}'>${nowPage}</a></li>
+     				<li class="active"><a href='/m/book/end/${nowPage}'>${nowPage}</a></li>
     			</c:when>
    				 <c:otherwise>
-        			<li><a href='?pageNum=${page}'>${page}</a></li>
+        			<li><a href='/m/book/end/${page}'>${page}</a></li>
    			 	</c:otherwise>
 			</c:choose>
 	 		 </c:forEach>
       	    <c:if test="${nowPage < maxPage}">
-  				<li> <a href='?pageNum=${nowPage + 1}'>下一页</a></li>
+  				<li> <a href='/m/book/end/${nowPage + 1}'>下一页</a></li>
 			</c:if>
   </ul>
   </body>

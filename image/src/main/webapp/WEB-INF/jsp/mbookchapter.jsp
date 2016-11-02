@@ -46,10 +46,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/m/book/list">全本</a></li>
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
  

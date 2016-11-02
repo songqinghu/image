@@ -3,6 +3,7 @@ package com.kuaikanwang.image.controller.mobile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
+import com.kuaikanwang.image.domain.bean.book.BookType;
 import com.kuaikanwang.image.service.BookAccessService;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
+import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 /**
  * 手机访问m站控制
@@ -49,15 +52,103 @@ public class MBookAccessController {
 		List<BookIntro> hotBooks = bookAccessServiceImpl.getHotBookListIndex(3l);
 		//各个分类的信息
 		
+		Set<Long> types = CommonCacheUtil.getBookTypeCache().keySet();
 		
+		HashMap<Long, List<BookIntro>> booktypes = new HashMap<Long,List<BookIntro>>();
 		
+		for (Long type : types) {
+			List<BookIntro> books = bookAccessServiceImpl.getBookListByType(1l, 5l, type);
+			booktypes.put(type, books);
+		}
 		
 		Map<String, Object> model  = new HashMap<String,Object>();
 		
 		model.put("hotBooks", hotBooks);
-		
+		model.put("booktypes", booktypes);
 	     
 		return new ModelAndView("/mbookindex",model);
+	}
+	/**
+	 * 按照指定的图书分类返回数据 --默认10个一页
+	 * <p>Title: showBookType</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/type/{type}/{pageNum}")
+	public ModelAndView showBookType(@PathVariable Long type,@PathVariable Long pageNum){
+		
+		if(!CommonCacheUtil.getBookTypeCache().containsKey(type)){
+			type=1l;
+		}
+		Long pageSize = 10l;
+	    Long totalPage = bookAccessServiceImpl.findBookPageTotalByPageSizeAndBookType(pageSize,type);//先展示2个试试看
+		//对页数参数做处理
+		if(pageNum <1){
+			pageNum=1l;
+		}else if(pageNum > totalPage ){
+			pageNum = totalPage;
+		}
+		
+		
+		
+		//查询
+		List<BookIntro> books = bookAccessServiceImpl.getBookListByType(pageNum, pageSize, type);
+		//分页问题
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		
+		BookType bookType = new BookType();
+		bookType.setBookTypeId(type);
+		bookType.setBookTypeName(CommonCacheUtil.getBookTypeCache().get(type));
+		model.put("books", books);
+		model.put("bookType", bookType);
+		model.put("maxPage", totalPage);
+		model.put("nowPage", pageNum);
+		//要暂时的列表页
+		List<Integer> pageList = PageNumberListUtils.getPageNumList4M(pageNum, totalPage);
+		
+		model.put("pageList", pageList);
+		
+		return new ModelAndView("/mbooksortdetail",model);
+		
+	}
+	
+	/**
+	 * 按照指定的图书分类返回数据 --默认10个一页
+	 * <p>Title: showBookType</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	@RequestMapping("/end/{pageNum}")
+	public ModelAndView showEndBook(@PathVariable Long pageNum){
+		
+		Long pageSize = 1l;
+	    Long totalPage = bookAccessServiceImpl.findBookPageTotalByPageSizeAndEnd(pageSize);//先展示2个试试看
+		//对页数参数做处理
+		if(pageNum <1){
+			pageNum=1l;
+		}else if(pageNum > totalPage ){
+			pageNum = totalPage;
+		}
+		
+		
+		
+		//查询
+		List<BookIntro> books = bookAccessServiceImpl.getBookListByEnd(pageNum, pageSize);
+		//分页问题
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+
+		model.put("books", books);
+		model.put("maxPage", totalPage);
+		model.put("nowPage", pageNum);
+		//要暂时的列表页
+		List<Integer> pageList = PageNumberListUtils.getPageNumList4M(pageNum, totalPage);
+		
+		model.put("pageList", pageList);
+		
+		return new ModelAndView("/mbookend",model);
+		
 	}
 	
 	

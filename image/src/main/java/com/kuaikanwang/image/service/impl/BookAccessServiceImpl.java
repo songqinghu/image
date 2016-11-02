@@ -48,6 +48,36 @@ public class BookAccessServiceImpl implements BookAccessService {
 		return totalPage;
 	}
 
+	public Long findBookPageTotalByPageSizeAndBookType(Long pageSize,Long bookType) {
+		
+		Long totalCount = bookIntroMapper.findBookPageTotalByBookType(bookType);//总数目
+		
+		long totalPage = ((totalCount+pageSize -1)/pageSize);
+		
+		return totalPage;
+		
+	}
+	/**
+	 * 查询全本书籍数目
+	 * <p>Title: findBookPageTotalByPageSizeAndEnd</p>
+	 * <p>Description: </p>
+	 * @param pageSize
+	 * @return
+	 */
+	public Long findBookPageTotalByPageSizeAndEnd(Long pageSize) {
+		
+		Long totalCount = bookIntroMapper.findBookPageTotalByEnd();//总数目
+		
+		long totalPage = ((totalCount+pageSize -1)/pageSize);
+		
+		return totalPage;
+		
+	}
+	
+	/**
+	 * 
+	 */
+	
 	/**
 	 * 获取指定页面的图书列表信息
 	 * <p>Title: findBookListByPageNum</p>
@@ -186,6 +216,78 @@ public class BookAccessServiceImpl implements BookAccessService {
 		
 		return hotBooks;
 	}
+	
+	/**
+	 * 根据分类id获取相应的图书列表--->观看量排序
+	 * <p>Title: getBookListByType</p>
+	 * <p>Description: </p>
+	 * @param start
+	 * @param limit
+	 * @param booktype
+	 * @return
+	 */
+	public List<BookIntro> getBookListByType(Long pageNum,Long pageSize,Long booktype){
+		
+		if(pageNum<1){
+			pageNum=1l;
+		}
+		
+		Map<String, Long> map = new HashMap<String,Long>();
+		
+		map.put("start", pageSize*(pageNum-1));
+		map.put("limit", pageSize);
+		map.put("bookTypeNum", booktype);
+		
+		List<BookIntro> books = bookIntroMapper.getBookListByType(map);
+		
+		for (BookIntro bookIntro : books) {
+			
+			String introInfo = bookIntro.getIntroInfo();
+			String result = introInfo.replaceAll("<br>", "")
+					.replaceAll("</br>", "")
+					.replaceAll("<p>", "")
+					.replaceAll("</p>", "");
+			bookIntro.setIntroInfo(result);
+		}
+		
+		return books;
+	}
+	
+	/**
+	 * 获取完结的图书列表--->观看量排序
+	 * <p>Title: getBookListByType</p>
+	 * <p>Description: </p>
+	 * @param start
+	 * @param limit
+	 * @param booktype
+	 * @return
+	 */
+	public List<BookIntro> getBookListByEnd(Long pageNum,Long pageSize){
+		
+		if(pageNum<1){
+			pageNum=1l;
+		}
+		
+		Map<String, Long> map = new HashMap<String,Long>();
+		
+		map.put("start", pageSize*(pageNum-1));
+		map.put("limit", pageSize);
+		
+		List<BookIntro> books = bookIntroMapper.getBookListByEnd(map);
+		
+		for (BookIntro bookIntro : books) {
+			
+			String introInfo = bookIntro.getIntroInfo();
+			String result = introInfo.replaceAll("<br>", "")
+					.replaceAll("</br>", "")
+					.replaceAll("<p>", "")
+					.replaceAll("</p>", "");
+			bookIntro.setIntroInfo(result);
+		}
+		
+		return books;
+	}
+	
 	
 	
 

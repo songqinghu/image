@@ -45,13 +45,10 @@
 <div class="nav">
     <ul>
     	<li><a href="/">最愉阅</a></li>
-    	<li><a href="/page/to/mbookindex">首页</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
-        <li><a href="/m/book/list">全本</a></li>
-<!--         <li><a href="/history.php">阅读记录</a></li>
-        <li><a href="/bookcase.php">书架</a></li> -->
-        <!-- <div class="cc"></div> -->
+        <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
 <div style="margin-top:0px;padding-top:0px;" class="cover">
