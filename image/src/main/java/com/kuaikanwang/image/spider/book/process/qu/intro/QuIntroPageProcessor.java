@@ -1,7 +1,9 @@
-package image.test.book.intro;
+package com.kuaikanwang.image.spider.book.process.qu.intro;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.spider.website.WebSiteIdentification;
@@ -9,8 +11,6 @@ import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 /**
  * 图书简介抓取测试类
@@ -22,8 +22,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date 2016年10月2日下午8:40:03
  * @version 1.0
  */
-
-public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentification {
+@Component("quIntroPageProcessor")
+public class QuIntroPageProcessor implements PageProcessor,WebSiteIdentification {
+	
+	private static Logger logger = LoggerFactory.getLogger(QuIntroPageProcessor.class);
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
@@ -35,6 +37,7 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
     public void process(Page page) {
 
+    	
     	////table/tbody/tr/td[2]/div[1]
     	List<String> name = page.getHtml()
     			.xpath("//table/tbody/tr/td[2]/div[1]/text()")
@@ -72,30 +75,15 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
     	page.putField("img",img);
     	page.putField("introInfo", introInfo);
     	 
-    	if (page.getResultItems().get("url") == null //|| page.getResultItems().get("murls") ==null 
+    	if (page.getResultItems().get("url") == null 
+    			|| page.getResultItems().get("name") ==null 
+    			|| page.getResultItems().get("author") ==null 
+    			|| page.getResultItems().get("img") ==null
+    			|| page.getResultItems().get("introInfo") ==null
     			) {
             page.setSkip(true);
+            logger.error("skip the book exist null ,check it!");
         }
-
-    	for (String string : name) {
-			System.out.println(string.trim());
-		}
-    	for (String string : author) {
-    		System.out.println(string);
-    	}
-//    	for (String string : type) {
-//    		System.out.println(string);
-//    	}
-    	for (String string : url) {
-    		System.out.println(string);
-    	}
-    	for (String string : img) {
-    		System.out.println(string);
-    	}
-    	
-    	for (String string : introInfo) {
-			System.out.println(string);
-		}
 
     }
 
@@ -107,15 +95,6 @@ public class DemoIntroPageProcessor implements PageProcessor,WebSiteIdentificati
 	@Override
 	public long getWebId() {
 		return 1;
-	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.manhaoxiao.com";
-//		String url = "http://m.biquge.com/21_21470/";
-		String url = "http://m.qu.la/book/5094/";
-		
-		Spider.create(new DemoIntroPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
 	}
     
 }

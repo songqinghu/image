@@ -44,7 +44,7 @@
 <body>
 <div class="nav">
     <ul>
-    	<li><a href="/">最愉阅</a></li>
+    	<li><a href="/m/book/detail/intro/${bookIntro.intro_id}">${bookIntro.name}</a></li>
     	<li><a href="/m/book/index">首页</a></li>
     	<li><a href="/page/to/mbooksort">分类</a></li>
         <li><a href="/m/book/list">排行</a></li>
@@ -60,17 +60,19 @@
 </ul>
 
 <div id="bottom" class="read">
-<h3>列表结束！（底部）</h3>
-<span><a href="#intro">[返回顶部]</a></span>
+
+<span><a href="#intro"><h3>[返回顶部]</h3></a></span>
 </div>
 
-<!-- <div class="footer">
-  <ul>
-    <li><a href="/">首页</a></li>
-    <li><a href="http://www.zuiyuyue.com/">电脑版</a></li>
-    <li><a href="/bookcase.php">书架</a></li>
-  </ul>
-</div> -->
+<div class="nav">
+    <ul>
+    	<li><a href="/m/book/detail/intro/${bookIntro.intro_id}">${bookIntro.name}</a></li>
+    	<li><a href="/m/book/index">首页</a></li>
+    	<li><a href="/page/to/mbooksort">分类</a></li>
+        <li><a href="/m/book/list">排行</a></li>
+        <li><a href="/m/book/end/1">全本</a></li>
+    </ul>
+</div>
 
 
   </body>

@@ -1,5 +1,6 @@
-package image.test.book.chapter;
+package com.kuaikanwang.image.spider.book.process.qu.chapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -22,8 +23,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date 2016年10月2日下午8:40:03
  * @version 1.0
  */
-
-public class DemoChapterPageProcessor implements PageProcessor,WebSiteIdentification {
+@Component("quChapterPageProcessor")
+public class QuChapterPageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
@@ -41,13 +42,20 @@ public class DemoChapterPageProcessor implements PageProcessor,WebSiteIdentifica
 		  xpath("//div[@class='chapter9']/div[@class='bgg']/a").
 		  links().
 		  all();
+    	ArrayList<String> newurls = new ArrayList<String>();
+    	for (int i = urls.size()-1; i >= 0 ; i--) {
+			newurls.add(urls.get(i));
+		}
     	List<String> names = page.getHtml()
     			.xpath("//div[@class='chapter9']/div[@class='bgg']/a/text()")
     			.all();
-    	
+    	ArrayList<String> newnames = new ArrayList<String>();
+    	for (int i = names.size()-1; i >= 0 ; i--) {
+    		newnames.add(names.get(i));
+		}
     	page.putField(CommonCacheUtil.WEB_ID, getWebId());
-    	page.putField("urls", urls);
-    	page.putField("names",names);
+    	page.putField("urls", newurls);
+    	page.putField("names",newnames);
     	 
     	if (page.getResultItems().get("urls") == null || page.getResultItems().get("names") ==null 
     			) {
@@ -67,14 +75,6 @@ public class DemoChapterPageProcessor implements PageProcessor,WebSiteIdentifica
 	public long getWebId() {
 		return 1;
 	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.manhaoxiao.com";
-		String url = "http://m.qu.la/booklist/5094.html";
-//		String url = "http://m.biquge.com/booklist/202.html";
-		
-		Spider.create(new DemoChapterPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
-	}
+
     
 }

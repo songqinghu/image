@@ -45,7 +45,7 @@ public class IntroMysqlPipeline implements Pipeline{
 		//图书作者
 		List<String> authors = (List<String>) all.get("author");
 		//图书类型
-		List<String> types = (List<String>) all.get("type");
+//		List<String> types = (List<String>) all.get("type");
 		//图书图片---放在七牛云上 需要研究一下如何放上去和获取
 		List<String> imgs = (List<String>) all.get("img");
 		//图书简介 --取的是html
@@ -59,13 +59,15 @@ public class IntroMysqlPipeline implements Pipeline{
 			BookIntro bookIntro = new BookIntro();
 			Logger.info("book get name is :{}" + names.get(0));
 			bookIntro.setAuthor(authors.get(0));
-			bookIntro.setBooktype(types.get(0));
+			Long typeId = CommonCacheUtil.getBookIntroCache().get(CommonCacheUtil.BOOK_TYPE+webId);
+			
+			bookIntro.setBooktype(CommonCacheUtil.getBookTypeCache().get(typeId));
 			bookIntro.setBweb_id(webId);
 			bookIntro.setName(names.get(0));
 			bookIntro.setUrl(urls.get(0));
 			bookIntro.setOld_pic_url(imgs.get(0));
 			bookIntro.setIntroInfo(introInfos.get(0));
-			bookIntro.setBookTypeNum(CommonCacheUtil.getBookIntroCache().get(CommonCacheUtil.BOOK_TYPE+webId));
+			bookIntro.setBookTypeNum(typeId);
 			synchronized(this){
 				long count = bookIntroMapper.findBookByUrl(urls.get(0));
 				if(count >0){

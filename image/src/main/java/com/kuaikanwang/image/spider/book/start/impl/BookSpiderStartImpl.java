@@ -38,13 +38,13 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	
 	
 	@Resource
-	private PageProcessor BQGIntroPageProcessor;
+	private PageProcessor quIntroPageProcessor;
 	
 	@Resource
 	private Pipeline introMysqlPipeline;
 	
 	@Resource
-	private PageProcessor BQGChapterPageProcessor;
+	private PageProcessor quChapterPageProcessor;
 	
 	@Resource
 	private BookIntroMapper bookIntroMapper;
@@ -56,7 +56,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 	private Pipeline chapterMysqlPipeline;
 	
 	@Resource
-	private PageProcessor BQGContentPageProcessor;
+	private PageProcessor quContentPageProcessor;
 	
 	@Resource
 	private Pipeline contentMysqlPipeline;
@@ -91,7 +91,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 		CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.BOOK_INTRO_ID+bwebId, bookIntro.getIntro_id());
 		
 		Spider.
-		create(BQGChapterPageProcessor)
+		create(quChapterPageProcessor)
 		.addPipeline(chapterMysqlPipeline).
 		addUrl(bookIntro.getUrl()).
 		thread(7).run();
@@ -115,7 +115,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 			CommonCacheUtil.getBookContentCache().put(CommonCacheUtil.BOOK_NAME+bwebId,chapter.getName());
 			
 			Spider.
-			create(BQGContentPageProcessor)
+			create(quContentPageProcessor)
 			.addPipeline(contentMysqlPipeline).
 			addUrl(chapter.getUrl()).
 			thread(7).run();
@@ -165,7 +165,7 @@ public class BookSpiderStartImpl implements BookSpiderStart {
 			CommonCacheUtil.getBookIntroCache().put(CommonCacheUtil.BOOK_TYPE+bwebId, book.getBooktype());
 			
 			Spider.
-			create(BQGIntroPageProcessor)
+			create(quIntroPageProcessor)
 			.addPipeline(introMysqlPipeline).
 			addUrl(book.getUrl()).
 			thread(7).run();

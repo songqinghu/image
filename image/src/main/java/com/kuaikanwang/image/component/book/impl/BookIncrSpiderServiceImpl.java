@@ -30,7 +30,7 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 	
 	
 	@Resource
-	private PageProcessor BQGChapterPageProcessor;
+	private PageProcessor quChapterPageProcessor;
 	
 	@Resource
 	private Pipeline incrChapterMysqlPipeline;
@@ -69,7 +69,7 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 						CommonCacheUtil.getPreCacehInfoMap().put(CommonCacheUtil.BOOK_INCR_INTRO_ID+bookIntro.getBweb_id(), bookIntro.getIntro_id());
 						
 						Spider.
-						create(BQGChapterPageProcessor)
+						create(quChapterPageProcessor)
 						.addPipeline(incrChapterMysqlPipeline).
 						addUrl(bookIntro.getUrl()).
 						thread(7).run();

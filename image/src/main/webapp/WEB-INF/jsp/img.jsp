@@ -44,17 +44,17 @@
     <script src="http://www.zuiyuyue.com/js/bootstrap.min.js"></script>
 
 
-	<img alt="啦啦啦" src="http://pic.59pic.com/2015/0616/20150616052205321.jpg.196.265.jpg">
+	<img alt="啦啦啦" src="http://www.qu.la/files/article/image/5/5094/5094s.jpg">
 
 	<ul>
 		<li>Without sending referrer: <br/> 
 		<span id="image_kill_referrer"  style='width:120px;height:160px;'>
 		</span>
 		</li>
-		<img alt="测试" src="http://www.biquge.com/files/article/image/22/21470/21470.jpg">
+		<img alt="测试" src="http://www.qu.la/files/article/image/5/5094/5094s.jpg">
 	</ul>
 	<script>
-		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://www.biquge.com/files/article/image/22/21470/21470.jpg');
+		document.getElementById('image_kill_referrer').innerHTML = ReferrerKiller.imageHtml('http://www.qu.la/files/article/image/5/5094/5094s.jpg');
 	</script>
 
 	

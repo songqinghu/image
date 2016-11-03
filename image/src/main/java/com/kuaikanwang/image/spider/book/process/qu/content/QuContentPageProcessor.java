@@ -1,6 +1,8 @@
-package image.test.book.content;
+package com.kuaikanwang.image.spider.book.process.qu.content;
 
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 import com.kuaikanwang.image.spider.website.WebSiteIdentification;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
@@ -20,8 +22,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date 2016年10月2日下午8:40:03
  * @version 1.0
  */
-
-public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentification {
+@Component("quContentPageProcessor")
+public class QuContentPageProcessor implements PageProcessor,WebSiteIdentification {
 	
     // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.
@@ -39,9 +41,7 @@ public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentifica
 //                .regex("<div, id=\"nr1\">(.+)</div>")
                 .regex("\\S+")
                 .all();
-        for (String string : contents) {
-			System.out.println(string);
-		}
+
     	//List<String> all3 = page.getHtml().links().regex("http://www\\.mm131\\.com/xinggan/(\\d+)\\.html").all();
     	//()代表取出其中的数据
 //    	for (String string : all2) {
@@ -75,7 +75,7 @@ public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentifica
 //			
 //		}
 
-        System.err.println("urls : " + contents.size());
+//        System.err.println("urls : " + contents.size());
 //        page.addTargetRequests(all);
         	
     }
@@ -87,14 +87,7 @@ public class DemoContentPageProcessor implements PageProcessor,WebSiteIdentifica
 
 	@Override
 	public long getWebId() {
-		return 2;
-	}
-    
-	public static void main(String[] args){
-		//String url = "http://www.manhaoxiao.com";
-		String url = "http://m.qu.la/book/3835/8665670.html";
-		Spider.create(new DemoContentPageProcessor()).addPipeline(new ConsolePipeline()).addUrl(url).
-		thread(7).run();
+		return 1;
 	}
     
 }
