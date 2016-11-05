@@ -22,6 +22,7 @@ public interface BookAccessService {
 	
 	public List<BookChapter> getAllBookChapterByIntroId(Long introId);
 	
+	public BookContent getBookContentByChapterIdInSolr(Long chapterId);
 	
 	public BookContent getBookContentByChapterId(Long chapterId);
 	

@@ -1,11 +1,18 @@
 package com.kuaikanwang.image.service.impl;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.params.CommonParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,11 +23,15 @@ import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.service.BookAccessService;
+import com.kuaikanwang.image.solr.SolrClientUtil;
+import com.kuaikanwang.image.spider.pipeline.PreMysqlPipeline;
 
 @Service
 @Transactional
 public class BookAccessServiceImpl implements BookAccessService {
 
+	private static Logger logger = LoggerFactory.getLogger(PreMysqlPipeline.class);
+	
 	@Resource
 	private BookIntroMapper bookIntroMapper;
 	
@@ -29,6 +40,9 @@ public class BookAccessServiceImpl implements BookAccessService {
 	
 	@Resource
 	private BookContentMapper bookContentMapper;
+	
+	@Resource
+	private SolrClientUtil solrClientUtil;
 	
 	/**
 	 * 获取图书能展示的页数
@@ -166,6 +180,24 @@ public class BookAccessServiceImpl implements BookAccessService {
 		return chapters;
 	}
 
+	public BookContent getBookContentByChapterIdInSolr(Long chapterId){
+		SolrQuery query = new SolrQuery();
+		query.set(CommonParams.Q,"chapter_id:"+chapterId);
+		query.setStart(0);
+		query.setRows(1);
+		QueryResponse response;
+		try {
+			response = solrClientUtil.getClient().query(query);
+			List<BookContent> bookContents = response.getBeans(BookContent.class);
+			if(bookContents.size()>0){
+				return bookContents.get(0);
+			}
+		} catch (SolrServerException | IOException  e) {
+			logger.error("select book content to solr occor error,the chapterid is :" +chapterId);
+		} 
+		return null;
+	}
+	
 	@Override
 	public BookContent getBookContentByChapterId(Long chapterId) {
 

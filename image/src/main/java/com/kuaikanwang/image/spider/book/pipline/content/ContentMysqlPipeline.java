@@ -1,9 +1,13 @@
 package com.kuaikanwang.image.spider.book.pipline.content;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.apache.solr.client.solrj.SolrServerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.domain.bean.gif.PreGif;
+import com.kuaikanwang.image.solr.SolrClientUtil;
 import com.kuaikanwang.image.spider.pipeline.PreMysqlPipeline;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
@@ -27,13 +32,16 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 @Component("contentMysqlPipeline")
 public class ContentMysqlPipeline implements Pipeline{
 
-	private static Logger Logger = LoggerFactory.getLogger(PreMysqlPipeline.class);
+	private static Logger logger = LoggerFactory.getLogger(PreMysqlPipeline.class);
 	
 	@Autowired
 	private BookContentMapper bookContentMapper;
 	
 	@Autowired
 	private BookChapterMapper bookChapterMapper;
+	
+	@Resource
+	private SolrClientUtil solrClientUtil;
 	
 	@Override
 	public void process(ResultItems resultItems, Task task) {
@@ -65,8 +73,8 @@ public class ContentMysqlPipeline implements Pipeline{
 			content.setShowContent(temp.toString());
 			content.setIntro_id(introId);
 			content.setName(name);
-			
-			Logger.info("book content name is :{}" + name);
+			content.setSolr_id(content.getIntro_id()+"_"+content.getChapter_id());
+			logger.info("book content name is :{}" + name);
 			
 			synchronized(this){
 				long count = bookContentMapper.findBookByChapterId(chapterId);
@@ -79,6 +87,12 @@ public class ContentMysqlPipeline implements Pipeline{
 					map.put("status", 1l);
 					map.put("chapter_id", chapterId);
 					bookChapterMapper.updateChapterSpiderStatus(map );
+					try {
+						solrClientUtil.getClient().addBean(content);
+						solrClientUtil.getClient().commit();
+					} catch (IOException  | SolrServerException e) {
+						logger.error("add book content to solr occor error,the chapterid is :" +content.getChapter_id());
+					} 
 				}
 				
 			}

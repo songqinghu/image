@@ -266,12 +266,19 @@ public class MBookAccessController {
 			introId=1l;//这里先写死,应该推荐最热门的图书的
 		}
 		BookIntro bookIntro = bookAccessServiceImpl.findBookIntroByIntroId(introId); 
+		BookContent bookContent = null;
 		
-		BookContent bookContent = bookAccessServiceImpl.getBookContentByChapterId(chapterId);
+		bookContent = bookAccessServiceImpl.getBookContentByChapterIdInSolr(chapterId);
+		if(bookContent ==null){
+			bookContent = bookAccessServiceImpl.getBookContentByChapterId(chapterId);
+			byte[] content = bookContent.getContent();
+			
+			bookContent.setShowContent(new String(content));
+			bookContent.setChapter_id(chapterId);
+			
+			
+		}
 		
-		byte[] content = bookContent.getContent();
-		
-		bookContent.setShowContent(new String(content));
 
 		//先后章节id
 		Long prev = bookAccessServiceImpl.getBookPreviousChapterId(chapterId);

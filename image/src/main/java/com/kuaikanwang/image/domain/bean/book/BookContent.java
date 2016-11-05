@@ -1,4 +1,7 @@
 package com.kuaikanwang.image.domain.bean.book;
+
+import org.apache.solr.client.solrj.beans.Field;
+
 /**
  * 图书内容
  * <p>Title: BookContent.java</p>
@@ -19,18 +22,30 @@ public class BookContent {
 
 	private long id;
 	
+	@Field("id")
+	private String solr_id;
+	
+	@Field("intro_id")
 	private long intro_id;
-	
+	@Field("chapter_id")
 	private long chapter_id;
-	
+	@Field("chapter_name")
 	private String name;
 	
 	private byte[] content;
 
-	
+	@Field("chapter_content")
 	private String showContent;
 	
 	
+	public String getSolr_id() {
+		return solr_id;
+	}
+
+	public void setSolr_id(String solr_id) {
+		this.solr_id = solr_id;
+	}
+
 	public long getId() {
 		return id;
 	}
