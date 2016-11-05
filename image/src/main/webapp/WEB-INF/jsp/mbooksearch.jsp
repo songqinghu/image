@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>小说人气榜-小说排行榜-最愉阅移动版</title>
+    <title>小说搜索-小说搜索-最愉阅移动版</title>
 	<meta name="keywords" content="最愉阅小说,小说人气月榜,小说阅读网,小说" />
 	<meta name="description" content="笔趣阁小说是广大书友最值得收藏的小说阅读网，网站收录了当前最火热的小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
     <!-- Bootstrap -->
@@ -68,11 +68,12 @@
 </div>
 
 
-
+<c:if test="${totalCount==1}">
 <div class="toptab">
-	<span class="active">小说人气榜单</span>
+	<span class="active">小说搜索</span>
 </div>
-      <c:forEach var="book"  items="${list}">
+
+     <c:forEach var="book"  items="${list}">
 <div class="bookbox">
 	<div class="bookimg">
 		<a href="/m/book/detail/intro/${book.intro_id}">
@@ -119,6 +120,13 @@
   				<li> <a href='?pageNum=${nowPage + 1}'>下一页</a></li>
 			</c:if>
   </ul>
+</c:if>
+<c:if test="${totalCount==0}">
+	<div class="toptab">
+		<span class="active">没有找到书籍</span>
+	</div>
+</c:if>
+ 
   </body>
 
 </html>

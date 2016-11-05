@@ -1,4 +1,7 @@
 package com.kuaikanwang.image.domain.bean.book;
+
+import org.apache.solr.client.solrj.beans.Field;
+
 /**
  * 图书简介
  * <p>Title: BookIntro.java</p>
@@ -11,21 +14,30 @@ package com.kuaikanwang.image.domain.bean.book;
  */
 public class BookIntro {
 
+	@Field
 	private long intro_id;
 	private long bweb_id;
-    private String 	name;  
-    private String 	author;  
+	@Field
+    private String 	name;
+	@Field
+    private String 	author; 
+	@Field
     private String 	booktype;  
     private String 	url;  
-    private String 	newchapter;  
+    @Field
+    private String 	newchapter;
+    @Field
     private Long 	newchapterId; 
     private Long   isend;
+    @Field
     private String 	old_pic_url;
+    @Field
     private String 	show_pic_url;
+    @Field
     private String introInfo;
     
     private Long bookTypeNum;//图书分类 数字
-    
+    @Field
     private Long count;
     
     private String updatedate;

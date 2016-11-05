@@ -16,6 +16,7 @@ import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.domain.bean.book.BookType;
+import com.kuaikanwang.image.domain.result.ResultData;
 import com.kuaikanwang.image.service.BookAccessService;
 import com.kuaikanwang.image.utils.PageNumberListUtils;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
@@ -151,6 +152,46 @@ public class MBookAccessController {
 		
 	}
 	
+	/**
+	 * 搜索指定的图书
+	 * <p>Title: showBookList</p>
+	 * <p>Description: </p>
+	 * @param pageNum
+	 * @return
+	 */
+	@RequestMapping("/search")
+	public ModelAndView showBookSearch( String q,@RequestParam(defaultValue="1") int pageNum){
+		
+		if(q!=null &&q.length()>20){
+			q =q.substring(0, 10);
+		}
+		
+		//判断一共可以展示的页数 
+		Integer pageSize = 5;
+		
+		//进行查询获取动态图列表
+		
+		ResultData<List<BookIntro>> result = bookAccessServiceImpl.findBookSearchByPageNum(q, pageNum, pageSize);
+		
+		Map<String, Object> model  = new HashMap<String,Object>();
+		if(result!=null && result.getTotalCount()>0){
+			model.put("list",result.getData());
+			int totalPage = (int) ((result.getTotalCount()+pageSize -1)/pageSize);
+			model.put("maxPage", totalPage);
+			model.put("nowPage", pageNum);
+			//要暂时的列表页
+			List<Integer> pageList = PageNumberListUtils.getPageNumList4M(pageNum, totalPage);
+			
+			model.put("pageList", pageList);
+			model.put("totalCount","1");
+		}else{
+			model.put("totalCount","0");
+		}
+	
+     
+		return new ModelAndView("/mbooksearch",model);
+		
+	}
 	
 	/**
 	 * 分页展示所有的图书

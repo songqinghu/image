@@ -5,6 +5,7 @@ import java.util.List;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
+import com.kuaikanwang.image.domain.result.ResultData;
 
 public interface BookAccessService {
 
@@ -12,6 +13,8 @@ public interface BookAccessService {
 	public Integer findBookPageTotalByPageSize(Integer pageSize);
 	
 	public List<BookIntro> findBookListByPageNum(Integer pageNum,Integer pageSize);
+	
+	public ResultData<List<BookIntro>> findBookSearchByPageNum(String keyword,Integer pageNum, Integer pageSize);
 	
 	public boolean findIntroIdIsExit(Long introId);
 	

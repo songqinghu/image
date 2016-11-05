@@ -19,19 +19,30 @@ public class SolrClientUtil implements InitializingBean{
 
 	private HttpSolrClient client;
 	
+	private HttpSolrClient bookIntroClient;
+	
+	
 	@Value("${solr.client.address.book}")
 	private String bookUrl;
+	@Value("${solr.client.address.bookIntro}")
+	private String bookIntroUrl;
 	
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		client = new HttpSolrClient(bookUrl);
+		bookIntroClient = new HttpSolrClient(bookIntroUrl);
 		
 	}
 
 	public HttpSolrClient getClient(){
 		return client;
 	}
+	
+	public HttpSolrClient getBookIntroClient(){
+		return bookIntroClient;
+	}
+	
 	
 	
 	public static void main(String[] args) throws SolrServerException, IOException {

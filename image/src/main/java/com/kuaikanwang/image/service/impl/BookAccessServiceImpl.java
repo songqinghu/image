@@ -22,6 +22,7 @@ import com.kuaikanwang.image.dao.BookIntroMapper;
 import com.kuaikanwang.image.domain.bean.book.BookChapter;
 import com.kuaikanwang.image.domain.bean.book.BookContent;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
+import com.kuaikanwang.image.domain.result.ResultData;
 import com.kuaikanwang.image.service.BookAccessService;
 import com.kuaikanwang.image.solr.SolrClientUtil;
 import com.kuaikanwang.image.spider.pipeline.PreMysqlPipeline;
@@ -89,9 +90,57 @@ public class BookAccessServiceImpl implements BookAccessService {
 	}
 	
 	/**
-	 * 
+	 * 从solr中查询该关键字的图书
+	 * <p>Title: findBookSearchByPageNum</p>
+	 * <p>Description: </p>
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
 	 */
-	
+	public ResultData<List<BookIntro>> findBookSearchByPageNum(String keyword,Integer pageNum, Integer pageSize) {
+		
+		SolrQuery query = new SolrQuery();
+		if(keyword==null || keyword.length()==0){
+			query.set(CommonParams.Q, "*:*");
+		}else{
+			query.set(CommonParams.Q, "searchindex:"+keyword);
+		}
+		
+		if(pageNum>10 || pageNum<0){
+			pageNum =1;
+		}
+		
+		query.setStart((pageNum-1)*pageSize);
+		query.setRows(pageSize);
+		
+		try {
+			QueryResponse response = solrClientUtil.getBookIntroClient().query(query);
+			
+			List<BookIntro> books = response.getBeans(BookIntro.class);
+			
+			for (BookIntro bookIntro : books) {
+				
+				String introInfo = bookIntro.getIntroInfo();
+				String result = introInfo.replaceAll("<br>", "")
+						.replaceAll("</br>", "")
+						.replaceAll("<p>", "")
+						.replaceAll("</p>", "");
+				bookIntro.setIntroInfo(result);
+			}
+			
+			ResultData<List<BookIntro>> result = new ResultData<List<BookIntro>>();
+			result.setData(books);
+			result.setTotalCount(response.getResults().getNumFound());
+			
+			return result;
+			
+		}catch (SolrServerException | IOException  e) {
+			logger.error("select bookintro  solr occor error,the keyword is :" +keyword);
+		} 
+		
+		return null;
+
+	}
 	/**
 	 * 获取指定页面的图书列表信息
 	 * <p>Title: findBookListByPageNum</p>
