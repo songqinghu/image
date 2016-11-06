@@ -44,4 +44,6 @@ public interface BookAccessService {
 	
 	public Long findBookPageTotalByPageSizeAndEnd(Long pageSize);
 	
+	public List<BookIntro> getBookListByAll();
+	
 }

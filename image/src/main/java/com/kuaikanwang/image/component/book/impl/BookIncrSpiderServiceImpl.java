@@ -1,9 +1,11 @@
 package com.kuaikanwang.image.component.book.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.solr.client.solrj.SolrServerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -13,6 +15,8 @@ import com.kuaikanwang.image.component.book.BookIncrSpiderService;
 import com.kuaikanwang.image.dao.BookIntroMapper;
 import com.kuaikanwang.image.domain.bean.book.BookIntro;
 import com.kuaikanwang.image.redis.RedisDao;
+import com.kuaikanwang.image.service.BookAccessService;
+import com.kuaikanwang.image.solr.SolrClientUtil;
 import com.kuaikanwang.image.spider.book.start.BookSpiderStart;
 import com.kuaikanwang.image.utils.cache.CommonCacheUtil;
 
@@ -41,6 +45,11 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 	@Resource
 	private BookSpiderStart bookSpiderStartImpl;
 	
+	@Resource
+	private BookAccessService bookAccessServiceImpl;
+	
+	@Resource
+	private SolrClientUtil solrClientUtil;
 	
 	//不停的循环爬取列表中信息和数据库中比对
 	public void incrBookMonitoring(){
@@ -120,6 +129,27 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 		}
 	}
 	
+	/**
+	 * 图书简介导入solr中
+	 * <p>Title: incrBookSpider</p>
+	 * <p>Description: </p>
+	 */
+	public void importBook2Solr(){
+		while(true){
+			try {
+				List<BookIntro> books = bookAccessServiceImpl.getBookListByAll();
+				
+				solrClientUtil.getBookIntroClient().addBeans(books);
+				solrClientUtil.getBookIntroClient().commit();
+			    Thread.sleep(1000*60*60*12);
+				
+			} catch (InterruptedException |SolrServerException |IOException   e) {
+				logger.error("book incr spider occor error : " + e);
+			}
+			
+		}
+	}
+	
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -144,6 +174,15 @@ public class BookIncrSpiderServiceImpl implements BookIncrSpiderService,Initiali
 				incrBookSpider(); //一个线程等待爬取
 				logger.warn("book incr spider start");
 				
+			}
+		}).start();
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				importBook2Solr();
+				logger.warn("book intro import solr");
 			}
 		}).start();
 		                

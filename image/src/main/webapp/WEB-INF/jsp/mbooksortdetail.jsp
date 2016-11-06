@@ -53,7 +53,7 @@
  
 
 <div class="search">
-  <form name="articlesearch" action="/m/book/list">
+  <form name="articlesearch" action="/m/book/search">
   <input type="hidden" name="s" value="287293036948159515">
     <table cellpadding="0" cellspacing="0" style="width:100%;">
       <tr>

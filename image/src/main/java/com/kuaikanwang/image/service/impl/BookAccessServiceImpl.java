@@ -333,6 +333,32 @@ public class BookAccessServiceImpl implements BookAccessService {
 		
 		return books;
 	}
+	/**
+	 * 获取全部的书籍简介
+	 * <p>Title: getBookListByType</p>
+	 * <p>Description: </p>
+	 * @param start
+	 * @param limit
+	 * @param booktype
+	 * @return
+	 */
+	public List<BookIntro> getBookListByAll(){
+		
+
+		List<BookIntro> books = bookIntroMapper.getBookListByAll();
+		
+		for (BookIntro bookIntro : books) {
+			
+			String introInfo = bookIntro.getIntroInfo();
+			String result = introInfo.replaceAll("<br>", "")
+					.replaceAll("</br>", "")
+					.replaceAll("<p>", "")
+					.replaceAll("</p>", "");
+			bookIntro.setIntroInfo(result);
+		}
+		
+		return books;
+	}
 	
 	/**
 	 * 获取完结的图书列表--->观看量排序

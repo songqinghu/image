@@ -101,6 +101,13 @@ public interface BookIntroMapper {
 	 */
 	public List<BookIntro> getBookListByEnd(Map<String, Long> map);
 	
+	/**
+	 * 查询所有的图书 按照id
+	 * <p>Title: getBookListByAll</p>
+	 * <p>Description: </p>
+	 * @return
+	 */
+	public List<BookIntro> getBookListByAll();
 	
 	
 }

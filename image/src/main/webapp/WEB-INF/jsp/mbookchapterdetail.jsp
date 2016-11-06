@@ -51,6 +51,21 @@
         <li><a href="/m/book/end/1">全本</a></li>
     </ul>
 </div>
+<div class="search">
+  <form name="articlesearch" action="/m/book/search">
+  <input type="hidden" name="s" value="287293036948159515">
+    <table cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr>
+	<td style="background-color:#fff; border:1px solid #CCC;"><input style="height:20px;line-height:20px
+;" id="s_key" name="q" type="text" class="key" value="输入书名后搜索，宁可少字不要错字" onFocus="this.value=''" /></td
+>
+	<td style="width:35px; background-color:#0080C0; background-image:url('/image/search.png'); background-repeat
+:no-repeat; background-position:center"><input name="submit" type="submit" value="" class="go"></td>
+
+      </tr>
+    </table>
+  </form>
+</div>
 <div style="margin-top:0px;padding-top:0px;" class="cover">
 	<div id="intro" style="width:100%;margin-top:0px;padding-top:0px;" class="intro">${bookIntro.name}章节列表 <span style="float:right;padding-right:10px;"><a href="#bottom" style="color:Red;">↓直达页面底部</a></span></div>
 <ul class="chapter">
